@@ -1,0 +1,112 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scenes/Login.gd" type="Script" id=1]
+[ext_resource path="res://assets/font/themeA.tres" type="Theme" id=2]
+[ext_resource path="res://assets/font/BAARS.TTF" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 3 )
+
+[node name="Login" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="LogIn" type="Panel" parent="."]
+visible = false
+margin_left = 72.0
+margin_top = 45.0
+margin_right = 364.0
+margin_bottom = 347.0
+theme = ExtResource( 2 )
+
+[node name="VBox" type="VBoxContainer" parent="LogIn"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+custom_constants/separation = 15
+
+[node name="Label" type="Label" parent="LogIn/VBox"]
+margin_right = 252.0
+margin_bottom = 36.0
+text = "Log In"
+align = 1
+
+[node name="name" type="LineEdit" parent="LogIn/VBox"]
+margin_top = 51.0
+margin_right = 252.0
+margin_bottom = 97.0
+placeholder_text = "Nombre"
+
+[node name="pass" type="LineEdit" parent="LogIn/VBox"]
+margin_top = 112.0
+margin_right = 252.0
+margin_bottom = 158.0
+placeholder_text = "Clave"
+
+[node name="btn_login" type="Button" parent="LogIn/VBox"]
+margin_top = 173.0
+margin_right = 252.0
+margin_bottom = 215.0
+text = "INGRESAR"
+
+[node name="btn_new" type="Button" parent="LogIn/VBox"]
+margin_top = 230.0
+margin_right = 252.0
+margin_bottom = 263.0
+custom_colors/font_color = Color( 0.419608, 0.580392, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Crear Nueva Cuenta"
+
+[node name="NewAccount" type="Panel" parent="."]
+margin_left = 72.0
+margin_top = 45.0
+margin_right = 493.0
+margin_bottom = 356.0
+theme = ExtResource( 2 )
+
+[node name="btn_back" type="Button" parent="NewAccount"]
+margin_left = 378.0
+margin_top = -11.0
+margin_right = 431.0
+margin_bottom = 31.0
+text = "X"
+
+[node name="VBox" type="VBoxContainer" parent="NewAccount"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 25.0
+margin_top = 15.0
+margin_right = -18.0
+custom_constants/separation = 15
+
+[node name="Label" type="Label" parent="NewAccount/VBox"]
+margin_right = 378.0
+margin_bottom = 36.0
+text = "Crear Nueva Cuenta"
+align = 1
+
+[node name="name" type="LineEdit" parent="NewAccount/VBox"]
+margin_top = 51.0
+margin_right = 378.0
+margin_bottom = 97.0
+placeholder_text = "Nombre"
+
+[node name="pass" type="LineEdit" parent="NewAccount/VBox"]
+margin_top = 112.0
+margin_right = 378.0
+margin_bottom = 158.0
+placeholder_text = "Clave"
+
+[node name="mail" type="LineEdit" parent="NewAccount/VBox"]
+margin_top = 173.0
+margin_right = 378.0
+margin_bottom = 219.0
+placeholder_text = "mail"
+
+[node name="btn_create" type="Button" parent="NewAccount/VBox"]
+margin_top = 234.0
+margin_right = 378.0
+margin_bottom = 276.0
+text = "CREAR CUENTA"

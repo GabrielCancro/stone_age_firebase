@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=5 format=2]
+
+[ext_resource path="res://assets/font/BAARS.TTF" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 32
+font_data = ExtResource( 1 )
+
+[resource]
+Button/fonts/font = SubResource( 2 )
+Label/fonts/font = SubResource( 1 )
+LineEdit/fonts/font = SubResource( 3 )
