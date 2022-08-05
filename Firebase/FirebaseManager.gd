@@ -43,3 +43,9 @@ func push_data(path):
 	var result = yield(ref.update(part_data), "completed")
 	emit_signal("complete_push")
 	print("> PUSH DATA: ",path,"  >  ",DATA)
+
+func push_var(path,k,v):
+	ref = db.get_reference_lite("stone_age_fb/"+path)
+	var result = yield(ref.update({k:v}), "completed")
+	emit_signal("complete_push")
+	print("> PUSH VAR: ",path,"  >  ",{k:v})
