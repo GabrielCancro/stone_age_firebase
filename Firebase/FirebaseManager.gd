@@ -4,7 +4,10 @@ var db:FirebaseDatabase
 var ref:FirebaseReference
 var initialized = false
 
-signal complete(result)
+var DATA = null
+
+signal complete_pull
+signal complete_push
 
 var firebase_config = {
 	"apiKey": "AIzaSyDwl2xTkoIky9w0mPXkkFheppcVskrPzZU",  # set somewhere only if using auth
@@ -16,21 +19,27 @@ var firebase_config = {
 	"appId": "1:491701428697:web:25b0320595e6191d8e39c8"
 }
 
-func _init():
+func init():
 	if initialized: return
 	firebase.initialize_app(firebase_config)
 	db = firebase.database()
 	initialized = true
-	
-func get_data(table):
-	_init()
-	ref = db.get_reference_lite("stone_age_fb/"+table)
-	ref.fetch()
-	var result = yield( ref, "complete_fetch" )
-	emit_signal("complete",result)
+	pull_data()
 
-func set_data(table,k,v):
-	_init()
-	ref = db.get_reference_lite("stone_age_fb/"+table)
-	var result = yield(ref.update({k:v}), "completed")
-	emit_signal("complete",result)
+func pull_data():
+	ref = db.get_reference_lite("stone_age_fb/")
+	ref.fetch()
+	DATA = yield( ref, "complete_fetch" )
+	emit_signal("complete_pull")
+	print("< PULL DATA: ",DATA)
+
+func get_data():
+	return DATA
+
+func push_data(path):
+	ref = db.get_reference_lite("stone_age_fb/"+path)
+	var part_data = DATA
+	for k in path.split("/"): part_data = part_data[k]
+	var result = yield(ref.update(part_data), "completed")
+	emit_signal("complete_push")
+	print("> PUSH DATA: ",path,"  >  ",DATA)
