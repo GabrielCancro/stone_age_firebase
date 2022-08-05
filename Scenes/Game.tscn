@@ -20,9 +20,26 @@ margin_bottom = 40.0
 text = "Bienvenido User!"
 valign = 1
 
+[node name="Recs" type="Label" parent="Header"]
+anchor_right = 1.0
+margin_left = 47.0
+margin_top = 46.0
+margin_right = -108.0
+margin_bottom = 82.0
+custom_colors/font_color = Color( 0.988235, 1, 0.796078, 1 )
+text = "Bienvenido User!"
+valign = 1
+
 [node name="btn_quit" type="Button" parent="Header"]
 anchor_right = 1.0
 margin_left = 755.0
 margin_right = -1.0
 margin_bottom = 42.0
 text = "X"
+
+[node name="btn_turn" type="Button" parent="Header"]
+anchor_right = 1.0
+margin_left = 566.0
+margin_right = -73.0
+margin_bottom = 42.0
+text = "000/999"

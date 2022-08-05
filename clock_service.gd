@@ -9,10 +9,13 @@ func init():
 	get_tree().get_current_scene().add_child(http)
 
 func get_time():
-	http.request("http://worldclockapi.com/api/json/est/now")
+	http.request("https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam")
 	return self
 
 func _on_request_completed(result, response_code, headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
-	var time = floor( (json.result.currentFileTime - 133040205110000000 ) / 10000000 )
-	emit_signal("complete",time)
+	print(json)
+	var datetime = json.result
+	datetime.second = datetime.seconds
+	var unix_time = OS.get_unix_time_from_datetime(datetime)
+	emit_signal("complete",unix_time)

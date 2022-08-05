@@ -39,6 +39,7 @@ func set_game_button():
 
 func onSelectGame(game):
 	GC.GAME = game
+	GC.PLAYER = game.players[GC.USER.name]
 	get_tree().change_scene("res://Scenes/Game.tscn")
 
 func createNewGame():
