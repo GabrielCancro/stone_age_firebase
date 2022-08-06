@@ -1,10 +1,21 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=2]
+[ext_resource path="res://Prefabs/Drager.gd" type="Script" id=3]
+[ext_resource path="res://assets/area.png" type="Texture" id=4]
+[ext_resource path="res://assets/map.jpg" type="Texture" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=6]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
+
+[node name="Map" type="Sprite" parent="."]
+position = Vector2( 415, 268 )
+scale = Vector2( 0.8, 0.8 )
+texture = ExtResource( 5 )
+region_enabled = true
+region_rect = Rect2( 100, 50, 1080, 600 )
 
 [node name="Header" type="Panel" parent="."]
 margin_right = 800.0
@@ -43,3 +54,126 @@ margin_left = 566.0
 margin_right = -73.0
 margin_bottom = 42.0
 text = "000/999"
+
+[node name="Interaction" type="Node2D" parent="."]
+
+[node name="Points" type="Node2D" parent="Interaction"]
+
+[node name="FOOD" type="Sprite" parent="Interaction/Points"]
+modulate = Color( 0, 0, 0, 0.619608 )
+position = Vector2( 89, 233 )
+scale = Vector2( 1.46, 1.46 )
+texture = ExtResource( 4 )
+
+[node name="WOOD" type="Sprite" parent="Interaction/Points"]
+modulate = Color( 0, 0, 0, 0.619608 )
+position = Vector2( 253, 176 )
+scale = Vector2( 1.46, 1.46 )
+texture = ExtResource( 4 )
+
+[node name="ADOBE" type="Sprite" parent="Interaction/Points"]
+modulate = Color( 0, 0, 0, 0.619608 )
+position = Vector2( 455, 152 )
+scale = Vector2( 1.46, 1.46 )
+texture = ExtResource( 4 )
+
+[node name="STONE" type="Sprite" parent="Interaction/Points"]
+modulate = Color( 0, 0, 0, 0.619608 )
+position = Vector2( 706, 153 )
+scale = Vector2( 1.46, 1.46 )
+texture = ExtResource( 4 )
+
+[node name="GOLD" type="Sprite" parent="Interaction/Points"]
+modulate = Color( 0, 0, 0, 0.619608 )
+position = Vector2( 691, 319 )
+scale = Vector2( 1.46, 1.46 )
+texture = ExtResource( 4 )
+
+[node name="CAMP" type="Sprite" parent="Interaction/Points"]
+modulate = Color( 0, 0, 0, 0.619608 )
+position = Vector2( 201, 372 )
+scale = Vector2( 0.869999, 0.869999 )
+texture = ExtResource( 4 )
+
+[node name="HOUSE" type="Sprite" parent="Interaction/Points"]
+modulate = Color( 0, 0, 0, 0.619608 )
+position = Vector2( 288, 444 )
+scale = Vector2( 0.869999, 0.869999 )
+texture = ExtResource( 4 )
+
+[node name="TOOL" type="Sprite" parent="Interaction/Points"]
+modulate = Color( 0, 0, 0, 0.619608 )
+position = Vector2( 428, 348 )
+scale = Vector2( 0.869999, 0.869999 )
+texture = ExtResource( 4 )
+
+[node name="FOOD" type="Sprite" parent="Interaction"]
+modulate = Color( 0, 0, 0, 0.619608 )
+position = Vector2( 61, 405.5 )
+scale = Vector2( 1, 0.71 )
+texture = ExtResource( 4 )
+
+[node name="Drager" type="Node2D" parent="Interaction"]
+script = ExtResource( 3 )
+origin_pos = Vector2( 60, 375 )
+
+[node name="V1" type="Sprite" parent="Interaction/Drager"]
+position = Vector2( 61, 375 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="V2" type="Sprite" parent="Interaction/Drager"]
+position = Vector2( 61, 375 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="V3" type="Sprite" parent="Interaction/Drager"]
+position = Vector2( 61, 375 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="V4" type="Sprite" parent="Interaction/Drager"]
+position = Vector2( 61, 375 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="V5" type="Sprite" parent="Interaction/Drager"]
+position = Vector2( 61, 375 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="V6" type="Sprite" parent="Interaction/Drager"]
+position = Vector2( 61, 375 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="V7" type="Sprite" parent="Interaction/Drager"]
+position = Vector2( 61, 375 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="V8" type="Sprite" parent="Interaction/Drager"]
+position = Vector2( 61, 375 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="V9" type="Sprite" parent="Interaction/Drager"]
+position = Vector2( 61, 375 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="V10" type="Sprite" parent="Interaction/Drager"]
+position = Vector2( 61, 375 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 6 )
+
+[node name="Label" type="Label" parent="Interaction"]
+anchor_right = 1.0
+margin_left = -39.0
+margin_top = 400.0
+margin_right = 161.0
+margin_bottom = 436.0
+theme = ExtResource( 2 )
+text = "10/10"
+align = 1
+valign = 1
