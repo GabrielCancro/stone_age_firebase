@@ -16,6 +16,8 @@ func endTurn():
 	$Header/btn_turn.disabled = true
 	GC.reload_data()
 	yield(GC,"complete_reload_data")
+	$Interaction.end_turn_task()
+#	yield($Interaction,"finish_end_task")
 	GC.PLAYER.turn += 1
 	FM.push_data("games/"+GC.GAME.name+"/players/"+GC.USER.name)
 	yield(FM,"complete_push")

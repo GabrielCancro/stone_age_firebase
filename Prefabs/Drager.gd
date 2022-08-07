@@ -3,18 +3,24 @@ extends Node2D
 var drag_radius = 30
 var grabbed_offset = Vector2()
 var drag_node = null
-export var origin_pos = Vector2(50,400)
-onready var POINTS = get_node("../Points")
+onready var max_nodes = $Nodes.get_children().size()
+var result = {}
+signal set_node(node,stay,result)
 
-func _ready():
-	for c in get_children():
-		c.position = origin_pos
+func _ready():	
+	for c in $Nodes.get_children():
+		c.position = $Base.position
+	for p in $Points.get_children(): result[p.name] = 0
+	result["NONE"] = max_nodes
+	print("DRAGER POINTS >> ",result)
+	update_label()
+
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed && !drag_node:
-			var near = get_children()[0]
-			var near_dist = get_global_mouse_position().distance_to(get_children()[0].position)
-			for c in get_children():
+			var near = $Nodes.get_children()[0]
+			var near_dist = get_global_mouse_position().distance_to($Nodes.get_children()[0].position)
+			for c in $Nodes.get_children():
 				if(get_global_mouse_position().distance_to(c.position) < near_dist):
 					near = c
 					near_dist = get_global_mouse_position().distance_to(c.position)
@@ -33,20 +39,34 @@ func _process(delta):
 
 func onStartDrag(node):
 	var stay = get_stay(node)
-	if stay != "NONE": GC.WORK_VILLAGERS -= 1
-	print("START DRAG ",node.name," > ",stay)
-	print("WORK_VILLAGERS ",GC.WORK_VILLAGERS)
+	result[stay] -= 1
+	node.z_index = 2
+	update_label()
 	
 func onFinishDrag(node):
 	var stay = get_stay(node)
-	if stay == "NONE": node.position = origin_pos
-	if stay != "NONE": GC.WORK_VILLAGERS += 1
-	print("END DRAG ",node.name," > ",stay)
-	print("WORK_VILLAGERS ",GC.WORK_VILLAGERS)
+	if stay == "NONE": node.position = $Base.position
+	result[stay] += 1
+	node.z_index = 0
+	update_label()
+	emit_signal("set_node",node,stay,result)	
 
 func get_stay(node):
 	var stay = "NONE"
-	for p in POINTS.get_children():
+	for p in $Points.get_children():
 		if node.position.distance_to(p.position)<p.scale.x*50:
 			stay = p.name
+			break
 	return stay
+
+func update_label():
+	$Base/Label.text = str(result["NONE"])+"/"+str(max_nodes)
+
+#PUBLICS
+func free_node(node):
+	onStartDrag(node)
+	node.position = $Base.position
+	onFinishDrag(node)
+
+func get_result():
+	return result
