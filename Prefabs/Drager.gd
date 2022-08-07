@@ -3,11 +3,11 @@ extends Node2D
 var drag_radius = 30
 var grabbed_offset = Vector2()
 var drag_node = null
-onready var max_nodes = $Nodes.get_children().size()
+onready var max_nodes = GC.PLAYER.villager
 var result = {}
 signal set_node(node,stay,result)
 
-func _ready():	
+func _ready():
 	for c in $Nodes.get_children():
 		c.position = $Base.position
 	for p in $Points.get_children(): result[p.name] = 0
@@ -39,6 +39,9 @@ func _process(delta):
 
 func onStartDrag(node):
 	var stay = get_stay(node)
+	if stay=="NONE" && result["NONE"]<=0: 
+		drag_node = null
+		return
 	result[stay] -= 1
 	node.z_index = 2
 	update_label()
@@ -49,7 +52,7 @@ func onFinishDrag(node):
 	result[stay] += 1
 	node.z_index = 0
 	update_label()
-	emit_signal("set_node",node,stay,result)	
+	emit_signal("set_node",node,stay,result)
 
 func get_stay(node):
 	var stay = "NONE"
@@ -67,6 +70,11 @@ func free_node(node):
 	onStartDrag(node)
 	node.position = $Base.position
 	onFinishDrag(node)
+
+func add_max(cnt=1):
+	max_nodes += cnt
+	result["NONE"] += cnt
+	update_label()
 
 func get_result():
 	return result

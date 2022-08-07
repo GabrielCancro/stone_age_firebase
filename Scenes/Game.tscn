@@ -1,12 +1,27 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=2]
 [ext_resource path="res://Prefabs/Drager.gd" type="Script" id=3]
 [ext_resource path="res://assets/area.png" type="Texture" id=4]
 [ext_resource path="res://assets/map.jpg" type="Texture" id=5]
-[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://assets/gold.jpg" type="Texture" id=6]
 [ext_resource path="res://Scenes/Interaction.gd" type="Script" id=7]
+[ext_resource path="res://assets/font/BAARS.TTF" type="DynamicFontData" id=8]
+[ext_resource path="res://Scenes/rec_panel.gd" type="Script" id=9]
+[ext_resource path="res://assets/food.jpg" type="Texture" id=10]
+[ext_resource path="res://assets/villager_circle.png" type="Texture" id=11]
+[ext_resource path="res://assets/tool.jpg" type="Texture" id=12]
+[ext_resource path="res://assets/camp.jpg" type="Texture" id=13]
+[ext_resource path="res://assets/wood.jpg" type="Texture" id=14]
+[ext_resource path="res://assets/adobe.jpg" type="Texture" id=15]
+[ext_resource path="res://assets/stone.jpg" type="Texture" id=16]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+outline_size = 4
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 8 )
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 1 )
@@ -25,19 +40,22 @@ theme = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="Header"]
 anchor_right = 1.0
-margin_left = 28.0
-margin_top = 4.0
-margin_right = -127.0
-margin_bottom = 40.0
+margin_left = 338.0
+margin_top = 417.0
+margin_right = 183.0
+margin_bottom = 453.0
 text = "Bienvenido User!"
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Recs" type="Label" parent="Header"]
 anchor_right = 1.0
-margin_left = 47.0
-margin_top = 46.0
-margin_right = -108.0
-margin_bottom = 82.0
+margin_left = 7.0
+margin_top = 469.0
+margin_right = -148.0
+margin_bottom = 505.0
 custom_colors/font_color = Color( 0.988235, 1, 0.796078, 1 )
 text = "Bienvenido User!"
 valign = 1
@@ -48,12 +66,19 @@ margin_left = 755.0
 margin_right = -1.0
 margin_bottom = 42.0
 text = "X"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="btn_turn" type="Button" parent="Header"]
+anchor_left = 1.0
+anchor_top = 1.0
 anchor_right = 1.0
-margin_left = 566.0
-margin_right = -73.0
-margin_bottom = 42.0
+anchor_bottom = 1.0
+margin_left = -182.0
+margin_top = 338.0
+margin_right = 4.0
+margin_bottom = 411.0
 text = "000/999"
 
 [node name="Interaction" type="Node2D" parent="."]
@@ -120,7 +145,7 @@ position = Vector2( 212, 311 )
 scale = Vector2( 0.802499, 0.802499 )
 texture = ExtResource( 4 )
 
-[node name="HOUSE" type="Sprite" parent="Interaction/Drager/Points"]
+[node name="VILLAGER" type="Sprite" parent="Interaction/Drager/Points"]
 modulate = Color( 0, 0, 0, 0.619608 )
 position = Vector2( 286, 394 )
 scale = Vector2( 0.954999, 0.954999 )
@@ -128,7 +153,7 @@ texture = ExtResource( 4 )
 
 [node name="TOOL" type="Sprite" parent="Interaction/Drager/Points"]
 modulate = Color( 0, 0, 0, 0.619608 )
-position = Vector2( 425, 284 )
+position = Vector2( 397, 256 )
 scale = Vector2( 0.869999, 0.869999 )
 texture = ExtResource( 4 )
 
@@ -137,49 +162,186 @@ texture = ExtResource( 4 )
 [node name="V1" type="Sprite" parent="Interaction/Drager/Nodes"]
 position = Vector2( 61, 375 )
 scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 6 )
+texture = ExtResource( 11 )
 
 [node name="V2" type="Sprite" parent="Interaction/Drager/Nodes"]
 position = Vector2( 61, 375 )
 scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 6 )
+texture = ExtResource( 11 )
 
 [node name="V3" type="Sprite" parent="Interaction/Drager/Nodes"]
 position = Vector2( 61, 375 )
 scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 6 )
+texture = ExtResource( 11 )
 
 [node name="V4" type="Sprite" parent="Interaction/Drager/Nodes"]
 position = Vector2( 61, 375 )
 scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 6 )
+texture = ExtResource( 11 )
 
 [node name="V5" type="Sprite" parent="Interaction/Drager/Nodes"]
 position = Vector2( 61, 375 )
 scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 6 )
+texture = ExtResource( 11 )
 
 [node name="V6" type="Sprite" parent="Interaction/Drager/Nodes"]
 position = Vector2( 61, 375 )
 scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 6 )
+texture = ExtResource( 11 )
 
 [node name="V7" type="Sprite" parent="Interaction/Drager/Nodes"]
 position = Vector2( 61, 375 )
 scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 6 )
+texture = ExtResource( 11 )
 
 [node name="V8" type="Sprite" parent="Interaction/Drager/Nodes"]
 position = Vector2( 61, 375 )
 scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 6 )
+texture = ExtResource( 11 )
 
 [node name="V9" type="Sprite" parent="Interaction/Drager/Nodes"]
 position = Vector2( 60, 375 )
 scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 6 )
+texture = ExtResource( 11 )
 
 [node name="V10" type="Sprite" parent="Interaction/Drager/Nodes"]
 position = Vector2( 61, 375 )
 scale = Vector2( 0.75, 0.75 )
-texture = ExtResource( 6 )
+texture = ExtResource( 11 )
+
+[node name="V11" type="Sprite" parent="Interaction/Drager/Nodes"]
+position = Vector2( 61, 375 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 11 )
+
+[node name="V12" type="Sprite" parent="Interaction/Drager/Nodes"]
+position = Vector2( 61, 375 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 11 )
+
+[node name="V13" type="Sprite" parent="Interaction/Drager/Nodes"]
+position = Vector2( 61, 375 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 11 )
+
+[node name="V14" type="Sprite" parent="Interaction/Drager/Nodes"]
+position = Vector2( 61, 375 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 11 )
+
+[node name="V15" type="Sprite" parent="Interaction/Drager/Nodes"]
+position = Vector2( 61, 375 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 11 )
+
+[node name="V16" type="Sprite" parent="Interaction/Drager/Nodes"]
+position = Vector2( 61, 375 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 11 )
+
+[node name="V17" type="Sprite" parent="Interaction/Drager/Nodes"]
+position = Vector2( 61, 375 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 11 )
+
+[node name="V18" type="Sprite" parent="Interaction/Drager/Nodes"]
+position = Vector2( 61, 375 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 11 )
+
+[node name="V19" type="Sprite" parent="Interaction/Drager/Nodes"]
+position = Vector2( 61, 375 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 11 )
+
+[node name="fx" type="Label" parent="Interaction"]
+anchor_right = 1.0
+margin_left = 10.0
+margin_top = -73.0
+margin_right = 210.0
+margin_bottom = -37.0
+theme = ExtResource( 2 )
+custom_colors/font_color = Color( 0.996078, 1, 0.933333, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "+99"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="Interaction"]
+
+[node name="rec_panel" type="GridContainer" parent="Interaction"]
+margin_left = 6.0
+margin_right = 751.0
+margin_bottom = 42.0
+theme = ExtResource( 2 )
+custom_constants/hseparation = 12
+columns = 8
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="food" type="Button" parent="Interaction/rec_panel"]
+margin_right = 95.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 95, 0 )
+text = "999"
+icon = ExtResource( 10 )
+expand_icon = true
+
+[node name="camp" type="Button" parent="Interaction/rec_panel"]
+margin_left = 107.0
+margin_right = 202.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 95, 0 )
+text = "999"
+icon = ExtResource( 13 )
+expand_icon = true
+
+[node name="wood" type="Button" parent="Interaction/rec_panel"]
+margin_left = 214.0
+margin_right = 309.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 95, 0 )
+text = "999"
+icon = ExtResource( 14 )
+expand_icon = true
+
+[node name="adobe" type="Button" parent="Interaction/rec_panel"]
+margin_left = 321.0
+margin_right = 416.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 95, 0 )
+text = "999"
+icon = ExtResource( 15 )
+expand_icon = true
+
+[node name="stone" type="Button" parent="Interaction/rec_panel"]
+margin_left = 428.0
+margin_right = 523.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 95, 0 )
+text = "999"
+icon = ExtResource( 16 )
+expand_icon = true
+
+[node name="gold" type="Button" parent="Interaction/rec_panel"]
+margin_left = 535.0
+margin_right = 630.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 95, 0 )
+text = "999"
+icon = ExtResource( 6 )
+expand_icon = true
+
+[node name="tool" type="Button" parent="Interaction/rec_panel"]
+margin_left = 642.0
+margin_right = 737.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 95, 0 )
+text = "999"
+icon = ExtResource( 12 )
+expand_icon = true
