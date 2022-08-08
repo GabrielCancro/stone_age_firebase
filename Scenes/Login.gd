@@ -28,7 +28,7 @@ func onClick(btn):
 
 func createAccount():
 	var user_data = { 
-		"name":$NewAccount/VBox/name.text,
+		"name":$NewAccount/VBox/name.text.to_upper(),
 		"pass":$NewAccount/VBox/pass.text,
 		"mail":$NewAccount/VBox/mail.text,
 	}
@@ -47,7 +47,7 @@ func createAccount():
 
 func login():
 	var user_data = { 
-		"name":$LogIn/VBox/name.text,
+		"name":$LogIn/VBox/name.text.to_upper(),
 		"pass":$LogIn/VBox/pass.text,
 	}
 	$LogIn/VBox/pass.text = ""

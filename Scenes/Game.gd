@@ -13,6 +13,7 @@ func onClick(btn):
 	if btn == "turn": endTurn();
 	
 func endTurn():
+	if GC.PLAYER.turn>=GC.TOTAL_TURNS: return
 	$Header/btn_turn.disabled = true
 	GC.reload_data()
 	yield(GC,"complete_reload_data")
@@ -28,7 +29,7 @@ func set_now_time():
 	$Header/btn_turn.disabled = true
 	CLOCK.get_time()
 	GC.NOW_TIME =  yield( CLOCK,"complete" )
-	GC.TOTAL_TURNS = 3+floor( (GC.NOW_TIME - GC.GAME.start_time)/10)
+	GC.TOTAL_TURNS = 3+floor( (GC.NOW_TIME - GC.GAME.start_time)/80)
 	update_ui()
 	$Header/btn_turn.disabled = false
 

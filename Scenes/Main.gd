@@ -28,7 +28,7 @@ func set_game_button():
 	if !"games" in FM.DATA: 
 		FM.DATA.games = {}
 		FM.push_data("games")
-		yield(FM,"complete_push")		
+		yield(FM,"complete_push")
 	for i in FM.DATA.games:
 		var game = FM.DATA.games[i]
 		var btn = Button.new()
@@ -48,12 +48,15 @@ func createNewGame():
 	FM.push_var("","games_id",FM.DATA.games_id)
 	yield(FM,"complete_push")
 	var game_name = "partida "+str(FM.DATA.games_id)
+	var players_data = {}
+	var players_names = $User/btn_new/LineEdit.text.split("+")
+	players_names.append(GC.USER.name)
+	for nm in players_names:
+		players_data[nm.to_upper()] = {"turn":0, "food":23,"wood":0,"stone":0,"villager":5}
 	FM.DATA.games[game_name] = {
 		"name":game_name,
 		"start_time": yield( CLOCK.get_time(),"complete" ),
-		"players": {
-			GC.USER.name:{"turn":0, "food":23,"wood":0,"stone":0,"villager":5}
-		}
+		"players": players_data
 	}
 	FM.push_data("games/"+game_name)
 	yield(FM,"complete_push")

@@ -10,7 +10,8 @@ signal set_node(node,stay,result)
 func _ready():
 	for c in $Nodes.get_children():
 		c.position = $Base.position
-	for p in $Points.get_children(): result[p.name] = 0
+	for p in $Points.get_children(): 
+		result[p.name] = 0
 	result["NONE"] = max_nodes
 	print("DRAGER POINTS >> ",result)
 	update_label()

@@ -49,14 +49,15 @@ func add_resource(name,cnt):
 	var nameLow = name.to_lower()
 	if !nameLow in GC.PLAYER: GC.PLAYER[nameLow] = 0
 	GC.PLAYER[nameLow] += cnt
-	fx_text("+"+str(cnt),$Drager/Points.get_node(name).position)
+	fx_text("+"+str(cnt),name,$Drager/Points.get_node(name).position)
 	$rec_panel.update_panel()
 	
-func fx_text(txt,pos):
-	$fx.text = txt
-	$fx.rect_position = pos + Vector2(-100,-30)
-	$Tween.interpolate_property($fx,"modulate",Color(1,1,1,1),Color(1,1,1,0),1.0,Tween.TRANS_QUAD,Tween.EASE_OUT)
-	$Tween.interpolate_property($fx,"rect_position",$fx.rect_position,$fx.rect_position+Vector2(0,-50),1.0,Tween.TRANS_QUAD,Tween.EASE_OUT)
+func fx_text(txt,icon,pos):
+	$fx/Icon.texture = load("res://assets/"+icon.to_lower()+".jpg")
+	$fx/Label.text = txt
+	$fx.position = pos + Vector2(0,-15)
+	$Tween.interpolate_property($fx,"modulate",Color(1,1,1,1),Color(1,1,1,0),1.0,Tween.TRANS_QUINT,Tween.EASE_IN)
+	$Tween.interpolate_property($fx,"position",$fx.position,$fx.position+Vector2(0,-10),1.0,Tween.TRANS_QUAD,Tween.EASE_OUT)
 	$Tween.start()
 	yield($Tween,"tween_completed")
 	yield(get_tree().create_timer(.1),"timeout")
