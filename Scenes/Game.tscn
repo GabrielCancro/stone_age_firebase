@@ -420,9 +420,9 @@ color = Color( 0, 0, 0, 0.784314 )
 
 [node name="Label" type="Label" parent="Interaction/eat_panel"]
 anchor_right = 1.0
-margin_left = -78.0
+margin_left = -87.0
 margin_top = -44.0
-margin_right = 78.0
+margin_right = 87.0
 margin_bottom = 7.0
 rect_pivot_offset = Vector2( 91, 47 )
 custom_fonts/font = ExtResource( 25 )
