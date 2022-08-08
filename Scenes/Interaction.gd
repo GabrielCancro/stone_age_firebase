@@ -5,6 +5,7 @@ signal finish_current_anim
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$Drager.connect("set_node",self,"onSetNode")
+	update_all_panels()
 
 func onSetNode(node,stay,result):
 	print(result)
@@ -41,7 +42,26 @@ func end_turn_task():
 	if RESULT.VILLAGER == 2: 
 		add_resource("VILLAGER",1)
 		$Drager.add_max(1)
+		update_all_panels()
 		yield(self,"finish_current_anim")
+
+#	EAT TRIBE
+	var eat = max(0,GC.PLAYER["villager"]-GC.PLAYER["camp"])
+	GC.PLAYER["food"] -= eat
+	var no_eat = false
+	if(GC.PLAYER["food"]<0): 
+		GC.PLAYER["food"] = 0
+		no_eat = true		
+	fx_text("-"+str(eat),"food",$eat_panel.position)
+	update_all_panels()
+	yield(self,"finish_current_anim")
+	if no_eat:
+		GC.PLAYER["score"] -= 10
+		fx_text("-"+str(10),"score",$score_panel.position)
+		update_all_panels()
+		yield(self,"finish_current_anim")
+	
+#	END TURN
 	yield(get_tree().create_timer(1),"timeout")
 	emit_signal("finish_end_task")
 
@@ -50,7 +70,7 @@ func add_resource(name,cnt):
 	if !nameLow in GC.PLAYER: GC.PLAYER[nameLow] = 0
 	GC.PLAYER[nameLow] += cnt
 	fx_text("+"+str(cnt),name,$Drager/Points.get_node(name).position)
-	$rec_panel.update_panel()
+	update_all_panels()
 	
 func fx_text(txt,icon,pos):
 	$fx/Icon.texture = load("res://assets/"+icon.to_lower()+".jpg")
@@ -68,3 +88,11 @@ func get_dices(cnt):
 	var sum = 0
 	for i in range(cnt): sum += randi() % 6 +1
 	return sum
+
+func update_all_panels():
+	var cnt = max(0,GC.PLAYER["villager"]-GC.PLAYER["camp"])
+	$eat_panel/Label2.text = "-"+str(cnt)
+	if GC.PLAYER.score>=0: $score_panel/Label.text = "+"
+	else: $score_panel/Label.text = ""
+	$score_panel/Label.text += str(GC.PLAYER.score)
+	$rec_panel.update_panel()

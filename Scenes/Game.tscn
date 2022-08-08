@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=2]
@@ -24,6 +24,8 @@
 [ext_resource path="res://assets/map/map_gold.png" type="Texture" id=22]
 [ext_resource path="res://assets/map/map_adobe.png" type="Texture" id=23]
 [ext_resource path="res://assets/map/map_stone.png" type="Texture" id=24]
+[ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=25]
+[ext_resource path="res://assets/score_circle.png" type="Texture" id=26]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -376,7 +378,79 @@ text = "999"
 icon = ExtResource( 12 )
 expand_icon = true
 
+[node name="score_panel" type="Node2D" parent="Interaction"]
+position = Vector2( 701, 185 )
+
+[node name="ColorRect" type="ColorRect" parent="Interaction/score_panel"]
+margin_left = -85.0
+margin_top = -26.0
+margin_right = 85.0
+margin_bottom = 23.0
+theme = ExtResource( 2 )
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="Label" type="Label" parent="Interaction/score_panel"]
+anchor_right = 1.0
+margin_left = -82.0
+margin_top = -18.0
+margin_right = -2.0
+margin_bottom = 18.0
+rect_pivot_offset = Vector2( 91, 47 )
+theme = ExtResource( 2 )
+text = "+170"
+align = 2
+valign = 1
+autowrap = true
+
+[node name="score" type="Sprite" parent="Interaction/score_panel"]
+position = Vector2( 34.4633, -0.347462 )
+scale = Vector2( 1.0435, 1.0435 )
+texture = ExtResource( 26 )
+
+[node name="eat_panel" type="Node2D" parent="Interaction"]
+position = Vector2( 701, 288 )
+
+[node name="ColorRect" type="ColorRect" parent="Interaction/eat_panel"]
+margin_left = -85.0
+margin_top = -51.0
+margin_right = 85.0
+margin_bottom = 50.0
+theme = ExtResource( 2 )
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="Label" type="Label" parent="Interaction/eat_panel"]
+anchor_right = 1.0
+margin_left = -78.0
+margin_top = -44.0
+margin_right = 78.0
+margin_bottom = 7.0
+rect_pivot_offset = Vector2( 91, 47 )
+custom_fonts/font = ExtResource( 25 )
+text = "En cada turno tendras que alimentar a tu tribu"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Label2" type="Label" parent="Interaction/eat_panel"]
+anchor_right = 1.0
+margin_left = -53.0
+margin_top = 13.0
+margin_right = -2.0
+margin_bottom = 49.0
+rect_pivot_offset = Vector2( 91, 47 )
+theme = ExtResource( 2 )
+text = "-5"
+align = 2
+valign = 1
+autowrap = true
+
+[node name="Food" type="Sprite" parent="Interaction/eat_panel"]
+position = Vector2( 18, 31 )
+scale = Vector2( 0.220339, 0.220339 )
+texture = ExtResource( 10 )
+
 [node name="fx" type="Node2D" parent="Interaction"]
+position = Vector2( 1, -49 )
 
 [node name="Area" type="Sprite" parent="Interaction/fx"]
 visible = false
@@ -386,9 +460,16 @@ scale = Vector2( 1.17, 0.62 )
 texture = ExtResource( 4 )
 
 [node name="Panel" type="Panel" parent="Interaction/fx"]
-margin_left = -47.0
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -50.0
+margin_top = -24.0
+margin_right = 47.0
+margin_bottom = 24.0
+
+[node name="Panel2" type="Panel" parent="Interaction/fx"]
+margin_left = -48.0
 margin_top = -22.0
-margin_right = 46.0
+margin_right = 45.0
 margin_bottom = 22.0
 
 [node name="Label" type="Label" parent="Interaction/fx"]
