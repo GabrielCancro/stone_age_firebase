@@ -3,12 +3,32 @@
 [ext_resource path="res://Scenes/Login.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=2]
 [ext_resource path="res://assets/font/BAARS.TTF" type="DynamicFontData" id=3]
-[ext_resource path="res://Prefabs/Villager.gd" type="Script" id=4]
 [ext_resource path="res://icon.png" type="Texture" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
 font_data = ExtResource( 3 )
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends Sprite
+
+var can_grab = true
+var grabbed_offset = Vector2()
+var drag_radius = 30
+var draging = false
+
+
+func _input(event):
+	if event is InputEventMouseButton:
+		can_grab = event.pressed
+		if(get_global_mouse_position().distance_to(position) < drag_radius):
+			grabbed_offset = position - get_global_mouse_position()
+			GC.DRAGING_ELEMENT = self
+		if !event.pressed: GC.DRAGING_ELEMENT = null
+
+func _process(delta):
+	pass
+"
 
 [node name="Login" type="Node2D"]
 script = ExtResource( 1 )
@@ -134,14 +154,14 @@ text = "CREAR CUENTA"
 [node name="Villager" type="Sprite" parent="."]
 position = Vector2( 192, 282 )
 texture = ExtResource( 5 )
-script = ExtResource( 4 )
+script = SubResource( 2 )
 
 [node name="Villager2" type="Sprite" parent="."]
 position = Vector2( 176, 91 )
 texture = ExtResource( 5 )
-script = ExtResource( 4 )
+script = SubResource( 2 )
 
 [node name="Villager4" type="Sprite" parent="."]
 position = Vector2( 118, 189 )
 texture = ExtResource( 5 )
-script = ExtResource( 4 )
+script = SubResource( 2 )
