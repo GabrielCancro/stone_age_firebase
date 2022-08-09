@@ -5,9 +5,6 @@ func _ready():
 	$User/Label.text = "Bienvenido "+GC.USER.name+"!"
 	$User/btn_logout.connect("button_down",self,"onClick",["logout"])
 	$User/btn_new.connect("button_down",self,"onClick",["new"])
-	$NewGamePopup/NewGame/btn_add.connect("button_down",self,"onClick",["add_player"])
-	$NewGamePopup/NewGame/btn_back.connect("button_down",self,"onClick",["new_back"])
-	$NewGamePopup/NewGame/btn_create.connect("button_down",self,"onClick",["create_game"])
 	CLOCK.init()
 #	check_time()
 	set_game_button()
@@ -17,7 +14,7 @@ func onClick(btn):
 		GC.USER = null
 		get_tree().change_scene("res://Scenes/Login.tscn")
 	if btn=="new":
-		createNewGame()
+		$NewGamePopup.showNewGamePanel()
 
 #func check_time():
 #	var nowTime = yield(CLOCK.get_time(),"complete")
@@ -44,23 +41,3 @@ func onSelectGame(game):
 	GC.GAME = game
 	GC.PLAYER = game.players[GC.USER.name]
 	get_tree().change_scene("res://Scenes/Game.tscn")
-
-func createNewGame():
-	$NewGamePopup.visible = true
-	FM.DATA.games_id += 1
-	FM.push_var("","games_id",FM.DATA.games_id)
-	yield(FM,"complete_push")
-	var game_name = "partida "+str(FM.DATA.games_id)
-	var players_data = {}
-	var players_names = $User/btn_new/LineEdit.text.split("+")
-	players_names.append(GC.USER.name)
-	for nm in players_names:
-		players_data[nm.to_upper()] = {"turn":0, "food":23,"wood":0,"stone":0,"villager":5}
-	FM.DATA.games[game_name] = {
-		"name":game_name,
-		"start_time": yield( CLOCK.get_time(),"complete" ),
-		"players": players_data
-	}
-	FM.push_data("games/"+game_name)
-	yield(FM,"complete_push")
-	get_tree().reload_current_scene()
