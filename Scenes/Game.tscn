@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=2]
 [ext_resource path="res://Prefabs/Drager.gd" type="Script" id=3]
 [ext_resource path="res://assets/area.png" type="Texture" id=4]
-[ext_resource path="res://assets/map.jpg" type="Texture" id=5]
+[ext_resource path="res://assets/map/map_blur.jpg" type="Texture" id=5]
 [ext_resource path="res://assets/gold.jpg" type="Texture" id=6]
 [ext_resource path="res://Scenes/Interaction.gd" type="Script" id=7]
 [ext_resource path="res://assets/font/BAARS.TTF" type="DynamicFontData" id=8]
@@ -39,11 +39,10 @@ script = ExtResource( 1 )
 [node name="Map" type="Node2D" parent="."]
 
 [node name="Map" type="Sprite" parent="Map"]
-modulate = Color( 0.388235, 0.388235, 0.388235, 0.619608 )
-position = Vector2( 408.7, 218.5 )
-scale = Vector2( 0.788333, 0.788333 )
+modulate = Color( 0.690196, 0.690196, 0.690196, 1 )
+position = Vector2( 402.783, 211 )
+scale = Vector2( 1.68667, 1.68667 )
 texture = ExtResource( 5 )
-region_enabled = true
 region_rect = Rect2( 100, 50, 1080, 600 )
 
 [node name="MapAdobe" type="Sprite" parent="Map"]
