@@ -490,6 +490,30 @@ position = Vector2( 24, 8.34465e-07 )
 scale = Vector2( 0.305085, 0.305085 )
 texture = ExtResource( 10 )
 
+[node name="HelpButtons" type="Control" parent="."]
+modulate = Color( 0.960784, 1, 0.509804, 0.866667 )
+margin_right = 40.0
+margin_bottom = 40.0
+theme = ExtResource( 2 )
+
+[node name="intro" type="Button" parent="HelpButtons"]
+anchor_right = 1.0
+margin_left = 3.0
+margin_top = 44.0
+margin_right = 8.0
+margin_bottom = 86.0
+text = "?"
+
+[node name="villager" type="Button" parent="HelpButtons"]
+anchor_right = 1.0
+margin_left = 109.0
+margin_top = 360.0
+margin_right = 114.0
+margin_bottom = 402.0
+rect_scale = Vector2( 0.7, 0.7 )
+text = "?"
+
 [node name="HelpPanel" parent="." instance=ExtResource( 27 )]
+visible = false
 margin_right = 800.0
 margin_bottom = 400.0

@@ -7,6 +7,8 @@ func _ready():
 	$Header/btn_turn.connect("button_down",self,"onClick",["turn"])
 	CLOCK.init()
 	set_now_time()
+	if(GC.PLAYER.turn==0): $HelpPanel.showHelp("intro")
+	for btn in $HelpButtons.get_children(): btn.connect("button_down",self,"onClickHelp",[btn])
 
 func onClick(btn):
 	if btn == "quit": get_tree().change_scene("res://Scenes/Main.tscn")
@@ -35,3 +37,6 @@ func set_now_time():
 func update_ui():
 	$Header/btn_turn.text = str(GC.PLAYER.turn)+"/"+str(GC.get_total_turns())
 	$Header/Recs.text = str(GC.PLAYER)
+
+func onClickHelp(btn):
+	$HelpPanel.showHelp(btn.name)
