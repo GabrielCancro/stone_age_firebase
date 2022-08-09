@@ -46,11 +46,16 @@ func onClickCreateNewGame():
 	var game_name = "partida "+str(FM.DATA.games_id)
 	var players_data = {}
 	for nm in players:
-		players_data[nm.to_upper()] = {"turn":0, "food":23,"wood":0,"stone":0,"villager":5}
+		players_data[nm.to_upper()] = {
+			"turn":0, "camp":0,"villager":5,"score":0,
+			"food":12,"wood":0,"stone":0,"gold":0
+		}
 	FM.DATA.games[game_name] = {
 		"name":game_name,
 		"start_time": yield( CLOCK.get_time(),"complete" ),
-		"players": players_data
+		"start_os_date": OS.get_datetime(),
+		"players": players_data,
+		"max_turns": 100,
 	}
 	FM.push_data("games/"+game_name)
 	yield(FM,"complete_push")

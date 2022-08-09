@@ -1,0 +1,92 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/font/themeA.tres" type="Theme" id=1]
+[ext_resource path="res://Prefabs/HelpPanel.gd" type="Script" id=2]
+[ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=3]
+
+[node name="HelpPanel" type="ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+color = Color( 0.261719, 0.218525, 0.218525, 0.960784 )
+script = ExtResource( 2 )
+
+[node name="Pages" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="intro" type="Control" parent="Pages"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="Pages/intro"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_right = -15.0
+margin_bottom = -309.0
+text = "Bienvenido a Stone Age!"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Label2" type="Label" parent="Pages/intro"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 64.0
+margin_top = 58.0
+margin_right = -546.0
+margin_bottom = -278.0
+custom_fonts/font = ExtResource( 3 )
+text = "La cosa es asi:"
+valign = 1
+autowrap = true
+
+[node name="Label4" type="Label" parent="Pages/intro"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 282.0
+margin_top = 95.0
+margin_right = -60.0
+margin_bottom = -217.0
+custom_fonts/font = ExtResource( 3 )
+text = "El objetivo es conseguir puntos de reconocimiento, para eso debes conseguir casas o cartas de civilizacion."
+align = 2
+valign = 1
+autowrap = true
+
+[node name="Label5" type="Label" parent="Pages/intro"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 562.0
+margin_top = 217.0
+margin_right = -64.0
+margin_bottom = -108.0
+custom_fonts/font = ExtResource( 3 )
+text = "Gestiona tu tribu lo mejor que puedas!"
+align = 2
+valign = 1
+autowrap = true
+
+[node name="Label3" type="Label" parent="Pages/intro"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 62.0
+margin_top = 180.0
+margin_right = -373.0
+margin_bottom = -151.0
+custom_fonts/font = ExtResource( 3 )
+text = "A medida que avance el tiempo tendras mas acciones o turnos para jugar."
+valign = 1
+autowrap = true
+
+[node name="Button" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -93.0
+margin_top = -102.0
+margin_right = 93.0
+margin_bottom = -37.0
+text = "OK!"

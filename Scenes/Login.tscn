@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/Login.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=2]
 [ext_resource path="res://assets/font/BAARS.TTF" type="DynamicFontData" id=3]
-[ext_resource path="res://icon.png" type="Texture" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://assets/villager_circle.png" type="Texture" id=5]
+[ext_resource path="res://assets/score_circle.png" type="Texture" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -17,14 +19,16 @@ var grabbed_offset = Vector2()
 var drag_radius = 30
 var draging = false
 
-
 func _input(event):
 	if event is InputEventMouseButton:
 		can_grab = event.pressed
 		if(get_global_mouse_position().distance_to(position) < drag_radius):
 			grabbed_offset = position - get_global_mouse_position()
 			GC.DRAGING_ELEMENT = self
-		if !event.pressed: GC.DRAGING_ELEMENT = null
+			z_index = 2
+		if !event.pressed: 
+			GC.DRAGING_ELEMENT = null
+			z_index = 0
 
 func _process(delta):
 	pass
@@ -152,16 +156,18 @@ margin_bottom = 276.0
 text = "CREAR CUENTA"
 
 [node name="Villager" type="Sprite" parent="."]
-position = Vector2( 192, 282 )
-texture = ExtResource( 5 )
+position = Vector2( 197, 261 )
+scale = Vector2( 1.53333, 1.53333 )
+texture = ExtResource( 6 )
 script = SubResource( 2 )
 
 [node name="Villager2" type="Sprite" parent="."]
-position = Vector2( 176, 91 )
+position = Vector2( 173, 116 )
 texture = ExtResource( 5 )
 script = SubResource( 2 )
 
 [node name="Villager4" type="Sprite" parent="."]
-position = Vector2( 118, 189 )
-texture = ExtResource( 5 )
+position = Vector2( 109, 212 )
+scale = Vector2( 1.44513, 1.44513 )
+texture = ExtResource( 4 )
 script = SubResource( 2 )

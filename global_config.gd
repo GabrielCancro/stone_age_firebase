@@ -27,3 +27,6 @@ func reload_data():
 	if GAME: GAME = FM.DATA.games[GAME.name]
 	if PLAYER: PLAYER = FM.DATA.games[GAME.name].players[USER.name]
 	emit_signal("complete_reload_data")
+
+func get_total_turns():
+	return 3+floor( (GC.NOW_TIME - GC.GAME.start_time)/80)
