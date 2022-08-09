@@ -100,6 +100,7 @@ text = "NUEVA PARTIDA"
 valign = 1
 
 [node name="Label2" type="Label" parent="NewGamePopup/NewGame"]
+modulate = Color( 0.470588, 0.631373, 0.733333, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -115,8 +116,18 @@ JUGADOR4
 JUGADOR5
 JUGADOR6"
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="btn_new" type="Button" parent="NewGamePopup/NewGame"]
+[node name="LineEdit" type="LineEdit" parent="NewGamePopup/NewGame"]
+anchor_right = 1.0
+margin_top = 39.0
+margin_right = -52.0
+margin_bottom = 85.0
+placeholder_text = "Nombre Jugador"
+
+[node name="btn_create" type="Button" parent="NewGamePopup/NewGame"]
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -130,20 +141,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LineEdit" type="LineEdit" parent="NewGamePopup/NewGame"]
-anchor_right = 1.0
-margin_top = 39.0
-margin_right = -52.0
-margin_bottom = 85.0
-placeholder_text = "Nombre Jugador"
-
-[node name="btn_logout" type="Button" parent="NewGamePopup/NewGame"]
+[node name="btn_add" type="Button" parent="NewGamePopup/NewGame"]
 anchor_right = 1.0
 margin_left = 236.0
 margin_top = 41.0
 margin_right = -1.0
 margin_bottom = 83.0
 text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btn_back" type="Button" parent="NewGamePopup/NewGame"]
+anchor_right = 1.0
+margin_left = -32.0
+margin_top = -19.0
+margin_right = -269.0
+margin_bottom = 23.0
+text = "X"
 __meta__ = {
 "_edit_use_anchors_": false
 }

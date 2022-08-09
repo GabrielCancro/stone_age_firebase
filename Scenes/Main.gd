@@ -3,8 +3,11 @@ extends Node2D
 func _ready():
 	$NewGamePopup.visible = false
 	$User/Label.text = "Bienvenido "+GC.USER.name+"!"
-	$User/btn_logout.connect("button_down",self,"onClick",["logout"])	
+	$User/btn_logout.connect("button_down",self,"onClick",["logout"])
 	$User/btn_new.connect("button_down",self,"onClick",["new"])
+	$NewGamePopup/NewGame/btn_add.connect("button_down",self,"onClick",["add_player"])
+	$NewGamePopup/NewGame/btn_back.connect("button_down",self,"onClick",["new_back"])
+	$NewGamePopup/NewGame/btn_create.connect("button_down",self,"onClick",["create_game"])
 	CLOCK.init()
 #	check_time()
 	set_game_button()
