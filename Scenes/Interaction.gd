@@ -57,7 +57,7 @@ func end_turn_task():
 	yield(self,"finish_current_anim")
 	if no_eat:
 		GC.PLAYER["score"] -= 10
-		fx_text("-"+str(10),"score",$score_panel.position)
+		fx_text("-"+str(10),"score",Vector2(700,310))
 		update_all_panels()
 		yield(self,"finish_current_anim")
 	
@@ -92,7 +92,5 @@ func get_dices(cnt):
 func update_all_panels():
 	var cnt = max(0,GC.PLAYER["villager"]-GC.PLAYER["camp"])
 	$eat_panel/Label2.text = "-"+str(cnt)
-	if GC.PLAYER.score>=0: $score_panel/Label.text = "+"
-	else: $score_panel/Label.text = ""
-	$score_panel/Label.text += str(GC.PLAYER.score)
 	$rec_panel.update_panel()
+	$ScoreTable.updateTable()

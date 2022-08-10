@@ -1,8 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=1]
 [ext_resource path="res://Prefabs/HelpPanel.gd" type="Script" id=2]
 [ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=3]
+[ext_resource path="res://assets/tool.jpg" type="Texture" id=4]
+[ext_resource path="res://assets/villager_circle.png" type="Texture" id=5]
+[ext_resource path="res://assets/camp.jpg" type="Texture" id=6]
+[ext_resource path="res://assets/map/map_camp.png" type="Texture" id=7]
+[ext_resource path="res://assets/map/map_tool.png" type="Texture" id=8]
+[ext_resource path="res://assets/map/map_villager.png" type="Texture" id=9]
+[ext_resource path="res://assets/villager.jpg" type="Texture" id=10]
+[ext_resource path="res://assets/map/map_wood.png" type="Texture" id=11]
+[ext_resource path="res://assets/map/map_adobe.png" type="Texture" id=12]
+[ext_resource path="res://assets/map/map_gold.png" type="Texture" id=13]
+[ext_resource path="res://assets/map/map_stone.png" type="Texture" id=14]
 
 [node name="HelpPanel" type="ColorRect"]
 anchor_right = 1.0
@@ -84,20 +95,155 @@ autowrap = true
 [node name="villager" type="Control" parent="Pages"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 64, 273 )
 
 [node name="Label" type="Label" parent="Pages/villager"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -255.0
-margin_top = -143.0
-margin_right = 255.0
-margin_bottom = 49.0
-text = "Arrastra a tus trabajadores a las distintas regiones para obtener recursos y mas trabajadores, cdo estes listo pulsa en finalizar turno para recoger los materiales!"
+margin_left = -352.0
+margin_top = -137.0
+margin_right = 352.0
+margin_bottom = 55.0
+text = "Arrastra a tus trabajadores a las distintas regiones para obtener recursos y mas trabajadores, cuando estes listo pulsa en finalizar turno para recoger los materiales. No olvides que todos los turnos debes alimentar a tu tribu!!"
 align = 1
 valign = 1
 autowrap = true
+
+[node name="V19" type="Sprite" parent="Pages/villager"]
+position = Vector2( 66, 321 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 5 )
+
+[node name="tool" type="Control" parent="Pages"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 64, 273 )
+
+[node name="MapTool" type="Sprite" parent="Pages/tool"]
+position = Vector2( 77, 65 )
+scale = Vector2( 0.78, 0.78 )
+texture = ExtResource( 8 )
+
+[node name="Label" type="Label" parent="Pages/tool"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -267.0
+margin_top = -182.0
+margin_right = 314.0
+margin_bottom = -86.0
+custom_constants/line_spacing = -7
+text = "Aqui se producen herramientas, estas mejoran la cantidad de materiales que recogen tus trabajadores"
+valign = 1
+autowrap = true
+
+[node name="Label3" type="Label" parent="Pages/tool"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -249.0
+margin_top = 2.0
+margin_right = 351.0
+margin_bottom = 98.0
+custom_constants/line_spacing = -7
+text = "Aqui obtienes puntos de cultivo, estos puntos reduce el costo de alimentacion de tu tribu"
+valign = 1
+autowrap = true
+
+[node name="MapVillager" type="Sprite" parent="Pages/tool"]
+position = Vector2( 726, 158 )
+scale = Vector2( 0.78, 0.78 )
+texture = ExtResource( 9 )
+
+[node name="Label2" type="Label" parent="Pages/tool"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -246.0
+margin_top = -84.0
+margin_right = 264.0
+margin_bottom = 12.0
+custom_constants/line_spacing = -7
+text = "Coloca dos trabajadores aqui y obtendra un trabajador extra <3"
+align = 2
+valign = 1
+autowrap = true
+
+[node name="MapCamp" type="Sprite" parent="Pages/tool"]
+position = Vector2( 86, 255 )
+scale = Vector2( 0.78, 0.78 )
+texture = ExtResource( 7 )
+
+[node name="Tool" type="Sprite" parent="Pages/tool"]
+position = Vector2( 40.25, 105.25 )
+scale = Vector2( 0.598837, 0.598837 )
+texture = ExtResource( 4 )
+
+[node name="Villager" type="Sprite" parent="Pages/tool"]
+position = Vector2( 747.625, 107.625 )
+scale = Vector2( 0.735507, 0.735507 )
+texture = ExtResource( 10 )
+
+[node name="Camp" type="Sprite" parent="Pages/tool"]
+position = Vector2( 112.176, 319 )
+scale = Vector2( 0.490196, 0.490196 )
+texture = ExtResource( 6 )
+
+[node name="materials" type="Control" parent="Pages"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 64, 273 )
+
+[node name="Label" type="Label" parent="Pages/materials"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -290.5
+margin_top = 35.0
+margin_right = 290.5
+margin_bottom = 131.0
+custom_constants/line_spacing = -7
+text = "Los materiales te permiten construir chozas para sumar puntos y ganar el juego!"
+align = 1
+autowrap = true
+
+[node name="Label2" type="Label" parent="Pages/materials"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -383.0
+margin_top = 248.0
+margin_right = 356.0
+margin_bottom = 284.0
+custom_constants/line_spacing = -7
+text = "MADERA         ADOBE         PIEDRA         ORO"
+align = 1
+autowrap = true
+
+[node name="MapAdobe" type="Sprite" parent="Pages/materials"]
+position = Vector2( 328, 190 )
+scale = Vector2( 0.78, 0.78 )
+texture = ExtResource( 12 )
+
+[node name="MapGold" type="Sprite" parent="Pages/materials"]
+position = Vector2( 651, 190 )
+scale = Vector2( 0.78, 0.78 )
+texture = ExtResource( 13 )
+
+[node name="MapStone" type="Sprite" parent="Pages/materials"]
+position = Vector2( 496, 190 )
+scale = Vector2( 0.78, 0.78 )
+texture = ExtResource( 14 )
+
+[node name="MapWood" type="Sprite" parent="Pages/materials"]
+position = Vector2( 151, 190 )
+scale = Vector2( 0.78, 0.78 )
+texture = ExtResource( 11 )
 
 [node name="Button" type="Button" parent="."]
 anchor_left = 0.5

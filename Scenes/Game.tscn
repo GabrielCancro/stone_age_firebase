@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=2]
@@ -27,6 +27,11 @@
 [ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=25]
 [ext_resource path="res://assets/score_circle.png" type="Texture" id=26]
 [ext_resource path="res://Prefabs/HelpPanel.tscn" type="PackedScene" id=27]
+[ext_resource path="res://Prefabs/ScoreTable.tscn" type="PackedScene" id=28]
+[ext_resource path="res://Prefabs/Build.tscn" type="PackedScene" id=29]
+[ext_resource path="res://assets/build_btn.jpg" type="Texture" id=30]
+[ext_resource path="res://assets/font/font_big_outline.tres" type="DynamicFont" id=31]
+[ext_resource path="res://Prefabs/BuildPanel.gd" type="Script" id=32]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -52,7 +57,7 @@ scale = Vector2( 0.78, 0.78 )
 texture = ExtResource( 23 )
 
 [node name="MapCamp" type="Sprite" parent="Map"]
-position = Vector2( 210, 297 )
+position = Vector2( 207, 297 )
 scale = Vector2( 0.78, 0.78 )
 texture = ExtResource( 19 )
 
@@ -72,12 +77,12 @@ scale = Vector2( 0.78, 0.78 )
 texture = ExtResource( 24 )
 
 [node name="MapTool" type="Sprite" parent="Map"]
-position = Vector2( 305, 210 )
+position = Vector2( 303, 212 )
 scale = Vector2( 0.78, 0.78 )
 texture = ExtResource( 17 )
 
 [node name="MapVillager" type="Sprite" parent="Map"]
-position = Vector2( 385, 293 )
+position = Vector2( 391, 293 )
 scale = Vector2( 0.78, 0.78 )
 texture = ExtResource( 20 )
 
@@ -86,6 +91,8 @@ position = Vector2( 225, 115 )
 scale = Vector2( 0.78, 0.78 )
 texture = ExtResource( 21 )
 
+[node name="Build" type="Node2D" parent="."]
+
 [node name="Header" type="Panel" parent="."]
 margin_right = 800.0
 margin_bottom = 43.0
@@ -93,9 +100,9 @@ theme = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="Header"]
 anchor_right = 1.0
-margin_left = 378.0
+margin_left = 303.0
 margin_top = 358.0
-margin_right = -13.0
+margin_right = -206.0
 margin_bottom = 394.0
 text = "Bienvenido User!"
 align = 2
@@ -126,11 +133,11 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -193.0
-margin_top = 9.0
-margin_right = -7.0
-margin_bottom = 82.0
-text = "000/999"
+margin_left = -184.0
+margin_top = 14.0
+margin_right = -14.0
+margin_bottom = 72.0
+text = "TURNO"
 
 [node name="Interaction" type="Node2D" parent="."]
 script = ExtResource( 7 )
@@ -305,8 +312,6 @@ position = Vector2( 66, 321 )
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 11 )
 
-[node name="Tween" type="Tween" parent="Interaction"]
-
 [node name="rec_panel" type="GridContainer" parent="Interaction"]
 margin_left = 6.0
 margin_right = 751.0
@@ -378,55 +383,26 @@ text = "999"
 icon = ExtResource( 12 )
 expand_icon = true
 
-[node name="score_panel" type="Node2D" parent="Interaction"]
-position = Vector2( 701, 185 )
-
-[node name="ColorRect" type="ColorRect" parent="Interaction/score_panel"]
-margin_left = -85.0
-margin_top = -26.0
-margin_right = 85.0
-margin_bottom = 23.0
-theme = ExtResource( 2 )
-color = Color( 0, 0, 0, 0.784314 )
-
-[node name="Label" type="Label" parent="Interaction/score_panel"]
-anchor_right = 1.0
-margin_left = -82.0
-margin_top = -18.0
-margin_right = -2.0
-margin_bottom = 18.0
-rect_pivot_offset = Vector2( 91, 47 )
-theme = ExtResource( 2 )
-text = "+170"
-align = 2
-valign = 1
-autowrap = true
-
-[node name="score" type="Sprite" parent="Interaction/score_panel"]
-position = Vector2( 34.4633, -0.347462 )
-scale = Vector2( 1.0435, 1.0435 )
-texture = ExtResource( 26 )
-
 [node name="eat_panel" type="Node2D" parent="Interaction"]
-position = Vector2( 701, 288 )
+position = Vector2( 701, 247 )
 
 [node name="ColorRect" type="ColorRect" parent="Interaction/eat_panel"]
 margin_left = -85.0
-margin_top = -51.0
+margin_top = -28.0
 margin_right = 85.0
-margin_bottom = 50.0
+margin_bottom = 28.0
 theme = ExtResource( 2 )
 color = Color( 0, 0, 0, 0.784314 )
 
 [node name="Label" type="Label" parent="Interaction/eat_panel"]
 anchor_right = 1.0
 margin_left = -87.0
-margin_top = -44.0
+margin_top = -28.0
 margin_right = 87.0
-margin_bottom = 7.0
+margin_bottom = -3.0
 rect_pivot_offset = Vector2( 91, 47 )
 custom_fonts/font = ExtResource( 25 )
-text = "En cada turno tendras que alimentar a tu tribu"
+text = "Alimenta a tu tribu"
 align = 1
 valign = 1
 autowrap = true
@@ -434,9 +410,9 @@ autowrap = true
 [node name="Label2" type="Label" parent="Interaction/eat_panel"]
 anchor_right = 1.0
 margin_left = -53.0
-margin_top = 13.0
+margin_top = -7.0
 margin_right = -2.0
-margin_bottom = 49.0
+margin_bottom = 29.0
 rect_pivot_offset = Vector2( 91, 47 )
 theme = ExtResource( 2 )
 text = "-5"
@@ -445,9 +421,15 @@ valign = 1
 autowrap = true
 
 [node name="Food" type="Sprite" parent="Interaction/eat_panel"]
-position = Vector2( 18, 31 )
+position = Vector2( 18, 11 )
 scale = Vector2( 0.220339, 0.220339 )
 texture = ExtResource( 10 )
+
+[node name="ScoreTable" parent="Interaction" instance=ExtResource( 28 )]
+margin_left = 616.0
+margin_top = 286.0
+margin_right = 786.0
+margin_bottom = 387.0
 
 [node name="fx" type="Node2D" parent="Interaction"]
 position = Vector2( 1, -49 )
@@ -490,18 +472,30 @@ position = Vector2( 24, 8.34465e-07 )
 scale = Vector2( 0.305085, 0.305085 )
 texture = ExtResource( 10 )
 
+[node name="Tween" type="Tween" parent="Interaction"]
+
 [node name="HelpButtons" type="Control" parent="."]
 modulate = Color( 0.960784, 1, 0.509804, 0.866667 )
 margin_right = 40.0
 margin_bottom = 40.0
 theme = ExtResource( 2 )
 
-[node name="intro" type="Button" parent="HelpButtons"]
+[node name="materials" type="Button" parent="HelpButtons"]
 anchor_right = 1.0
-margin_left = 3.0
-margin_top = 44.0
-margin_right = 8.0
-margin_bottom = 86.0
+margin_left = 104.0
+margin_top = 64.0
+margin_right = 109.0
+margin_bottom = 106.0
+rect_scale = Vector2( 0.7, 0.7 )
+text = "?"
+
+[node name="tool" type="Button" parent="HelpButtons"]
+anchor_right = 1.0
+margin_left = 280.0
+margin_top = 282.0
+margin_right = 285.0
+margin_bottom = 324.0
+rect_scale = Vector2( 0.7, 0.7 )
 text = "?"
 
 [node name="villager" type="Button" parent="HelpButtons"]
@@ -517,3 +511,180 @@ text = "?"
 visible = false
 margin_right = 800.0
 margin_bottom = 400.0
+
+[node name="BuildButton" type="Button" parent="."]
+margin_left = 646.0
+margin_top = 133.0
+margin_right = 756.0
+margin_bottom = 208.0
+
+[node name="BuildBtn" type="Sprite" parent="BuildButton"]
+position = Vector2( 55, 38 )
+texture = ExtResource( 30 )
+
+[node name="Label" type="Label" parent="BuildButton"]
+margin_left = -5.0
+margin_top = 21.0
+margin_right = 56.0
+margin_bottom = 57.0
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "12"
+align = 1
+
+[node name="BuildPanel" type="ColorRect" parent="."]
+margin_top = 40.0
+margin_right = 800.0
+margin_bottom = 400.0
+color = Color( 0.501961, 0.501961, 0.501961, 0.909804 )
+script = ExtResource( 32 )
+
+[node name="Label2" type="Label" parent="BuildPanel"]
+margin_top = 14.0
+margin_right = 801.0
+margin_bottom = 50.0
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "Elige una casa para construir"
+align = 1
+
+[node name="B1" type="Button" parent="BuildPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -164.0
+margin_top = -99.0
+margin_right = -54.0
+margin_bottom = 9.0
+
+[node name="BuildBtn" type="Sprite" parent="BuildPanel/B1"]
+position = Vector2( 55, 38 )
+texture = ExtResource( 30 )
+
+[node name="ScoreCircle" type="Sprite" parent="BuildPanel/B1"]
+position = Vector2( 25, 45 )
+scale = Vector2( 1.18333, 1.18333 )
+texture = ExtResource( 26 )
+
+[node name="Label2" type="Label" parent="BuildPanel/B1"]
+margin_left = -7.0
+margin_top = 14.0
+margin_right = 54.0
+margin_bottom = 50.0
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "12"
+align = 1
+
+[node name="HBox" type="HBoxContainer" parent="BuildPanel/B1"]
+margin_left = -1.0
+margin_top = 75.0
+margin_right = 110.0
+margin_bottom = 105.0
+alignment = 1
+
+[node name="r1" type="TextureRect" parent="BuildPanel/B1/HBox"]
+margin_left = 6.0
+margin_right = 36.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 1
+
+[node name="r2" type="TextureRect" parent="BuildPanel/B1/HBox"]
+margin_left = 40.0
+margin_right = 70.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 1
+
+[node name="r3" type="TextureRect" parent="BuildPanel/B1/HBox"]
+margin_left = 74.0
+margin_right = 104.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 1
+
+[node name="B2" type="Button" parent="BuildPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 45.0
+margin_top = -99.0
+margin_right = 155.0
+margin_bottom = 9.0
+
+[node name="BuildBtn" type="Sprite" parent="BuildPanel/B2"]
+position = Vector2( 55, 38 )
+texture = ExtResource( 30 )
+
+[node name="ScoreCircle" type="Sprite" parent="BuildPanel/B2"]
+position = Vector2( 25, 45 )
+scale = Vector2( 1.18333, 1.18333 )
+texture = ExtResource( 26 )
+
+[node name="Label2" type="Label" parent="BuildPanel/B2"]
+margin_left = -7.0
+margin_top = 14.0
+margin_right = 54.0
+margin_bottom = 50.0
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "12"
+align = 1
+
+[node name="HBox" type="HBoxContainer" parent="BuildPanel/B2"]
+margin_left = -1.0
+margin_top = 75.0
+margin_right = 110.0
+margin_bottom = 105.0
+alignment = 1
+
+[node name="r1" type="TextureRect" parent="BuildPanel/B2/HBox"]
+margin_left = 6.0
+margin_right = 36.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 1
+
+[node name="r2" type="TextureRect" parent="BuildPanel/B2/HBox"]
+margin_left = 40.0
+margin_right = 70.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 1
+
+[node name="r3" type="TextureRect" parent="BuildPanel/B2/HBox"]
+margin_left = 74.0
+margin_right = 104.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 1
+
+[node name="Back" type="Button" parent="BuildPanel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -93.0
+margin_top = -102.0
+margin_right = 93.0
+margin_bottom = -37.0
+theme = ExtResource( 2 )
+text = "VOLVER"
+
+[node name="Build2" parent="." instance=ExtResource( 29 )]
+position = Vector2( 869, 73 )
