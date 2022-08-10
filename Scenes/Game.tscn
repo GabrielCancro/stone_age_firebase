@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=2]
@@ -32,6 +32,8 @@
 [ext_resource path="res://assets/build_btn.jpg" type="Texture" id=30]
 [ext_resource path="res://assets/font/font_big_outline.tres" type="DynamicFont" id=31]
 [ext_resource path="res://Prefabs/BuildPanel.gd" type="Script" id=32]
+[ext_resource path="res://assets/build.jpg" type="Texture" id=33]
+[ext_resource path="res://assets/build_circle.png" type="Texture" id=34]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -67,12 +69,12 @@ scale = Vector2( 0.78, 0.78 )
 texture = ExtResource( 18 )
 
 [node name="MapGold" type="Sprite" parent="Map"]
-position = Vector2( 520, 268 )
+position = Vector2( 530, 285 )
 scale = Vector2( 0.78, 0.78 )
 texture = ExtResource( 22 )
 
 [node name="MapStone" type="Sprite" parent="Map"]
-position = Vector2( 500, 143 )
+position = Vector2( 535, 129 )
 scale = Vector2( 0.78, 0.78 )
 texture = ExtResource( 24 )
 
@@ -82,7 +84,7 @@ scale = Vector2( 0.78, 0.78 )
 texture = ExtResource( 17 )
 
 [node name="MapVillager" type="Sprite" parent="Map"]
-position = Vector2( 391, 293 )
+position = Vector2( 389, 310 )
 scale = Vector2( 0.78, 0.78 )
 texture = ExtResource( 20 )
 
@@ -91,19 +93,26 @@ position = Vector2( 225, 115 )
 scale = Vector2( 0.78, 0.78 )
 texture = ExtResource( 21 )
 
+[node name="BuildBtn" type="Sprite" parent="Map"]
+position = Vector2( 438, 205 )
+texture = ExtResource( 34 )
+
 [node name="Build" type="Node2D" parent="."]
 
 [node name="Header" type="Panel" parent="."]
-margin_right = 800.0
+margin_left = -1.0
+margin_right = 801.0
 margin_bottom = 43.0
 theme = ExtResource( 2 )
 
 [node name="Label" type="Label" parent="Header"]
+modulate = Color( 0.819608, 0.819608, 0.819608, 1 )
 anchor_right = 1.0
-margin_left = 303.0
-margin_top = 358.0
+margin_left = 182.0
+margin_top = 367.0
 margin_right = -206.0
-margin_bottom = 394.0
+margin_bottom = 403.0
+rect_pivot_offset = Vector2( -426, -318 )
 text = "Bienvenido User!"
 align = 2
 valign = 1
@@ -188,30 +197,36 @@ texture = ExtResource( 4 )
 
 [node name="STONE" type="Sprite" parent="Interaction/Drager/Points"]
 modulate = Color( 0, 0, 0, 0.619608 )
-position = Vector2( 500, 141 )
+position = Vector2( 535, 129 )
 texture = ExtResource( 4 )
 
 [node name="GOLD" type="Sprite" parent="Interaction/Drager/Points"]
 modulate = Color( 0, 0, 0, 0.619608 )
-position = Vector2( 519.5, 269.5 )
+position = Vector2( 529.5, 285.5 )
 scale = Vector2( 1.11, 1.11 )
 texture = ExtResource( 4 )
 
 [node name="CAMP" type="Sprite" parent="Interaction/Drager/Points"]
 modulate = Color( 0, 0, 0, 0.619608 )
-position = Vector2( 211, 298 )
+position = Vector2( 208, 298 )
 scale = Vector2( 1.19125, 1.19125 )
 texture = ExtResource( 4 )
 
 [node name="VILLAGER" type="Sprite" parent="Interaction/Drager/Points"]
 modulate = Color( 0, 0, 0, 0.619608 )
-position = Vector2( 385.125, 293.125 )
+position = Vector2( 388, 309 )
 scale = Vector2( 1.0775, 1.0775 )
 texture = ExtResource( 4 )
 
 [node name="TOOL" type="Sprite" parent="Interaction/Drager/Points"]
 modulate = Color( 0, 0, 0, 0.619608 )
-position = Vector2( 304, 210 )
+position = Vector2( 304, 211 )
+scale = Vector2( 0.869999, 0.869999 )
+texture = ExtResource( 4 )
+
+[node name="BUILD" type="Sprite" parent="Interaction/Drager/Points"]
+modulate = Color( 0, 0, 0, 0.619608 )
+position = Vector2( 438, 205 )
 scale = Vector2( 0.869999, 0.869999 )
 texture = ExtResource( 4 )
 
@@ -312,75 +327,86 @@ position = Vector2( 66, 321 )
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 11 )
 
+[node name="Tween" type="Tween" parent="Interaction/Drager"]
+
 [node name="rec_panel" type="GridContainer" parent="Interaction"]
 margin_left = 6.0
 margin_right = 751.0
 margin_bottom = 42.0
 theme = ExtResource( 2 )
-custom_constants/hseparation = 12
+custom_constants/hseparation = 8
 columns = 8
 script = ExtResource( 9 )
 
 [node name="food" type="Button" parent="Interaction/rec_panel"]
-margin_right = 95.0
+margin_right = 85.0
 margin_bottom = 42.0
-rect_min_size = Vector2( 95, 0 )
-text = "999"
+rect_min_size = Vector2( 85, 0 )
+text = "99"
 icon = ExtResource( 10 )
 expand_icon = true
 
 [node name="camp" type="Button" parent="Interaction/rec_panel"]
-margin_left = 107.0
-margin_right = 202.0
+margin_left = 93.0
+margin_right = 178.0
 margin_bottom = 42.0
-rect_min_size = Vector2( 95, 0 )
-text = "999"
+rect_min_size = Vector2( 85, 0 )
+text = "99"
 icon = ExtResource( 13 )
 expand_icon = true
 
 [node name="wood" type="Button" parent="Interaction/rec_panel"]
-margin_left = 214.0
-margin_right = 309.0
+margin_left = 186.0
+margin_right = 271.0
 margin_bottom = 42.0
-rect_min_size = Vector2( 95, 0 )
-text = "999"
+rect_min_size = Vector2( 85, 0 )
+text = "99"
 icon = ExtResource( 14 )
 expand_icon = true
 
 [node name="adobe" type="Button" parent="Interaction/rec_panel"]
-margin_left = 321.0
-margin_right = 416.0
+margin_left = 279.0
+margin_right = 364.0
 margin_bottom = 42.0
-rect_min_size = Vector2( 95, 0 )
-text = "999"
+rect_min_size = Vector2( 85, 0 )
+text = "99"
 icon = ExtResource( 15 )
 expand_icon = true
 
 [node name="stone" type="Button" parent="Interaction/rec_panel"]
-margin_left = 428.0
-margin_right = 523.0
+margin_left = 372.0
+margin_right = 457.0
 margin_bottom = 42.0
-rect_min_size = Vector2( 95, 0 )
-text = "999"
+rect_min_size = Vector2( 85, 0 )
+text = "99"
 icon = ExtResource( 16 )
 expand_icon = true
 
 [node name="gold" type="Button" parent="Interaction/rec_panel"]
-margin_left = 535.0
-margin_right = 630.0
+margin_left = 465.0
+margin_right = 550.0
 margin_bottom = 42.0
-rect_min_size = Vector2( 95, 0 )
-text = "999"
+rect_min_size = Vector2( 85, 0 )
+text = "99"
 icon = ExtResource( 6 )
 expand_icon = true
 
 [node name="tool" type="Button" parent="Interaction/rec_panel"]
-margin_left = 642.0
-margin_right = 737.0
+margin_left = 558.0
+margin_right = 643.0
 margin_bottom = 42.0
-rect_min_size = Vector2( 95, 0 )
-text = "999"
+rect_min_size = Vector2( 85, 0 )
+text = "99"
 icon = ExtResource( 12 )
+expand_icon = true
+
+[node name="build" type="Button" parent="Interaction/rec_panel"]
+margin_left = 651.0
+margin_right = 736.0
+margin_bottom = 42.0
+rect_min_size = Vector2( 85, 0 )
+text = "99"
+icon = ExtResource( 33 )
 expand_icon = true
 
 [node name="eat_panel" type="Node2D" parent="Interaction"]
@@ -474,6 +500,10 @@ texture = ExtResource( 10 )
 
 [node name="Tween" type="Tween" parent="Interaction"]
 
+[node name="Control" type="Control" parent="Interaction"]
+margin_right = 40.0
+margin_bottom = 40.0
+
 [node name="HelpButtons" type="Control" parent="."]
 modulate = Color( 0.960784, 1, 0.509804, 0.866667 )
 margin_right = 40.0
@@ -507,32 +537,8 @@ margin_bottom = 402.0
 rect_scale = Vector2( 0.7, 0.7 )
 text = "?"
 
-[node name="HelpPanel" parent="." instance=ExtResource( 27 )]
-visible = false
-margin_right = 800.0
-margin_bottom = 400.0
-
-[node name="BuildButton" type="Button" parent="."]
-margin_left = 646.0
-margin_top = 133.0
-margin_right = 756.0
-margin_bottom = 208.0
-
-[node name="BuildBtn" type="Sprite" parent="BuildButton"]
-position = Vector2( 55, 38 )
-texture = ExtResource( 30 )
-
-[node name="Label" type="Label" parent="BuildButton"]
-margin_left = -5.0
-margin_top = 21.0
-margin_right = 56.0
-margin_bottom = 57.0
-theme = ExtResource( 2 )
-custom_fonts/font = ExtResource( 31 )
-text = "12"
-align = 1
-
 [node name="BuildPanel" type="ColorRect" parent="."]
+visible = false
 margin_top = 40.0
 margin_right = 800.0
 margin_bottom = 400.0
@@ -684,7 +690,12 @@ margin_top = -102.0
 margin_right = 93.0
 margin_bottom = -37.0
 theme = ExtResource( 2 )
-text = "VOLVER"
+text = "CANCELAR"
+
+[node name="HelpPanel" parent="." instance=ExtResource( 27 )]
+visible = false
+margin_right = 800.0
+margin_bottom = 400.0
 
 [node name="Build2" parent="." instance=ExtResource( 29 )]
 position = Vector2( 869, 73 )

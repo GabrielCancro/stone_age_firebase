@@ -49,7 +49,9 @@ func onStartDrag(node):
 	
 func onFinishDrag(node):
 	var stay = get_stay(node)
-	if stay == "NONE": node.position = $Base.position
+	if stay == "NONE": 
+		$Tween.interpolate_property(node,"position",node.position,$Base.position,.3,Tween.TRANS_QUAD,Tween.EASE_OUT)
+		$Tween.start()
 	result[stay] += 1
 	node.z_index = 0
 	update_label()
@@ -69,7 +71,9 @@ func update_label():
 #PUBLICS
 func free_node(node):
 	onStartDrag(node)
-	node.position = $Base.position
+	$Tween.interpolate_property(node,"position",node.position,$Base.position,.3,Tween.TRANS_QUAD,Tween.EASE_OUT)
+	$Tween.start()
+	yield($Tween,"tween_completed")
 	onFinishDrag(node)
 
 func add_max(cnt=1):
