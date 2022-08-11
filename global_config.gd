@@ -8,6 +8,7 @@ var NOW_TIME = 0
 var TOTAL_TURNS = 0
 var DRAGING_ELEMENT = null
 var WORK_VILLAGERS = 0
+var BUILD_TO_CONSTRUCT = null
 
 signal complete_reload_data
 

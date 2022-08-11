@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=1]
 [ext_resource path="res://Prefabs/HelpPanel.gd" type="Script" id=2]
@@ -14,6 +14,9 @@
 [ext_resource path="res://assets/map/map_adobe.png" type="Texture" id=12]
 [ext_resource path="res://assets/map/map_gold.png" type="Texture" id=13]
 [ext_resource path="res://assets/map/map_stone.png" type="Texture" id=14]
+[ext_resource path="res://assets/score_circle.png" type="Texture" id=15]
+[ext_resource path="res://assets/build.jpg" type="Texture" id=16]
+[ext_resource path="res://assets/build_circle.png" type="Texture" id=17]
 
 [node name="HelpPanel" type="ColorRect"]
 anchor_right = 1.0
@@ -93,6 +96,7 @@ valign = 1
 autowrap = true
 
 [node name="villager" type="Control" parent="Pages"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 64, 273 )
@@ -194,6 +198,63 @@ texture = ExtResource( 10 )
 position = Vector2( 112.176, 319 )
 scale = Vector2( 0.490196, 0.490196 )
 texture = ExtResource( 6 )
+
+[node name="build" type="Control" parent="Pages"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 64, 273 )
+
+[node name="Label" type="Label" parent="Pages/build"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -267.0
+margin_top = -141.0
+margin_right = 314.0
+margin_bottom = -18.0
+custom_constants/line_spacing = -7
+text = "Aquí podrás edificar, los edificios cuestan materiales, a cambio obtendrás una choza y además ganaras los puntos de victoria que indique la edificación."
+valign = 1
+autowrap = true
+
+[node name="MapBuild" type="Sprite" parent="Pages/build"]
+position = Vector2( 110, 132 )
+texture = ExtResource( 17 )
+offset = Vector2( -31, -25 )
+
+[node name="build" type="Sprite" parent="Pages/build"]
+position = Vector2( 40.25, 146.25 )
+scale = Vector2( 0.598837, 0.598837 )
+texture = ExtResource( 16 )
+
+[node name="Label2" type="Label" parent="Pages/build"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -320.0
+margin_top = -32.0
+margin_right = 276.0
+margin_bottom = 91.0
+custom_constants/line_spacing = -7
+text = "Las cartas de civilización te darán recursos extras o bonificadores a los puntos de victoria que se contabilizan al final de la partida, no dudes en adquirirlas!"
+align = 2
+valign = 1
+autowrap = true
+
+[node name="MapBuild2" type="Sprite" parent="Pages/build"]
+visible = false
+position = Vector2( 763, 254 )
+texture = ExtResource( 17 )
+offset = Vector2( -31, -25 )
+
+[node name="build2" type="Sprite" parent="Pages/build"]
+visible = false
+position = Vector2( 763, 264 )
+scale = Vector2( 1.26609, 1.26609 )
+texture = ExtResource( 15 )
 
 [node name="materials" type="Control" parent="Pages"]
 visible = false

@@ -44,6 +44,34 @@ func end_turn_task():
 		$Drager.add_max(1)
 		update_all_panels()
 		yield(self,"finish_current_anim")
+	if RESULT.BUILD == 1 && GC.PLAYER.build_cards: 
+		var card = GC.PLAYER.build_cards[GC.BUILD_TO_CONSTRUCT]
+		var recs = {}
+		for r in card: 
+			if !r in recs: recs[r] = 0
+			recs[r] += 1
+		var build = true
+		for r in recs: if recs[r] > GC.PLAYER[r]: build = false
+		if build:
+			for r in recs:
+				GC.PLAYER[r] -= recs[r]
+				update_all_panels()
+				fx_text("-"+str(recs[r]),r,get_node("../Map/MapBuild").position)
+				yield(self,"finish_current_anim")
+			#add build
+			add_resource("BUILD",1)
+			yield(self,"finish_current_anim")
+			#add score
+			var score = get_node("../BuildPanel").calc_score(card)
+			GC.PLAYER["score"] += score
+			fx_text("+"+str(score),"score",Vector2(700,310))
+			update_all_panels()
+			GC.PLAYER.build_cards.erase(card)
+			print(GC.PLAYER.build_cards)
+			yield(self,"finish_current_anim")
+		#free villager
+		$Drager.free_node(get_node("../BuildPanel").current_villager_node)
+		yield(get_tree().create_timer(.3),"timeout")
 
 #	EAT TRIBE
 	var eat = max(0,GC.PLAYER["villager"]-GC.PLAYER["camp"])
@@ -51,7 +79,7 @@ func end_turn_task():
 	var no_eat = false
 	if(GC.PLAYER["food"]<0): 
 		GC.PLAYER["food"] = 0
-		no_eat = true		
+		no_eat = true
 	fx_text("-"+str(eat),"food",$eat_panel.position)
 	update_all_panels()
 	yield(self,"finish_current_anim")
