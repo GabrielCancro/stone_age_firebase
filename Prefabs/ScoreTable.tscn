@@ -1,25 +1,31 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=1]
-[ext_resource path="res://assets/food.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/font/BAARS.TTF" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Prefabs/ScoreTable.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 12
+font_data = ExtResource( 2 )
 
 [node name="ScoreTable" type="ColorRect"]
 margin_left = 421.0
 margin_top = 63.0
 margin_right = 591.0
-margin_bottom = 164.0
+margin_bottom = 198.0
 theme = ExtResource( 1 )
 color = Color( 0, 0, 0, 0.784314 )
 script = ExtResource( 4 )
 
 [node name="NameBr" type="Label" parent="."]
-anchor_right = 1.0
-margin_left = 12.0
-margin_top = 8.0
-margin_right = -38.0
-margin_bottom = 106.0
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -73.0
+margin_top = 10.0
+margin_right = 48.0
+margin_bottom = 10.0
 rect_pivot_offset = Vector2( 91, 47 )
 custom_colors/font_color = Color( 0.988235, 1, 0, 1 )
 custom_fonts/font = ExtResource( 3 )
@@ -27,22 +33,26 @@ text = "
 NamePlayer"
 
 [node name="Name" type="Label" parent="."]
-anchor_right = 1.0
-margin_left = 11.0
-margin_top = 7.0
-margin_right = -39.0
-margin_bottom = 105.0
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -74.0
+margin_top = 10.0
+margin_right = 48.0
+margin_bottom = 10.0
 rect_pivot_offset = Vector2( 91, 47 )
 custom_fonts/font = ExtResource( 3 )
 text = "NamePlayer
 NamePlayer"
 
 [node name="ScoreBr" type="Label" parent="."]
-anchor_right = 1.0
-margin_left = 116.0
-margin_top = 8.0
-margin_right = -6.0
-margin_bottom = 106.0
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -22.0
+margin_top = 10.0
+margin_right = 68.0
+margin_bottom = 10.0
 rect_pivot_offset = Vector2( 91, 47 )
 custom_colors/font_color = Color( 0.941176, 1, 0, 1 )
 custom_fonts/font = ExtResource( 3 )
@@ -51,18 +61,31 @@ text = "
 align = 2
 
 [node name="Score" type="Label" parent="."]
-anchor_right = 1.0
-margin_left = 115.0
-margin_top = 7.0
-margin_right = -7.0
-margin_bottom = 105.0
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -23.0
+margin_top = 10.0
+margin_right = 69.0
+margin_bottom = 10.0
 rect_pivot_offset = Vector2( 91, 47 )
 custom_fonts/font = ExtResource( 3 )
 text = "150
 120"
 align = 2
 
-[node name="Food" type="Sprite" parent="."]
-position = Vector2( 219, 57 )
-scale = Vector2( 0.220339, 0.220339 )
-texture = ExtResource( 2 )
+[node name="Turn" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 61.0
+margin_top = 8.0
+margin_right = 94.0
+margin_bottom = 13.0
+rect_pivot_offset = Vector2( 91, 47 )
+custom_colors/font_color = Color( 0.745098, 0.745098, 0.745098, 1 )
+custom_constants/line_spacing = 4
+custom_fonts/font = SubResource( 1 )
+text = "50
+8"
+align = 1

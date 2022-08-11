@@ -9,8 +9,9 @@ func updateTable():
 	$NameBr.text = ""
 	$Score.text = ""
 	$ScoreBr.text = ""
+	$Turn.text = ""	
 	for p in GC.GAME.players.keys(): 
-		table.append({"name":p,"score":GC.GAME.players[p].score})
+		table.append({"name":p,"score":GC.GAME.players[p].score,"turn":GC.GAME.players[p].turn})
 	table.sort_custom(self, "customComparison")
 	for p in table:
 		if GC.USER.name == p.name: 
@@ -21,6 +22,7 @@ func updateTable():
 			$ScoreBr.text += "\n"
 		$Name.text += p.name+"\n"
 		$Score.text += str(p.score)+"\n"
+		$Turn.text += str(p.turn)+"\n"
 	print(table)
 
 func customComparison(a,b):

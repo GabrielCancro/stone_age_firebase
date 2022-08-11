@@ -9,7 +9,7 @@ func _ready():
 	set_now_time()
 	if(GC.PLAYER.turn==0): $HelpPanel.showHelp("intro")
 	for btn in $HelpButtons.get_children(): btn.connect("button_down",self,"onClickHelp",[btn])
-	if GC.PLAYER.turn >= GC.GAME.max_turns: $EndPanel.visible = true
+	check_finish_game()
 
 func onClick(btn):
 	if btn == "quit": get_tree().change_scene("res://Scenes/Main.tscn")
@@ -26,10 +26,9 @@ func endTurn():
 	FM.push_data("games/"+GC.GAME.name+"/players/"+GC.USER.name)
 	yield(FM,"complete_push")
 	update_ui()
-	if GC.PLAYER.turn >= GC.GAME.max_turns: $EndPanel.visible = true
-	else: $Header/btn_turn.disabled = false
-	
-	
+	check_finish_game()
+	$Header/btn_turn.disabled = false	
+
 func set_now_time():
 	$Header/btn_turn.disabled = true
 	CLOCK.get_time()
@@ -43,3 +42,8 @@ func update_ui():
 
 func onClickHelp(btn):
 	$HelpPanel.showHelp(btn.name)
+
+func check_finish_game():
+	if GC.PLAYER.turn < GC.GAME.max_turns: return
+	$EndPanel.show_end_panel()
+	$Interaction/Drager.disabled = true

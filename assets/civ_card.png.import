@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/img11.jpg-6bbb538717b90b1ce216a73c20139480.stex"
+path="res://.import/civ_card.png-16febac3cc33d640ed1f31ff9066f8e4.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/build/img11.jpg"
-dest_files=[ "res://.import/img11.jpg-6bbb538717b90b1ce216a73c20139480.stex" ]
+source_file="res://assets/civ_card.png"
+dest_files=[ "res://.import/civ_card.png-16febac3cc33d640ed1f31ff9066f8e4.stex" ]
 
 [params]
 

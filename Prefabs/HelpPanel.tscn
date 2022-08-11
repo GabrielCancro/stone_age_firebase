@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=1]
 [ext_resource path="res://Prefabs/HelpPanel.gd" type="Script" id=2]
@@ -17,6 +17,12 @@
 [ext_resource path="res://assets/score_circle.png" type="Texture" id=15]
 [ext_resource path="res://assets/build.jpg" type="Texture" id=16]
 [ext_resource path="res://assets/build_circle.png" type="Texture" id=17]
+[ext_resource path="res://assets/map/map_civ.png" type="Texture" id=18]
+[ext_resource path="res://assets/gold.jpg" type="Texture" id=19]
+[ext_resource path="res://assets/stone.jpg" type="Texture" id=20]
+[ext_resource path="res://assets/wood.jpg" type="Texture" id=21]
+[ext_resource path="res://assets/adobe.jpg" type="Texture" id=22]
+[ext_resource path="res://assets/font/font_big_outline.tres" type="DynamicFont" id=23]
 
 [node name="HelpPanel" type="ColorRect"]
 anchor_right = 1.0
@@ -60,12 +66,12 @@ autowrap = true
 [node name="Label4" type="Label" parent="Pages/intro"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 282.0
+margin_left = 255.0
 margin_top = 95.0
-margin_right = -60.0
+margin_right = -67.0
 margin_bottom = -217.0
 custom_fonts/font = ExtResource( 3 )
-text = "El objetivo es conseguir puntos de reconocimiento, para eso debes conseguir casas o cartas de civilizacion."
+text = "El objetivo es conseguir puntos de reconocimiento, para eso debes construir casas y obtener cartas de civilización."
 align = 2
 valign = 1
 autowrap = true
@@ -91,9 +97,64 @@ margin_top = 180.0
 margin_right = -373.0
 margin_bottom = -151.0
 custom_fonts/font = ExtResource( 3 )
-text = "A medida que avance el tiempo tendras mas acciones o turnos para jugar."
+text = "A medida que avance el tiempo tendrás mas acciones y turnos para jugar."
 valign = 1
 autowrap = true
+
+[node name="BuildCircle" type="Sprite" parent="Pages/intro"]
+position = Vector2( 702, 71 )
+scale = Vector2( 0.894445, 0.894444 )
+texture = ExtResource( 17 )
+
+[node name="MapCiv" type="Sprite" parent="Pages/intro"]
+position = Vector2( 757, 95 )
+scale = Vector2( 0.894445, 0.894444 )
+texture = ExtResource( 18 )
+
+[node name="Tool" type="Sprite" parent="Pages/intro"]
+position = Vector2( 89, 307 )
+scale = Vector2( 0.593023, 0.593023 )
+texture = ExtResource( 4 )
+
+[node name="Tool3" type="Sprite" parent="Pages/intro"]
+position = Vector2( 159, 349 )
+scale = Vector2( 0.593023, 0.593023 )
+texture = ExtResource( 4 )
+
+[node name="Tool2" type="Sprite" parent="Pages/intro"]
+position = Vector2( 152, 284 )
+scale = Vector2( 0.593023, 0.593023 )
+texture = ExtResource( 4 )
+
+[node name="VillagerCircle" type="Sprite" parent="Pages/intro"]
+position = Vector2( 92, 155 )
+scale = Vector2( 0.833333, 0.833333 )
+texture = ExtResource( 5 )
+
+[node name="VillagerCircle2" type="Sprite" parent="Pages/intro"]
+position = Vector2( 130, 143 )
+scale = Vector2( 0.833333, 0.833333 )
+texture = ExtResource( 5 )
+
+[node name="Wood" type="Sprite" parent="Pages/intro"]
+position = Vector2( 561, 347 )
+scale = Vector2( 0.319876, 0.319876 )
+texture = ExtResource( 21 )
+
+[node name="Adobe" type="Sprite" parent="Pages/intro"]
+position = Vector2( 629, 323 )
+scale = Vector2( 0.483646, 0.483646 )
+texture = ExtResource( 22 )
+
+[node name="Stone" type="Sprite" parent="Pages/intro"]
+position = Vector2( 698, 352 )
+scale = Vector2( 0.397436, 0.397436 )
+texture = ExtResource( 20 )
+
+[node name="Gold" type="Sprite" parent="Pages/intro"]
+position = Vector2( 757.278, 306.25 )
+scale = Vector2( 0.45339, 0.45339 )
+texture = ExtResource( 19 )
 
 [node name="villager" type="Control" parent="Pages"]
 visible = false
@@ -110,12 +171,17 @@ margin_left = -352.0
 margin_top = -137.0
 margin_right = 352.0
 margin_bottom = 55.0
-text = "Arrastra a tus trabajadores a las distintas regiones para obtener recursos y mas trabajadores, cuando estes listo pulsa en finalizar turno para recoger los materiales. No olvides que todos los turnos debes alimentar a tu tribu!!"
+text = "Arrastra a tus trabajadores a las distintas regiones para obtener recursos, cuando estes listo pulsa en finalizar turno para recoger los materiales. No olvides que todos los turnos debes alimentar a tu tribu!!"
 align = 1
 valign = 1
 autowrap = true
 
 [node name="V19" type="Sprite" parent="Pages/villager"]
+position = Vector2( 66, 321 )
+scale = Vector2( 0.75, 0.75 )
+texture = ExtResource( 5 )
+
+[node name="V20" type="Sprite" parent="Pages/villager"]
 position = Vector2( 66, 321 )
 scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 5 )
@@ -200,6 +266,7 @@ scale = Vector2( 0.490196, 0.490196 )
 texture = ExtResource( 6 )
 
 [node name="build" type="Control" parent="Pages"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 64, 273 )
@@ -210,49 +277,47 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -267.0
-margin_top = -141.0
+margin_top = -175.0
 margin_right = 314.0
-margin_bottom = -18.0
+margin_bottom = -52.0
 custom_constants/line_spacing = -7
 text = "Aquí podrás edificar, los edificios cuestan materiales, a cambio obtendrás una choza y además ganaras los puntos de victoria que indique la edificación."
 valign = 1
 autowrap = true
 
 [node name="MapBuild" type="Sprite" parent="Pages/build"]
-position = Vector2( 110, 132 )
+position = Vector2( 110, 107 )
 texture = ExtResource( 17 )
 offset = Vector2( -31, -25 )
 
 [node name="build" type="Sprite" parent="Pages/build"]
-position = Vector2( 40.25, 146.25 )
+position = Vector2( 40.25, 121.25 )
 scale = Vector2( 0.598837, 0.598837 )
 texture = ExtResource( 16 )
 
 [node name="Label2" type="Label" parent="Pages/build"]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -320.0
-margin_top = -32.0
-margin_right = 276.0
-margin_bottom = 91.0
+margin_left = -314.0
+margin_top = -37.0
+margin_right = 282.0
+margin_bottom = 86.0
 custom_constants/line_spacing = -7
-text = "Las cartas de civilización te darán recursos extras o bonificadores a los puntos de victoria que se contabilizan al final de la partida, no dudes en adquirirlas!"
+text = "Las cartas de civilización te darán recursos extra o bonificadores a los puntos de victoria que se contabilizan al final de la partida, no dudes en adquirirlas!"
 align = 2
 valign = 1
 autowrap = true
 
 [node name="MapBuild2" type="Sprite" parent="Pages/build"]
-visible = false
-position = Vector2( 763, 254 )
-texture = ExtResource( 17 )
+position = Vector2( 774, 257 )
+scale = Vector2( 1.16667, 1.16667 )
+texture = ExtResource( 18 )
 offset = Vector2( -31, -25 )
 
 [node name="build2" type="Sprite" parent="Pages/build"]
-visible = false
-position = Vector2( 763, 264 )
+position = Vector2( 766, 268 )
 scale = Vector2( 1.26609, 1.26609 )
 texture = ExtResource( 15 )
 
@@ -260,15 +325,15 @@ texture = ExtResource( 15 )
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-rect_pivot_offset = Vector2( 64, 273 )
+rect_pivot_offset = Vector2( 48, 122 )
 
 [node name="Label" type="Label" parent="Pages/materials"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -290.5
-margin_top = 35.0
-margin_right = 290.5
-margin_bottom = 131.0
+margin_left = -292.0
+margin_top = 20.0
+margin_right = 289.0
+margin_bottom = 103.0
 custom_constants/line_spacing = -7
 text = "Los materiales te permiten construir chozas para sumar puntos y ganar el juego!"
 align = 1
@@ -277,34 +342,71 @@ autowrap = true
 [node name="Label2" type="Label" parent="Pages/materials"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -383.0
-margin_top = 248.0
-margin_right = 356.0
-margin_bottom = 284.0
+margin_left = -395.0
+margin_top = 230.0
+margin_right = 372.0
+margin_bottom = 266.0
 custom_constants/line_spacing = -7
 text = "MADERA         ADOBE         PIEDRA         ORO"
 align = 1
 autowrap = true
 
 [node name="MapAdobe" type="Sprite" parent="Pages/materials"]
-position = Vector2( 328, 190 )
+position = Vector2( 328, 173 )
 scale = Vector2( 0.78, 0.78 )
 texture = ExtResource( 12 )
 
 [node name="MapGold" type="Sprite" parent="Pages/materials"]
-position = Vector2( 651, 190 )
+position = Vector2( 651, 173 )
 scale = Vector2( 0.78, 0.78 )
 texture = ExtResource( 13 )
 
 [node name="MapStone" type="Sprite" parent="Pages/materials"]
-position = Vector2( 496, 190 )
-scale = Vector2( 0.78, 0.78 )
+position = Vector2( 497.175, 172.175 )
+scale = Vector2( 0.797407, 0.797407 )
 texture = ExtResource( 14 )
 
 [node name="MapWood" type="Sprite" parent="Pages/materials"]
-position = Vector2( 151, 190 )
+position = Vector2( 151, 173 )
 scale = Vector2( 0.78, 0.78 )
 texture = ExtResource( 11 )
+
+[node name="Label4" type="Label" parent="Pages/materials"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -221.0
+margin_top = 117.0
+margin_right = 368.0
+margin_bottom = 153.0
+custom_constants/line_spacing = -7
+custom_fonts/font = ExtResource( 23 )
+text = "3                  4                5                6"
+autowrap = true
+
+[node name="Label3" type="Label" parent="Pages/materials"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 541.0
+margin_top = 305.0
+margin_right = -23.0
+margin_bottom = -46.0
+custom_fonts/font = ExtResource( 3 )
+text = "De izquierda a derecha son mas dificiles de obtener!"
+align = 2
+valign = 1
+autowrap = true
+
+[node name="Label5" type="Label" parent="Pages/materials"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 15.0
+margin_top = 297.0
+margin_right = -536.0
+margin_bottom = -34.0
+custom_fonts/font = ExtResource( 3 )
+text = "se tira 1d6 por cada trabajador y se divide por la dificultad de conseguir cada material"
+valign = 1
+autowrap = true
 
 [node name="Button" type="Button" parent="."]
 anchor_left = 0.5

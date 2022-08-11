@@ -12,6 +12,8 @@ func onSetNode(node,stay,result):
 	if result.TOOL>1: $Drager.free_node(node)
 	if result.CAMP>1: $Drager.free_node(node)
 	if result.VILLAGER>2: $Drager.free_node(node)
+	if result.CIV>0: $Drager.free_node(node)
+	
 
 func end_turn_task():
 	var RESULT = $Drager.get_result()

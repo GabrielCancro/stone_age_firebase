@@ -6,6 +6,7 @@ var drag_node = null
 onready var max_nodes = GC.PLAYER.villager
 var result = {}
 signal set_node(node,stay,result)
+var disabled = false
 
 func _ready():
 	for c in $Nodes.get_children():
@@ -17,6 +18,7 @@ func _ready():
 	update_label()
 
 func _input(event):
+	if disabled: return
 	if event is InputEventMouseButton:
 		if event.pressed && !drag_node:
 			var near = $Nodes.get_children()[0]
