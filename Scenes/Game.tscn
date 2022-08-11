@@ -722,6 +722,48 @@ margin_bottom = -37.0
 theme = ExtResource( 2 )
 text = "CANCELAR"
 
+[node name="EndPanel" type="ColorRect" parent="."]
+visible = false
+margin_top = 40.0
+margin_right = 800.0
+margin_bottom = 400.0
+color = Color( 1, 1, 1, 0 )
+
+[node name="Label2" type="Label" parent="EndPanel"]
+margin_left = 16.0
+margin_top = 14.0
+margin_right = 817.0
+margin_bottom = 50.0
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "La partida ha terminado!"
+
+[node name="Label3" type="Label" parent="EndPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -364.0
+margin_top = -129.0
+margin_right = 437.0
+margin_bottom = -93.0
+rect_scale = Vector2( 0.5, 0.5 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "Talvez algunos jugadores no hayan finalizado aún"
+
+[node name="Back" type="Button" parent="EndPanel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 138.0
+margin_top = -348.0
+margin_right = 398.0
+margin_bottom = -256.0
+theme = ExtResource( 2 )
+text = "ACTUALIZAR TABLA"
+
 [node name="HelpPanel" parent="." instance=ExtResource( 27 )]
 visible = false
 margin_right = 800.0
