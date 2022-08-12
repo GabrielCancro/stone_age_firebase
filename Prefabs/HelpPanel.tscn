@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=1]
 [ext_resource path="res://Prefabs/HelpPanel.gd" type="Script" id=2]
@@ -23,6 +23,8 @@
 [ext_resource path="res://assets/wood.jpg" type="Texture" id=21]
 [ext_resource path="res://assets/adobe.jpg" type="Texture" id=22]
 [ext_resource path="res://assets/font/font_big_outline.tres" type="DynamicFont" id=23]
+[ext_resource path="res://assets/food.jpg" type="Texture" id=24]
+[ext_resource path="res://assets/map/map_food.png" type="Texture" id=25]
 
 [node name="HelpPanel" type="ColorRect"]
 anchor_right = 1.0
@@ -187,7 +189,6 @@ scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 5 )
 
 [node name="tool" type="Control" parent="Pages"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 64, 273 )
@@ -221,7 +222,7 @@ margin_top = 2.0
 margin_right = 351.0
 margin_bottom = 98.0
 custom_constants/line_spacing = -7
-text = "Aqui obtienes puntos de cultivo, estos puntos reduce el costo de alimentacion de tu tribu"
+text = "Aqui obtienes puntos de cultivo, estos puntos reducen el costo de alimentacion de tu tribu"
 valign = 1
 autowrap = true
 
@@ -405,6 +406,100 @@ margin_right = -536.0
 margin_bottom = -34.0
 custom_fonts/font = ExtResource( 3 )
 text = "se tira 1d6 por cada trabajador y se divide por la dificultad de conseguir cada material"
+valign = 1
+autowrap = true
+
+[node name="food" type="Control" parent="Pages"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 273, 400 )
+
+[node name="Label" type="Label" parent="Pages/food"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -292.0
+margin_top = 20.0
+margin_right = 289.0
+margin_bottom = 103.0
+custom_constants/line_spacing = -7
+text = "El alimento es mucho muy importante!!"
+align = 1
+autowrap = true
+
+[node name="MapWood" type="Sprite" parent="Pages/food"]
+position = Vector2( 200, 184 )
+scale = Vector2( 0.78, 0.78 )
+texture = ExtResource( 25 )
+offset = Vector2( -130.769, -32.0513 )
+
+[node name="Food" type="Sprite" parent="Pages/food/MapWood"]
+position = Vector2( 694.872, -52.5641 )
+scale = Vector2( 0.52173, 0.52173 )
+texture = ExtResource( 24 )
+
+[node name="Label5" type="Label" parent="Pages/food"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 183.0
+margin_top = 95.0
+margin_right = -368.0
+margin_bottom = -236.0
+custom_fonts/font = ExtResource( 3 )
+text = "Pon trabajadores en esta region para conseguir alimento!"
+valign = 1
+autowrap = true
+
+[node name="Label7" type="Label" parent="Pages/food"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 458.0
+margin_top = 110.0
+margin_right = -93.0
+margin_bottom = -221.0
+rect_pivot_offset = Vector2( 0, 111 )
+custom_fonts/font = ExtResource( 3 )
+text = "Todos los turnos tus aldeanos deberan alimentarse, consumirán un punto de comida"
+align = 2
+valign = 1
+autowrap = true
+
+[node name="Label8" type="Label" parent="Pages/food"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 359.0
+margin_top = 205.0
+margin_right = -192.0
+margin_bottom = -126.0
+rect_pivot_offset = Vector2( 0, 111 )
+custom_fonts/font = ExtResource( 3 )
+text = "CUIDADO! Si en algún turno no tienes suficiente comida para tu tribu, perderás DIEZ puntos de victoria!!!"
+align = 2
+valign = 1
+autowrap = true
+
+[node name="ScoreCircle" type="Sprite" parent="Pages/food/Label8"]
+position = Vector2( 287, 47 )
+rotation = -0.261799
+scale = Vector2( 1.3, 1.3 )
+texture = ExtResource( 15 )
+
+[node name="ScoreCircle2" type="Sprite" parent="Pages/food/Label8"]
+position = Vector2( 277, 82 )
+rotation = 0.261799
+scale = Vector2( 1.3, 1.3 )
+texture = ExtResource( 15 )
+
+[node name="Label6" type="Label" parent="Pages/food"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 18.0
+margin_top = 247.0
+margin_right = -617.0
+margin_bottom = -84.0
+custom_fonts/font = ExtResource( 3 )
+text = "se tira 1d6 por cada trabajador y se divide por 2"
+align = 1
 valign = 1
 autowrap = true
 

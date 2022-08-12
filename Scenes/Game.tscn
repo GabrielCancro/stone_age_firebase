@@ -109,7 +109,7 @@ texture = ExtResource( 35 )
 [node name="Build" type="Node2D" parent="."]
 
 [node name="Header" type="Panel" parent="."]
-margin_left = -1.0
+margin_left = 2.0
 margin_right = 801.0
 margin_bottom = 43.0
 theme = ExtResource( 2 )
@@ -117,10 +117,10 @@ theme = ExtResource( 2 )
 [node name="Label" type="Label" parent="Header"]
 modulate = Color( 0.819608, 0.819608, 0.819608, 1 )
 anchor_right = 1.0
-margin_left = 182.0
-margin_top = 367.0
-margin_right = -206.0
-margin_bottom = 403.0
+margin_left = 148.0
+margin_top = 359.0
+margin_right = -247.0
+margin_bottom = 395.0
 rect_pivot_offset = Vector2( -426, -318 )
 text = "Bienvenido User!"
 align = 2
@@ -128,19 +128,18 @@ valign = 1
 
 [node name="Recs" type="Label" parent="Header"]
 anchor_right = 1.0
-margin_left = 7.0
-margin_top = 469.0
-margin_right = -148.0
-margin_bottom = 505.0
+margin_left = 52.0
+margin_top = 428.0
+margin_right = -97.0
+margin_bottom = 464.0
 custom_colors/font_color = Color( 0.988235, 1, 0.796078, 1 )
-text = "Bienvenido User!"
+text = "recs::bbdd"
 valign = 1
 
 [node name="btn_quit" type="Button" parent="Header"]
 anchor_right = 1.0
-margin_left = 755.0
-margin_right = -1.0
-margin_bottom = 42.0
+anchor_bottom = 1.0
+margin_left = 752.0
 text = "X"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -529,12 +528,23 @@ margin_right = 40.0
 margin_bottom = 40.0
 theme = ExtResource( 2 )
 
+[node name="food" type="Button" parent="HelpButtons"]
+anchor_right = 1.0
+margin_left = 21.0
+margin_top = 63.0
+margin_right = 26.0
+margin_bottom = 105.0
+rect_scale = Vector2( 0.7, 0.7 )
+custom_fonts/font = ExtResource( 31 )
+text = "?"
+flat = true
+
 [node name="materials" type="Button" parent="HelpButtons"]
 anchor_right = 1.0
-margin_left = 104.0
-margin_top = 64.0
-margin_right = 109.0
-margin_bottom = 106.0
+margin_left = 399.0
+margin_top = 84.0
+margin_right = 404.0
+margin_bottom = 126.0
 rect_scale = Vector2( 0.7, 0.7 )
 custom_fonts/font = ExtResource( 31 )
 text = "?"
@@ -813,10 +823,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 166.0
-margin_top = -2.0
-margin_right = 623.0
-margin_bottom = 135.0
+margin_left = 165.0
+margin_top = 38.0
+margin_right = 622.0
+margin_bottom = 175.0
 rect_scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 2 )
 custom_fonts/font = ExtResource( 31 )
@@ -931,20 +941,20 @@ expand = true
 stretch_mode = 1
 
 [node name="r2" type="TextureRect" parent="CivPanel/HBox_cards/B1/bon"]
-margin_left = -14.0
-margin_top = 20.0
-margin_right = 16.0
-margin_bottom = 40.0
+margin_left = 17.0
+margin_top = 21.0
+margin_right = 47.0
+margin_bottom = 41.0
 rect_min_size = Vector2( 30, 20 )
 texture = ExtResource( 26 )
 expand = true
 stretch_mode = 1
 
 [node name="Label2" type="Label" parent="CivPanel/HBox_cards/B1/bon"]
-margin_left = -12.0
-margin_top = 7.0
-margin_right = 22.0
-margin_bottom = 39.0
+margin_left = 19.0
+margin_top = 8.0
+margin_right = 53.0
+margin_bottom = 40.0
 rect_scale = Vector2( 0.8, 0.8 )
 theme = ExtResource( 2 )
 custom_fonts/font = ExtResource( 31 )
@@ -969,10 +979,11 @@ expand = true
 stretch_mode = 1
 
 [node name="Label2" type="Label" parent="CivPanel/HBox_cards/B1/rec"]
-margin_left = -21.0
-margin_top = 10.0
-margin_right = 13.0
-margin_bottom = 42.0
+margin_left = 15.0
+margin_top = 17.0
+margin_right = 49.0
+margin_bottom = 49.0
+rect_scale = Vector2( 0.7, 0.7 )
 theme = ExtResource( 2 )
 custom_fonts/font = ExtResource( 31 )
 text = "+"
@@ -1006,20 +1017,20 @@ expand = true
 stretch_mode = 1
 
 [node name="r2" type="TextureRect" parent="CivPanel/HBox_cards/B2/bon"]
-margin_left = -14.0
-margin_top = 20.0
-margin_right = 16.0
-margin_bottom = 40.0
+margin_left = 17.0
+margin_top = 21.0
+margin_right = 47.0
+margin_bottom = 41.0
 rect_min_size = Vector2( 30, 20 )
 texture = ExtResource( 26 )
 expand = true
 stretch_mode = 1
 
 [node name="Label2" type="Label" parent="CivPanel/HBox_cards/B2/bon"]
-margin_left = -12.0
-margin_top = 7.0
-margin_right = 22.0
-margin_bottom = 39.0
+margin_left = 19.0
+margin_top = 8.0
+margin_right = 53.0
+margin_bottom = 40.0
 rect_scale = Vector2( 0.8, 0.8 )
 theme = ExtResource( 2 )
 custom_fonts/font = ExtResource( 31 )
@@ -1044,10 +1055,11 @@ expand = true
 stretch_mode = 1
 
 [node name="Label2" type="Label" parent="CivPanel/HBox_cards/B2/rec"]
-margin_left = -21.0
-margin_top = 10.0
-margin_right = 13.0
-margin_bottom = 42.0
+margin_left = 15.0
+margin_top = 17.0
+margin_right = 49.0
+margin_bottom = 49.0
+rect_scale = Vector2( 0.7, 0.7 )
 theme = ExtResource( 2 )
 custom_fonts/font = ExtResource( 31 )
 text = "+"
@@ -1066,23 +1078,50 @@ theme = ExtResource( 2 )
 text = "CANCELAR"
 
 [node name="ColorRect" type="ColorRect" parent="CivPanel"]
-margin_left = 742.0
-margin_top = 7.0
-margin_right = 789.0
-margin_bottom = 172.0
+margin_left = 735.0
+margin_top = 9.0
+margin_right = 782.0
+margin_bottom = 174.0
 color = Color( 0, 0, 0, 0.768627 )
 
+[node name="Label7" type="Label" parent="CivPanel/ColorRect"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -38.5
+margin_top = 86.5
+margin_right = 221.5
+margin_bottom = 153.5
+rect_scale = Vector2( 0.3, 0.3 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "BONIFICADORES
+OBTENIDOS"
+align = 1
+valign = 1
+
 [node name="VBox_stock" type="VBoxContainer" parent="CivPanel"]
-margin_left = 748.0
-margin_top = 13.0
-margin_right = 783.0
-margin_bottom = 165.0
+margin_left = 741.0
+margin_top = 15.0
+margin_right = 776.0
+margin_bottom = 167.0
 
 [node name="tool" type="TextureRect" parent="CivPanel/VBox_stock"]
 margin_right = 35.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 35, 35 )
+rect_pivot_offset = Vector2( -74, 35 )
 texture = ExtResource( 12 )
+expand = true
+stretch_mode = 1
+
+[node name="r2" type="TextureRect" parent="CivPanel/VBox_stock/tool"]
+margin_left = 16.0
+margin_top = 22.0
+margin_right = 43.0
+margin_bottom = 39.0
+texture = ExtResource( 26 )
 expand = true
 stretch_mode = 1
 
@@ -1091,15 +1130,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -5.0
-margin_top = 3.5
-margin_right = 45.0
-margin_bottom = 35.5
+margin_left = -6.5
+margin_top = -1.5
+margin_right = 69.5
+margin_bottom = 30.5
 rect_scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 2 )
 custom_fonts/font = ExtResource( 31 )
-text = "3"
-align = 2
+text = "x0"
+align = 1
 valign = 1
 
 [node name="villager" type="TextureRect" parent="CivPanel/VBox_stock"]
@@ -1111,20 +1150,29 @@ texture = ExtResource( 39 )
 expand = true
 stretch_mode = 1
 
+[node name="r2" type="TextureRect" parent="CivPanel/VBox_stock/villager"]
+margin_left = 16.0
+margin_top = 22.0
+margin_right = 43.0
+margin_bottom = 39.0
+texture = ExtResource( 26 )
+expand = true
+stretch_mode = 1
+
 [node name="Label" type="Label" parent="CivPanel/VBox_stock/villager"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -5.0
-margin_top = 3.5
-margin_right = 45.0
-margin_bottom = 35.5
+margin_left = -6.5
+margin_top = -1.5
+margin_right = 69.5
+margin_bottom = 30.5
 rect_scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 2 )
 custom_fonts/font = ExtResource( 31 )
-text = "3"
-align = 2
+text = "x0"
+align = 1
 valign = 1
 
 [node name="build" type="TextureRect" parent="CivPanel/VBox_stock"]
@@ -1136,20 +1184,29 @@ texture = ExtResource( 33 )
 expand = true
 stretch_mode = 1
 
+[node name="r2" type="TextureRect" parent="CivPanel/VBox_stock/build"]
+margin_left = 16.0
+margin_top = 22.0
+margin_right = 43.0
+margin_bottom = 39.0
+texture = ExtResource( 26 )
+expand = true
+stretch_mode = 1
+
 [node name="Label" type="Label" parent="CivPanel/VBox_stock/build"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -5.0
-margin_top = 3.5
-margin_right = 45.0
-margin_bottom = 35.5
+margin_left = -6.5
+margin_top = -1.5
+margin_right = 69.5
+margin_bottom = 30.5
 rect_scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 2 )
 custom_fonts/font = ExtResource( 31 )
-text = "3"
-align = 2
+text = "x0"
+align = 1
 valign = 1
 
 [node name="camp" type="TextureRect" parent="CivPanel/VBox_stock"]
@@ -1157,7 +1214,17 @@ margin_top = 117.0
 margin_right = 35.0
 margin_bottom = 152.0
 rect_min_size = Vector2( 35, 35 )
+rect_pivot_offset = Vector2( -15, -4 )
 texture = ExtResource( 13 )
+expand = true
+stretch_mode = 1
+
+[node name="r2" type="TextureRect" parent="CivPanel/VBox_stock/camp"]
+margin_left = 16.0
+margin_top = 22.0
+margin_right = 43.0
+margin_bottom = 39.0
+texture = ExtResource( 26 )
 expand = true
 stretch_mode = 1
 
@@ -1166,18 +1233,19 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -5.0
-margin_top = 3.5
-margin_right = 45.0
-margin_bottom = 35.5
+margin_left = -6.5
+margin_top = -1.5
+margin_right = 69.5
+margin_bottom = 30.5
 rect_scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 2 )
 custom_fonts/font = ExtResource( 31 )
-text = "3"
-align = 2
+text = "x0"
+align = 1
 valign = 1
 
 [node name="EndPanel" type="ColorRect" parent="."]
+visible = false
 margin_top = 40.0
 margin_right = 603.0
 margin_bottom = 400.0
