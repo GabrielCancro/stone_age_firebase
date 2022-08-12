@@ -10,7 +10,6 @@ func _ready():
 	$Back.connect("button_down",self,"onBackButton")
 	$B1.connect("button_down",self,"onClickHouse",[0])
 	$B2.connect("button_down",self,"onClickHouse",[1])
-	DRAGER.connect("set_node",self,"onDragHouse")
 
 func showBuildPanel():
 	visible = true
@@ -66,9 +65,3 @@ func onClickHouse(id):
 	print(id)
 	GC.BUILD_TO_CONSTRUCT = id
 	visible = false
-
-func onDragHouse(node,stay,result):
-	if result.BUILD>1: DRAGER.free_node(node)
-	elif stay == "BUILD": 
-		current_villager_node = node
-		showBuildPanel()

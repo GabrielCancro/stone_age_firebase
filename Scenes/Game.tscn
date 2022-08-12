@@ -36,7 +36,7 @@
 [ext_resource path="res://assets/build_circle.png" type="Texture" id=34]
 [ext_resource path="res://assets/map/map_civ.png" type="Texture" id=35]
 [ext_resource path="res://assets/civ_card.png" type="Texture" id=36]
-[ext_resource path="res://assets/rnd_material.png" type="Texture" id=37]
+[ext_resource path="res://Prefabs/CivPanel.gd" type="Script" id=37]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -743,6 +743,7 @@ margin_top = 40.0
 margin_right = 800.0
 margin_bottom = 400.0
 color = Color( 0.501961, 0.501961, 0.501961, 0.909804 )
+script = ExtResource( 37 )
 
 [node name="Label2" type="Label" parent="CivPanel"]
 margin_top = 14.0
@@ -768,118 +769,283 @@ custom_fonts/font = ExtResource( 31 )
 text = "Te darán puntos extras al finalizar la partida"
 align = 1
 
-[node name="HBox" type="HBoxContainer" parent="CivPanel"]
+[node name="Label4" type="Label" parent="CivPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -391.0
+margin_top = -112.0
+margin_right = 66.0
+rect_scale = Vector2( 0.5, 0.5 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "Estas cartas cuestan madera
+ (indicado en la parte superior)"
+valign = 1
+
+[node name="Label5" type="Label" parent="CivPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -378.0
+margin_top = 66.0
+margin_right = 79.0
+margin_bottom = 178.0
+rect_scale = Vector2( 0.5, 0.5 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "Al adquirirlas te darán 
+un recurso extra 
+(indicado abajo a la izquierda)"
+align = 2
+valign = 1
+
+[node name="Label6" type="Label" parent="CivPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 166.0
+margin_top = -2.0
+margin_right = 623.0
+margin_bottom = 135.0
+rect_scale = Vector2( 0.5, 0.5 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "Al finalizar la partida, 
+estas cartas de darán
+una bonificación extra
+(indicado abajo a la derecha)"
+valign = 1
+
+[node name="HBox_recs" type="HBoxContainer" parent="CivPanel"]
 margin_left = -1.0
-margin_top = 89.0
+margin_top = 86.0
 margin_right = 799.0
-margin_bottom = 193.0
-custom_constants/separation = 25
+margin_bottom = 116.0
+custom_constants/separation = 75
 alignment = 1
 
-[node name="B1" type="Button" parent="CivPanel/HBox"]
-margin_left = 219.0
-margin_right = 323.0
-margin_bottom = 104.0
-rect_min_size = Vector2( 104, 104 )
+[node name="HBox" type="HBoxContainer" parent="CivPanel/HBox_recs"]
+margin_left = 258.0
+margin_right = 362.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 104, 30 )
+custom_constants/separation = 3
+alignment = 1
 
-[node name="ico" type="Sprite" parent="CivPanel/HBox/B1"]
+[node name="r1" type="TextureRect" parent="CivPanel/HBox_recs/HBox"]
+margin_left = 20.0
+margin_right = 50.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 1
+
+[node name="r2" type="TextureRect" parent="CivPanel/HBox_recs/HBox"]
+margin_left = 53.0
+margin_right = 83.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 1
+
+[node name="HBox2" type="HBoxContainer" parent="CivPanel/HBox_recs"]
+margin_left = 437.0
+margin_right = 541.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 104, 30 )
+custom_constants/separation = 3
+alignment = 1
+
+[node name="r1" type="TextureRect" parent="CivPanel/HBox_recs/HBox2"]
+margin_left = 4.0
+margin_right = 34.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 1
+
+[node name="r2" type="TextureRect" parent="CivPanel/HBox_recs/HBox2"]
+margin_left = 37.0
+margin_right = 67.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 1
+
+[node name="r3" type="TextureRect" parent="CivPanel/HBox_recs/HBox2"]
+margin_left = 70.0
+margin_right = 100.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 1
+
+[node name="HBox_cards" type="HBoxContainer" parent="CivPanel"]
+margin_left = -1.0
+margin_top = 120.0
+margin_right = 799.0
+margin_bottom = 195.0
+custom_constants/separation = 75
+alignment = 1
+
+[node name="B1" type="Button" parent="CivPanel/HBox_cards"]
+margin_left = 258.0
+margin_right = 362.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 104, 75 )
+
+[node name="card" type="Sprite" parent="CivPanel/HBox_cards/B1"]
 position = Vector2( 52, 37 )
 texture = ExtResource( 36 )
 
-[node name="HBox" type="HBoxContainer" parent="CivPanel/HBox/B1"]
-margin_left = 2.0
-margin_top = 73.0
-margin_right = 103.0
-margin_bottom = 103.0
-alignment = 1
+[node name="bon" type="ColorRect" parent="CivPanel/HBox_cards/B1"]
+margin_left = 60.0
+margin_top = 77.0
+margin_right = 96.0
+margin_bottom = 113.0
+color = Color( 0, 0, 0, 0.760784 )
 
-[node name="r1" type="TextureRect" parent="CivPanel/HBox/B1/HBox"]
-margin_left = 18.0
-margin_right = 48.0
-margin_bottom = 30.0
+[node name="r1" type="TextureRect" parent="CivPanel/HBox_cards/B1/bon"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 33.0
+margin_bottom = 33.0
 rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 37 )
+texture = ExtResource( 12 )
 expand = true
 stretch_mode = 1
 
-[node name="r2" type="TextureRect" parent="CivPanel/HBox/B1/HBox"]
-margin_left = 52.0
-margin_right = 82.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 37 )
+[node name="r2" type="TextureRect" parent="CivPanel/HBox_cards/B1/bon"]
+margin_left = -14.0
+margin_top = 20.0
+margin_right = 16.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 30, 20 )
+texture = ExtResource( 26 )
 expand = true
 stretch_mode = 1
 
-[node name="B2" type="Button" parent="CivPanel/HBox"]
-margin_left = 348.0
-margin_right = 452.0
-margin_bottom = 104.0
-rect_min_size = Vector2( 104, 104 )
+[node name="Label2" type="Label" parent="CivPanel/HBox_cards/B1/bon"]
+margin_left = -12.0
+margin_top = 7.0
+margin_right = 22.0
+margin_bottom = 39.0
+rect_scale = Vector2( 0.8, 0.8 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "x"
+align = 1
 
-[node name="ico" type="Sprite" parent="CivPanel/HBox/B2"]
+[node name="rec" type="ColorRect" parent="CivPanel/HBox_cards/B1"]
+margin_left = 8.0
+margin_top = 76.0
+margin_right = 44.0
+margin_bottom = 112.0
+color = Color( 0, 0, 0, 0.760784 )
+
+[node name="r1" type="TextureRect" parent="CivPanel/HBox_cards/B1/rec"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 33.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 1
+
+[node name="Label2" type="Label" parent="CivPanel/HBox_cards/B1/rec"]
+margin_left = -21.0
+margin_top = 10.0
+margin_right = 13.0
+margin_bottom = 42.0
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "+"
+align = 2
+
+[node name="B2" type="Button" parent="CivPanel/HBox_cards"]
+margin_left = 437.0
+margin_right = 541.0
+margin_bottom = 75.0
+rect_min_size = Vector2( 104, 75 )
+
+[node name="card" type="Sprite" parent="CivPanel/HBox_cards/B2"]
 position = Vector2( 52, 37 )
 texture = ExtResource( 36 )
 
-[node name="HBox" type="HBoxContainer" parent="CivPanel/HBox/B2"]
-margin_left = 2.0
-margin_top = 73.0
-margin_right = 103.0
-margin_bottom = 103.0
-alignment = 1
+[node name="bon" type="ColorRect" parent="CivPanel/HBox_cards/B2"]
+margin_left = 60.0
+margin_top = 77.0
+margin_right = 96.0
+margin_bottom = 113.0
+color = Color( 0, 0, 0, 0.760784 )
 
-[node name="r1" type="TextureRect" parent="CivPanel/HBox/B2/HBox"]
-margin_left = 18.0
-margin_right = 48.0
-margin_bottom = 30.0
+[node name="r1" type="TextureRect" parent="CivPanel/HBox_cards/B2/bon"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 33.0
+margin_bottom = 33.0
 rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 37 )
+texture = ExtResource( 12 )
 expand = true
 stretch_mode = 1
 
-[node name="r2" type="TextureRect" parent="CivPanel/HBox/B2/HBox"]
-margin_left = 52.0
-margin_right = 82.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 37 )
+[node name="r2" type="TextureRect" parent="CivPanel/HBox_cards/B2/bon"]
+margin_left = -14.0
+margin_top = 20.0
+margin_right = 16.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 30, 20 )
+texture = ExtResource( 26 )
 expand = true
 stretch_mode = 1
 
-[node name="B3" type="Button" parent="CivPanel/HBox"]
-margin_left = 477.0
-margin_right = 581.0
-margin_bottom = 104.0
-rect_min_size = Vector2( 104, 104 )
+[node name="Label2" type="Label" parent="CivPanel/HBox_cards/B2/bon"]
+margin_left = -12.0
+margin_top = 7.0
+margin_right = 22.0
+margin_bottom = 39.0
+rect_scale = Vector2( 0.8, 0.8 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "x"
+align = 1
 
-[node name="ico" type="Sprite" parent="CivPanel/HBox/B3"]
-position = Vector2( 52, 37 )
-texture = ExtResource( 36 )
+[node name="rec" type="ColorRect" parent="CivPanel/HBox_cards/B2"]
+margin_left = 8.0
+margin_top = 76.0
+margin_right = 44.0
+margin_bottom = 112.0
+color = Color( 0, 0, 0, 0.760784 )
 
-[node name="HBox" type="HBoxContainer" parent="CivPanel/HBox/B3"]
-margin_left = 2.0
-margin_top = 73.0
-margin_right = 103.0
-margin_bottom = 103.0
-alignment = 1
-
-[node name="r1" type="TextureRect" parent="CivPanel/HBox/B3/HBox"]
-margin_left = 18.0
-margin_right = 48.0
-margin_bottom = 30.0
+[node name="r1" type="TextureRect" parent="CivPanel/HBox_cards/B2/rec"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 33.0
+margin_bottom = 33.0
 rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 37 )
+texture = ExtResource( 6 )
 expand = true
 stretch_mode = 1
 
-[node name="r2" type="TextureRect" parent="CivPanel/HBox/B3/HBox"]
-margin_left = 52.0
-margin_right = 82.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 37 )
-expand = true
-stretch_mode = 1
+[node name="Label2" type="Label" parent="CivPanel/HBox_cards/B2/rec"]
+margin_left = -21.0
+margin_top = 10.0
+margin_right = 13.0
+margin_bottom = 42.0
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "+"
+align = 2
 
 [node name="Back" type="Button" parent="CivPanel"]
 anchor_left = 0.5
