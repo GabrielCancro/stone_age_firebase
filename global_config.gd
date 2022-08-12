@@ -31,4 +31,6 @@ func reload_data():
 	emit_signal("complete_reload_data")
 
 func get_total_turns():
-	return 3+floor( (GC.NOW_TIME - GC.GAME.start_time)/(60*60)) # one turn per hour
+	var _total_turns = 13+floor( (GC.NOW_TIME - GC.GAME.start_time)/(60*60)) # one turn per hour
+	if _total_turns > GC.GAME.max_turns: _total_turns = GC.GAME.max_turns
+	return _total_turns

@@ -48,7 +48,8 @@ func onClickCreateNewGame():
 	for nm in players:
 		players_data[nm.to_upper()] = {
 			"turn":0, "camp":0,"villager":5,"score":0,
-			"food":12,"wood":0,"stone":0,"gold":0
+			"food":12,"wood":0,"adobe":0,"stone":0,"gold":0,
+			"build_cards":[],"civ_cards":[],"civ_bonif":[],
 		}
 	FM.DATA.games[game_name] = {
 		"name":game_name,

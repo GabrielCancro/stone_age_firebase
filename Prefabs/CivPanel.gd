@@ -16,6 +16,7 @@ func showCivPanel():
 	check_cards()
 	set_card_data($HBox_cards/B1,GC.PLAYER.civ_cards[0])
 	set_card_data($HBox_cards/B2,GC.PLAYER.civ_cards[1])
+	update_stock()
 
 func check_cards():
 	if !"civ_cards" in GC.PLAYER: GC.PLAYER["civ_cards"] = []
@@ -50,3 +51,9 @@ func onClickCard(id):
 	print(id)
 	GC.CIV_TO_CONSTRUCT = id
 	visible = false
+
+func update_stock():
+	var data = {}
+	for bon in $VBox_stock.get_children(): data[bon.name] = 0
+	if("civ_bonif" in GC.PLAYER): for bon in GC.PLAYER["civ_bonif"]: data[bon] += 1
+	for bon in $VBox_stock.get_children(): bon.get_node("Label").text = "x"+str( data[bon.name] )

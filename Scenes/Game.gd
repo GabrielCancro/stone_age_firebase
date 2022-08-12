@@ -18,16 +18,23 @@ func onClick(btn):
 func endTurn():
 	if GC.PLAYER.turn>=GC.get_total_turns(): return
 	$Header/btn_turn.disabled = true
+	$Interaction/Drager.disabled = true
 	GC.reload_data()
 	yield(GC,"complete_reload_data")
 	$Interaction.end_turn_task()
 	yield($Interaction,"finish_end_task")
 	GC.PLAYER.turn += 1
+	if GC.PLAYER.turn >= GC.GAME.max_turns && !"end_bonif_points" in GC.PLAYER: 
+		GC.PLAYER.end_bonif_points = 0
+		for bon in GC.PLAYER["civ_bonif"]: GC.PLAYER.end_bonif_points += GC.PLAYER[bon]
+		GC.PLAYER.score += GC.PLAYER.end_bonif_points
+		$Interaction.update_all_panels()
 	FM.push_data("games/"+GC.GAME.name+"/players/"+GC.USER.name)
 	yield(FM,"complete_push")
 	update_ui()
 	check_finish_game()
-	$Header/btn_turn.disabled = false	
+	$Header/btn_turn.disabled = false
+	$Interaction/Drager.disabled = false
 
 func set_now_time():
 	$Header/btn_turn.disabled = true

@@ -85,3 +85,7 @@ func add_max(cnt=1):
 
 func get_result():
 	return result
+
+func free_node_from_stay(stay):
+	for node in $Nodes.get_children():
+		if get_stay(node)==stay: free_node(node)

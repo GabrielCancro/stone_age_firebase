@@ -7,6 +7,8 @@ func _ready():
 	$User/btn_new.connect("button_down",self,"onClick",["new"])
 	CLOCK.init()
 #	check_time()
+	FM.pull_data()
+	yield(FM,"complete_pull")
 	set_game_button()
 
 func onClick(btn):

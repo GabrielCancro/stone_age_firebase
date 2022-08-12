@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=41 format=2]
 
 [ext_resource path="res://Scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=2]
@@ -37,6 +37,8 @@
 [ext_resource path="res://assets/map/map_civ.png" type="Texture" id=35]
 [ext_resource path="res://assets/civ_card.png" type="Texture" id=36]
 [ext_resource path="res://Prefabs/CivPanel.gd" type="Script" id=37]
+[ext_resource path="res://assets/civ.jpg" type="Texture" id=38]
+[ext_resource path="res://assets/villager.jpg" type="Texture" id=39]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -506,10 +508,14 @@ text = "+9"
 align = 2
 valign = 1
 
-[node name="Icon" type="Sprite" parent="Interaction/fx"]
-position = Vector2( 24, 8.34465e-07 )
-scale = Vector2( 0.305085, 0.305085 )
-texture = ExtResource( 10 )
+[node name="Icon" type="TextureRect" parent="Interaction/fx"]
+margin_left = 3.0
+margin_top = -20.0
+margin_right = 43.0
+margin_bottom = 20.0
+texture = ExtResource( 38 )
+expand = true
+stretch_mode = 1
 
 [node name="Tween" type="Tween" parent="Interaction"]
 
@@ -1059,8 +1065,119 @@ margin_bottom = -37.0
 theme = ExtResource( 2 )
 text = "CANCELAR"
 
+[node name="ColorRect" type="ColorRect" parent="CivPanel"]
+margin_left = 742.0
+margin_top = 7.0
+margin_right = 789.0
+margin_bottom = 172.0
+color = Color( 0, 0, 0, 0.768627 )
+
+[node name="VBox_stock" type="VBoxContainer" parent="CivPanel"]
+margin_left = 748.0
+margin_top = 13.0
+margin_right = 783.0
+margin_bottom = 165.0
+
+[node name="tool" type="TextureRect" parent="CivPanel/VBox_stock"]
+margin_right = 35.0
+margin_bottom = 35.0
+rect_min_size = Vector2( 35, 35 )
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="CivPanel/VBox_stock/tool"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -5.0
+margin_top = 3.5
+margin_right = 45.0
+margin_bottom = 35.5
+rect_scale = Vector2( 0.5, 0.5 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "3"
+align = 2
+valign = 1
+
+[node name="villager" type="TextureRect" parent="CivPanel/VBox_stock"]
+margin_top = 39.0
+margin_right = 35.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 35, 35 )
+texture = ExtResource( 39 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="CivPanel/VBox_stock/villager"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -5.0
+margin_top = 3.5
+margin_right = 45.0
+margin_bottom = 35.5
+rect_scale = Vector2( 0.5, 0.5 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "3"
+align = 2
+valign = 1
+
+[node name="build" type="TextureRect" parent="CivPanel/VBox_stock"]
+margin_top = 78.0
+margin_right = 35.0
+margin_bottom = 113.0
+rect_min_size = Vector2( 35, 35 )
+texture = ExtResource( 33 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="CivPanel/VBox_stock/build"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -5.0
+margin_top = 3.5
+margin_right = 45.0
+margin_bottom = 35.5
+rect_scale = Vector2( 0.5, 0.5 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "3"
+align = 2
+valign = 1
+
+[node name="camp" type="TextureRect" parent="CivPanel/VBox_stock"]
+margin_top = 117.0
+margin_right = 35.0
+margin_bottom = 152.0
+rect_min_size = Vector2( 35, 35 )
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="CivPanel/VBox_stock/camp"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -5.0
+margin_top = 3.5
+margin_right = 45.0
+margin_bottom = 35.5
+rect_scale = Vector2( 0.5, 0.5 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "3"
+align = 2
+valign = 1
+
 [node name="EndPanel" type="ColorRect" parent="."]
-visible = false
 margin_top = 40.0
 margin_right = 603.0
 margin_bottom = 400.0
@@ -1104,6 +1221,134 @@ margin_right = 489.5
 margin_bottom = -122.0
 theme = ExtResource( 2 )
 disabled = true
+
+[node name="VBox_stock" type="VBoxContainer" parent="EndPanel"]
+margin_left = 619.0
+margin_top = 16.0
+margin_right = 661.0
+margin_bottom = 228.0
+
+[node name="tool" type="TextureRect" parent="EndPanel/VBox_stock"]
+margin_right = 42.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="EndPanel/VBox_stock/tool"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 34.0
+margin_top = -12.5
+margin_right = 214.0
+margin_bottom = 19.5
+rect_scale = Vector2( 0.8, 0.8 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "3x15=45"
+valign = 1
+
+[node name="villager" type="TextureRect" parent="EndPanel/VBox_stock"]
+margin_top = 44.0
+margin_right = 42.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 39 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="EndPanel/VBox_stock/villager"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 34.0
+margin_top = -11.5
+margin_right = 214.0
+margin_bottom = 20.5
+rect_scale = Vector2( 0.8, 0.8 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "3x15=45"
+valign = 1
+
+[node name="build" type="TextureRect" parent="EndPanel/VBox_stock"]
+margin_top = 88.0
+margin_right = 42.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 33 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="EndPanel/VBox_stock/build"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 33.0
+margin_top = -11.0
+margin_right = 213.0
+margin_bottom = 21.0
+rect_scale = Vector2( 0.8, 0.8 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "3x15=45"
+valign = 1
+
+[node name="camp" type="TextureRect" parent="EndPanel/VBox_stock"]
+margin_top = 132.0
+margin_right = 42.0
+margin_bottom = 172.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 13 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="EndPanel/VBox_stock/camp"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 34.0
+margin_top = -13.5
+margin_right = 214.0
+margin_bottom = 18.5
+rect_scale = Vector2( 0.8, 0.8 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "3x15=45"
+valign = 1
+
+[node name="Label_extra" type="Label" parent="EndPanel"]
+modulate = Color( 0.960784, 1, 0.6, 1 )
+margin_left = 726.0
+margin_top = 200.0
+margin_right = 798.0
+margin_bottom = 232.0
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "130"
+align = 1
+
+[node name="Label5" type="Label" parent="EndPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 245.5
+margin_top = 18.0
+margin_right = 614.5
+margin_bottom = 85.0
+rect_scale = Vector2( 0.5, 0.5 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "Extra por cartas
+de civilización"
+align = 2
 
 [node name="HelpPanel" parent="." instance=ExtResource( 27 )]
 visible = false

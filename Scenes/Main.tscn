@@ -1,11 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=1]
 [ext_resource path="res://Scenes/Main.gd" type="Script" id=2]
 [ext_resource path="res://Prefabs/NewGamePopup.gd" type="Script" id=3]
+[ext_resource path="res://assets/map/map_blur.jpg" type="Texture" id=4]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
+
+[node name="Map" type="Sprite" parent="."]
+modulate = Color( 0.690196, 0.690196, 0.690196, 1 )
+position = Vector2( 402.783, 211 )
+scale = Vector2( 1.68667, 1.68667 )
+texture = ExtResource( 4 )
+region_rect = Rect2( 100, 50, 1080, 600 )
 
 [node name="User" type="Panel" parent="."]
 margin_right = 800.0
@@ -67,7 +75,7 @@ valign = 1
 margin_right = 800.0
 margin_bottom = 450.0
 theme = ExtResource( 1 )
-color = Color( 0.117647, 0.117647, 0.117647, 0.929412 )
+color = Color( 0.117647, 0.117647, 0.117647, 0.964706 )
 script = ExtResource( 3 )
 
 [node name="Label2" type="Label" parent="NewGamePopup"]
@@ -75,9 +83,9 @@ anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
 margin_left = 274.0
-margin_top = -62.0
+margin_top = -88.0
 margin_right = -234.0
-margin_bottom = 52.0
+margin_bottom = 26.0
 text = "CREANDO NUEVA PARTIDA
 ESPERE POR FAVOR..."
 align = 1

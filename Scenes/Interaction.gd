@@ -12,6 +12,7 @@ func onSetNode(node,stay,result):
 	if result.TOOL>1: $Drager.free_node(node)
 	if result.CAMP>1: $Drager.free_node(node)
 	if result.VILLAGER>2: $Drager.free_node(node)
+	if stay=="VILLAGER" && GC.PLAYER.villager>=10: $Drager.free_node(node)
 	if result.BUILD>1: $Drager.free_node(node)
 	elif result.BUILD==1 && stay=="BUILD":
 		get_node("../BuildPanel").current_villager_node = node
@@ -52,6 +53,11 @@ func end_turn_task():
 		$Drager.add_max(1)
 		update_all_panels()
 		yield(self,"finish_current_anim")
+		if GC.PLAYER.villager>=10: 
+			$Drager.free_node_from_stay("VILLAGER")
+			yield(get_tree().create_timer(.3),"timeout")
+			$Drager.free_node_from_stay("VILLAGER")
+			yield(get_tree().create_timer(.3),"timeout")
 	if RESULT.BUILD == 1 && GC.PLAYER.build_cards: 
 		var card = GC.PLAYER.build_cards[GC.BUILD_TO_CONSTRUCT]
 		var recs = {}
@@ -80,24 +86,26 @@ func end_turn_task():
 		#free villager
 		$Drager.free_node(get_node("../BuildPanel").current_villager_node)
 		yield(get_tree().create_timer(.3),"timeout")
+	
 	if RESULT.CIV == 1 && GC.PLAYER.civ_cards: 
 		var card = GC.PLAYER.civ_cards[GC.CIV_TO_CONSTRUCT]
 		var val = 2 + GC.CIV_TO_CONSTRUCT
 		if(GC.PLAYER["wood"]>=val):
 			GC.PLAYER["wood"] -= val
 			update_all_panels()
-			fx_text("-"+str(val),"wood",get_node("../Map/MapCiv").position)
+			fx_text("-"+str(val),"wood",get_node("../Map/MapCiv").position)			
 			yield(self,"finish_current_anim")
 			#add rec
 			GC.PLAYER[card[0]] += 1
-			fx_text("+"+str(1),"card[0]",get_node("../Map/MapCiv").position)
+			update_all_panels()
+			fx_text("+"+str(1),card[0],get_node("../Map/MapCiv").position)
 			yield(self,"finish_current_anim")
 			#add civ
-			if(!"civ" in GC.PLAYER): GC.PLAYER["civ"] = []
-			GC.PLAYER["civ"].append(card[1])
-			fx_text("+"+str(1),"civ",get_node("../Map/MapCiv").position)
-			yield(self,"finish_current_anim")
+			if(!"civ_bonif" in GC.PLAYER): GC.PLAYER["civ_bonif"] = []
+			GC.PLAYER["civ_bonif"].append(card[1])
+			update_all_panels()
 			GC.PLAYER.civ_cards.erase(card)
+			fx_text("+"+str(1),"civ",get_node("../Map/MapCiv").position)
 			yield(self,"finish_current_anim")
 		#free villager
 		$Drager.free_node(get_node("../CivPanel").current_villager_node)
@@ -120,7 +128,7 @@ func end_turn_task():
 		yield(self,"finish_current_anim")
 	
 #	END TURN
-	yield(get_tree().create_timer(1),"timeout")
+	yield(get_tree().create_timer(.5),"timeout")
 	emit_signal("finish_end_task")
 
 func add_resource(name,cnt):
