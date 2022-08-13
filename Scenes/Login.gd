@@ -1,18 +1,32 @@
 extends Node2D
 
-func _ready():
-	FM.init()
+func _ready():	
 	$LogIn.visible = true
 	$NewAccount.visible = false
 	$LogIn/VBox/btn_login.connect("button_down",self,"onClick",["login"])
 	$LogIn/VBox/btn_new.connect("button_down",self,"onClick",["new"])
+	$LogIn/VBox/CheckBox.connect("button_down",self,"onClick",["check"])
+	$LogIn/VBox/pass.connect("focus_entered",self,"onClick",["focus_pass"])
+	$btn_quit.connect("button_down",self,"onClick",["quit"])
 	$NewAccount/VBox/btn_create.connect("button_down",self,"onClick",["create"])
 	$NewAccount/btn_back.connect("button_down",self,"onClick",["back"])
 	CLOCK.init()
-#	var time = yield( CLOCK.get_time(),"complete" )
-#	print( "TIME: ", time)
+	
+	$LogIn.visible = false
+	FM.init()
+	FM.pull_data()
+	yield(FM,"complete_pull")
+	if(FM.DATA):
+		$LogIn.visible = true
+	
+	if("remember_user" in StoreData.DATA && StoreData.DATA.remember_user):
+		$LogIn/VBox/CheckBox.pressed = true
+		$LogIn/VBox/name.text = StoreData.DATA.user_name
+		$LogIn/VBox/pass.text = StoreData.DATA.user_pass
+		
 
 func onClick(btn):
+	print(btn)
 	if btn=="new":
 		$LogIn.visible = false
 		$NewAccount.visible = true
@@ -25,6 +39,11 @@ func onClick(btn):
 		login()
 	if btn=="create":
 		createAccount()
+	if btn=="quit":
+		get_tree().quit()
+	if btn=="focus_pass":
+		$LogIn/VBox/pass.text = ""
+		
 
 func createAccount():
 	var user_data = { 
@@ -58,6 +77,10 @@ func login():
 		if FM.DATA.users[user_data.name].pass == user_data.pass:
 			GC.USER = FM.DATA.users[user_data.name]
 			get_tree().change_scene("res://Scenes/Main.tscn")
+			StoreData.DATA["remember_user"] = $LogIn/VBox/CheckBox.pressed
+			StoreData.DATA["user_name"] = user_data.name
+			StoreData.DATA["user_pass"] = user_data.pass
+			StoreData.save_store_data()
 			print("TE LOGUEASTE COMO >> ",GC.USER)
 		else:
 			$LogIn/Label_error.text = "CLAVE INCORRECTA"

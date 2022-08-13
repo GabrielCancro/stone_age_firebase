@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Login.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/villager_circle.png" type="Texture" id=5]
 [ext_resource path="res://assets/score_circle.png" type="Texture" id=6]
 [ext_resource path="res://assets/map/map_blur.jpg" type="Texture" id=7]
+[ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -45,9 +46,53 @@ scale = Vector2( 1.68667, 1.68667 )
 texture = ExtResource( 7 )
 region_rect = Rect2( 100, 50, 1080, 600 )
 
+[node name="Label_error" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 278.0
+margin_top = 43.0
+margin_right = 555.0
+margin_bottom = 242.0
+theme = ExtResource( 2 )
+text = "CONECTANDO CON LA BASE DE DATOS DE STONE AGE
+
+POR FAVOR ESPERE.."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Label_error2" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 280.0
+margin_top = 243.0
+margin_right = 818.0
+margin_bottom = 410.0
+rect_scale = Vector2( 0.5, 0.5 )
+theme = ExtResource( 2 )
+text = "(si la demora es muy extensa es probable que no tengas conexión a internet)"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="btn_quit" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 356.0
+margin_top = 355.0
+margin_right = 476.0
+margin_bottom = 397.0
+theme = ExtResource( 2 )
+text = "Salir"
+
 [node name="LogIn" type="Panel" parent="."]
+visible = false
 margin_left = 270.0
-margin_top = 39.0
+margin_top = 25.0
 margin_right = 562.0
 margin_bottom = 341.0
 theme = ExtResource( 2 )
@@ -57,8 +102,8 @@ modulate = Color( 1, 0, 0, 1 )
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 8.0
-margin_bottom = 44.0
+margin_top = -33.0
+margin_bottom = 3.0
 align = 1
 
 [node name="VBox" type="VBoxContainer" parent="LogIn"]
@@ -67,7 +112,7 @@ anchor_bottom = 1.0
 margin_left = 20.0
 margin_top = 20.0
 margin_right = -20.0
-custom_constants/separation = 15
+custom_constants/separation = 7
 
 [node name="Label" type="Label" parent="LogIn/VBox"]
 margin_right = 252.0
@@ -76,29 +121,37 @@ text = "Log In"
 align = 1
 
 [node name="name" type="LineEdit" parent="LogIn/VBox"]
-margin_top = 51.0
+margin_top = 43.0
 margin_right = 252.0
-margin_bottom = 97.0
+margin_bottom = 89.0
 focus_next = NodePath("../pass")
 placeholder_text = "Nombre"
 
 [node name="pass" type="LineEdit" parent="LogIn/VBox"]
-margin_top = 112.0
+margin_top = 96.0
 margin_right = 252.0
-margin_bottom = 158.0
+margin_bottom = 142.0
 focus_next = NodePath("../btn_login")
+secret = true
 placeholder_text = "Clave"
 
-[node name="btn_login" type="Button" parent="LogIn/VBox"]
-margin_top = 173.0
+[node name="CheckBox" type="CheckBox" parent="LogIn/VBox"]
+margin_top = 149.0
 margin_right = 252.0
-margin_bottom = 215.0
+margin_bottom = 173.0
+custom_fonts/font = ExtResource( 8 )
+text = "Recordad clave"
+
+[node name="btn_login" type="Button" parent="LogIn/VBox"]
+margin_top = 180.0
+margin_right = 252.0
+margin_bottom = 222.0
 text = "INGRESAR"
 
 [node name="btn_new" type="Button" parent="LogIn/VBox"]
-margin_top = 230.0
+margin_top = 229.0
 margin_right = 252.0
-margin_bottom = 263.0
+margin_bottom = 262.0
 custom_colors/font_color = Color( 0.419608, 0.580392, 1, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Crear Nueva Cuenta"

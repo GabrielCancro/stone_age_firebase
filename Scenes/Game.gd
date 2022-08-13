@@ -5,15 +5,20 @@ func _ready():
 	$Header/Label.text = GC.USER.name +" <"+GC.GAME.name+">  :"+str(GC.GAME.max_turns)
 	$Header/btn_quit.connect("button_down",self,"onClick",["quit"])
 	$Header/btn_turn.connect("button_down",self,"onClick",["turn"])
+	$Header/btn_build.connect("button_down",self,"onClick",["build"])
+	$Header/btn_civ.connect("button_down",self,"onClick",["civ"])
 	CLOCK.init()
 	set_now_time()
 	if(GC.PLAYER.turn==0): $HelpPanel.showHelp("intro")
 	for btn in $HelpButtons.get_children(): btn.connect("button_down",self,"onClickHelp",[btn])
 	check_finish_game()
+	if "worker_positions" in GC.PLAYER: $Interaction/Drager.set_worker_positions(GC.PLAYER["worker_positions"])
 
 func onClick(btn):
 	if btn == "quit": get_tree().change_scene("res://Scenes/Main.tscn")
-	if btn == "turn": endTurn();
+	if btn == "turn": endTurn()
+	if btn == "build" && !$Interaction/Drager.drag_node: $BuildPanel.showBuildPanel()
+	if btn == "civ" && !$Interaction/Drager.drag_node: $CivPanel.showCivPanel()
 	
 func endTurn():
 	if GC.PLAYER.turn>=GC.get_total_turns(): return
@@ -29,6 +34,8 @@ func endTurn():
 		for bon in GC.PLAYER["civ_bonif"]: GC.PLAYER.end_bonif_points += GC.PLAYER[bon]
 		GC.PLAYER.score += GC.PLAYER.end_bonif_points
 		$Interaction.update_all_panels()
+	#save workers positions
+	GC.PLAYER["worker_positions"] = $Interaction/Drager.get_worker_positions()
 	FM.push_data("games/"+GC.GAME.name+"/players/"+GC.USER.name)
 	yield(FM,"complete_push")
 	update_ui()

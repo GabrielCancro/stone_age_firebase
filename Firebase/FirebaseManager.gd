@@ -24,14 +24,13 @@ func init():
 	firebase.initialize_app(firebase_config)
 	db = firebase.database()
 	initialized = true
-	pull_data()
 
 func pull_data():
 	ref = db.get_reference_lite("stone_age_fb/")
 	ref.fetch()
 	DATA = yield( ref, "complete_fetch" )
 	emit_signal("complete_pull")
-	print("< PULL DATA: ",DATA)
+#	print("< PULL DATA: ",DATA)
 
 func get_data():
 	return DATA
@@ -42,10 +41,10 @@ func push_data(path):
 	for k in path.split("/"): part_data = part_data[k]
 	var result = yield(ref.update(part_data), "completed")
 	emit_signal("complete_push")
-	print("> PUSH DATA: ",path,"  >  ",DATA)
+#	print("> PUSH DATA: ",path,"  >  ",DATA)
 
 func push_var(path,k,v):
 	ref = db.get_reference_lite("stone_age_fb/"+path)
 	var result = yield(ref.update({k:v}), "completed")
 	emit_signal("complete_push")
-	print("> PUSH VAR: ",path,"  >  ",{k:v})
+#	print("> PUSH VAR: ",path,"  >  ",{k:v})

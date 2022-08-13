@@ -90,6 +90,7 @@ firebase="*res://Firebase/firebase_app_lite/firebase.gd"
 FM="*res://Firebase/FirebaseManager.gd"
 GC="*res://global_config.gd"
 CLOCK="*res://clock_service.gd"
+StoreData="*res://StoreData.gd"
 
 [display]
 

@@ -34,6 +34,7 @@ anchor_right = 1.0
 margin_left = 677.0
 margin_right = -1.0
 margin_bottom = 42.0
+disabled = true
 text = "LogOut"
 
 [node name="btn_new" type="Button" parent="User"]
@@ -72,6 +73,7 @@ align = 1
 valign = 1
 
 [node name="NewGamePopup" type="ColorRect" parent="."]
+visible = false
 margin_right = 800.0
 margin_bottom = 450.0
 theme = ExtResource( 1 )

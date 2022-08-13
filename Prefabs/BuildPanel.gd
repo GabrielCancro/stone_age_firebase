@@ -1,6 +1,5 @@
 extends ColorRect
 
-var current_villager_node = null
 onready var DRAGER = get_node("../Interaction/Drager")
 var RECS = ["wood","adobe","stone","gold"]
 
@@ -16,6 +15,7 @@ func showBuildPanel():
 	check_cards()
 	set_card_data($B1,GC.PLAYER.build_cards[0])
 	set_card_data($B2,GC.PLAYER.build_cards[1])
+	$noWorker.visible = (DRAGER.result.BUILD<1)
 
 func check_cards():
 	if !"build_cards" in GC.PLAYER: GC.PLAYER["build_cards"] = []
@@ -40,6 +40,7 @@ func get_random_card():
 		var index = last + randi()%(4-last)
 		card.append( RECS[index] )
 		last = index
+	if(card.size()==1): card.append("gold")
 	return card
 
 func set_card_data(card,data):
@@ -58,8 +59,7 @@ func calc_score(data):
 func onBackButton():
 	visible = false
 	GC.BUILD_TO_CONSTRUCT = null
-	DRAGER.free_node(current_villager_node)
-	current_villager_node = null
+	DRAGER.free_node_from_stay("BUILD")
 
 func onClickHouse(id):
 	print(id)

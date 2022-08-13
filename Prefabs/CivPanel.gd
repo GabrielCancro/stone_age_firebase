@@ -1,6 +1,5 @@
 extends ColorRect
 
-var current_villager_node = null
 onready var DRAGER = get_node("../Interaction/Drager")
 var RECS = ["wood","adobe","stone","gold"]
 
@@ -17,6 +16,7 @@ func showCivPanel():
 	set_card_data($HBox_cards/B1,GC.PLAYER.civ_cards[0])
 	set_card_data($HBox_cards/B2,GC.PLAYER.civ_cards[1])
 	update_stock()
+	$noWorker.visible = (DRAGER.result.CIV<1)
 
 func check_cards():
 	if !"civ_cards" in GC.PLAYER: GC.PLAYER["civ_cards"] = []
@@ -44,8 +44,7 @@ func set_card_data(card,data):
 func onBackButton():
 	visible = false
 	GC.BUILD_TO_CONSTRUCT = null
-	DRAGER.free_node(current_villager_node)
-	current_villager_node = null
+	DRAGER.free_node_from_stay("CIV")
 
 func onClickCard(id):
 	print(id)

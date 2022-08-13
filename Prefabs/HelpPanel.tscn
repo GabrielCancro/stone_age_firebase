@@ -189,6 +189,7 @@ scale = Vector2( 0.75, 0.75 )
 texture = ExtResource( 5 )
 
 [node name="tool" type="Control" parent="Pages"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 64, 273 )
@@ -208,7 +209,7 @@ margin_top = -182.0
 margin_right = 314.0
 margin_bottom = -86.0
 custom_constants/line_spacing = -7
-text = "Aqui se producen herramientas, estas mejoran la cantidad de materiales que recogen tus trabajadores"
+text = "Aquí se producen herramientas, estas mejoran la cantidad de materiales que recogen tus trabajadores"
 valign = 1
 autowrap = true
 
@@ -222,7 +223,7 @@ margin_top = 2.0
 margin_right = 351.0
 margin_bottom = 98.0
 custom_constants/line_spacing = -7
-text = "Aqui obtienes puntos de cultivo, estos puntos reducen el costo de alimentacion de tu tribu"
+text = "Obtienes puntos de cultivo, estos puntos reducen el costo de alimentación de tu tribu"
 valign = 1
 autowrap = true
 
@@ -241,7 +242,24 @@ margin_top = -84.0
 margin_right = 264.0
 margin_bottom = 12.0
 custom_constants/line_spacing = -7
-text = "Coloca dos trabajadores aqui y obtendra un trabajador extra <3"
+text = "Coloca dos trabajadores aquí y obtendrás un trabajador extra <3"
+align = 2
+valign = 1
+autowrap = true
+
+[node name="Label4" type="Label" parent="Pages/tool"]
+modulate = Color( 0.756863, 0.756863, 0.756863, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -22.0
+margin_top = -12.0
+margin_right = 488.0
+margin_bottom = 24.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_constants/line_spacing = -7
+text = "(máximo 10)"
 align = 2
 valign = 1
 autowrap = true
@@ -262,8 +280,8 @@ scale = Vector2( 0.735507, 0.735507 )
 texture = ExtResource( 10 )
 
 [node name="Camp" type="Sprite" parent="Pages/tool"]
-position = Vector2( 112.176, 319 )
-scale = Vector2( 0.490196, 0.490196 )
+position = Vector2( 116.397, 321.221 )
+scale = Vector2( 0.629418, 0.629418 )
 texture = ExtResource( 6 )
 
 [node name="build" type="Control" parent="Pages"]

@@ -19,6 +19,8 @@ func _ready():
 
 func _input(event):
 	if disabled: return
+	if get_node("../../BuildPanel").visible || get_node("../../CivPanel").visible: return
+	if get_node("../../EndPanel").visible || get_node("../../HelpPanel").visible: return
 	if event is InputEventMouseButton:
 		if event.pressed && !drag_node:
 			var near = $Nodes.get_children()[0]
@@ -88,4 +90,24 @@ func get_result():
 
 func free_node_from_stay(stay):
 	for node in $Nodes.get_children():
-		if get_stay(node)==stay: free_node(node)
+		if get_stay(node)==stay: 
+			free_node(node)
+			yield(get_tree().create_timer(.1),"timeout")
+
+func get_worker_positions():
+	var pos = []
+	for node in $Nodes.get_children():
+		if(node.get_index()>=GC.PLAYER.villager): break
+		pos.append({"x":node.position.x,"y":node.position.y})
+	return pos
+
+func set_worker_positions(pos):
+	yield(get_tree().create_timer(.1),"timeout")
+	for node in $Nodes.get_children():
+		if(node.get_index()>=pos.size()): break		
+		onStartDrag(node)
+		var vPos = Vector2(pos[node.get_index()].x,pos[node.get_index()].y)
+		$Tween.interpolate_property(node,"position",node.position,vPos,.1,Tween.TRANS_QUAD,Tween.EASE_OUT)
+		$Tween.start()
+		yield(get_tree().create_timer(.1),"timeout")
+		onFinishDrag(node)
