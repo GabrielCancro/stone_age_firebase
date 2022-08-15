@@ -31,6 +31,7 @@ func endTurn():
 	GC.PLAYER.turn += 1
 	if GC.PLAYER.turn >= GC.GAME.max_turns && !"end_bonif_points" in GC.PLAYER: 
 		GC.PLAYER.end_bonif_points = 0
+		if(!"civ_bonif" in GC.PLAYER): GC.PLAYER["civ_bonif"] = []
 		for bon in GC.PLAYER["civ_bonif"]: GC.PLAYER.end_bonif_points += GC.PLAYER[bon]
 		GC.PLAYER.score += GC.PLAYER.end_bonif_points
 		$Interaction.update_all_panels()

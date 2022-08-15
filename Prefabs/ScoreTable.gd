@@ -1,10 +1,12 @@
 extends ColorRect
 
+var table = null
+
 func _ready():
 	updateTable()
 
 func updateTable():
-	var table = []
+	table = []
 	$Name.text = ""
 	$NameBr.text = ""
 	$Score.text = ""

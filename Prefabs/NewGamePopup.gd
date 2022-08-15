@@ -47,8 +47,8 @@ func onClickCreateNewGame():
 	var players_data = {}
 	for nm in players:
 		players_data[nm.to_upper()] = {
-			"turn":0, "camp":0,"villager":5,"score":0,
-			"food":12,"wood":0,"adobe":0,"stone":0,"gold":0,
+			"turn":0, "tool":0, "camp":0,"villager":5,"score":0,
+			"food":35,"wood":0,"adobe":0,"stone":0,"gold":0,"build":0,
 			"build_cards":[],"civ_cards":[],"civ_bonif":[],
 		}
 	FM.DATA.games[game_name] = {
@@ -56,7 +56,8 @@ func onClickCreateNewGame():
 		"start_time": yield( CLOCK.get_time(),"complete" ),
 		"start_os_date": OS.get_datetime(),
 		"players": players_data,
-		"max_turns": 100,
+		"max_turns": 30,
+		"own": GC.USER.name,
 	}
 	FM.push_data("games/"+game_name)
 	yield(FM,"complete_push")

@@ -128,7 +128,7 @@ func end_turn_task():
 		yield(get_tree().create_timer(.3),"timeout")
 
 #	EAT TRIBE
-	var eat = max(0,GC.PLAYER["villager"]-GC.PLAYER["camp"])
+	var eat = max(0,GC.PLAYER["villager"]*2-GC.PLAYER["camp"])
 	GC.PLAYER["food"] -= eat
 	var no_eat = false
 	if(GC.PLAYER["food"]<0): 
@@ -168,11 +168,11 @@ func fx_text(txt,icon,pos):
 func get_dices(cnt):
 	randomize()
 	var sum = 0
-	for i in range(cnt): sum += randi() % 6 +1
+	for i in range(cnt): sum += (randi() % 6 + 1) + floor(GC.PLAYER["tool"]/3)
 	return sum
 
 func update_all_panels():
-	var cnt = max(0,GC.PLAYER["villager"]-GC.PLAYER["camp"])
+	var cnt = max(0,GC.PLAYER["villager"]*2-GC.PLAYER["camp"])
 	$eat_panel/Label2.text = "-"+str(cnt)
 	$rec_panel.update_panel()
 	$ScoreTable.updateTable()

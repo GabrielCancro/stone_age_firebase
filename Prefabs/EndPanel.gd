@@ -14,6 +14,7 @@ func _ready():
 func show_end_panel():
 	visible = true
 	update_stock()
+	check_all_finished()
 	$Timer.start()
 
 func refresh():
@@ -22,7 +23,17 @@ func refresh():
 	yield(FM,"complete_pull")
 	GC.GAME = FM.DATA.games[GC.GAME.name]
 	get_node("../Interaction/ScoreTable").updateTable()
+	check_all_finished()
 	$Refresh.text = ""
+
+func check_all_finished():
+	var finished = true
+	for p in GC.GAME.players:
+		print("END ",p," ",GC.GAME.players[p].turn)
+		if(GC.GAME.players[p].turn<GC.GAME.max_turns): finished = false
+	if finished:
+		$Label_win.text = get_node("../Interaction/ScoreTable").table[0].name
+		$Label_noFinish.text = ""
 
 func update_stock():
 	var data = {}

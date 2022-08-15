@@ -938,92 +938,6 @@ una bonificación extra
 (indicado abajo a la derecha)"
 valign = 1
 
-[node name="HBox_recs" type="HBoxContainer" parent="CivPanel"]
-margin_left = -1.0
-margin_top = 86.0
-margin_right = 799.0
-margin_bottom = 116.0
-custom_constants/separation = 75
-alignment = 1
-
-[node name="HBox" type="HBoxContainer" parent="CivPanel/HBox_recs"]
-margin_left = 246.0
-margin_right = 350.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 104, 30 )
-custom_constants/separation = 3
-alignment = 1
-
-[node name="r1" type="TextureRect" parent="CivPanel/HBox_recs/HBox"]
-margin_left = 4.0
-margin_right = 34.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 14 )
-expand = true
-stretch_mode = 1
-
-[node name="r2" type="TextureRect" parent="CivPanel/HBox_recs/HBox"]
-margin_left = 37.0
-margin_right = 67.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 14 )
-expand = true
-stretch_mode = 1
-
-[node name="r3" type="TextureRect" parent="CivPanel/HBox_recs/HBox"]
-margin_left = 70.0
-margin_right = 100.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 14 )
-expand = true
-stretch_mode = 1
-
-[node name="HBox2" type="HBoxContainer" parent="CivPanel/HBox_recs"]
-margin_left = 425.0
-margin_right = 554.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 104, 30 )
-custom_constants/separation = 3
-alignment = 1
-
-[node name="r1" type="TextureRect" parent="CivPanel/HBox_recs/HBox2"]
-margin_right = 30.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 14 )
-expand = true
-stretch_mode = 1
-
-[node name="r2" type="TextureRect" parent="CivPanel/HBox_recs/HBox2"]
-margin_left = 33.0
-margin_right = 63.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 14 )
-expand = true
-stretch_mode = 1
-
-[node name="r3" type="TextureRect" parent="CivPanel/HBox_recs/HBox2"]
-margin_left = 66.0
-margin_right = 96.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 14 )
-expand = true
-stretch_mode = 1
-
-[node name="r4" type="TextureRect" parent="CivPanel/HBox_recs/HBox2"]
-margin_left = 99.0
-margin_right = 129.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 14 )
-expand = true
-stretch_mode = 1
-
 [node name="HBox_cards" type="HBoxContainer" parent="CivPanel"]
 margin_left = -1.0
 margin_top = 120.0
@@ -1043,6 +957,44 @@ enabled_focus_mode = 0
 [node name="card" type="Sprite" parent="CivPanel/HBox_cards/B1"]
 position = Vector2( 52, 37 )
 texture = ExtResource( 36 )
+
+[node name="cost" type="HBoxContainer" parent="CivPanel/HBox_cards/B1"]
+anchor_left = 0.01625
+anchor_right = 0.01625
+margin_left = -0.69
+margin_top = -34.0
+margin_right = 103.31
+margin_bottom = -4.0
+rect_min_size = Vector2( 104, 30 )
+custom_constants/separation = 3
+alignment = 1
+
+[node name="r1" type="TextureRect" parent="CivPanel/HBox_cards/B1/cost"]
+margin_left = 4.0
+margin_right = 34.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 1
+
+[node name="r2" type="TextureRect" parent="CivPanel/HBox_cards/B1/cost"]
+margin_left = 37.0
+margin_right = 67.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 1
+
+[node name="r3" type="TextureRect" parent="CivPanel/HBox_cards/B1/cost"]
+margin_left = 70.0
+margin_right = 100.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 1
 
 [node name="bon" type="ColorRect" parent="CivPanel/HBox_cards/B1"]
 margin_left = 60.0
@@ -1117,6 +1069,50 @@ margin_bottom = 75.0
 rect_min_size = Vector2( 104, 75 )
 focus_mode = 0
 enabled_focus_mode = 0
+
+[node name="cost" type="HBoxContainer" parent="CivPanel/HBox_cards/B2"]
+margin_left = -12.0
+margin_top = -34.0
+margin_right = 117.0
+margin_bottom = -4.0
+rect_min_size = Vector2( 104, 30 )
+custom_constants/separation = 3
+alignment = 1
+
+[node name="r1" type="TextureRect" parent="CivPanel/HBox_cards/B2/cost"]
+margin_right = 30.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 1
+
+[node name="r2" type="TextureRect" parent="CivPanel/HBox_cards/B2/cost"]
+margin_left = 33.0
+margin_right = 63.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 1
+
+[node name="r3" type="TextureRect" parent="CivPanel/HBox_cards/B2/cost"]
+margin_left = 66.0
+margin_right = 96.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 1
+
+[node name="r4" type="TextureRect" parent="CivPanel/HBox_cards/B2/cost"]
+margin_left = 99.0
+margin_right = 129.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 1
 
 [node name="card" type="Sprite" parent="CivPanel/HBox_cards/B2"]
 position = Vector2( 52, 37 )
@@ -1391,11 +1387,10 @@ align = 1
 valign = 1
 
 [node name="EndPanel" type="ColorRect" parent="."]
-visible = false
 margin_top = 40.0
 margin_right = 603.0
 margin_bottom = 400.0
-color = Color( 0, 0, 0, 0.498039 )
+color = Color( 0, 0, 0, 0.647059 )
 script = ExtResource( 29 )
 
 [node name="Timer" type="Timer" parent="EndPanel"]
@@ -1403,26 +1398,50 @@ wait_time = 10.0
 
 [node name="Label2" type="Label" parent="EndPanel"]
 margin_left = 16.0
-margin_top = 14.0
+margin_top = 18.0
 margin_right = 817.0
-margin_bottom = 50.0
+margin_bottom = 54.0
 theme = ExtResource( 2 )
 custom_fonts/font = ExtResource( 31 )
 text = "La partida ha terminado!"
 
-[node name="Label3" type="Label" parent="EndPanel"]
+[node name="Label4" type="Label" parent="EndPanel"]
+margin_left = 72.0
+margin_top = 69.0
+margin_right = 485.0
+margin_bottom = 105.0
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "EL GANADOR ES..."
+
+[node name="Label_win" type="Label" parent="EndPanel"]
+modulate = Color( 0.945098, 1, 0, 1 )
+margin_left = 29.0
+margin_top = 148.0
+margin_right = 442.0
+margin_bottom = 184.0
+rect_scale = Vector2( 1.3, 1.3 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 31 )
+text = "?????"
+align = 1
+
+[node name="Label_noFinish" type="Label" parent="EndPanel"]
+modulate = Color( 0.847059, 0.847059, 0.847059, 1 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -272.5
-margin_top = -129.0
-margin_right = 528.5
-margin_bottom = -93.0
+margin_left = -90.5
+margin_top = 27.0
+margin_right = 275.5
+margin_bottom = 94.0
 rect_scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 2 )
 custom_fonts/font = ExtResource( 31 )
-text = "Talvez algunos jugadores no hayan finalizado aún"
+text = "Algunos jugadores no han finalizado aún"
+align = 1
+autowrap = true
 
 [node name="Refresh" type="Button" parent="EndPanel"]
 anchor_left = 0.5

@@ -22,18 +22,16 @@ func check_cards():
 	if !"civ_cards" in GC.PLAYER: GC.PLAYER["civ_cards"] = []
 	if GC.PLAYER["civ_cards"].size()>=2: return
 	$HBox_cards.visible = false
-	$HBox_recs.visible = false
 	$Back.visible = false
 	if GC.PLAYER["civ_cards"].size()<2: GC.PLAYER["civ_cards"].append(get_random_card())
 	if GC.PLAYER["civ_cards"].size()<2: GC.PLAYER["civ_cards"].append(get_random_card())
 	FM.push_var("games/"+GC.GAME.name+"/players/"+GC.USER.name,"civ_cards",GC.PLAYER["civ_cards"])
 	yield(FM,"complete_push")
 	$HBox_cards.visible = true
-	$HBox_recs.visible = true
 	$Back.visible = true
 	
 func get_random_card():
-	var rec = ["adobe","stone","gold"][randi()%3]
+	var rec = ["adobe","stone"][randi()%2]
 	var bon = ["camp","tool","villager","build"][randi()%4]
 	return [rec,bon]
 
