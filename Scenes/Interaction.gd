@@ -128,7 +128,8 @@ func end_turn_task():
 		yield(get_tree().create_timer(.3),"timeout")
 
 #	EAT TRIBE
-	var eat = max(0,GC.PLAYER["villager"]*2-GC.PLAYER["camp"])
+	var eat = GC.PLAYER["villager"] - floor(GC.PLAYER["camp"]/2)
+	eat = max(0,eat)
 	GC.PLAYER["food"] -= eat
 	var no_eat = false
 	if(GC.PLAYER["food"]<0): 

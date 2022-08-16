@@ -1,5 +1,6 @@
 extends Node2D
 
+var OWN_GAME = null
 func _ready():
 	$NewGamePopup.visible = false
 	$User/Label.text = "Bienvenido "+GC.USER.name+"!"
@@ -34,11 +35,12 @@ func set_game_button():
 		yield(FM,"complete_push")
 	for i in FM.DATA.games:
 		var game = FM.DATA.games[i]
-		var btn = Button.new()
-		btn.text = game.name
-		$Games/VBox.add_child(btn)
-		if !GC.USER.name in game.players: btn.disabled = true
-		btn.connect("button_down",self,"onSelectGame",[game])
+		if GC.USER.name in game.players.keys():
+			var btn = Button.new()
+			btn.text = game.name
+			$Games/VBox.add_child(btn)
+			if !GC.USER.name in game.players: btn.disabled = true
+			btn.connect("button_down",self,"onSelectGame",[game])
 
 func onSelectGame(game):
 	GC.GAME = game

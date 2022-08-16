@@ -1,5 +1,6 @@
 extends Node
 
+var version = "v0.2.0"
 var USER = null
 var GAME = null
 var PLAYER = null

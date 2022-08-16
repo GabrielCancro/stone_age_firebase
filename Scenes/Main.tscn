@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=1]
 [ext_resource path="res://Scenes/Main.gd" type="Script" id=2]
 [ext_resource path="res://Prefabs/NewGamePopup.gd" type="Script" id=3]
 [ext_resource path="res://assets/map/map_blur.jpg" type="Texture" id=4]
+[ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=5]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
@@ -39,11 +40,11 @@ text = "LogOut"
 
 [node name="btn_new" type="Button" parent="User"]
 anchor_right = 1.0
-margin_left = 577.0
-margin_top = 355.0
-margin_right = -3.0
-margin_bottom = 397.0
-text = "NUEVA PARTIDA"
+margin_left = 517.0
+margin_top = 354.0
+margin_right = -4.0
+margin_bottom = 396.0
+text = "HOSPEDAR PARTIDA"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -73,7 +74,6 @@ align = 1
 valign = 1
 
 [node name="NewGamePopup" type="ColorRect" parent="."]
-visible = false
 margin_right = 800.0
 margin_bottom = 450.0
 theme = ExtResource( 1 )
@@ -95,36 +95,44 @@ valign = 1
 autowrap = true
 
 [node name="NewGame" type="Panel" parent="NewGamePopup"]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -121.0
+margin_left = -228.0
 margin_top = -202.0
-margin_right = 165.0
+margin_right = 311.0
 margin_bottom = 131.0
+theme = ExtResource( 1 )
+
+[node name="Config" type="Control" parent="NewGamePopup/NewGame"]
+margin_left = 295.0
+margin_top = 44.0
+margin_right = 520.0
+margin_bottom = 317.0
 theme = ExtResource( 1 )
 
 [node name="Label" type="Label" parent="NewGamePopup/NewGame"]
 anchor_right = 1.0
-margin_left = 28.0
-margin_top = 4.0
-margin_right = -127.0
-margin_bottom = 40.0
+margin_left = -124.0
+margin_top = 10.0
+margin_right = 130.0
+margin_bottom = 46.0
 text = "NUEVA PARTIDA"
+align = 1
 valign = 1
 
 [node name="Label_error" type="Label" parent="NewGamePopup/NewGame"]
 modulate = Color( 1, 0.27451, 0.27451, 1 )
 anchor_right = 1.0
-margin_left = 301.0
-margin_top = 25.0
-margin_right = 215.0
-margin_bottom = 100.0
+margin_left = -267.0
+margin_top = 41.0
+margin_right = -550.0
+margin_bottom = 116.0
 custom_constants/line_spacing = -10
 text = "Jugador
 Inexistente"
+align = 2
 valign = 1
 
 [node name="Label_players" type="Label" parent="NewGamePopup/NewGame"]
@@ -133,24 +141,112 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -126.0
-margin_top = -71.5
-margin_right = 135.0
-margin_bottom = 156.5
+margin_left = -239.0
+margin_top = -56.5
+margin_right = 41.0
+margin_bottom = 171.5
 custom_constants/line_spacing = -6
 text = "JUGADOR1
 JUGADOR2
 "
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="LineEdit" type="LineEdit" parent="NewGamePopup/NewGame"]
 anchor_right = 1.0
-margin_top = 39.0
-margin_right = -52.0
-margin_bottom = 85.0
+margin_top = 55.0
+margin_right = -272.0
+margin_bottom = 101.0
 placeholder_text = "Nombre Jugador"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NewGamePopup/NewGame"]
+margin_left = 299.0
+margin_top = 60.0
+margin_right = 527.0
+margin_bottom = 339.0
+
+[node name="OptionButton" type="OptionButton" parent="NewGamePopup/NewGame/VBoxContainer"]
+margin_right = 228.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+custom_fonts/font = ExtResource( 5 )
+disabled = true
+text = "STONE AGE"
+
+[node name="LineEdit" type="LineEdit" parent="NewGamePopup/NewGame/VBoxContainer"]
+margin_top = 44.0
+margin_right = 228.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 0, 40 )
+custom_fonts/font = ExtResource( 5 )
+text = "5"
+align = 2
+
+[node name="Label" type="Label" parent="NewGamePopup/NewGame/VBoxContainer/LineEdit"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -114.0
+margin_top = -13.0
+margin_right = 70.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 5 )
+text = " INIT TURNS"
+valign = 1
+
+[node name="LineEdit2" type="LineEdit" parent="NewGamePopup/NewGame/VBoxContainer"]
+margin_top = 88.0
+margin_right = 228.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 0, 40 )
+custom_fonts/font = ExtResource( 5 )
+text = "2"
+align = 2
+
+[node name="Label" type="Label" parent="NewGamePopup/NewGame/VBoxContainer/LineEdit2"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -114.0
+margin_top = -13.0
+margin_right = 63.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 5 )
+text = " TURNS P/HS"
+valign = 1
+
+[node name="LineEdit3" type="LineEdit" parent="NewGamePopup/NewGame/VBoxContainer"]
+margin_top = 132.0
+margin_right = 228.0
+margin_bottom = 172.0
+rect_min_size = Vector2( 0, 40 )
+custom_fonts/font = ExtResource( 5 )
+text = "30"
+align = 2
+
+[node name="Label" type="Label" parent="NewGamePopup/NewGame/VBoxContainer/LineEdit3"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -114.0
+margin_top = -13.0
+margin_right = 73.0
+margin_bottom = 14.0
+custom_fonts/font = ExtResource( 5 )
+text = " TOTAL TURNS"
+valign = 1
+
+[node name="btn_add" type="Button" parent="NewGamePopup/NewGame"]
+anchor_right = 1.0
+margin_left = 227.0
+margin_top = 57.0
+margin_right = -255.0
+margin_bottom = 99.0
+text = "+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="btn_create" type="Button" parent="NewGamePopup/NewGame"]
 anchor_left = 0.5
@@ -158,32 +254,17 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -110.0
-margin_top = -2.0
+margin_top = -10.0
 margin_right = 110.0
-margin_bottom = 40.0
+margin_bottom = 32.0
 text = "CREAR PARTIDA"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="btn_add" type="Button" parent="NewGamePopup/NewGame"]
-anchor_right = 1.0
-margin_left = 236.0
-margin_top = 41.0
-margin_right = -1.0
-margin_bottom = 83.0
-text = "+"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="btn_back" type="Button" parent="NewGamePopup/NewGame"]
-anchor_right = 1.0
-margin_left = -32.0
-margin_top = -19.0
-margin_right = -269.0
-margin_bottom = 23.0
+margin_left = -29.0
+margin_top = -17.0
+margin_right = 32.0
+margin_bottom = 25.0
 text = "X"
-__meta__ = {
-"_edit_use_anchors_": false
-}

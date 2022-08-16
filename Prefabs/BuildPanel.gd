@@ -44,11 +44,16 @@ func get_random_card():
 	return card
 
 func set_card_data(card,data):
+	var recs = {"wood":0,"adobe":0, "stone":0, "gold":0}
 	for i in range(3):
 		var cld = card.get_node("HBox").get_children()[i]
 		cld.visible = i < data.size()
 		if cld.visible: 
 			cld.texture = load("res://assets/"+data[i]+".jpg")
+			recs[data[i]] += 1
+	var cost_suficient = true
+	for r in recs: if GC.PLAYER[r]<recs[r]: cost_suficient = false
+	card.disabled = !cost_suficient
 	card.get_node("Label2").text = str(calc_score(data))
 
 func calc_score(data):

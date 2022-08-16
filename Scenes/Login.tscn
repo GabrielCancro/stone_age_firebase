@@ -9,10 +9,6 @@
 [ext_resource path="res://assets/map/map_blur.jpg" type="Texture" id=7]
 [ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=8]
 
-[sub_resource type="DynamicFont" id=1]
-size = 24
-font_data = ExtResource( 3 )
-
 [sub_resource type="GDScript" id=2]
 script/source = "extends Sprite
 
@@ -36,6 +32,10 @@ func _process(delta):
 	pass
 "
 
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 3 )
+
 [node name="Login" type="Node2D"]
 script = ExtResource( 1 )
 
@@ -46,7 +46,25 @@ scale = Vector2( 1.68667, 1.68667 )
 texture = ExtResource( 7 )
 region_rect = Rect2( 100, 50, 1080, 600 )
 
-[node name="Label_error" type="Label" parent="."]
+[node name="Villager" type="Sprite" parent="."]
+position = Vector2( 197, 261 )
+scale = Vector2( 1.53333, 1.53333 )
+texture = ExtResource( 6 )
+script = SubResource( 2 )
+
+[node name="Villager2" type="Sprite" parent="."]
+position = Vector2( 173, 116 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 5 )
+script = SubResource( 2 )
+
+[node name="Villager4" type="Sprite" parent="."]
+position = Vector2( 109, 212 )
+scale = Vector2( 1.44513, 1.44513 )
+texture = ExtResource( 4 )
+script = SubResource( 2 )
+
+[node name="Label_connection1" type="Label" parent="."]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -62,7 +80,7 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="Label_error2" type="Label" parent="."]
+[node name="Label_connection2" type="Label" parent="."]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -74,6 +92,21 @@ rect_scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 2 )
 text = "(si la demora es muy extensa es probable que no tengas conexión a internet)"
 align = 1
+valign = 1
+autowrap = true
+
+[node name="Label_version" type="Label" parent="."]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 618.0
+margin_top = 4.0
+margin_right = 954.0
+margin_bottom = 55.0
+rect_scale = Vector2( 0.5, 0.5 )
+theme = ExtResource( 2 )
+text = "vx.x.x"
+align = 2
 valign = 1
 autowrap = true
 
@@ -218,19 +251,44 @@ margin_right = 378.0
 margin_bottom = 276.0
 text = "CREAR CUENTA"
 
-[node name="Villager" type="Sprite" parent="."]
-position = Vector2( 197, 261 )
-scale = Vector2( 1.53333, 1.53333 )
-texture = ExtResource( 6 )
-script = SubResource( 2 )
+[node name="Changelog" type="ColorRect" parent="."]
+margin_right = 800.0
+margin_bottom = 400.0
+theme = ExtResource( 2 )
+color = Color( 0.0627451, 0.0627451, 0.0627451, 0.980392 )
 
-[node name="Villager2" type="Sprite" parent="."]
-position = Vector2( 173, 116 )
-texture = ExtResource( 5 )
-script = SubResource( 2 )
+[node name="btn_ok" type="Button" parent="Changelog"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -71.0
+margin_right = 64.0
+margin_bottom = -29.0
+text = "OK!"
 
-[node name="Villager4" type="Sprite" parent="."]
-position = Vector2( 109, 212 )
-scale = Vector2( 1.44513, 1.44513 )
-texture = ExtResource( 4 )
-script = SubResource( 2 )
+[node name="Label_title" type="Label" parent="Changelog"]
+anchor_right = 1.0
+margin_bottom = 60.0
+theme = ExtResource( 2 )
+text = "CHANGELOG "
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Label_desc" type="Label" parent="Changelog"]
+anchor_right = 1.0
+margin_left = 159.0
+margin_top = 67.0
+margin_right = -110.0
+margin_bottom = 317.0
+theme = ExtResource( 2 )
+custom_constants/line_spacing = 8
+custom_fonts/font = ExtResource( 8 )
+text = "- Se redujo el consumo de alimento de los aldeanos a un punto de comida por turno.
+- Ahora, en la lista de partidas disponibles, solo se muestran las que puedes acceder.
+- Se redujo la producción de alimento del campo (triguitos) a 0,5 por turno.
+- Se quitó la posibilidad de elegir una carta si el jugador no tiene recursos suficientes para realizar la acción.
+- Se agregó la opción de crear una partida propia, cada usuario solo podrá crear una ùnica partida."
+autowrap = true

@@ -10,7 +10,10 @@ func _ready():
 	$btn_quit.connect("button_down",self,"onClick",["quit"])
 	$NewAccount/VBox/btn_create.connect("button_down",self,"onClick",["create"])
 	$NewAccount/btn_back.connect("button_down",self,"onClick",["back"])
+	$Changelog/btn_ok.connect("button_down",self,"onClick",["changelog"])
 	CLOCK.init()
+	$Changelog.visible = false
+	$Label_version.text = GC.version
 	
 	$LogIn.visible = false
 	FM.init()
@@ -23,7 +26,11 @@ func _ready():
 		$LogIn/VBox/CheckBox.pressed = true
 		$LogIn/VBox/name.text = StoreData.DATA.user_name
 		$LogIn/VBox/pass.text = StoreData.DATA.user_pass
-		
+	
+	if(!"changelog_showed" in StoreData.DATA || StoreData.DATA.changelog_showed != GC.version):
+		StoreData.DATA.changelog_showed = GC.version
+		$Changelog.visible = true
+		$Changelog/Label_title.text += GC.version
 
 func onClick(btn):
 	print(btn)
@@ -43,6 +50,8 @@ func onClick(btn):
 		get_tree().quit()
 	if btn=="focus_pass":
 		$LogIn/VBox/pass.text = ""
+	if btn=="changelog":
+		$Changelog.visible = false
 		
 
 func createAccount():

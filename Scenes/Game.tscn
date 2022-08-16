@@ -660,7 +660,6 @@ text = "?"
 flat = true
 
 [node name="BuildPanel" type="ColorRect" parent="."]
-visible = false
 margin_top = 40.0
 margin_right = 800.0
 margin_bottom = 400.0
@@ -834,9 +833,9 @@ theme = ExtResource( 2 )
 text = "CANCELAR"
 
 [node name="noWorker" type="ColorRect" parent="BuildPanel"]
-margin_left = 218.0
+margin_left = 198.0
 margin_top = 68.0
-margin_right = 588.0
+margin_right = 610.0
 margin_bottom = 233.0
 color = Color( 0, 0, 0, 0.247059 )
 
@@ -845,9 +844,9 @@ modulate = Color( 0.960784, 1, 0.482353, 1 )
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -89.0
-margin_top = 137.0
+margin_top = 141.0
 margin_right = 517.0
-margin_bottom = 204.0
+margin_bottom = 208.0
 rect_scale = Vector2( 0.3, 0.3 )
 theme = ExtResource( 2 )
 custom_fonts/font = ExtResource( 31 )
@@ -1387,6 +1386,7 @@ align = 1
 valign = 1
 
 [node name="EndPanel" type="ColorRect" parent="."]
+visible = false
 margin_top = 40.0
 margin_right = 603.0
 margin_bottom = 400.0

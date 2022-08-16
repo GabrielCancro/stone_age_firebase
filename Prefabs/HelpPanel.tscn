@@ -195,7 +195,7 @@ anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 64, 273 )
 
 [node name="MapTool" type="Sprite" parent="Pages/tool"]
-position = Vector2( 77, 65 )
+position = Vector2( 78, 61 )
 scale = Vector2( 0.78, 0.78 )
 texture = ExtResource( 8 )
 
@@ -219,11 +219,28 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -249.0
-margin_top = 2.0
-margin_right = 351.0
-margin_bottom = 98.0
+margin_top = 11.0
+margin_right = 341.0
+margin_bottom = 107.0
 custom_constants/line_spacing = -7
 text = "Obtienes puntos de cultivo, estos puntos reducen el costo de alimentación de tu tribu"
+valign = 1
+autowrap = true
+
+[node name="Label5" type="Label" parent="Pages/tool"]
+modulate = Color( 0.756863, 0.756863, 0.756863, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -22.0
+margin_top = -12.0
+margin_right = 488.0
+margin_bottom = 24.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_constants/line_spacing = -7
+text = "(el máximo es diez trabajadores)"
+align = 2
 valign = 1
 autowrap = true
 
@@ -253,14 +270,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -22.0
-margin_top = -12.0
-margin_right = 488.0
-margin_bottom = 24.0
+margin_left = -366.0
+margin_top = -90.0
+margin_right = -34.0
+margin_bottom = 4.0
 rect_scale = Vector2( 0.6, 0.6 )
 custom_constants/line_spacing = -7
-text = "(máximo 10)"
-align = 2
+text = "Cada tres herramientas, suma uno a la tirada de cada trabajador "
+valign = 1
+autowrap = true
+
+[node name="Label6" type="Label" parent="Pages/tool"]
+modulate = Color( 0.756863, 0.756863, 0.756863, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -289.0
+margin_top = 111.0
+margin_right = 43.0
+margin_bottom = 205.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_constants/line_spacing = -7
+text = "Cada dos triguitos, reduce un punto de alimentación."
 valign = 1
 autowrap = true
 
@@ -270,7 +302,7 @@ scale = Vector2( 0.78, 0.78 )
 texture = ExtResource( 7 )
 
 [node name="Tool" type="Sprite" parent="Pages/tool"]
-position = Vector2( 40.25, 105.25 )
+position = Vector2( 35, 80 )
 scale = Vector2( 0.598837, 0.598837 )
 texture = ExtResource( 4 )
 
@@ -280,7 +312,7 @@ scale = Vector2( 0.735507, 0.735507 )
 texture = ExtResource( 10 )
 
 [node name="Camp" type="Sprite" parent="Pages/tool"]
-position = Vector2( 116.397, 321.221 )
+position = Vector2( 63, 321 )
 scale = Vector2( 0.629418, 0.629418 )
 texture = ExtResource( 6 )
 
@@ -324,7 +356,7 @@ margin_top = -37.0
 margin_right = 282.0
 margin_bottom = 86.0
 custom_constants/line_spacing = -7
-text = "Las cartas de civilización te darán recursos extra o bonificadores a los puntos de victoria que se contabilizan al final de la partida, no dudes en adquirirlas!"
+text = "Las cartas de civilización te darán recursos extra y bonificadores a los puntos de victoria que se contabilizan al final de la partida, no dudes en adquirirlas!"
 align = 2
 valign = 1
 autowrap = true

@@ -12,9 +12,19 @@ func showNewGamePanel():
 	visible = true
 	$NewGame.visible = true
 	$NewGame/Label_error.text = ""
-	players = [GC.USER.name]
+	players = [GC.USER.name]	
+	check_own_game()
 	showPlayersList()
-	
+
+func check_own_game():
+	for i in FM.DATA.games:
+		var game = FM.DATA.games[i]
+		if "own" in game && game.own == GC.USER.name: 
+			$NewGame/Label.text = "PARTIDA EN CURSO: "+game.name
+			$NewGame/btn_add.disabled = true
+			$NewGame/btn_create.disabled = true
+			players = game.players.keys()
+
 func onClickBack():
 	visible = false
 
