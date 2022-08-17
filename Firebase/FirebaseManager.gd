@@ -8,6 +8,7 @@ var DATA = null
 
 signal complete_pull
 signal complete_push
+signal complete_remove
 
 var firebase_config = {
 	"apiKey": "AIzaSyDwl2xTkoIky9w0mPXkkFheppcVskrPzZU",  # set somewhere only if using auth
@@ -47,4 +48,10 @@ func push_var(path,k,v):
 	ref = db.get_reference_lite("stone_age_fb/"+path)
 	var result = yield(ref.update({k:v}), "completed")
 	emit_signal("complete_push")
+#	print("> PUSH VAR: ",path,"  >  ",{k:v})
+
+func delete_path(path):
+	ref = db.get_reference_lite("stone_age_fb/"+path)
+	var result = yield(ref.remove(), "completed")
+	emit_signal("complete_remove")
 #	print("> PUSH VAR: ",path,"  >  ",{k:v})

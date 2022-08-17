@@ -36,7 +36,8 @@ func set_game_button():
 		var game = FM.DATA.games[i]
 		if GC.USER.name in game.players.keys():
 			var btn = Button.new()
-			btn.text = game.name
+			if(!"desc" in game): game.desc = game.name
+			btn.text = game.desc
 			$Games/VBox.add_child(btn)
 			if !GC.USER.name in game.players: btn.disabled = true
 			btn.connect("button_down",self,"onSelectGame",[game])

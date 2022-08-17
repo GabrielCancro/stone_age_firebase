@@ -256,17 +256,6 @@ margin_bottom = 400.0
 theme = ExtResource( 2 )
 color = Color( 0.0627451, 0.0627451, 0.0627451, 0.980392 )
 
-[node name="btn_ok" type="Button" parent="Changelog"]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -64.0
-margin_top = -71.0
-margin_right = 64.0
-margin_bottom = -29.0
-text = "OK!"
-
 [node name="Label_title" type="Label" parent="Changelog"]
 anchor_right = 1.0
 margin_bottom = 60.0
@@ -279,15 +268,27 @@ autowrap = true
 [node name="Label_desc" type="Label" parent="Changelog"]
 anchor_right = 1.0
 margin_left = 159.0
-margin_top = 67.0
+margin_top = 50.0
 margin_right = -110.0
-margin_bottom = 317.0
+margin_bottom = 396.0
 theme = ExtResource( 2 )
 custom_constants/line_spacing = 8
 custom_fonts/font = ExtResource( 8 )
 text = "- Se redujo el consumo de alimento de los aldeanos a un punto de comida por turno.
-- Ahora, en la lista de partidas disponibles, solo se muestran las que puedes acceder.
 - Se redujo la producción de alimento del campo (triguitos) a 0,5 por turno.
 - Se quitó la posibilidad de elegir una carta si el jugador no tiene recursos suficientes para realizar la acción.
-- Se agregó la opción de crear una partida propia, cada usuario solo podrá crear una ùnica partida."
+- Ahora el coste de las casas y bonificadores crece a medida que las adquieres.
+- Ahora, en la lista de partidas disponibles, solo se muestran las que puedes acceder.
+- Se agregó la opción de crear una partida propia, cada usuario solo podrá crear una única partida."
 autowrap = true
+
+[node name="btn_ok" type="Button" parent="Changelog"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -64.0
+margin_top = -71.0
+margin_right = 64.0
+margin_bottom = -29.0
+text = "OK!"
