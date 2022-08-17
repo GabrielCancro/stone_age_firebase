@@ -26,6 +26,7 @@ func _ready():
 		$LogIn/VBox/CheckBox.pressed = true
 		$LogIn/VBox/name.text = StoreData.DATA.user_name
 		$LogIn/VBox/pass.text = StoreData.DATA.user_pass
+		if("muted" in StoreData.DATA): $LogIn/Mute.pressed = StoreData.DATA.muted
 	
 	if(!"changelog_showed" in StoreData.DATA || StoreData.DATA.changelog_showed != GC.version):
 		StoreData.DATA.changelog_showed = GC.version
@@ -89,6 +90,7 @@ func login():
 			StoreData.DATA["remember_user"] = $LogIn/VBox/CheckBox.pressed
 			StoreData.DATA["user_name"] = user_data.name
 			StoreData.DATA["user_pass"] = user_data.pass
+			StoreData.DATA["muted"] = $LogIn/Mute.pressed
 			StoreData.save_store_data()
 			print("TE LOGUEASTE COMO >> ",GC.USER)
 		else:

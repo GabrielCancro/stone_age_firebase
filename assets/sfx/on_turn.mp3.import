@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/on_turn.mp3-408763a82ee33da753f65400487f409d.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/on_turn.mp3"
+dest_files=[ "res://.import/on_turn.mp3-408763a82ee33da753f65400487f409d.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

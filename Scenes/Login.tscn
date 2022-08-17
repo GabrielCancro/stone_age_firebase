@@ -122,7 +122,6 @@ theme = ExtResource( 2 )
 text = "Salir"
 
 [node name="LogIn" type="Panel" parent="."]
-visible = false
 margin_left = 270.0
 margin_top = 25.0
 margin_right = 562.0
@@ -188,6 +187,14 @@ custom_colors/font_color = Color( 0.419608, 0.580392, 1, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Crear Nueva Cuenta"
 
+[node name="Mute" type="CheckBox" parent="LogIn"]
+margin_left = -253.0
+margin_top = -7.0
+margin_right = -148.0
+margin_bottom = 17.0
+custom_fonts/font = ExtResource( 8 )
+text = "Mutear"
+
 [node name="NewAccount" type="Panel" parent="."]
 visible = false
 margin_left = 204.0
@@ -251,6 +258,7 @@ margin_bottom = 276.0
 text = "CREAR CUENTA"
 
 [node name="Changelog" type="ColorRect" parent="."]
+visible = false
 margin_right = 800.0
 margin_bottom = 400.0
 theme = ExtResource( 2 )

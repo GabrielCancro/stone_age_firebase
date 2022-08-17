@@ -21,6 +21,7 @@ func onClick(btn):
 	if btn == "civ" && !$Interaction/Drager.drag_node: $CivPanel.showCivPanel()
 	
 func endTurn():
+	GC.SOUND.play_on_turn()
 	if GC.PLAYER.turn>=GC.get_total_turns(): return
 	$Header/btn_turn.disabled = true
 	$Interaction/Drager.disabled = true
@@ -41,6 +42,7 @@ func endTurn():
 	yield(FM,"complete_push")
 	update_ui()
 	check_finish_game()
+	GC.SOUND.play_complete_turn()
 	$Header/btn_turn.disabled = false
 	$Interaction/Drager.disabled = false
 

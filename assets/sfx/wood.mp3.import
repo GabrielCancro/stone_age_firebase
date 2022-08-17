@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/wood.mp3-d6d8934957598b597ed1d74f47ffac65.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/wood.mp3"
+dest_files=[ "res://.import/wood.mp3-d6d8934957598b597ed1d74f47ffac65.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

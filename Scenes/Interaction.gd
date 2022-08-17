@@ -80,6 +80,7 @@ func end_turn_task():
 				if card_data[i]==0: continue
 				GC.PLAYER[i] -= card_data[i]
 				update_all_panels()
+				GC.SOUND.play_sfx("extract")
 				fx_text("-"+str(card_data[i]),i,get_node("../Map/MapBuild").position)
 				yield(self,"finish_current_anim")
 			#add build
@@ -88,6 +89,7 @@ func end_turn_task():
 			#add score
 			var score = get_node("../BuildPanel").calc_score(card_data)
 			GC.PLAYER["score"] += score
+			GC.SOUND.play_sfx("rec")
 			fx_text("+"+str(score),"score",Vector2(700,310))
 			update_all_panels()
 			GC.PLAYER.build_cards.erase(card_data)
@@ -104,17 +106,20 @@ func end_turn_task():
 		if(GC.PLAYER["wood"]>=val):
 			GC.PLAYER["wood"] -= val
 			update_all_panels()
+			GC.SOUND.play_sfx("extract")
 			fx_text("-"+str(val),"wood",get_node("../Map/MapCiv").position)
 			yield(self,"finish_current_anim")
 			#add rec
 			GC.PLAYER[card[0]] += 1
 			update_all_panels()
+			GC.SOUND.play_sfx("wood")
 			fx_text("+"+str(1),card[0],get_node("../Map/MapCiv").position)
 			yield(self,"finish_current_anim")
-			#add civ			
+			#add civ
 			GC.PLAYER["civ_bonif"].append(card[1])
 			update_all_panels()
 			GC.PLAYER.civ_cards.erase(card)
+			GC.SOUND.play_sfx("rec")
 			fx_text("+"+str(1),"civ",get_node("../Map/MapCiv").position)
 			yield(self,"finish_current_anim")
 		#free villager
@@ -129,11 +134,13 @@ func end_turn_task():
 	if(GC.PLAYER["food"]<0): 
 		GC.PLAYER["food"] = 0
 		no_eat = true
+	GC.SOUND.play_sfx("extract")
 	fx_text("-"+str(eat),"food",$eat_panel.position)
 	update_all_panels()
 	yield(self,"finish_current_anim")
 	if no_eat:
 		GC.PLAYER["score"] -= 10
+		GC.SOUND.play_sfx("extract")
 		fx_text("-"+str(10),"score",Vector2(700,310))
 		update_all_panels()
 		yield(self,"finish_current_anim")
@@ -143,6 +150,7 @@ func end_turn_task():
 	emit_signal("finish_end_task")
 
 func add_resource(name,cnt):
+	GC.SOUND.play_sfx("wood")
 	var nameLow = name.to_lower()
 	if !nameLow in GC.PLAYER: GC.PLAYER[nameLow] = 0
 	GC.PLAYER[nameLow] += cnt

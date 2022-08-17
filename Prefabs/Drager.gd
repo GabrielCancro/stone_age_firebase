@@ -36,6 +36,7 @@ func _input(event):
 		if !event.pressed: 
 			if drag_node:
 				onFinishDrag(drag_node)
+				GC.SOUND.play_villager()
 				drag_node = null
 
 func _process(delta):
