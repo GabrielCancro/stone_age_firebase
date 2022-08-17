@@ -6,15 +6,19 @@ func _ready():
 	visible = false
 	$NewGame/btn_back.connect("button_down",self,"onClickBack")
 	$NewGame/btn_add.connect("button_down",self,"onClickAddPLayer")
-	$NewGame/btn_create.connect("button_down",self,"onClickCreateNewGame")	
+	$NewGame/btn_create.connect("button_down",self,"onClickCreateNewGame")
+	$NewGame/VBoxContainer/init_turns.connect("focus_exited",self,"check_config_errors")
+	$NewGame/VBoxContainer/turns_phs.connect("focus_exited",self,"check_config_errors")
+	$NewGame/VBoxContainer/total_turns.connect("focus_exited",self,"check_config_errors")
 
 func showNewGamePanel():
 	visible = true
 	$NewGame.visible = true
 	$NewGame/Label_error.text = ""
-	players = [GC.USER.name]	
+	players = [GC.USER.name]
 	check_own_game()
 	showPlayersList()
+	check_config_errors()
 
 func check_own_game():
 	for i in FM.DATA.games:
@@ -53,6 +57,7 @@ func onClickCreateNewGame():
 	FM.DATA.games_id += 1
 	FM.push_var("","games_id",FM.DATA.games_id)
 	yield(FM,"complete_push")
+	check_config_errors()
 	var game_name = "partida "+str(FM.DATA.games_id)
 	var players_data = {}
 	for nm in players:
@@ -66,9 +71,29 @@ func onClickCreateNewGame():
 		"start_time": yield( CLOCK.get_time(),"complete" ),
 		"start_os_date": OS.get_datetime(),
 		"players": players_data,
-		"max_turns": 30,
+		"max_turns": int($NewGame/VBoxContainer/total_turns.text),
+		"init_turns": int($NewGame/VBoxContainer/init_turns.text),
+		"turns_phs": int($NewGame/VBoxContainer/turns_phs.text),
 		"own": GC.USER.name,
 	}
 	FM.push_data("games/"+game_name)
 	yield(FM,"complete_push")
 	get_tree().reload_current_scene()
+
+func check_config_errors():
+	var correct = true
+	if !$NewGame/VBoxContainer/init_turns.text.is_valid_integer():
+		$NewGame/VBoxContainer/init_turns.text = ""
+		correct = false
+	if !$NewGame/VBoxContainer/turns_phs.text.is_valid_integer():
+		$NewGame/VBoxContainer/turns_phs.text = ""
+		correct = false
+	if !$NewGame/VBoxContainer/total_turns.text.is_valid_integer():
+		$NewGame/VBoxContainer/total_turns.text = ""
+		correct = false
+	if correct:
+		var max_turns = int($NewGame/VBoxContainer/total_turns.text)
+		var init_turns = int($NewGame/VBoxContainer/init_turns.text)
+		var turns_phs = int($NewGame/VBoxContainer/turns_phs.text)
+		$NewGame/VBoxContainer/duration.text = "DURACIÓN ( "+str( ceil( (max_turns-init_turns) / turns_phs ) )+"hs )"
+	else: $NewGame/VBoxContainer/duration.text = "DURACIÓN ( - )"

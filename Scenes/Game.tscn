@@ -660,6 +660,7 @@ text = "?"
 flat = true
 
 [node name="BuildPanel" type="ColorRect" parent="."]
+visible = false
 margin_top = 40.0
 margin_right = 800.0
 margin_bottom = 400.0
@@ -698,7 +699,7 @@ anchor_bottom = 0.5
 margin_left = -164.0
 margin_top = -99.0
 margin_right = -54.0
-margin_bottom = 9.0
+margin_bottom = 16.0
 focus_mode = 0
 enabled_focus_mode = 0
 
@@ -728,32 +729,62 @@ margin_right = 110.0
 margin_bottom = 105.0
 alignment = 1
 
-[node name="r1" type="TextureRect" parent="BuildPanel/B1/HBox"]
+[node name="adobe" type="TextureRect" parent="BuildPanel/B1/HBox"]
 margin_left = 6.0
 margin_right = 36.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 expand = true
 stretch_mode = 1
 
-[node name="r2" type="TextureRect" parent="BuildPanel/B1/HBox"]
+[node name="Label" type="Label" parent="BuildPanel/B1/HBox/adobe"]
+margin_left = -9.0
+margin_top = 20.0
+margin_right = 70.0
+margin_bottom = 56.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_fonts/font = ExtResource( 31 )
+text = "-24"
+align = 1
+
+[node name="stone" type="TextureRect" parent="BuildPanel/B1/HBox"]
 margin_left = 40.0
 margin_right = 70.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 14 )
+texture = ExtResource( 16 )
 expand = true
 stretch_mode = 1
 
-[node name="r3" type="TextureRect" parent="BuildPanel/B1/HBox"]
+[node name="Label" type="Label" parent="BuildPanel/B1/HBox/stone"]
+margin_left = -9.0
+margin_top = 20.0
+margin_right = 70.0
+margin_bottom = 56.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_fonts/font = ExtResource( 31 )
+text = "-24"
+align = 1
+
+[node name="gold" type="TextureRect" parent="BuildPanel/B1/HBox"]
 margin_left = 74.0
 margin_right = 104.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 14 )
+texture = ExtResource( 6 )
 expand = true
 stretch_mode = 1
+
+[node name="Label" type="Label" parent="BuildPanel/B1/HBox/gold"]
+margin_left = -9.0
+margin_top = 20.0
+margin_right = 70.0
+margin_bottom = 56.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_fonts/font = ExtResource( 31 )
+text = "-24"
+align = 1
 
 [node name="B2" type="Button" parent="BuildPanel"]
 anchor_left = 0.5
@@ -763,7 +794,7 @@ anchor_bottom = 0.5
 margin_left = 45.0
 margin_top = -99.0
 margin_right = 155.0
-margin_bottom = 9.0
+margin_bottom = 17.0
 focus_mode = 0
 enabled_focus_mode = 0
 
@@ -793,32 +824,62 @@ margin_right = 110.0
 margin_bottom = 105.0
 alignment = 1
 
-[node name="r1" type="TextureRect" parent="BuildPanel/B2/HBox"]
+[node name="adobe" type="TextureRect" parent="BuildPanel/B2/HBox"]
 margin_left = 6.0
 margin_right = 36.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 expand = true
 stretch_mode = 1
 
-[node name="r2" type="TextureRect" parent="BuildPanel/B2/HBox"]
+[node name="Label" type="Label" parent="BuildPanel/B2/HBox/adobe"]
+margin_left = -9.0
+margin_top = 20.0
+margin_right = 70.0
+margin_bottom = 56.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_fonts/font = ExtResource( 31 )
+text = "-24"
+align = 1
+
+[node name="stone" type="TextureRect" parent="BuildPanel/B2/HBox"]
 margin_left = 40.0
 margin_right = 70.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 14 )
+texture = ExtResource( 16 )
 expand = true
 stretch_mode = 1
 
-[node name="r3" type="TextureRect" parent="BuildPanel/B2/HBox"]
+[node name="Label" type="Label" parent="BuildPanel/B2/HBox/stone"]
+margin_left = -9.0
+margin_top = 20.0
+margin_right = 70.0
+margin_bottom = 56.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_fonts/font = ExtResource( 31 )
+text = "-24"
+align = 1
+
+[node name="gold" type="TextureRect" parent="BuildPanel/B2/HBox"]
 margin_left = 74.0
 margin_right = 104.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 14 )
+texture = ExtResource( 6 )
 expand = true
 stretch_mode = 1
+
+[node name="Label" type="Label" parent="BuildPanel/B2/HBox/gold"]
+margin_left = -9.0
+margin_top = 20.0
+margin_right = 70.0
+margin_bottom = 56.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_fonts/font = ExtResource( 31 )
+text = "-24"
+align = 1
 
 [node name="Back" type="Button" parent="BuildPanel"]
 anchor_left = 0.5
@@ -833,6 +894,7 @@ theme = ExtResource( 2 )
 text = "CANCELAR"
 
 [node name="noWorker" type="ColorRect" parent="BuildPanel"]
+visible = false
 margin_left = 198.0
 margin_top = 68.0
 margin_right = 610.0
@@ -855,7 +917,6 @@ align = 1
 valign = 1
 
 [node name="CivPanel" type="ColorRect" parent="."]
-visible = false
 margin_top = 40.0
 margin_right = 800.0
 margin_bottom = 400.0
@@ -891,14 +952,15 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -391.0
-margin_top = -112.0
-margin_right = 66.0
+margin_left = -337.0
+margin_top = 33.0
+margin_right = 120.0
+margin_bottom = 145.0
 rect_scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 2 )
 custom_fonts/font = ExtResource( 31 )
 text = "Estas cartas cuestan madera
- (indicado en la parte superior)"
+ (indicado en la parte inferior)"
 valign = 1
 
 [node name="Label5" type="Label" parent="CivPanel"]
@@ -906,16 +968,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -378.0
-margin_top = 66.0
-margin_right = 79.0
-margin_bottom = 178.0
+margin_left = -395.0
+margin_top = -100.0
+margin_right = 62.0
+margin_bottom = 12.0
 rect_scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 2 )
 custom_fonts/font = ExtResource( 31 )
 text = "Al adquirirlas te darán 
 un recurso extra 
-(indicado abajo a la izquierda)"
+(indicado arriba a la izquierda)"
 align = 2
 valign = 1
 
@@ -924,17 +986,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 165.0
-margin_top = 38.0
-margin_right = 622.0
-margin_bottom = 175.0
+margin_left = 163.0
+margin_top = 37.0
+margin_right = 620.0
+margin_bottom = 174.0
 rect_scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 2 )
 custom_fonts/font = ExtResource( 31 )
 text = "Al finalizar la partida, 
 estas cartas de darán
 una bonificación extra
-(indicado abajo a la derecha)"
+(indicado arriba a la derecha)"
 valign = 1
 
 [node name="HBox_cards" type="HBoxContainer" parent="CivPanel"]
@@ -957,49 +1019,11 @@ enabled_focus_mode = 0
 position = Vector2( 52, 37 )
 texture = ExtResource( 36 )
 
-[node name="cost" type="HBoxContainer" parent="CivPanel/HBox_cards/B1"]
-anchor_left = 0.01625
-anchor_right = 0.01625
-margin_left = -0.69
-margin_top = -34.0
-margin_right = 103.31
-margin_bottom = -4.0
-rect_min_size = Vector2( 104, 30 )
-custom_constants/separation = 3
-alignment = 1
-
-[node name="r1" type="TextureRect" parent="CivPanel/HBox_cards/B1/cost"]
-margin_left = 4.0
-margin_right = 34.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 14 )
-expand = true
-stretch_mode = 1
-
-[node name="r2" type="TextureRect" parent="CivPanel/HBox_cards/B1/cost"]
-margin_left = 37.0
-margin_right = 67.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 14 )
-expand = true
-stretch_mode = 1
-
-[node name="r3" type="TextureRect" parent="CivPanel/HBox_cards/B1/cost"]
-margin_left = 70.0
-margin_right = 100.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 14 )
-expand = true
-stretch_mode = 1
-
 [node name="bon" type="ColorRect" parent="CivPanel/HBox_cards/B1"]
-margin_left = 60.0
-margin_top = 77.0
-margin_right = 96.0
-margin_bottom = 113.0
+margin_left = 59.0
+margin_top = -30.0
+margin_right = 95.0
+margin_bottom = 6.0
 color = Color( 0, 0, 0, 0.760784 )
 
 [node name="r1" type="TextureRect" parent="CivPanel/HBox_cards/B1/bon"]
@@ -1034,10 +1058,10 @@ text = "x"
 align = 1
 
 [node name="rec" type="ColorRect" parent="CivPanel/HBox_cards/B1"]
-margin_left = 8.0
-margin_top = 76.0
-margin_right = 44.0
-margin_bottom = 112.0
+margin_left = 7.0
+margin_top = -30.0
+margin_right = 43.0
+margin_bottom = 6.0
 color = Color( 0, 0, 0, 0.760784 )
 
 [node name="r1" type="TextureRect" parent="CivPanel/HBox_cards/B1/rec"]
@@ -1061,6 +1085,33 @@ custom_fonts/font = ExtResource( 31 )
 text = "+"
 align = 2
 
+[node name="cost" type="ColorRect" parent="CivPanel/HBox_cards/B1"]
+margin_left = 34.0
+margin_top = 68.0
+margin_right = 70.0
+margin_bottom = 104.0
+color = Color( 0, 0, 0, 0.760784 )
+
+[node name="r1" type="TextureRect" parent="CivPanel/HBox_cards/B1/cost"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 33.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="CivPanel/HBox_cards/B1/cost"]
+margin_left = -4.0
+margin_top = 20.0
+margin_right = 75.0
+margin_bottom = 56.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_fonts/font = ExtResource( 31 )
+text = "-24"
+align = 1
+
 [node name="B2" type="Button" parent="CivPanel/HBox_cards"]
 margin_left = 437.0
 margin_right = 541.0
@@ -1069,59 +1120,15 @@ rect_min_size = Vector2( 104, 75 )
 focus_mode = 0
 enabled_focus_mode = 0
 
-[node name="cost" type="HBoxContainer" parent="CivPanel/HBox_cards/B2"]
-margin_left = -12.0
-margin_top = -34.0
-margin_right = 117.0
-margin_bottom = -4.0
-rect_min_size = Vector2( 104, 30 )
-custom_constants/separation = 3
-alignment = 1
-
-[node name="r1" type="TextureRect" parent="CivPanel/HBox_cards/B2/cost"]
-margin_right = 30.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 14 )
-expand = true
-stretch_mode = 1
-
-[node name="r2" type="TextureRect" parent="CivPanel/HBox_cards/B2/cost"]
-margin_left = 33.0
-margin_right = 63.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 14 )
-expand = true
-stretch_mode = 1
-
-[node name="r3" type="TextureRect" parent="CivPanel/HBox_cards/B2/cost"]
-margin_left = 66.0
-margin_right = 96.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 14 )
-expand = true
-stretch_mode = 1
-
-[node name="r4" type="TextureRect" parent="CivPanel/HBox_cards/B2/cost"]
-margin_left = 99.0
-margin_right = 129.0
-margin_bottom = 30.0
-rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 14 )
-expand = true
-stretch_mode = 1
-
 [node name="card" type="Sprite" parent="CivPanel/HBox_cards/B2"]
 position = Vector2( 52, 37 )
 texture = ExtResource( 36 )
 
 [node name="bon" type="ColorRect" parent="CivPanel/HBox_cards/B2"]
-margin_left = 60.0
-margin_top = 77.0
-margin_right = 96.0
-margin_bottom = 113.0
+margin_left = 59.0
+margin_top = -30.0
+margin_right = 95.0
+margin_bottom = 6.0
 color = Color( 0, 0, 0, 0.760784 )
 
 [node name="r1" type="TextureRect" parent="CivPanel/HBox_cards/B2/bon"]
@@ -1156,10 +1163,10 @@ text = "x"
 align = 1
 
 [node name="rec" type="ColorRect" parent="CivPanel/HBox_cards/B2"]
-margin_left = 8.0
-margin_top = 76.0
-margin_right = 44.0
-margin_bottom = 112.0
+margin_left = 7.0
+margin_top = -30.0
+margin_right = 43.0
+margin_bottom = 6.0
 color = Color( 0, 0, 0, 0.760784 )
 
 [node name="r1" type="TextureRect" parent="CivPanel/HBox_cards/B2/rec"]
@@ -1182,6 +1189,33 @@ theme = ExtResource( 2 )
 custom_fonts/font = ExtResource( 31 )
 text = "+"
 align = 2
+
+[node name="cost" type="ColorRect" parent="CivPanel/HBox_cards/B2"]
+margin_left = 34.0
+margin_top = 68.0
+margin_right = 70.0
+margin_bottom = 104.0
+color = Color( 0, 0, 0, 0.760784 )
+
+[node name="r1" type="TextureRect" parent="CivPanel/HBox_cards/B2/cost"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 33.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 14 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="CivPanel/HBox_cards/B2/cost"]
+margin_left = -4.0
+margin_top = 20.0
+margin_right = 75.0
+margin_bottom = 56.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_fonts/font = ExtResource( 31 )
+text = "-24"
+align = 1
 
 [node name="Back" type="Button" parent="CivPanel"]
 anchor_left = 0.5

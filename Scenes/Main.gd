@@ -7,7 +7,6 @@ func _ready():
 	$User/btn_logout.connect("button_down",self,"onClick",["logout"])
 	$User/btn_new.connect("button_down",self,"onClick",["new"])
 	CLOCK.init()
-	$User/btn_new.visible = (GC.USER.name == "MOLE")
 	FM.pull_data()
 	yield(FM,"complete_pull")
 	$User/btn_logout.disabled = false

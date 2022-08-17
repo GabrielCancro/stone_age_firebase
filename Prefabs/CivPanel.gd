@@ -1,7 +1,6 @@
 extends ColorRect
 
 onready var DRAGER = get_node("../Interaction/Drager")
-var RECS = ["wood","adobe","stone","gold"]
 
 func _ready():
 	randomize()
@@ -38,6 +37,8 @@ func get_random_card():
 func set_card_data(card,data):
 	card.get_node("rec/r1").texture = load("res://assets/"+data[0]+".jpg")
 	card.get_node("bon/r1").texture = load("res://assets/"+data[1]+".jpg")
+	if(!"civ_bonif" in GC.PLAYER): GC.PLAYER["civ_bonif"] = []
+	card.get_node("cost/Label").text = "-"+str( 3 + floor(GC.PLAYER.civ_bonif.size()/2) + card.get_index() )
 
 func onBackButton():
 	visible = false

@@ -141,10 +141,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -239.0
+margin_left = -250.5
 margin_top = -56.5
-margin_right = 41.0
-margin_bottom = 171.5
+margin_right = 3.5
+margin_bottom = 259.5
 custom_constants/line_spacing = -6
 text = "JUGADOR1
 JUGADOR2
@@ -171,43 +171,43 @@ custom_fonts/font = ExtResource( 5 )
 disabled = true
 text = "STONE AGE"
 
-[node name="LineEdit" type="LineEdit" parent="NewGamePopup/NewGame/VBoxContainer"]
+[node name="init_turns" type="LineEdit" parent="NewGamePopup/NewGame/VBoxContainer"]
 margin_top = 44.0
 margin_right = 228.0
 margin_bottom = 84.0
 rect_min_size = Vector2( 0, 40 )
 custom_fonts/font = ExtResource( 5 )
-text = "5"
+text = "7"
 align = 2
 
-[node name="Label" type="Label" parent="NewGamePopup/NewGame/VBoxContainer/LineEdit"]
+[node name="Label" type="Label" parent="NewGamePopup/NewGame/VBoxContainer/init_turns"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -114.0
+margin_left = -109.0
 margin_top = -13.0
-margin_right = 70.0
+margin_right = 62.0
 margin_bottom = 14.0
 custom_fonts/font = ExtResource( 5 )
 text = " INIT TURNS"
 valign = 1
 
-[node name="LineEdit2" type="LineEdit" parent="NewGamePopup/NewGame/VBoxContainer"]
+[node name="turns_phs" type="LineEdit" parent="NewGamePopup/NewGame/VBoxContainer"]
 margin_top = 88.0
 margin_right = 228.0
 margin_bottom = 128.0
 rect_min_size = Vector2( 0, 40 )
 custom_fonts/font = ExtResource( 5 )
-text = "2"
+text = "1"
 align = 2
 
-[node name="Label" type="Label" parent="NewGamePopup/NewGame/VBoxContainer/LineEdit2"]
+[node name="Label" type="Label" parent="NewGamePopup/NewGame/VBoxContainer/turns_phs"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -114.0
+margin_left = -109.0
 margin_top = -13.0
 margin_right = 63.0
 margin_bottom = 14.0
@@ -215,7 +215,7 @@ custom_fonts/font = ExtResource( 5 )
 text = " TURNS P/HS"
 valign = 1
 
-[node name="LineEdit3" type="LineEdit" parent="NewGamePopup/NewGame/VBoxContainer"]
+[node name="total_turns" type="LineEdit" parent="NewGamePopup/NewGame/VBoxContainer"]
 margin_top = 132.0
 margin_right = 228.0
 margin_bottom = 172.0
@@ -224,17 +224,27 @@ custom_fonts/font = ExtResource( 5 )
 text = "30"
 align = 2
 
-[node name="Label" type="Label" parent="NewGamePopup/NewGame/VBoxContainer/LineEdit3"]
+[node name="Label" type="Label" parent="NewGamePopup/NewGame/VBoxContainer/total_turns"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -114.0
+margin_left = -109.0
 margin_top = -13.0
-margin_right = 73.0
+margin_right = 57.0
 margin_bottom = 14.0
 custom_fonts/font = ExtResource( 5 )
 text = " TOTAL TURNS"
+valign = 1
+
+[node name="duration" type="Label" parent="NewGamePopup/NewGame/VBoxContainer"]
+margin_top = 176.0
+margin_right = 228.0
+margin_bottom = 216.0
+rect_min_size = Vector2( 0, 40 )
+custom_fonts/font = ExtResource( 5 )
+text = "DURACIÓN ( - )"
+align = 1
 valign = 1
 
 [node name="btn_add" type="Button" parent="NewGamePopup/NewGame"]

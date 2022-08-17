@@ -42,9 +42,6 @@ func onSetNode(node,stay,result):
 
 func end_turn_task():
 	var RESULT = $Drager.get_result()
-	print("RESUTL")
-	print(RESULT)
-	print("__________________________________")
 	if RESULT.FOOD > 0: 
 		add_resource("FOOD", floor(get_dices(RESULT.FOOD)/2) )
 		yield(self,"finish_current_anim")
@@ -75,28 +72,25 @@ func end_turn_task():
 			$Drager.free_node_from_stay("VILLAGER")
 			yield(get_tree().create_timer(.4),"timeout")
 	if RESULT.BUILD == 1 && GC.PLAYER.build_cards: 
-		var card = GC.PLAYER.build_cards[GC.BUILD_TO_CONSTRUCT]
-		var recs = {}
-		for r in card: 
-			if !r in recs: recs[r] = 0
-			recs[r] += 1
-		var build = true
-		for r in recs: if recs[r] > GC.PLAYER[r]: build = false
-		if build:
-			for r in recs:
-				GC.PLAYER[r] -= recs[r]
+		var card_data = GC.PLAYER.build_cards[GC.BUILD_TO_CONSTRUCT]
+		var buildeable = true
+		for i in card_data: if card_data[i] > GC.PLAYER[i]: buildeable = false
+		if buildeable:
+			for i in card_data:
+				if card_data[i]==0: continue
+				GC.PLAYER[i] -= card_data[i]
 				update_all_panels()
-				fx_text("-"+str(recs[r]),r,get_node("../Map/MapBuild").position)
+				fx_text("-"+str(card_data[i]),i,get_node("../Map/MapBuild").position)
 				yield(self,"finish_current_anim")
 			#add build
 			add_resource("BUILD",1)
 			yield(self,"finish_current_anim")
 			#add score
-			var score = get_node("../BuildPanel").calc_score(card)
+			var score = get_node("../BuildPanel").calc_score(card_data)
 			GC.PLAYER["score"] += score
 			fx_text("+"+str(score),"score",Vector2(700,310))
 			update_all_panels()
-			GC.PLAYER.build_cards.erase(card)
+			GC.PLAYER.build_cards.erase(card_data)
 			print(GC.PLAYER.build_cards)
 			yield(self,"finish_current_anim")
 		#free villager
@@ -105,7 +99,8 @@ func end_turn_task():
 	
 	if RESULT.CIV == 1 && GC.PLAYER.civ_cards: 
 		var card = GC.PLAYER.civ_cards[GC.CIV_TO_CONSTRUCT]
-		var val = 3 + GC.CIV_TO_CONSTRUCT
+		if(!"civ_bonif" in GC.PLAYER): GC.PLAYER["civ_bonif"] = []
+		var val = 3 + floor(GC.PLAYER["civ_bonif"].size()/2) + GC.CIV_TO_CONSTRUCT
 		if(GC.PLAYER["wood"]>=val):
 			GC.PLAYER["wood"] -= val
 			update_all_panels()
@@ -116,8 +111,7 @@ func end_turn_task():
 			update_all_panels()
 			fx_text("+"+str(1),card[0],get_node("../Map/MapCiv").position)
 			yield(self,"finish_current_anim")
-			#add civ
-			if(!"civ_bonif" in GC.PLAYER): GC.PLAYER["civ_bonif"] = []
+			#add civ			
 			GC.PLAYER["civ_bonif"].append(card[1])
 			update_all_panels()
 			GC.PLAYER.civ_cards.erase(card)
@@ -173,7 +167,8 @@ func get_dices(cnt):
 	return sum
 
 func update_all_panels():
-	var cnt = max(0,GC.PLAYER["villager"]*2-GC.PLAYER["camp"])
-	$eat_panel/Label2.text = "-"+str(cnt)
+	var eat = GC.PLAYER["villager"] - floor(GC.PLAYER["camp"]/2)
+	eat = max(0,eat)
+	$eat_panel/Label2.text = "-"+str(eat)
 	$rec_panel.update_panel()
 	$ScoreTable.updateTable()

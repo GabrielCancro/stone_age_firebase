@@ -54,7 +54,6 @@ script = SubResource( 2 )
 
 [node name="Villager2" type="Sprite" parent="."]
 position = Vector2( 173, 116 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 5 )
 script = SubResource( 2 )
 

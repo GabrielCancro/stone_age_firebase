@@ -32,33 +32,36 @@ func check_cards():
 	$Back.visible = true
 	
 func get_random_card():
-	RECS = ["wood","adobe","stone","gold"]
-	var card = []
-	var last = 0
-	for i in range(3):
-		if last == 3: break
-		var index = last + randi()%(4-last)
-		card.append( RECS[index] )
-		last = index
-	if(card.size()==1): card.append("gold")
-	return card
+	RECS = ["adobe","stone","gold"]
+	var card_data = {"adobe":0,"stone":0,"gold":0}
+	for i in range(2+floor(GC.PLAYER.build/2)):
+		var key = RECS[ randi() % 3 ]
+		card_data[key] += 1
+	return card_data
 
-func set_card_data(card,data):
-	var recs = {"wood":0,"adobe":0, "stone":0, "gold":0}
-	for i in range(3):
-		var cld = card.get_node("HBox").get_children()[i]
-		cld.visible = i < data.size()
-		if cld.visible: 
-			cld.texture = load("res://assets/"+data[i]+".jpg")
-			recs[data[i]] += 1
+func set_card_data(node,card_data):
 	var cost_suficient = true
-	for r in recs: if GC.PLAYER[r]<recs[r]: cost_suficient = false
-	card.disabled = !cost_suficient
-	card.get_node("Label2").text = str(calc_score(data))
+	for i in card_data:
+		var label = node.get_node("HBox/"+i+"/Label")
+		var texture = node.get_node("HBox/"+i)
+		label.text = ""
+		texture.modulate = Color(.3,.3,.3)
+		if card_data[i]>0: 
+			label.text = "-"+str(card_data[i])
+			texture.modulate = Color(1,1,1)
+		if card_data[i]>GC.PLAYER[i]: cost_suficient = false
+	node.disabled = !cost_suficient
+	node.get_node("Label2").text = str(calc_score(card_data))
 
-func calc_score(data):
+func calc_score(card_data):
 	var score = 0
-	for i in range(data.size()): score += RECS.find(data[i])+3
+	var amount = 0
+	for i in card_data:
+		if i=="adobe": score += card_data[i] * 4
+		if i=="stone": score += card_data[i] * 5
+		if i=="gold": score += card_data[i] * 6
+		amount += card_data[i]
+	score -= (amount-2)*4
 	return score
 
 func onBackButton():

@@ -18,41 +18,38 @@ theme = ExtResource( 1 )
 color = Color( 0, 0, 0, 0.784314 )
 script = ExtResource( 4 )
 
-[node name="NameBr" type="Label" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -73.0
-margin_top = 10.0
-margin_right = 48.0
-margin_bottom = 10.0
+
+[node name="Control" type="Control" parent="ScrollContainer"]
+
+[node name="NameBr" type="Label" parent="ScrollContainer/Control"]
+margin_left = 6.0
+margin_top = 6.0
+margin_right = 129.0
+margin_bottom = 263.0
 rect_pivot_offset = Vector2( 91, 47 )
 custom_colors/font_color = Color( 0.988235, 1, 0, 1 )
 custom_fonts/font = ExtResource( 3 )
 text = "
 NamePlayer"
 
-[node name="Name" type="Label" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -74.0
-margin_top = 10.0
-margin_right = 48.0
-margin_bottom = 10.0
+[node name="Name" type="Label" parent="ScrollContainer/Control"]
+margin_left = 5.0
+margin_top = 5.0
+margin_right = 128.0
+margin_bottom = 262.0
 rect_pivot_offset = Vector2( 91, 47 )
 custom_fonts/font = ExtResource( 3 )
 text = "NamePlayer
 NamePlayer"
 
-[node name="ScoreBr" type="Label" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -22.0
-margin_top = 10.0
-margin_right = 68.0
-margin_bottom = 10.0
+[node name="ScoreBr" type="Label" parent="ScrollContainer/Control"]
+margin_left = 82.0
+margin_top = 8.0
+margin_right = 154.0
+margin_bottom = 265.0
 rect_pivot_offset = Vector2( 91, 47 )
 custom_colors/font_color = Color( 0.941176, 1, 0, 1 )
 custom_fonts/font = ExtResource( 3 )
@@ -60,28 +57,22 @@ text = "
 120"
 align = 2
 
-[node name="Score" type="Label" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -23.0
-margin_top = 10.0
-margin_right = 69.0
-margin_bottom = 10.0
+[node name="Score" type="Label" parent="ScrollContainer/Control"]
+margin_left = 81.0
+margin_top = 7.0
+margin_right = 153.0
+margin_bottom = 262.0
 rect_pivot_offset = Vector2( 91, 47 )
 custom_fonts/font = ExtResource( 3 )
 text = "150
 120"
 align = 2
 
-[node name="Turn" type="Label" parent="."]
-anchor_left = 0.5
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 61.0
-margin_top = 8.0
-margin_right = 94.0
-margin_bottom = 13.0
+[node name="Turn" type="Label" parent="ScrollContainer/Control"]
+margin_left = 145.0
+margin_top = 5.0
+margin_right = 180.0
+margin_bottom = 262.0
 rect_pivot_offset = Vector2( 91, 47 )
 custom_colors/font_color = Color( 0.745098, 0.745098, 0.745098, 1 )
 custom_constants/line_spacing = 4
