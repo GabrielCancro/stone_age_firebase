@@ -1,0 +1,324 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Prefabs/EndPanel.gd" type="Script" id=1]
+[ext_resource path="res://assets/font/themeA.tres" type="Theme" id=2]
+[ext_resource path="res://assets/villager.jpg" type="Texture" id=3]
+[ext_resource path="res://assets/build.jpg" type="Texture" id=4]
+[ext_resource path="res://assets/font/font_big_outline.tres" type="DynamicFont" id=5]
+[ext_resource path="res://assets/tool.jpg" type="Texture" id=6]
+[ext_resource path="res://assets/camp.jpg" type="Texture" id=7]
+[ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=8]
+
+[node name="EndPanel" type="ColorRect"]
+margin_top = 40.0
+margin_right = 603.0
+margin_bottom = 400.0
+color = Color( 0, 0, 0, 0.647059 )
+script = ExtResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 16.0
+margin_top = 18.0
+margin_right = 817.0
+margin_bottom = 54.0
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 5 )
+text = "La partida ha terminado!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 72.0
+margin_top = 69.0
+margin_right = 485.0
+margin_bottom = 105.0
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 5 )
+text = "EL GANADOR ES..."
+
+[node name="Label_win" type="Label" parent="."]
+modulate = Color( 0.945098, 1, 0, 1 )
+margin_left = 351.0
+margin_top = 65.0
+margin_right = 591.0
+margin_bottom = 101.0
+rect_scale = Vector2( 1.3, 1.3 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 5 )
+text = "?????"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label_noFinish" type="Label" parent="."]
+modulate = Color( 0.847059, 0.847059, 0.847059, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -86.5
+margin_top = 9.0
+margin_right = 279.5
+margin_bottom = 76.0
+rect_scale = Vector2( 0.5, 0.5 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 5 )
+text = "Algunos jugadores no han finalizado aún"
+align = 1
+autowrap = true
+
+[node name="Refresh" type="Button" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 309.5
+margin_top = -352.0
+margin_right = 489.5
+margin_bottom = -122.0
+theme = ExtResource( 2 )
+disabled = true
+
+[node name="VBox_stock" type="VBoxContainer" parent="."]
+margin_left = 619.0
+margin_top = 16.0
+margin_right = 661.0
+margin_bottom = 228.0
+
+[node name="tool" type="TextureRect" parent="VBox_stock"]
+margin_right = 42.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="VBox_stock/tool"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 34.0
+margin_top = -12.5
+margin_right = 214.0
+margin_bottom = 19.5
+rect_scale = Vector2( 0.8, 0.8 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 5 )
+text = "3x15=45"
+valign = 1
+
+[node name="villager" type="TextureRect" parent="VBox_stock"]
+margin_top = 44.0
+margin_right = 42.0
+margin_bottom = 84.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 3 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="VBox_stock/villager"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 34.0
+margin_top = -11.5
+margin_right = 214.0
+margin_bottom = 20.5
+rect_scale = Vector2( 0.8, 0.8 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 5 )
+text = "3x15=45"
+valign = 1
+
+[node name="build" type="TextureRect" parent="VBox_stock"]
+margin_top = 88.0
+margin_right = 42.0
+margin_bottom = 128.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="VBox_stock/build"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 33.0
+margin_top = -11.0
+margin_right = 213.0
+margin_bottom = 21.0
+rect_scale = Vector2( 0.8, 0.8 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 5 )
+text = "3x15=45"
+valign = 1
+
+[node name="camp" type="TextureRect" parent="VBox_stock"]
+margin_top = 132.0
+margin_right = 42.0
+margin_bottom = 172.0
+rect_min_size = Vector2( 40, 40 )
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="VBox_stock/camp"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 34.0
+margin_top = -13.5
+margin_right = 214.0
+margin_bottom = 18.5
+rect_scale = Vector2( 0.8, 0.8 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 5 )
+text = "3x15=45"
+valign = 1
+
+[node name="Label_extra" type="Label" parent="."]
+modulate = Color( 0.960784, 1, 0.6, 1 )
+margin_left = 726.0
+margin_top = 200.0
+margin_right = 798.0
+margin_bottom = 232.0
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 5 )
+text = "130"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label5" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 245.5
+margin_top = 18.0
+margin_right = 614.5
+margin_bottom = 85.0
+rect_scale = Vector2( 0.5, 0.5 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 5 )
+text = "Extra por cartas
+de civilización"
+align = 2
+
+[node name="FinalTable" type="ScrollContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 15.0
+margin_top = 139.0
+margin_right = -14.0
+margin_bottom = -14.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBox" type="HBoxContainer" parent="FinalTable"]
+margin_right = 498.0
+margin_bottom = 300.0
+
+[node name="lb_name" type="Label" parent="FinalTable/HBox"]
+modulate = Color( 0.847059, 0.847059, 0.847059, 1 )
+margin_right = 120.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 120, 300 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 8 )
+text = "MoleMoleMole"
+autowrap = true
+
+[node name="lb_score" type="Label" parent="FinalTable/HBox"]
+modulate = Color( 0.847059, 0.847059, 0.847059, 1 )
+margin_left = 124.0
+margin_right = 174.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 50, 300 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 8 )
+text = "200"
+align = 1
+autowrap = true
+
+[node name="lb_villager" type="Label" parent="FinalTable/HBox"]
+modulate = Color( 0.847059, 0.847059, 0.847059, 1 )
+margin_left = 178.0
+margin_right = 228.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 50, 300 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 8 )
+text = "10x4"
+align = 1
+autowrap = true
+
+[node name="lb_camp" type="Label" parent="FinalTable/HBox"]
+modulate = Color( 0.847059, 0.847059, 0.847059, 1 )
+margin_left = 232.0
+margin_right = 282.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 50, 300 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 8 )
+text = "10x4"
+align = 1
+autowrap = true
+
+[node name="lb_tool" type="Label" parent="FinalTable/HBox"]
+modulate = Color( 0.847059, 0.847059, 0.847059, 1 )
+margin_left = 286.0
+margin_right = 336.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 50, 300 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 8 )
+text = "10x4"
+align = 1
+autowrap = true
+
+[node name="lb_build" type="Label" parent="FinalTable/HBox"]
+modulate = Color( 0.847059, 0.847059, 0.847059, 1 )
+margin_left = 340.0
+margin_right = 390.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 50, 300 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 8 )
+text = "10x4"
+align = 1
+autowrap = true
+
+[node name="lb_looter" type="Label" parent="FinalTable/HBox"]
+modulate = Color( 0.847059, 0.847059, 0.847059, 1 )
+margin_left = 394.0
+margin_right = 444.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 50, 300 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 8 )
+text = "-10x5"
+align = 1
+autowrap = true
+
+[node name="lb_total" type="Label" parent="FinalTable/HBox"]
+modulate = Color( 0.847059, 0.847059, 0.847059, 1 )
+margin_left = 448.0
+margin_right = 498.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 50, 300 )
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 8 )
+text = "250"
+align = 1
+autowrap = true
