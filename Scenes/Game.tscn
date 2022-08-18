@@ -1426,6 +1426,7 @@ align = 1
 valign = 1
 
 [node name="EndPanel" parent="." instance=ExtResource( 29 )]
+rect_min_size = Vector2( 800, 400 )
 
 [node name="HelpPanel" parent="." instance=ExtResource( 27 )]
 visible = false
