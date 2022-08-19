@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=1]
 [ext_resource path="res://Scenes/Main.gd" type="Script" id=2]
@@ -6,6 +6,13 @@
 [ext_resource path="res://assets/map/map_blur.jpg" type="Texture" id=4]
 [ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=5]
 [ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://assets/font/BAARS.TTF" type="DynamicFontData" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 14
+extra_spacing_top = -4
+extra_spacing_bottom = -4
+font_data = ExtResource( 7 )
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 2 )
@@ -64,6 +71,17 @@ custom_fonts/font = ExtResource( 5 )
 text = "TROFEOS"
 align = 1
 valign = 1
+
+[node name="Label3" type="Label" parent="User/Wins"]
+anchor_right = 1.0
+margin_top = 70.0
+margin_bottom = 106.0
+custom_colors/font_color = Color( 0.737255, 0.737255, 0.737255, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "solo cuentan las partidas de tres o más jugadores"
+align = 1
+valign = 1
+autowrap = true
 
 [node name="Label" type="Label" parent="User/Wins"]
 anchor_top = 1.0

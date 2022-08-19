@@ -79,7 +79,7 @@ func show_final_table():
 	return pjs_order[0]
 
 func check_new_win(winner_name):
-	if !"is_winner" in GC.PLAYER: 
+	if !"is_winner" in GC.PLAYER && GC.GAME.players.keys().size()>2: 
 		GC.PLAYER["is_winner"] = (winner_name == GC.USER.name)
 		if(GC.PLAYER["is_winner"]):
 			GC.USER.wins += 1
