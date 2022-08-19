@@ -37,8 +37,16 @@ func get_random_card():
 func set_card_data(card,data):
 	card.get_node("rec/r1").texture = load("res://assets/"+data[0]+".jpg")
 	card.get_node("bon/r1").texture = load("res://assets/"+data[1]+".jpg")
+	card.get_node("cost2/r1").texture = load("res://assets/"+data[1]+".jpg")
 	if(!"civ_bonif" in GC.PLAYER): GC.PLAYER["civ_bonif"] = []
-	card.get_node("cost/Label").text = "-"+str( 3 + floor(GC.PLAYER.civ_bonif.size()/2) + card.get_index() )
+	var wood_cost = 3 + floor(GC.PLAYER.civ_bonif.size()/2) + card.get_index()
+	card.get_node("cost/Label").text = "-"+str( wood_cost )
+	var cant_bonif = 0
+	for b in GC.PLAYER.civ_bonif: if b == data[1]: cant_bonif += 1
+	cant_bonif = 1+floor(cant_bonif/2)
+	if(data[1]=="villager"): cant_bonif = 1
+	card.get_node("cost2/Label").text = "-"+str( cant_bonif )
+	card.disabled = (GC.PLAYER["wood"]<wood_cost || GC.PLAYER[data[1]]<cant_bonif)
 
 func onBackButton():
 	visible = false

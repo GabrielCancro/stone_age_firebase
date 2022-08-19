@@ -12,6 +12,7 @@ var WORK_VILLAGERS = 0
 var BUILD_TO_CONSTRUCT = null
 var CIV_TO_CONSTRUCT = null
 var SOUND = null
+var FINISHED = false #game is finished
 
 signal complete_reload_data
 
@@ -30,6 +31,7 @@ func reload_data():
 	if USER: USER = FM.DATA.users[USER.name]
 	if GAME: GAME = FM.DATA.games[GAME.name]
 	if PLAYER: PLAYER = FM.DATA.games[GAME.name].players[USER.name]
+	FINISHED = ( PLAYER.turn >= GAME.max_turns )
 	emit_signal("complete_reload_data")
 
 func get_total_turns():

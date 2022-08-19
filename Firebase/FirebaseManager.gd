@@ -30,8 +30,13 @@ func pull_data():
 	ref = db.get_reference_lite("stone_age_fb/")
 	ref.fetch()
 	DATA = yield( ref, "complete_fetch" )
-	emit_signal("complete_pull")
-#	print("< PULL DATA: ",DATA)
+	if(DATA):
+		emit_signal("complete_pull")
+		print("< PULL DATA: ",DATA)
+	else: 
+		yield(get_tree().create_timer(3),"timeout")
+		print("re-conecting...")
+		pull_data()
 
 func get_data():
 	return DATA

@@ -3,7 +3,7 @@
 [ext_resource path="res://Scenes/Login.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=2]
 [ext_resource path="res://assets/font/BAARS.TTF" type="DynamicFontData" id=3]
-[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://assets/build_circle.png" type="Texture" id=4]
 [ext_resource path="res://assets/villager_circle.png" type="Texture" id=5]
 [ext_resource path="res://assets/score_circle.png" type="Texture" id=6]
 [ext_resource path="res://assets/map/map_blur.jpg" type="Texture" id=7]
@@ -58,8 +58,8 @@ texture = ExtResource( 5 )
 script = SubResource( 2 )
 
 [node name="Villager4" type="Sprite" parent="."]
-position = Vector2( 109, 212 )
-scale = Vector2( 1.44513, 1.44513 )
+position = Vector2( 90, 210 )
+scale = Vector2( 1.03368, 1.03368 )
 texture = ExtResource( 4 )
 script = SubResource( 2 )
 
@@ -275,9 +275,9 @@ autowrap = true
 
 [node name="Label_desc" type="Label" parent="Changelog"]
 anchor_right = 1.0
-margin_left = 159.0
+margin_left = 57.0
 margin_top = 50.0
-margin_right = -110.0
+margin_right = -48.0
 margin_bottom = 396.0
 theme = ExtResource( 2 )
 custom_constants/line_spacing = 8
@@ -286,6 +286,9 @@ text = "- Se redujo el consumo de alimento de los aldeanos a un punto de comida 
 - Se redujo la producción de alimento del campo (triguitos) a 0,5 por turno.
 - Se quitó la posibilidad de elegir una carta si el jugador no tiene recursos suficientes para realizar la acción.
 - Ahora el coste de las casas y bonificadores crece a medida que las adquieres.
+- Las cartas de civilizacion tienen un coste adicional
+- Se agrego una nueva región
+- Se mejoro la tabla de puntuación final
 - Ahora, en la lista de partidas disponibles, solo se muestran las que puedes acceder.
 - Se agregó la opción de crear una partida propia, cada usuario solo podrá crear una única partida."
 autowrap = true

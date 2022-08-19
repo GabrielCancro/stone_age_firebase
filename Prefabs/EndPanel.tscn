@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Prefabs/EndPanel.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/camp.jpg" type="Texture" id=7]
 [ext_resource path="res://assets/map/map_blur.jpg" type="Texture" id=8]
 [ext_resource path="res://Prefabs/ScoreLine.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/looter.jpg" type="Texture" id=10]
 
 [node name="EndPanel" type="ColorRect"]
 anchor_right = 1.0
@@ -264,13 +265,12 @@ texture = ExtResource( 4 )
 expand = true
 
 [node name="ico5" type="TextureRect" parent="HeaderTable"]
-modulate = Color( 0, 0, 0, 1 )
 margin_left = 481.0
 margin_top = 2.0
 margin_right = 516.0
 margin_bottom = 37.0
 rect_min_size = Vector2( 35, 35 )
-texture = ExtResource( 3 )
+texture = ExtResource( 10 )
 expand = true
 
 [node name="FinalTable" type="ScrollContainer" parent="."]
@@ -289,20 +289,24 @@ rect_min_size = Vector2( 630, 0 )
 custom_constants/separation = 3
 
 [node name="ScoreLine0" parent="FinalTable/VBox" instance=ExtResource( 9 )]
-margin_bottom = 37.0
+margin_right = 630.0
 
 [node name="ScoreLine1" parent="FinalTable/VBox" instance=ExtResource( 9 )]
 margin_top = 40.0
+margin_right = 630.0
 margin_bottom = 77.0
 
 [node name="ScoreLine2" parent="FinalTable/VBox" instance=ExtResource( 9 )]
 margin_top = 80.0
+margin_right = 630.0
 margin_bottom = 117.0
 
 [node name="ScoreLine3" parent="FinalTable/VBox" instance=ExtResource( 9 )]
 margin_top = 120.0
+margin_right = 630.0
 margin_bottom = 157.0
 
 [node name="ScoreLine4" parent="FinalTable/VBox" instance=ExtResource( 9 )]
 margin_top = 160.0
+margin_right = 630.0
 margin_bottom = 197.0

@@ -95,6 +95,18 @@ func free_node_from_stay(stay):
 			free_node(node)
 			yield(get_tree().create_timer(.1),"timeout")
 
+func consume_node_from_stay(stay):
+	for node in $Nodes.get_children():
+		if get_stay(node)==stay:
+			$Tween.interpolate_property(node,"modulate",Color(1,1,1,1),Color(1,1,1,0),.3,Tween.TRANS_QUAD,Tween.EASE_OUT)
+			$Tween.start()
+			yield($Tween,"tween_completed")
+			max_nodes -= 1
+			result[stay] -= 1
+			update_label()
+			node.position = $Base.position
+			node.modulate = Color(1,1,1,1)
+
 func get_worker_positions():
 	var pos = []
 	for node in $Nodes.get_children():

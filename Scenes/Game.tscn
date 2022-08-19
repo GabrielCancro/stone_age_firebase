@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Scenes/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=2]
@@ -42,6 +42,8 @@
 [ext_resource path="res://assets/sfx/villager_1.wav" type="AudioStream" id=40]
 [ext_resource path="res://Scenes/Sounds.gd" type="Script" id=41]
 [ext_resource path="res://assets/sfx/ms1.mp3" type="AudioStream" id=42]
+[ext_resource path="res://assets/looter.jpg" type="Texture" id=43]
+[ext_resource path="res://assets/map/map_looter2.png" type="Texture" id=44]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -123,6 +125,11 @@ texture = ExtResource( 34 )
 position = Vector2( 570, 176 )
 texture = ExtResource( 35 )
 
+[node name="MapLooter2" type="Sprite" parent="Map"]
+position = Vector2( 666, 181 )
+scale = Vector2( 0.745238, 0.745238 )
+texture = ExtResource( 44 )
+
 [node name="Header" type="Panel" parent="."]
 margin_right = 800.0
 margin_bottom = 43.0
@@ -156,17 +163,6 @@ anchor_bottom = 1.0
 margin_left = 752.0
 text = "X"
 
-[node name="btn_turn" type="Button" parent="Header"]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -184.0
-margin_top = 14.0
-margin_right = -14.0
-margin_bottom = 72.0
-text = "TURNO"
-
 [node name="Next" type="Label" parent="Header"]
 visible = false
 anchor_right = 1.0
@@ -197,6 +193,41 @@ margin_right = 593.0
 margin_bottom = 202.0
 focus_mode = 0
 enabled_focus_mode = 0
+
+[node name="end_turn" type="ColorRect" parent="Header"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 216.0
+margin_top = 30.5
+margin_right = 386.0
+margin_bottom = 117.5
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="Tween" type="Tween" parent="Header/end_turn"]
+
+[node name="Label" type="Label" parent="Header/end_turn"]
+anchor_right = 1.0
+margin_top = 9.0
+margin_bottom = 24.0
+rect_pivot_offset = Vector2( 91, 47 )
+custom_fonts/font = ExtResource( 25 )
+text = "TURNO"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="btn_turn" type="Button" parent="Header/end_turn"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -72.5
+margin_top = -12.0
+margin_right = 72.5
+margin_bottom = 30.0
+text = "loading.."
 
 [node name="Interaction" type="Node2D" parent="."]
 script = ExtResource( 7 )
@@ -284,6 +315,12 @@ texture = ExtResource( 4 )
 modulate = Color( 0, 0, 0, 0.619608 )
 position = Vector2( 569, 176 )
 scale = Vector2( 0.6975, 0.6975 )
+texture = ExtResource( 4 )
+
+[node name="LOOTER" type="Sprite" parent="Interaction/Drager/Points"]
+modulate = Color( 0, 0, 0, 0.619608 )
+position = Vector2( 656, 181 )
+scale = Vector2( 0.75875, 0.75875 )
 texture = ExtResource( 4 )
 
 [node name="Nodes" type="Node2D" parent="Interaction/Drager"]
@@ -505,36 +542,55 @@ icon = ExtResource( 33 )
 flat = true
 expand_icon = true
 
+[node name="looter_rec" type="ColorRect" parent="Interaction"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 699.0
+margin_top = 175.0
+margin_right = 786.0
+margin_bottom = 218.0
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="Label" type="Label" parent="Interaction/looter_rec"]
+anchor_right = 1.0
+margin_left = 39.0
+margin_top = 4.0
+margin_right = 1.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 91, 47 )
+theme = ExtResource( 2 )
+text = "99"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="TextureRect" type="TextureRect" parent="Interaction/looter_rec"]
+margin_left = 4.0
+margin_top = 3.5
+margin_right = 39.0
+margin_bottom = 38.5
+texture = ExtResource( 43 )
+expand = true
+
 [node name="eat_panel" type="Node2D" parent="Interaction"]
 position = Vector2( 701, 247 )
 
 [node name="ColorRect" type="ColorRect" parent="Interaction/eat_panel"]
 margin_left = -85.0
-margin_top = -28.0
+margin_top = -25.0
 margin_right = 85.0
-margin_bottom = 28.0
+margin_bottom = 31.0
 theme = ExtResource( 2 )
 color = Color( 0, 0, 0, 0.784314 )
-
-[node name="Label" type="Label" parent="Interaction/eat_panel"]
-anchor_right = 1.0
-margin_left = -87.0
-margin_top = -28.0
-margin_right = 87.0
-margin_bottom = -3.0
-rect_pivot_offset = Vector2( 91, 47 )
-custom_fonts/font = ExtResource( 25 )
-text = "Alimenta a tu tribu"
-align = 1
-valign = 1
-autowrap = true
 
 [node name="Label2" type="Label" parent="Interaction/eat_panel"]
 anchor_right = 1.0
 margin_left = -53.0
-margin_top = -7.0
+margin_top = -4.0
 margin_right = -2.0
-margin_bottom = 29.0
+margin_bottom = 32.0
 rect_pivot_offset = Vector2( 91, 47 )
 theme = ExtResource( 2 )
 text = "-5"
@@ -543,9 +599,21 @@ valign = 1
 autowrap = true
 
 [node name="Food" type="Sprite" parent="Interaction/eat_panel"]
-position = Vector2( 18, 11 )
+position = Vector2( 18, 14 )
 scale = Vector2( 0.220339, 0.220339 )
 texture = ExtResource( 10 )
+
+[node name="Label" type="Label" parent="Interaction/eat_panel"]
+anchor_right = 1.0
+margin_left = -85.0
+margin_top = -24.0
+margin_right = 85.0
+rect_pivot_offset = Vector2( 91, 47 )
+custom_fonts/font = ExtResource( 25 )
+text = "Alimenta tu tribu"
+align = 1
+valign = 1
+autowrap = true
 
 [node name="ScoreTable" parent="Interaction" instance=ExtResource( 28 )]
 margin_left = 616.0
@@ -656,6 +724,17 @@ margin_left = 562.0
 margin_top = 104.0
 margin_right = 567.0
 margin_bottom = 146.0
+rect_scale = Vector2( 0.8, 0.7 )
+custom_fonts/font = ExtResource( 31 )
+text = "?"
+flat = true
+
+[node name="looter" type="Button" parent="HelpButtons"]
+anchor_right = 1.0
+margin_left = 705.0
+margin_top = 147.0
+margin_right = 710.0
+margin_bottom = 189.0
 rect_scale = Vector2( 0.8, 0.7 )
 custom_fonts/font = ExtResource( 31 )
 text = "?"
@@ -925,9 +1004,6 @@ margin_right = 800.0
 margin_bottom = 400.0
 color = Color( 0.501961, 0.501961, 0.501961, 0.909804 )
 script = ExtResource( 37 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label2" type="Label" parent="CivPanel"]
 margin_top = 14.0
@@ -958,16 +1034,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -337.0
-margin_top = 33.0
-margin_right = 120.0
-margin_bottom = 145.0
+margin_left = -374.0
+margin_top = 36.0
+margin_right = 83.0
+margin_bottom = 173.0
 rect_scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 2 )
 custom_fonts/font = ExtResource( 31 )
-text = "Estas cartas cuestan madera
- (indicado en la parte inferior)"
+text = "Estas cartas cuestan madera y algunos recursos de los que bonifica al final de la partida
+(indicado en la parte inferior)"
+align = 2
 valign = 1
+autowrap = true
 
 [node name="Label5" type="Label" parent="CivPanel"]
 anchor_left = 0.5
@@ -1092,9 +1170,9 @@ text = "+"
 align = 2
 
 [node name="cost" type="ColorRect" parent="CivPanel/HBox_cards/B1"]
-margin_left = 34.0
+margin_left = 7.0
 margin_top = 68.0
-margin_right = 70.0
+margin_right = 43.0
 margin_bottom = 104.0
 color = Color( 0, 0, 0, 0.760784 )
 
@@ -1116,6 +1194,33 @@ margin_bottom = 56.0
 rect_scale = Vector2( 0.6, 0.6 )
 custom_fonts/font = ExtResource( 31 )
 text = "-24"
+align = 1
+
+[node name="cost2" type="ColorRect" parent="CivPanel/HBox_cards/B1"]
+margin_left = 60.0
+margin_top = 68.0
+margin_right = 96.0
+margin_bottom = 104.0
+color = Color( 0, 0, 0, 0.760784 )
+
+[node name="r1" type="TextureRect" parent="CivPanel/HBox_cards/B1/cost2"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 33.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="CivPanel/HBox_cards/B1/cost2"]
+margin_left = 2.0
+margin_top = 20.0
+margin_right = 81.0
+margin_bottom = 56.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_fonts/font = ExtResource( 31 )
+text = "-2"
 align = 1
 
 [node name="B2" type="Button" parent="CivPanel/HBox_cards"]
@@ -1197,9 +1302,9 @@ text = "+"
 align = 2
 
 [node name="cost" type="ColorRect" parent="CivPanel/HBox_cards/B2"]
-margin_left = 34.0
+margin_left = 7.0
 margin_top = 68.0
-margin_right = 70.0
+margin_right = 43.0
 margin_bottom = 104.0
 color = Color( 0, 0, 0, 0.760784 )
 
@@ -1221,6 +1326,33 @@ margin_bottom = 56.0
 rect_scale = Vector2( 0.6, 0.6 )
 custom_fonts/font = ExtResource( 31 )
 text = "-24"
+align = 1
+
+[node name="cost2" type="ColorRect" parent="CivPanel/HBox_cards/B2"]
+margin_left = 60.0
+margin_top = 68.0
+margin_right = 96.0
+margin_bottom = 104.0
+color = Color( 0, 0, 0, 0.760784 )
+
+[node name="r1" type="TextureRect" parent="CivPanel/HBox_cards/B2/cost2"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 33.0
+margin_bottom = 33.0
+rect_min_size = Vector2( 30, 30 )
+texture = ExtResource( 12 )
+expand = true
+stretch_mode = 1
+
+[node name="Label" type="Label" parent="CivPanel/HBox_cards/B2/cost2"]
+margin_left = 2.0
+margin_top = 20.0
+margin_right = 81.0
+margin_bottom = 56.0
+rect_scale = Vector2( 0.6, 0.6 )
+custom_fonts/font = ExtResource( 31 )
+text = "-2"
 align = 1
 
 [node name="Back" type="Button" parent="CivPanel"]
@@ -1426,6 +1558,7 @@ align = 1
 valign = 1
 
 [node name="EndPanel" parent="." instance=ExtResource( 29 )]
+visible = false
 rect_min_size = Vector2( 800, 400 )
 
 [node name="HelpPanel" parent="." instance=ExtResource( 27 )]

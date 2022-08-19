@@ -35,8 +35,8 @@ func check_all_finished():
 		print("END ",p," ",GC.GAME.players[p].turn)
 		if(GC.GAME.players[p].turn<GC.GAME.max_turns): finished = false
 	if finished:
-		show_final_table()
-		$Label_win.text = get_node("../Interaction/ScoreTable").table[0].name
+		var winner = show_final_table()
+		$Label_win.text = winner
 		$Label_noFinish.text = ""
 		$HeaderTable.visible = true
 		$FinalTable.visible = true
@@ -51,6 +51,8 @@ func update_stock():
 
 func show_final_table():
 	var pjs_order = []
+	var total_looter = 0
+	var max_score = 0
 	for i in GC.GAME.players:
 		var pl = GC.GAME.players[i]
 		pjs_order.append(i)
@@ -61,11 +63,30 @@ func show_final_table():
 		pl["end_score"] += pl.camp*pl["end_bonif"].camp
 		pl["end_score"] += pl.tool*pl["end_bonif"].tool
 		pl["end_score"] += pl.build*pl["end_bonif"].build
+		if pl["score"]>max_score: max_score = pl["score"]
+		total_looter += pl["looter"]
+	for i in pjs_order:
+		var pl = GC.GAME.players[i]
+		pl["prom_looter"] = floor(total_looter/pjs_order.size())
+		pl["points_per_looter"] = ceil( max_score / 10 )
+		pl["end_score"] += (pl.looter - pl.prom_looter) * pl.points_per_looter
 	pjs_order.sort_custom(self, "customComparison")
 	for sl in $FinalTable/VBox.get_children():
 		var i = sl.get_index()
 		if i< pjs_order.size(): sl.set_data(GC.GAME.players[ pjs_order[i] ])
 		else: sl.visible = false
+	check_new_win(pjs_order[0])
+	return pjs_order[0]
+
+func check_new_win(winner_name):
+	if !"is_winner" in GC.PLAYER: 
+		GC.PLAYER["is_winner"] = (winner_name == GC.USER.name)
+		if(GC.PLAYER["is_winner"]):
+			GC.USER.wins += 1
+			FM.push_data("games/"+GC.GAME.name+"/players/"+GC.USER.name)
+			yield(FM,"complete_push")
+			FM.push_data("users/"+GC.USER.name)
+			yield(FM,"complete_push")
 
 func _get_civ_bonif(pl):
 	var bonif = {"villager":0,"tool":0,"camp":0,"build":0}

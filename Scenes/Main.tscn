@@ -50,6 +50,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Wins" type="ColorRect" parent="User"]
+margin_left = 15.0
+margin_top = 53.0
+margin_right = 121.0
+margin_bottom = 120.0
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="Label2" type="Label" parent="User/Wins"]
+anchor_right = 1.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 5 )
+text = "TROFEOS"
+align = 1
+valign = 1
+
+[node name="Label" type="Label" parent="User/Wins"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -37.0
+text = "-"
+align = 1
+valign = 1
+
 [node name="Games" type="ScrollContainer" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
@@ -75,6 +99,7 @@ align = 1
 valign = 1
 
 [node name="NewGamePopup" type="ColorRect" parent="."]
+visible = false
 margin_right = 800.0
 margin_bottom = 450.0
 theme = ExtResource( 1 )
@@ -185,6 +210,7 @@ rect_min_size = Vector2( 0, 40 )
 focus_mode = 1
 custom_fonts/font = ExtResource( 5 )
 text = "STONE_AGE"
+icon = ExtResource( 6 )
 expand_icon = true
 items = [ "STONE_AGE", ExtResource( 6 ), false, 0, null ]
 selected = 0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/villager_3.mp3-5034d0900707c84bec59cce74726d091.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/villager_3.mp3"
+dest_files=[ "res://.import/villager_3.mp3-5034d0900707c84bec59cce74726d091.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

@@ -173,6 +173,7 @@ func fetch_local():
 func fetch():
 	var result = yield(_db_request(true, HTTPClient.METHOD_GET), "completed")
 	if result is FirebaseError:
+		emit_signal("complete_fetch",null)
 		return result
 	else:
 		emit_signal("complete_fetch",result)

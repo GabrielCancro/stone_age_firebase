@@ -10,6 +10,8 @@ func _ready():
 	FM.pull_data()
 	yield(FM,"complete_pull")
 	$User/btn_logout.disabled = false
+	if !"wins" in GC.USER: GC.USER["wins"] = 0
+	$User/Wins/Label.text = str(GC.USER.wins)
 	set_game_button()
 
 func onClick(btn):

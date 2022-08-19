@@ -39,6 +39,8 @@ func onSetNode(node,stay,result):
 				$Drager.free_node_from_stay("BUILD")
 				yield(get_tree().create_timer(.15),"timeout")
 			get_node("../CivPanel").showCivPanel()
+	if stay=="LOOTER":
+		if result.LOOTER>1: $Drager.free_node(node)
 
 func end_turn_task():
 	var RESULT = $Drager.get_result()
@@ -99,16 +101,37 @@ func end_turn_task():
 		$Drager.free_node_from_stay("BUILD")
 		yield(get_tree().create_timer(.3),"timeout")
 	
+	if RESULT.LOOTER == 1: 
+		add_resource("LOOTER",1)
+		yield(self,"finish_current_anim")
+		GC.PLAYER.villager -= 1
+		$Drager.consume_node_from_stay("LOOTER")
+		yield(get_tree().create_timer(.7),"timeout")
+	
 	if RESULT.CIV == 1 && GC.PLAYER.civ_cards: 
 		var card = GC.PLAYER.civ_cards[GC.CIV_TO_CONSTRUCT]
 		if(!"civ_bonif" in GC.PLAYER): GC.PLAYER["civ_bonif"] = []
 		var val = 3 + floor(GC.PLAYER["civ_bonif"].size()/2) + GC.CIV_TO_CONSTRUCT
-		if(GC.PLAYER["wood"]>=val):
+		var cant_bonif = 0
+		for b in GC.PLAYER.civ_bonif: if b == card[1]: cant_bonif += 1
+		cant_bonif = 1+floor(cant_bonif/2)
+		if(card[1]=="villager"): cant_bonif = 1
+		if(GC.PLAYER["wood"]>=val && GC.PLAYER[card[1]]>=cant_bonif):
 			GC.PLAYER["wood"] -= val
 			update_all_panels()
 			GC.SOUND.play_sfx("extract")
 			fx_text("-"+str(val),"wood",get_node("../Map/MapCiv").position)
 			yield(self,"finish_current_anim")
+			
+			#rest cost special
+			GC.PLAYER[card[1]] -= cant_bonif
+			update_all_panels()
+			GC.SOUND.play_sfx("extract")
+			fx_text("-"+str(cant_bonif),card[1],get_node("../Map/MapCiv").position)
+			yield(self,"finish_current_anim")
+			if(card[1]=="villager"): 
+				$Drager.consume_node_from_stay("CIV")
+				yield(get_tree().create_timer(.4),"timeout")
 			#add rec
 			GC.PLAYER[card[0]] += 1
 			update_all_panels()
@@ -179,4 +202,6 @@ func update_all_panels():
 	eat = max(0,eat)
 	$eat_panel/Label2.text = "-"+str(eat)
 	$rec_panel.update_panel()
+	if !"looter" in GC.PLAYER: GC.PLAYER["looter"] = 0
+	$looter_rec/Label.text = str(GC.PLAYER["looter"])
 	$ScoreTable.updateTable()
