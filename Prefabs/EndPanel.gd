@@ -1,6 +1,6 @@
 extends ColorRect
 
-var ScoreLineScene = preload("res://Prefabs/ScoreLine.tscn")
+#var ScoreLineScene = preload("res://Prefabs/ScoreLine.tscn")
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
