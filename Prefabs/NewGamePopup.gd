@@ -20,6 +20,11 @@ func _ready():
 # warning-ignore:return_value_discarded
 	$NewGame/VBoxContainer/total_turns.connect("focus_exited",self,"check_config_errors")
 
+func _input(event):
+	if event is InputEventKey and event.pressed:
+		yield(get_tree().create_timer(.1),"timeout")
+		check_config_errors()
+
 func showNewGamePanel():
 	visible = true
 	$NewGame.visible = true
@@ -85,7 +90,7 @@ func onClickCreateNewGame():
 	for nm in players:
 		players_data[nm.to_upper()] = {
 			"turn":0, "tool":0, "camp":0,"villager":5,"score":0,
-			"food":35,"wood":0,"adobe":0,"stone":0,"gold":0,"build":0,"looter":0,
+			"food":20,"wood":0,"adobe":0,"stone":0,"gold":0,"build":0,"looter":0,
 			"build_cards":[],"civ_cards":[],"civ_bonif":[],
 		}
 	FM.DATA.games[game_name] = {
@@ -106,6 +111,7 @@ func onClickCreateNewGame():
 	yield(FM,"complete_push")
 # warning-ignore:return_value_discarded
 	get_tree().reload_current_scene()
+
 
 func check_config_errors():
 	var correct = true

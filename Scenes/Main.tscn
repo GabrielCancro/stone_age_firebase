@@ -24,6 +24,90 @@ scale = Vector2( 1.68667, 1.68667 )
 texture = ExtResource( 4 )
 region_rect = Rect2( 100, 50, 1080, 600 )
 
+[node name="WinsPanel" type="ColorRect" parent="."]
+margin_left = 15.0
+margin_top = 80.0
+margin_right = 204.0
+margin_bottom = 261.0
+theme = ExtResource( 1 )
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="Label2" type="Label" parent="WinsPanel"]
+anchor_right = 1.0
+margin_bottom = 36.0
+custom_colors/font_color = Color( 0.952941, 1, 0.403922, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "TROFEOS"
+align = 1
+valign = 1
+
+[node name="Label3" type="Label" parent="WinsPanel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -73.0
+margin_top = -33.0
+margin_right = 73.0
+margin_bottom = 3.0
+custom_colors/font_color = Color( 0.737255, 0.737255, 0.737255, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "solo cuentan las partidas de tres o más jugadores"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="scroll" type="ScrollContainer" parent="WinsPanel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -80.5
+margin_top = -55.5
+margin_right = 80.5
+margin_bottom = 52.5
+
+[node name="name" type="Label" parent="WinsPanel/scroll"]
+margin_right = 150.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 150, 0 )
+custom_constants/line_spacing = 6
+custom_fonts/font = ExtResource( 5 )
+text = "
+"
+
+[node name="wins" type="Label" parent="WinsPanel/scroll/name"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -26.0
+margin_right = -8.0
+custom_constants/line_spacing = 6
+custom_fonts/font = ExtResource( 5 )
+align = 2
+
+[node name="LineEdit" type="LineEdit" parent="WinsPanel"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -207.0
+margin_bottom = -182.0
+focus_mode = 1
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 5 )
+placeholder_text = "Agregar Amigo"
+
+[node name="btn_add" type="Button" parent="WinsPanel/LineEdit"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -36.0
+margin_top = -25.0
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "+"
+
 [node name="User" type="Panel" parent="."]
 margin_right = 800.0
 margin_bottom = 43.0
@@ -56,41 +140,6 @@ text = "HOSPEDAR PARTIDA"
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Wins" type="ColorRect" parent="User"]
-margin_left = 15.0
-margin_top = 53.0
-margin_right = 121.0
-margin_bottom = 120.0
-color = Color( 0, 0, 0, 0.784314 )
-
-[node name="Label2" type="Label" parent="User/Wins"]
-anchor_right = 1.0
-margin_bottom = 36.0
-custom_fonts/font = ExtResource( 5 )
-text = "TROFEOS"
-align = 1
-valign = 1
-
-[node name="Label3" type="Label" parent="User/Wins"]
-anchor_right = 1.0
-margin_top = 70.0
-margin_bottom = 106.0
-custom_colors/font_color = Color( 0.737255, 0.737255, 0.737255, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "solo cuentan las partidas de tres o más jugadores"
-align = 1
-valign = 1
-autowrap = true
-
-[node name="Label" type="Label" parent="User/Wins"]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = -37.0
-text = "-"
-align = 1
-valign = 1
 
 [node name="Games" type="ScrollContainer" parent="."]
 anchor_left = 0.5
@@ -240,7 +289,7 @@ margin_bottom = 84.0
 rect_min_size = Vector2( 0, 40 )
 focus_mode = 1
 custom_fonts/font = ExtResource( 5 )
-text = "7"
+text = "6"
 align = 2
 
 [node name="Label" type="Label" parent="NewGamePopup/NewGame/VBoxContainer/init_turns"]
@@ -263,7 +312,7 @@ margin_bottom = 128.0
 rect_min_size = Vector2( 0, 40 )
 focus_mode = 1
 custom_fonts/font = ExtResource( 5 )
-text = "1"
+text = "3"
 align = 2
 
 [node name="Label" type="Label" parent="NewGamePopup/NewGame/VBoxContainer/turns_phs"]

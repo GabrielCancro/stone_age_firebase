@@ -156,6 +156,7 @@ margin_top = 43.0
 margin_right = 252.0
 margin_bottom = 89.0
 focus_next = NodePath("../pass")
+max_length = 10
 placeholder_text = "Nombre"
 
 [node name="pass" type="LineEdit" parent="LogIn/VBox"]
@@ -163,6 +164,7 @@ margin_top = 96.0
 margin_right = 252.0
 margin_bottom = 142.0
 focus_next = NodePath("../btn_login")
+max_length = 10
 secret = true
 placeholder_text = "Clave"
 

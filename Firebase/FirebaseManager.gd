@@ -32,10 +32,10 @@ func pull_data():
 	DATA = yield( ref, "complete_fetch" )
 	if(DATA):
 		emit_signal("complete_pull")
-		print("< PULL DATA: ",DATA)
+#		print("< PULL DATA: ",DATA)
 	else: 
 		yield(get_tree().create_timer(3),"timeout")
-		print("re-conecting...")
+#		print("re-conecting...")
 		pull_data()
 
 func get_data():
