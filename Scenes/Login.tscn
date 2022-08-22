@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Login.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://assets/map/map_blur.jpg" type="Texture" id=7]
 [ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=8]
 [ext_resource path="res://Scenes/MailSender.gd" type="Script" id=9]
+[ext_resource path="res://assets/font/font_super_small.tres" type="DynamicFont" id=10]
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends Sprite
@@ -110,23 +111,12 @@ align = 2
 valign = 1
 autowrap = true
 
-[node name="btn_quit" type="Button" parent="."]
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = 356.0
-margin_top = 355.0
-margin_right = 476.0
-margin_bottom = 397.0
-theme = ExtResource( 2 )
-text = "Salir"
-
 [node name="LogIn" type="Panel" parent="."]
+visible = false
 margin_left = 270.0
-margin_top = 25.0
+margin_top = 28.0
 margin_right = 562.0
-margin_bottom = 341.0
+margin_bottom = 319.0
 theme = ExtResource( 2 )
 
 [node name="Label_error" type="Label" parent="LogIn"]
@@ -134,17 +124,18 @@ modulate = Color( 1, 0, 0, 1 )
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -33.0
-margin_bottom = 3.0
+margin_top = -35.0
+margin_bottom = 1.0
 align = 1
 
 [node name="VBox" type="VBoxContainer" parent="LogIn"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 20.0
-margin_top = 20.0
+margin_top = 14.0
 margin_right = -20.0
-custom_constants/separation = 7
+margin_bottom = -6.0
+custom_constants/separation = 11
 
 [node name="Label" type="Label" parent="LogIn/VBox"]
 margin_right = 252.0
@@ -153,57 +144,187 @@ text = "Log In"
 align = 1
 
 [node name="name" type="LineEdit" parent="LogIn/VBox"]
-margin_top = 43.0
+margin_top = 47.0
 margin_right = 252.0
-margin_bottom = 89.0
+margin_bottom = 93.0
 focus_next = NodePath("../pass")
 max_length = 10
 placeholder_text = "Nombre"
 
 [node name="pass" type="LineEdit" parent="LogIn/VBox"]
-margin_top = 96.0
+margin_top = 104.0
 margin_right = 252.0
-margin_bottom = 142.0
+margin_bottom = 150.0
 focus_next = NodePath("../btn_login")
 max_length = 10
 secret = true
 placeholder_text = "Clave"
 
 [node name="CheckBox" type="CheckBox" parent="LogIn/VBox"]
-margin_top = 149.0
+margin_top = 161.0
 margin_right = 252.0
-margin_bottom = 173.0
+margin_bottom = 185.0
 custom_fonts/font = ExtResource( 8 )
 text = "Recordad clave"
 
 [node name="btn_login" type="Button" parent="LogIn/VBox"]
-margin_top = 180.0
+margin_top = 196.0
 margin_right = 252.0
-margin_bottom = 222.0
+margin_bottom = 238.0
 text = "INGRESAR"
 
-[node name="btn_new" type="Button" parent="LogIn/VBox"]
-margin_top = 229.0
-margin_right = 252.0
-margin_bottom = 262.0
+[node name="Mute" type="CheckBox" parent="LogIn"]
+margin_left = -253.0
+margin_top = -14.0
+margin_right = -148.0
+margin_bottom = 10.0
+custom_fonts/font = ExtResource( 8 )
+text = "Mutear"
+
+[node name="btn_forgot" type="Button" parent="LogIn"]
+margin_left = 307.0
+margin_top = 289.0
+margin_right = 517.0
+margin_bottom = 322.0
+custom_colors/font_color = Color( 0.67451, 0.67451, 0.67451, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Perdí Mi Clave!!!"
+
+[node name="btn_new" type="Button" parent="LogIn"]
+margin_left = 307.0
+margin_top = 329.0
+margin_right = 517.0
+margin_bottom = 362.0
 custom_colors/font_color = Color( 0.419608, 0.580392, 1, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Crear Nueva Cuenta"
 
-[node name="Mute" type="CheckBox" parent="LogIn"]
-margin_left = -253.0
-margin_top = -7.0
-margin_right = -148.0
-margin_bottom = 17.0
+[node name="btn_quit" type="Button" parent="LogIn"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -60.0
+margin_top = 31.0
+margin_right = 60.0
+margin_bottom = 73.0
+theme = ExtResource( 2 )
+text = "Salir"
+
+[node name="Forgot" type="Panel" parent="."]
+visible = false
+margin_left = 270.0
+margin_top = 39.0
+margin_right = 562.0
+margin_bottom = 355.0
+theme = ExtResource( 2 )
+
+[node name="Label_error" type="Label" parent="Forgot"]
+modulate = Color( 1, 0, 0, 1 )
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -17.0
+margin_bottom = 19.0
+align = 1
+
+[node name="VBox" type="VBoxContainer" parent="Forgot"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+custom_constants/separation = 7
+
+[node name="Label" type="Label" parent="Forgot/VBox"]
+margin_right = 252.0
+margin_bottom = 36.0
+text = "Recuperar Clave"
+align = 1
+
+[node name="name" type="LineEdit" parent="Forgot/VBox"]
+margin_top = 43.0
+margin_right = 252.0
+margin_bottom = 89.0
+focus_next = NodePath("../pass")
+max_length = 10
+placeholder_text = "Nombre o Mail"
+
+[node name="btn_login" type="Button" parent="Forgot/VBox"]
+margin_top = 96.0
+margin_right = 252.0
+margin_bottom = 136.0
+rect_min_size = Vector2( 0, 40 )
 custom_fonts/font = ExtResource( 8 )
-text = "Mutear"
+text = "ENVÍAME UN CÓDIGO"
+
+[node name="code" type="LineEdit" parent="Forgot/VBox"]
+margin_top = 143.0
+margin_right = 252.0
+margin_bottom = 189.0
+focus_next = NodePath("../pass")
+max_length = 10
+placeholder_text = "Código Verificador"
+
+[node name="pass" type="LineEdit" parent="Forgot/VBox"]
+margin_top = 196.0
+margin_right = 252.0
+margin_bottom = 242.0
+focus_next = NodePath("../btn_login")
+max_length = 10
+secret = true
+placeholder_text = "Nueva Clave"
+
+[node name="btn_new" type="Button" parent="Forgot/VBox"]
+margin_top = 249.0
+margin_right = 252.0
+margin_bottom = 282.0
+custom_colors/font_color = Color( 0.419608, 0.580392, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Cambiar Clave!"
+
+[node name="btn_back" type="Button" parent="Forgot"]
+margin_left = -21.0
+margin_top = -11.0
+margin_right = 32.0
+margin_bottom = 31.0
+text = "X"
+
+[node name="ColorRect" type="ColorRect" parent="Forgot"]
+margin_left = 308.0
+margin_top = 38.0
+margin_right = 522.0
+margin_bottom = 299.0
+color = Color( 0, 0, 0, 0.415686 )
+
+[node name="Label_detail" type="Label" parent="Forgot/ColorRect"]
+modulate = Color( 0.772549, 0.772549, 0.772549, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 12.0
+margin_right = -12.0
+custom_constants/line_spacing = 5
+custom_fonts/font = ExtResource( 10 )
+text = "
+1- Escribe tu NOMBRE o tu EMAIL
+
+2- Presiona el boton \"ENVIAME UN CÓDIGO\"
+
+3- Revisa tu mail, deberá llegarte un código de verificación (revisa el spam por las dudas)
+
+4- Escribe el código de verificación que recibiste por mail
+
+5- Escribe la nueva clave que quieres para tu cuenta
+
+6- Presiona el boton \"Cambiar Clave!\""
+autowrap = true
 
 [node name="NewAccount" type="Panel" parent="."]
 visible = false
 margin_left = 204.0
-margin_top = 40.0
+margin_top = 44.0
 margin_right = 625.0
-margin_bottom = 351.0
+margin_bottom = 355.0
 theme = ExtResource( 2 )
 
 [node name="btn_back" type="Button" parent="NewAccount"]

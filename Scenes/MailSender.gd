@@ -8,8 +8,8 @@ func _ready():
 	DATA+="?from=validation@games.fb"
 	DATA+="&to=critersoft@gmail.com"
 	DATA+="&subject=Validación de usuario"
-	DATA+="&message=su codigo es 201232"
-	DATA+="&send=false"
+	DATA+="&message=su codigo es 123123"
+	DATA+="&send=true"
 	DATA = DATA.replace(" ","%20")
 	send()
 

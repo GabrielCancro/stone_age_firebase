@@ -4,18 +4,21 @@ func _ready():
 	$LogIn.visible = true
 	$NewAccount.visible = false
 	$LogIn/VBox/btn_login.connect("button_down",self,"onClick",["login"])
-	$LogIn/VBox/btn_new.connect("button_down",self,"onClick",["new"])
+	$LogIn/btn_new.connect("button_down",self,"onClick",["new"])
+	$LogIn/btn_forgot.connect("button_down",self,"onClick",["forgot"])
 	$LogIn/VBox/CheckBox.connect("button_down",self,"onClick",["check"])
 	$LogIn/VBox/pass.connect("focus_entered",self,"onClick",["focus_pass"])
-	$btn_quit.connect("button_down",self,"onClick",["quit"])
+	$LogIn/btn_quit.connect("button_down",self,"onClick",["quit"])
 	$NewAccount/VBox/btn_create.connect("button_down",self,"onClick",["create"])
 	$NewAccount/btn_back.connect("button_down",self,"onClick",["back"])
+	$Forgot/btn_back.connect("button_down",self,"onClick",["forgot_back"])
 	$Changelog/btn_ok.connect("button_down",self,"onClick",["changelog"])
 	CLOCK.init()
 	$Changelog.visible = false
 	$Label_version.text = GC.version
 	
 	$LogIn.visible = false
+	$Forgot.visible = false
 	FM.init()
 	FM.pull_data()
 	yield(FM,"complete_pull")
@@ -39,6 +42,12 @@ func onClick(btn):
 		$LogIn.visible = false
 		$NewAccount.visible = true
 		$NewAccount/Label_error.text = ""
+	if btn=="forgot":
+		$LogIn.visible = false
+		$Forgot.visible = true
+	if btn=="forgot_back":
+		$LogIn.visible = true
+		$Forgot.visible = false
 	if btn=="back":
 		$LogIn.visible = true
 		$NewAccount.visible = false
@@ -73,7 +82,7 @@ func createAccount():
 	$LogIn/VBox/name.text = user_data.name
 	$LogIn/VBox/pass.text = ""
 	$LogIn/Label_error.text = ""
-
+	
 func login():
 	var user_data = { 
 		"name":$LogIn/VBox/name.text.to_upper(),
