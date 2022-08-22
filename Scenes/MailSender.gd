@@ -9,7 +9,7 @@ func _ready():
 	DATA+="&to=critersoft@gmail.com"
 	DATA+="&subject=Validación de usuario"
 	DATA+="&message=su codigo es 123123"
-	DATA+="&send=true"
+	DATA+="&send=false"
 	DATA = DATA.replace(" ","%20")
 	send()
 
