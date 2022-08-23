@@ -80,12 +80,12 @@ func onClick(btn,sub=""):
 		$Changelog.visible = false
 	if btn=="version":
 		$Changelog.visible = true
-		
 
 func createAccount():
 	var user_data = { 
 		"name":$NewAccount/VBox/name.text.to_upper(),
 		"pass":$NewAccount/VBox/pass.text,
+		"mpass":$NewAccount/VBox/pass.text.md5_text(),
 		"mail":$NewAccount/VBox/mail.text,
 		"code":$NewAccount/VBox/code.text,
 	}
@@ -108,6 +108,8 @@ func createAccount():
 		if FM.DATA.users[u].name == user_data.name:
 			show_float_message("ESE USUARIO YA EXISTE!!!")
 			return
+	user_data.erase("pass")
+	user_data.erase("code")
 	FM.DATA.users[user_data.name] = user_data
 	FM.push_data("users/"+user_data.name)
 	$LogIn.visible = true
@@ -120,13 +122,15 @@ func login():
 	var user_data = { 
 		"name":$LogIn/VBox/name.text.to_upper(),
 		"pass":$LogIn/VBox/pass.text,
+		"mpass":$LogIn/VBox/pass.text.md5_text(),
 	}
 	$LogIn/VBox/pass.text = ""
+	print("MD5 ",user_data.mpass)
 	if !"users" in FM.DATA: FM.DATA.users = {}
 	if !user_data.name in FM.DATA.users:
 		$LogIn/Label_error.text = "USUARIO INEXISTENTE"
 	else:
-		if FM.DATA.users[user_data.name].pass == user_data.pass:
+		if FM.DATA.users[user_data.name].mpass == user_data.mpass:
 			GC.USER = FM.DATA.users[user_data.name]
 			get_tree().change_scene("res://Scenes/Main.tscn")
 			StoreData.DATA["remember_user"] = $LogIn/VBox/CheckBox.pressed
