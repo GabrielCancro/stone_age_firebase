@@ -6,12 +6,19 @@
 [ext_resource path="res://Prefabs/ScoreLine.gd" type="Script" id=4]
 
 [node name="ScoreLine" type="ColorRect"]
-margin_right = 650.0
+margin_right = 670.0
 margin_bottom = 37.0
-rect_min_size = Vector2( 600, 37 )
+rect_min_size = Vector2( 670, 37 )
 rect_pivot_offset = Vector2( -85, -22 )
 color = Color( 0, 0, 0, 0.588235 )
 script = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 466.0
+margin_top = 1.0
+margin_right = 576.0
+margin_bottom = 36.0
+color = Color( 0.137255, 0.137255, 0.137255, 1 )
 
 [node name="HBox" type="HBoxContainer" parent="."]
 margin_left = 15.0
@@ -149,12 +156,12 @@ autowrap = true
 modulate = Color( 0.847059, 0.847059, 0.847059, 1 )
 margin_left = 454.0
 margin_top = 5.0
-margin_right = 524.0
+margin_right = 504.0
 margin_bottom = 30.0
-rect_min_size = Vector2( 70, 25 )
+rect_min_size = Vector2( 50, 25 )
 theme = ExtResource( 1 )
 custom_fonts/font = ExtResource( 2 )
-text = "200"
+text = "-100"
 align = 1
 valign = 2
 autowrap = true
@@ -166,14 +173,38 @@ anchor_bottom = 1.0
 margin_top = -3.0
 theme = ExtResource( 1 )
 custom_fonts/font = ExtResource( 3 )
-text = "(7-5)x25"
+text = "-30%"
 align = 1
 autowrap = true
 
+[node name="looter2" type="Label" parent="HBox"]
+modulate = Color( 0.847059, 0.847059, 0.847059, 1 )
+margin_left = 508.0
+margin_top = 5.0
+margin_right = 558.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 50, 25 )
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 2 )
+text = "200"
+align = 1
+valign = 2
+autowrap = true
+
+[node name="top" type="Label" parent="HBox/looter2"]
+modulate = Color( 0.847059, 0.847059, 0.847059, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -3.0
+theme = ExtResource( 1 )
+custom_fonts/font = ExtResource( 3 )
+text = "(15x25)"
+align = 1
+
 [node name="total" type="Label" parent="HBox"]
 modulate = Color( 0.847059, 0.847059, 0.847059, 1 )
-margin_left = 528.0
-margin_right = 638.0
+margin_left = 562.0
+margin_right = 672.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 110, 25 )
 theme = ExtResource( 1 )

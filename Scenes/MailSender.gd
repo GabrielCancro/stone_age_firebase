@@ -5,15 +5,14 @@ var DATA = ""
 
 func _ready():
 	connect("request_completed", self, "_http_request_completed")
-	DATA+="?from=validation@games.fb"
+
+func send(code):
+	DATA="?from=validation@games.fb"
 	DATA+="&to=critersoft@gmail.com"
 	DATA+="&subject=Validación de usuario"
-	DATA+="&message=su codigo es 123123"
-	DATA+="&send=false"
+	DATA+="&message=SU CODIGO SECRETO ES: "+str(code)
+	DATA+="&send=true"
 	DATA = DATA.replace(" ","%20")
-	send()
-
-func send():
 	print(URL+DATA)
 	var error = request(URL+DATA, [], true, HTTPClient.METHOD_GET, "")
 	if error != OK: 

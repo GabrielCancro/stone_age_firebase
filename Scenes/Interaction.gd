@@ -204,4 +204,7 @@ func update_all_panels():
 	$rec_panel.update_panel()
 	if !"looter" in GC.PLAYER: GC.PLAYER["looter"] = 0
 	$looter_rec/Label.text = str(GC.PLAYER["looter"])
+	var botin = 0
+	for i in GC.GAME.players: botin += GC.GAME.players[i].score
+	$looter_rec/Label2.text = "BOTÍN: "+str(floor(botin*0.3))
 	$ScoreTable.updateTable()

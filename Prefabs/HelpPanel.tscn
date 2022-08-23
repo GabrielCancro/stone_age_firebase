@@ -594,30 +594,24 @@ offset = Vector2( -130.769, -32.0513 )
 [node name="Label9" type="Label" parent="Pages/looter"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 520.0
-margin_top = 226.0
-margin_right = -23.0
-margin_bottom = -35.0
+margin_left = 125.161
+margin_top = 242.0
+margin_right = -289.839
+margin_bottom = -100.0
 rect_pivot_offset = Vector2( 0, 111 )
-custom_colors/font_color = Color( 0.721569, 0.921569, 1, 1 )
 custom_fonts/font = ExtResource( 3 )
-text = "Se bonificará/castigará con
-
-10% del máximo puntaje obtenido por edificar chozas
-
-por cada saqueador por encima/debajo del promedio"
-align = 1
+text = "Esos puntos serán redistribuidos entre los saqueadores que posea cada jugador."
 valign = 1
 autowrap = true
 
 [node name="ScoreCircle" type="Sprite" parent="Pages/looter"]
-position = Vector2( 42, 197 )
+position = Vector2( 50.161, 219 )
 rotation = -0.261799
 scale = Vector2( 1.3, 1.3 )
 texture = ExtResource( 15 )
 
 [node name="ScoreCircle2" type="Sprite" parent="Pages/looter"]
-position = Vector2( 53, 252 )
+position = Vector2( 91.161, 269 )
 rotation = 0.261799
 scale = Vector2( 1.3, 1.3 )
 texture = ExtResource( 15 )
@@ -625,10 +619,10 @@ texture = ExtResource( 15 )
 [node name="Label8" type="Label" parent="Pages/looter"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 310.0
-margin_top = 87.0
-margin_right = -228.0
-margin_bottom = -244.0
+margin_left = 309.0
+margin_top = 75.0
+margin_right = -229.0
+margin_bottom = -256.0
 rect_pivot_offset = Vector2( 0, 111 )
 custom_fonts/font = ExtResource( 3 )
 text = "Pon un trabajador aquí para convertirlo en un SAQUEADOR
@@ -638,26 +632,28 @@ valign = 1
 autowrap = true
 
 [node name="Label6" type="Label" parent="Pages/looter"]
+modulate = Color( 0.784314, 0.792157, 0.741176, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 79.0
-margin_top = 166.0
-margin_right = -433.0
-margin_bottom = -179.0
+margin_left = 119.0
+margin_top = 140.0
+margin_right = -235.0
+margin_bottom = -205.0
 custom_fonts/font = ExtResource( 3 )
 text = "Al final de la partida se hará una puja de saqueadores!!"
+align = 2
 valign = 1
 autowrap = true
 
 [node name="Label10" type="Label" parent="Pages/looter"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 94.0
-margin_top = 227.0
-margin_right = -317.0
-margin_bottom = -118.0
+margin_left = 91.3221
+margin_top = 191.0
+margin_right = -341.678
+margin_bottom = -154.0
 custom_fonts/font = ExtResource( 3 )
-text = "Los que tengan más saqueadores que el promedio, recibirán una bonificación, los que tengan menos serán castigados!!"
+text = "Todos los jugadores pierden 30% de sus puntos ganados por construir chozas."
 valign = 1
 autowrap = true
 

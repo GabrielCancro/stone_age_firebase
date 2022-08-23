@@ -96,23 +96,17 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="Label_version" type="Label" parent="."]
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 618.0
-margin_top = 4.0
-margin_right = 954.0
-margin_bottom = 55.0
-rect_scale = Vector2( 0.5, 0.5 )
+[node name="btn_version" type="Button" parent="."]
+modulate = Color( 1, 1, 1, 0.588235 )
+margin_left = 705.0
+margin_top = 8.0
+margin_right = 792.0
+margin_bottom = 34.0
 theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 8 )
 text = "vx.x.x"
-align = 2
-valign = 1
-autowrap = true
 
 [node name="LogIn" type="Panel" parent="."]
-visible = false
 margin_left = 270.0
 margin_top = 28.0
 margin_right = 562.0
@@ -188,6 +182,7 @@ margin_right = 517.0
 margin_bottom = 322.0
 custom_colors/font_color = Color( 0.67451, 0.67451, 0.67451, 1 )
 custom_fonts/font = SubResource( 1 )
+disabled = true
 text = "Perdí Mi Clave!!!"
 
 [node name="btn_new" type="Button" parent="LogIn"]
@@ -349,7 +344,7 @@ anchor_bottom = 1.0
 margin_left = 25.0
 margin_top = 15.0
 margin_right = -18.0
-custom_constants/separation = 15
+custom_constants/separation = 12
 
 [node name="Label" type="Label" parent="NewAccount/VBox"]
 margin_right = 378.0
@@ -358,28 +353,62 @@ text = "Crear Nueva Cuenta"
 align = 1
 
 [node name="name" type="LineEdit" parent="NewAccount/VBox"]
-margin_top = 51.0
+margin_top = 48.0
 margin_right = 378.0
-margin_bottom = 97.0
+margin_bottom = 94.0
 placeholder_text = "Nombre"
 
 [node name="pass" type="LineEdit" parent="NewAccount/VBox"]
-margin_top = 112.0
+margin_top = 106.0
 margin_right = 378.0
-margin_bottom = 158.0
+margin_bottom = 152.0
 placeholder_text = "Clave"
 
 [node name="mail" type="LineEdit" parent="NewAccount/VBox"]
-margin_top = 173.0
+margin_top = 164.0
 margin_right = 378.0
-margin_bottom = 219.0
-placeholder_text = "mail"
+margin_bottom = 210.0
+placeholder_text = "Mail"
+
+[node name="code" type="LineEdit" parent="NewAccount/VBox"]
+margin_top = 222.0
+margin_right = 378.0
+margin_bottom = 268.0
+placeholder_text = "Código Secreto"
+
+[node name="btn_create" type="Button" parent="NewAccount/VBox/code"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 242.0
+text = "OBTENER"
 
 [node name="btn_create" type="Button" parent="NewAccount/VBox"]
-margin_top = 234.0
+margin_top = 280.0
 margin_right = 378.0
-margin_bottom = 276.0
+margin_bottom = 322.0
 text = "CREAR CUENTA"
+
+[node name="code_message" type="ColorRect" parent="NewAccount"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -408.5
+margin_top = -193.5
+margin_right = 44.5
+margin_bottom = -139.5
+color = Color( 0, 0, 0, 0.847059 )
+
+[node name="Label_error" type="Label" parent="NewAccount/code_message"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 17.0
+margin_right = -13.0
+custom_colors/font_color = Color( 0.968627, 1, 0.392157, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "Enviamos un mail a tu casilla de correo electronico con el CODIGO SECRETO que necesitas!"
+valign = 1
+autowrap = true
 
 [node name="Changelog" type="ColorRect" parent="."]
 visible = false
@@ -398,6 +427,7 @@ valign = 1
 autowrap = true
 
 [node name="Label_desc" type="Label" parent="Changelog"]
+visible = false
 anchor_right = 1.0
 margin_left = 57.0
 margin_top = 50.0
@@ -417,6 +447,23 @@ text = "- Se redujo el consumo de alimento de los aldeanos a un punto de comida 
 - Se agregó la opción de crear una partida propia, cada usuario solo podrá crear una única partida."
 autowrap = true
 
+[node name="Label_desc2" type="Label" parent="Changelog"]
+anchor_right = 1.0
+margin_left = 57.0
+margin_top = 74.0
+margin_right = -48.0
+margin_bottom = 396.0
+theme = ExtResource( 2 )
+custom_constants/line_spacing = 8
+custom_fonts/font = ExtResource( 8 )
+text = "- Se redefinio la formula de calculo de saqueadores
+- Se muestra información del botín durante la partida
+- Se agrego opcion de recuperar clave de usuario
+- Se agrego paso de verificacion por mail
+- Se encriptaron las claves de usuario para mejorar la seguridad
+- Se agrego opcion de quitar amigos"
+autowrap = true
+
 [node name="btn_ok" type="Button" parent="Changelog"]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -430,3 +477,28 @@ text = "OK!"
 
 [node name="MailSender" type="HTTPRequest" parent="."]
 script = ExtResource( 9 )
+
+[node name="float_message" type="ColorRect" parent="."]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 6.0
+margin_top = 8.0
+margin_right = 459.0
+margin_bottom = 62.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0, 0, 0, 0.862745 )
+
+[node name="Label" type="Label" parent="float_message"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 17.0
+margin_right = -13.0
+custom_colors/font_color = Color( 0.968627, 1, 0.392157, 1 )
+custom_fonts/font = ExtResource( 8 )
+text = "CLAVE INCORRECTA"
+align = 1
+valign = 1
+autowrap = true

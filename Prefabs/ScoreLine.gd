@@ -16,8 +16,10 @@ func set_data(pl):
 	$HBox/tool.text = format(pl.tool*bonif.tool)
 	$HBox/build/top.text = str(pl.build)+"x"+str(bonif.build)
 	$HBox/build.text = format(pl.build*bonif.build)
-	$HBox/looter/top.text = "("+str(pl.looter)+"-"+str(pl.prom_looter)+")x"+str(pl.points_per_looter)
-	$HBox/looter.text = str( (pl.looter-pl.prom_looter) * pl.points_per_looter)
+	$HBox/looter/top.text = "-"+str(pl.percent_looter*100)+"%"
+	$HBox/looter.text = "-"+str(floor(pl.score*pl.percent_looter))
+	$HBox/looter2/top.text = "("+str(pl.looter)+"x"+str(pl.points_per_looter)+")"
+	$HBox/looter2.text = "+"+str(pl.looter*pl.points_per_looter)
 	$HBox/total.text = str(pl.end_score)
 
 func format(num):

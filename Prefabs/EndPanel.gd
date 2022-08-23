@@ -1,11 +1,5 @@
 extends ColorRect
 
-#var ScoreLineScene = preload("res://Prefabs/ScoreLine.tscn")
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	visible = false
@@ -16,6 +10,7 @@ func _ready():
 
 func show_end_panel():
 	visible = true
+	$Map.modulate.a = 0
 	update_stock()
 	check_all_finished()
 	$Timer.start()
@@ -36,6 +31,7 @@ func check_all_finished():
 		if(GC.GAME.players[p].turn<GC.GAME.max_turns): finished = false
 	if finished:
 		var winner = show_final_table()
+		$Map.modulate.a = 1
 		$Label_win.text = winner
 		$Label_noFinish.text = ""
 		$HeaderTable.visible = true
@@ -52,7 +48,10 @@ func update_stock():
 func show_final_table():
 	var pjs_order = []
 	var total_looter = 0
-	var max_score = 0
+	var total_score = 0
+	for sl in $FinalTable/VBox.get_children(): 
+		if sl.get_index()>GC.GAME.players.size(): 
+			sl.queue_free()
 	for i in GC.GAME.players:
 		var pl = GC.GAME.players[i]
 		pjs_order.append(i)
@@ -63,13 +62,17 @@ func show_final_table():
 		pl["end_score"] += pl.camp*pl["end_bonif"].camp
 		pl["end_score"] += pl.tool*pl["end_bonif"].tool
 		pl["end_score"] += pl.build*pl["end_bonif"].build
-		if pl["score"]>max_score: max_score = pl["score"]
+		total_score += pl["score"]
 		total_looter += pl["looter"]
+	var percent_looter = .3
 	for i in pjs_order:
 		var pl = GC.GAME.players[i]
-		pl["prom_looter"] = floor(total_looter/pjs_order.size())
-		pl["points_per_looter"] = ceil( max_score / 10 )
-		pl["end_score"] += (pl.looter - pl.prom_looter) * pl.points_per_looter
+		pl["percent_looter"] = percent_looter
+		pl["points_per_looter"] = floor( total_score * pl.percent_looter / total_looter)
+		pl["end_score"] -= floor(pl.score * pl.percent_looter)
+		pl["end_score"] += pl.points_per_looter * pl.looter
+	$HeaderTable/ico5/scores.text = str( floor(total_score*percent_looter) )
+	$HeaderTable/ico5/looters.text = str( total_looter )
 	pjs_order.sort_custom(self, "customComparison")
 	for sl in $FinalTable/VBox.get_children():
 		var i = sl.get_index()
@@ -85,6 +88,7 @@ func check_new_win(winner_name):
 			GC.USER.wins += 1
 			FM.push_data("games/"+GC.GAME.name+"/players/"+GC.USER.name)
 			yield(FM,"complete_push")
+			FM.DATA.users[GC.USER.name] = GC.USER
 			FM.push_data("users/"+GC.USER.name)
 			yield(FM,"complete_push")
 
