@@ -62,6 +62,7 @@ func calc_score(card_data):
 		if i=="gold": score += card_data[i] * 6
 		amount += card_data[i]
 	score -= (amount-2)*4
+	score -= 2
 	return score
 
 func onBackButton():

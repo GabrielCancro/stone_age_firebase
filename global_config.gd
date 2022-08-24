@@ -6,6 +6,7 @@ var GAME = null
 var PLAYER = null
 var LOCAL = null
 var NOW_TIME = 0
+var ADVANCED_TIME = 0
 var TOTAL_TURNS = 0
 var DRAGING_ELEMENT = null
 var WORK_VILLAGERS = 0

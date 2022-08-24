@@ -230,6 +230,30 @@ margin_right = 72.5
 margin_bottom = 30.0
 text = "loading.."
 
+[node name="time_ui" type="ColorRect" parent="Header"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -395.0
+margin_top = 24.5
+margin_right = -292.0
+margin_bottom = 53.5
+color = Color( 0, 0, 0, 0.784314 )
+
+[node name="Label" type="Label" parent="Header/time_ui"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( 91, 47 )
+custom_fonts/font = ExtResource( 25 )
+text = "--:--:--"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Timer" type="Timer" parent="Header/time_ui"]
+autostart = true
+
 [node name="Interaction" type="Node2D" parent="."]
 script = ExtResource( 7 )
 
@@ -691,10 +715,10 @@ theme = ExtResource( 2 )
 
 [node name="food" type="Button" parent="HelpButtons"]
 anchor_right = 1.0
-margin_left = 19.0
-margin_top = 70.0
-margin_right = 24.0
-margin_bottom = 112.0
+margin_left = 6.0
+margin_top = 80.0
+margin_right = 11.0
+margin_bottom = 122.0
 rect_scale = Vector2( 0.8, 0.7 )
 custom_fonts/font = ExtResource( 31 )
 text = "?"

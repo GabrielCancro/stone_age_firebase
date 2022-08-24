@@ -8,10 +8,10 @@ func _ready():
 	$Header/btn_build.connect("button_down",self,"onClick",["build"])
 	$Header/btn_civ.connect("button_down",self,"onClick",["civ"])
 	CLOCK.init()
-	set_now_time()	
-	if(GC.PLAYER.turn==0): $HelpPanel.showHelp("intro")
+	set_now_time()
+	check_finished_game()
+	if(GC.PLAYER.turn==0 && !GC.FINISHED): $HelpPanel.showHelp("intro")
 	for btn in $HelpButtons.get_children(): btn.connect("button_down",self,"onClickHelp",[btn])
-	check_finish_game()
 	if "worker_positions" in GC.PLAYER && !GC.FINISHED: $Interaction/Drager.set_worker_positions(GC.PLAYER["worker_positions"])
 
 func onClick(btn):
@@ -42,14 +42,34 @@ func endTurn():
 	$Interaction/Drager.disabled = false
 	$Header/end_turn/Tween.interpolate_property($Header/end_turn/btn_turn,"modulate",Color(3,3,3),Color(1,1,1),1,Tween.TRANS_EXPO,Tween.EASE_OUT)
 	$Header/end_turn/Tween.start()
-	check_finish_game()
 
 func set_now_time():
 	$Header/end_turn/btn_turn.disabled = true
 	CLOCK.get_time()
 	GC.NOW_TIME =  yield( CLOCK,"complete" )
+	GC.ADVANCED_TIME = 0
+	$Header/time_ui/Timer.connect("timeout",self,"updateTimeUi")
 	update_ui()
 	$Header/end_turn/btn_turn.disabled = false
+
+func updateTimeUi():
+	GC.ADVANCED_TIME += 1
+	var time_passed = GC.NOW_TIME + GC.ADVANCED_TIME - GC.GAME.start_time
+	var tm = GC.GAME.duration*60*60 - time_passed
+	if tm < 0:
+		tm = 0
+		GC.FINISHED = true
+		GC.GAME["finished"] = true
+		FM.DATA.games[GC.GAME.name] = GC.GAME
+		FM.push_data("games/"+GC.GAME.name)
+		yield(FM,"complete_push")
+	check_finished_game()
+	var frm = {
+		"seg": str(int(tm)%60).pad_zeros(2),
+		"min": str(int(tm/60)%60).pad_zeros(2),
+		"hs": str(int(tm/60/60))
+	}
+	$Header/time_ui/Label.text = frm.hs+":"+frm.min+":"+frm.seg
 
 func update_ui():
 	$Header/end_turn/btn_turn.text = str(GC.PLAYER.turn)+"/"+str(GC.get_total_turns())
@@ -58,8 +78,8 @@ func update_ui():
 func onClickHelp(btn):
 	$HelpPanel.showHelp(btn.name)
 
-func check_finish_game():
-	GC.FINISHED = ( GC.PLAYER.turn >= GC.GAME.max_turns )
+func check_finished_game():
+	if("finished" in GC.GAME && GC.GAME.finished): GC.FINISHED = true
 	if GC.FINISHED:
 		GC.SOUND.play_sfx("win")
 		$EndPanel.show_end_panel()

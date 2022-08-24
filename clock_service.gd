@@ -9,7 +9,7 @@ func init():
 	get_tree().get_current_scene().add_child(http)
 
 func get_time():
-	http.request("https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam")
+	http.request("https://timeapi.io/api/Time/current/zone?timeZone=America/Argentina/Buenos_Aires")
 	return self
 
 func _on_request_completed(result, response_code, headers, body):

@@ -105,13 +105,14 @@ func onClickCreateNewGame():
 		"own": GC.USER.name,
 		"pest_event": -1
 	}
+	
+	FM.DATA.games[game_name]["duration"] = ceil( (FM.DATA.games[game_name].max_turns-FM.DATA.games[game_name].init_turns) / FM.DATA.games[game_name].turns_phs ) + 2
 	if $NewGame/VBoxContainer/pest_event.pressed: FM.DATA.games[game_name]["pest_event"] = floor(FM.DATA.games[game_name]["max_turns"]/2)
 	if FM.DATA.games[game_name]["desc"]=="": FM.DATA.games[game_name]["desc"] = game_name
 	FM.push_data("games/"+game_name)
 	yield(FM,"complete_push")
 # warning-ignore:return_value_discarded
 	get_tree().reload_current_scene()
-
 
 func check_config_errors():
 	var correct = true
@@ -128,8 +129,9 @@ func check_config_errors():
 		var max_turns = int($NewGame/VBoxContainer/total_turns.text)
 		var init_turns = int($NewGame/VBoxContainer/init_turns.text)
 		var turns_phs = int($NewGame/VBoxContainer/turns_phs.text)
-		$NewGame/VBoxContainer/duration.text = "DURACIÓN ( "+str( ceil( (max_turns-init_turns) / turns_phs ) )+"hs )"
-	else: $NewGame/VBoxContainer/duration.text = "DURACIÓN ( - )"
+		var duration = ceil( (max_turns-init_turns) / turns_phs ) + 2
+		$NewGame/VBoxContainer/duration/Label.text = "( "+str(duration)+"hs )"
+	else: $NewGame/VBoxContainer/duration/Label.text = "( - )"
 
 func onClickDelete():
 	if !current_own_game: return

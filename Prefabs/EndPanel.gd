@@ -26,9 +26,9 @@ func refresh():
 
 func check_all_finished():
 	var finished = true
-	for p in GC.GAME.players:
-		print("END ",p," ",GC.GAME.players[p].turn)
-		if(GC.GAME.players[p].turn<GC.GAME.max_turns): finished = false
+#	for p in GC.GAME.players:
+#		print("END ",p," ",GC.GAME.players[p].turn)
+#		if(GC.GAME.players[p].turn<GC.GAME.max_turns): finished = false
 	if finished:
 		var winner = show_final_table()
 		$Map.modulate.a = 1
@@ -68,7 +68,8 @@ func show_final_table():
 	for i in pjs_order:
 		var pl = GC.GAME.players[i]
 		pl["percent_looter"] = percent_looter
-		pl["points_per_looter"] = floor( total_score * pl.percent_looter / total_looter)
+		if total_looter==0: pl["points_per_looter"] = 0
+		else: pl["points_per_looter"] = floor( total_score * pl.percent_looter / total_looter)
 		pl["end_score"] -= floor(pl.score * pl.percent_looter)
 		pl["end_score"] += pl.points_per_looter * pl.looter
 	$HeaderTable/ico5/scores.text = str( floor(total_score*percent_looter) )

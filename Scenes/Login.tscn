@@ -425,7 +425,7 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="Label_desc" type="Label" parent="Changelog"]
+[node name="v02x" type="Label" parent="Changelog"]
 visible = false
 anchor_right = 1.0
 margin_left = 57.0
@@ -446,7 +446,7 @@ text = "- Se redujo el consumo de alimento de los aldeanos a un punto de comida 
 - Se agregó la opción de crear una partida propia, cada usuario solo podrá crear una única partida."
 autowrap = true
 
-[node name="Label_desc2" type="Label" parent="Changelog"]
+[node name="v03x" type="Label" parent="Changelog"]
 anchor_right = 1.0
 margin_left = 57.0
 margin_top = 74.0
@@ -455,8 +455,10 @@ margin_bottom = 396.0
 theme = ExtResource( 2 )
 custom_constants/line_spacing = 8
 custom_fonts/font = ExtResource( 8 )
-text = "- Se redefinio la formula de calculo de saqueadores
+text = "- Se redefinio la formula de calculo de saqueadores (botin=30% del total)
 - Se muestra información del botín durante la partida
+- Se disminuyo la puntuacion por construir chozas (-2)
+- Se disminuyo el valor de las cartas de civilizacion de trabajadores (-1)
 - Se agrego opcion de recuperar clave de usuario
 - Se agrego paso de verificacion por mail
 - Se encriptaron las claves de usuario para mejorar la seguridad

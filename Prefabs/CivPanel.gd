@@ -44,7 +44,9 @@ func set_card_data(card,data):
 	var cant_bonif = 0
 	for b in GC.PLAYER.civ_bonif: if b == data[1]: cant_bonif += 1
 	cant_bonif = 1+floor(cant_bonif/2)
-	if(data[1]=="villager"): cant_bonif = 1
+	if(data[1]=="villager"): 
+		if(cant_bonif)<2: cant_bonif = 0
+		else: cant_bonif = 1
 	card.get_node("cost2/Label").text = "-"+str( cant_bonif )
 	card.disabled = (GC.PLAYER["wood"]<wood_cost || GC.PLAYER[data[1]]<cant_bonif)
 

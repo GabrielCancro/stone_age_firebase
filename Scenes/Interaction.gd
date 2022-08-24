@@ -115,7 +115,9 @@ func end_turn_task():
 		var cant_bonif = 0
 		for b in GC.PLAYER.civ_bonif: if b == card[1]: cant_bonif += 1
 		cant_bonif = 1+floor(cant_bonif/2)
-		if(card[1]=="villager"): cant_bonif = 1
+		if(card[1]=="villager"): 
+			if(cant_bonif)<2: cant_bonif = 0
+			else: cant_bonif = 1
 		if(GC.PLAYER["wood"]>=val && GC.PLAYER[card[1]]>=cant_bonif):
 			GC.PLAYER["wood"] -= val
 			update_all_panels()
@@ -129,7 +131,7 @@ func end_turn_task():
 			GC.SOUND.play_sfx("extract")
 			fx_text("-"+str(cant_bonif),card[1],get_node("../Map/MapCiv").position)
 			yield(self,"finish_current_anim")
-			if(card[1]=="villager"): 
+			if(card[1]=="villager" && cant_bonif>0): 
 				$Drager.consume_node_from_stay("CIV")
 				yield(get_tree().create_timer(.4),"timeout")
 			#add rec
