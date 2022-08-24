@@ -1,0 +1,356 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/font/themeA.tres" type="Theme" id=1]
+[ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Panels/NewGamePopup.gd" type="Script" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://assets/font/new_theme.tres" type="Theme" id=5]
+[ext_resource path="res://assets/font/font_super_small.tres" type="DynamicFont" id=6]
+
+[node name="NewGamePopup" type="ColorRect"]
+margin_right = 800.0
+margin_bottom = 450.0
+theme = ExtResource( 1 )
+color = Color( 0.117647, 0.117647, 0.117647, 0.964706 )
+script = ExtResource( 3 )
+
+[node name="Label2" type="Label" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 274.0
+margin_top = -88.0
+margin_right = -234.0
+margin_bottom = 26.0
+text = "CREANDO NUEVA PARTIDA
+ESPERE POR FAVOR..."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="NewGame" type="Panel" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -245.0
+margin_top = -193.5
+margin_right = 245.0
+margin_bottom = 139.5
+theme = ExtResource( 1 )
+
+[node name="TitleEdit" type="LineEdit" parent="NewGame"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -223.5
+margin_top = 13.0
+margin_right = 223.5
+margin_bottom = 59.0
+rect_min_size = Vector2( 0, 40 )
+focus_mode = 1
+theme = ExtResource( 1 )
+align = 1
+max_length = 15
+placeholder_text = "Nombre De La Partida"
+
+[node name="Label_exist" type="Label" parent="NewGame"]
+modulate = Color( 0.960784, 0.976471, 0.419608, 1 )
+anchor_right = 1.0
+margin_top = -21.0
+margin_bottom = 15.0
+custom_constants/line_spacing = -10
+text = "Ya tienes una partida activa!"
+align = 1
+valign = 1
+
+[node name="Players" type="ColorRect" parent="NewGame"]
+margin_left = 19.0
+margin_top = 70.0
+margin_right = 239.0
+margin_bottom = 295.0
+rect_min_size = Vector2( 220, 30 )
+color = Color( 0, 0, 0, 0.392157 )
+
+[node name="LineEdit" type="LineEdit" parent="NewGame/Players"]
+anchor_right = 1.0
+margin_left = 8.0
+margin_top = 13.0
+margin_right = -33.0
+margin_bottom = 45.0
+focus_mode = 1
+custom_fonts/font = ExtResource( 2 )
+placeholder_text = "Nombre Jugador"
+
+[node name="btn_add" type="Button" parent="NewGame/Players"]
+anchor_right = 1.0
+margin_left = 166.0
+margin_top = 10.0
+margin_right = -9.0
+margin_bottom = 52.0
+text = "+"
+
+[node name="Label_players" type="Label" parent="NewGame/Players"]
+modulate = Color( 0.470588, 0.631373, 0.733333, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -93.0
+margin_top = -51.5
+margin_right = 92.0
+margin_bottom = 90.5
+custom_fonts/font = ExtResource( 2 )
+text = "JUGADOR1
+JUGADOR2
+JUGADOR3
+JUGADOR4
+JUGADOR5
+
+"
+
+[node name="Label_error" type="Label" parent="NewGame/Players"]
+modulate = Color( 1, 0.27451, 0.27451, 1 )
+anchor_right = 1.0
+margin_left = 6.0
+margin_top = 35.0
+margin_right = -24.0
+margin_bottom = 60.0
+custom_constants/line_spacing = -10
+custom_fonts/font = ExtResource( 2 )
+text = "Jugador Inexistente"
+valign = 1
+
+[node name="Configs" type="ColorRect" parent="NewGame"]
+margin_left = 254.0
+margin_top = 70.0
+margin_right = 474.0
+margin_bottom = 295.0
+rect_min_size = Vector2( 220, 30 )
+color = Color( 0, 0, 0, 0.392157 )
+
+[node name="GameTypeSelector" type="OptionButton" parent="NewGame/Configs"]
+margin_left = 9.0
+margin_top = 9.0
+margin_right = 209.0
+margin_bottom = 49.0
+rect_min_size = Vector2( 0, 40 )
+custom_fonts/font = ExtResource( 2 )
+text = "STONE_AGE"
+icon = ExtResource( 4 )
+expand_icon = true
+items = [ "STONE_AGE", ExtResource( 4 ), false, 0, null ]
+selected = 0
+
+[node name="Scroll" type="ScrollContainer" parent="NewGame/Configs"]
+margin_left = 9.0
+margin_top = 53.0
+margin_right = 226.0
+margin_bottom = 257.0
+theme = ExtResource( 5 )
+
+[node name="Grid" type="GridContainer" parent="NewGame/Configs/Scroll"]
+margin_right = 200.0
+margin_bottom = 162.0
+custom_constants/vseparation = 3
+custom_constants/hseparation = 0
+
+[node name="init_turns" type="ColorRect" parent="NewGame/Configs/Scroll/Grid"]
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
+
+[node name="Label" type="Label" parent="NewGame/Configs/Scroll/Grid/init_turns"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_right = -58.0
+custom_constants/line_spacing = 1
+custom_fonts/font = ExtResource( 6 )
+text = "Turnos Iniciales"
+valign = 1
+autowrap = true
+
+[node name="LineEdit" type="LineEdit" parent="NewGame/Configs/Scroll/Grid/init_turns"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 148.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = -4.0
+focus_mode = 1
+custom_fonts/font = ExtResource( 6 )
+text = "6"
+align = 1
+context_menu_enabled = false
+shortcut_keys_enabled = false
+
+[node name="phs_turns" type="ColorRect" parent="NewGame/Configs/Scroll/Grid"]
+margin_top = 33.0
+margin_right = 200.0
+margin_bottom = 63.0
+rect_min_size = Vector2( 200, 30 )
+color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
+
+[node name="Label" type="Label" parent="NewGame/Configs/Scroll/Grid/phs_turns"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_right = -58.0
+custom_constants/line_spacing = 1
+custom_fonts/font = ExtResource( 6 )
+text = "Turnos Por Hora"
+valign = 1
+autowrap = true
+
+[node name="LineEdit" type="LineEdit" parent="NewGame/Configs/Scroll/Grid/phs_turns"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 148.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = -4.0
+focus_mode = 1
+custom_fonts/font = ExtResource( 6 )
+text = "3"
+align = 1
+context_menu_enabled = false
+shortcut_keys_enabled = false
+
+[node name="total_turns" type="ColorRect" parent="NewGame/Configs/Scroll/Grid"]
+margin_top = 66.0
+margin_right = 200.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 200, 30 )
+color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
+
+[node name="Label" type="Label" parent="NewGame/Configs/Scroll/Grid/total_turns"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_right = -58.0
+custom_constants/line_spacing = 1
+custom_fonts/font = ExtResource( 6 )
+text = "Turnos Totales"
+valign = 1
+autowrap = true
+
+[node name="LineEdit" type="LineEdit" parent="NewGame/Configs/Scroll/Grid/total_turns"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 148.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = -4.0
+focus_mode = 1
+custom_fonts/font = ExtResource( 6 )
+text = "30"
+align = 1
+context_menu_enabled = false
+shortcut_keys_enabled = false
+
+[node name="final_await" type="ColorRect" parent="NewGame/Configs/Scroll/Grid"]
+margin_top = 99.0
+margin_right = 200.0
+margin_bottom = 129.0
+rect_min_size = Vector2( 200, 30 )
+color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
+
+[node name="Label" type="Label" parent="NewGame/Configs/Scroll/Grid/final_await"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_right = -58.0
+custom_constants/line_spacing = 1
+custom_fonts/font = ExtResource( 6 )
+text = "Espera Final (hs)"
+valign = 1
+autowrap = true
+
+[node name="LineEdit" type="LineEdit" parent="NewGame/Configs/Scroll/Grid/final_await"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 148.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = -4.0
+focus_mode = 1
+custom_fonts/font = ExtResource( 6 )
+text = "2"
+align = 1
+context_menu_enabled = false
+shortcut_keys_enabled = false
+
+[node name="duration" type="ColorRect" parent="NewGame/Configs/Scroll/Grid"]
+margin_top = 132.0
+margin_right = 200.0
+margin_bottom = 162.0
+rect_min_size = Vector2( 200, 30 )
+color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
+
+[node name="Label" type="Label" parent="NewGame/Configs/Scroll/Grid/duration"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_right = -58.0
+custom_constants/line_spacing = 1
+custom_fonts/font = ExtResource( 6 )
+text = "Duración Total (hs)"
+valign = 1
+autowrap = true
+
+[node name="LineEdit" type="LineEdit" parent="NewGame/Configs/Scroll/Grid/duration"]
+modulate = Color( 0.984314, 1, 0.796078, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 148.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = -4.0
+focus_mode = 0
+custom_fonts/font = ExtResource( 6 )
+text = "Nan"
+align = 1
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+selecting_enabled = false
+
+[node name="ReadOnlyStop" type="ColorRect" parent="NewGame"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.501961, 0.501961, 0.501961, 0.0784314 )
+
+[node name="btn_create" type="Button" parent="NewGame"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -110.0
+margin_top = -22.0
+margin_right = 110.0
+margin_bottom = 20.0
+text = "CREAR PARTIDA"
+
+[node name="btn_delete" type="Button" parent="NewGame"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 200.0
+margin_top = -342.5
+margin_right = 355.0
+margin_bottom = -292.5
+custom_colors/font_color_focus = Color( 1, 0, 0, 1 )
+custom_colors/font_color = Color( 1, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 0, 0, 1 )
+text = "ELIMINAR"
+
+[node name="btn_back" type="Button" parent="NewGame"]
+margin_left = -35.0
+margin_top = -10.0
+margin_right = 34.0
+margin_bottom = 40.0
+text = "X"
