@@ -151,6 +151,9 @@ margin_top = 60.0
 margin_right = 626.0
 margin_bottom = 345.0
 theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBox" type="VBoxContainer" parent="Games"]
 margin_right = 407.0

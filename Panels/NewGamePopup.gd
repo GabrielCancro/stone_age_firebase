@@ -15,14 +15,12 @@ func _input(event):
 		yield(get_tree().create_timer(.1),"timeout")
 		check_config_errors()
 
-func showNewGamePanel():
+func showNewGamePanel(gameId=null):
 	visible = true
 	$NewGame.visible = true
 	$NewGame/Players/Label_error.text = ""
 	players = [GC.USER.name]
-	check_own_game()
-	showPlayersList()
-	check_config_errors()
+	in!gameId: check_own_game()
 
 func check_own_game():
 	$NewGame/Label_exist.text = ""
@@ -47,6 +45,8 @@ func check_own_game():
 		$NewGame/Configs/Scroll/Grid/phs_turns/LineEdit.text = str(current_own_game.turns_phs)
 		if !"duration" in current_own_game: current_own_game.duration = 0
 		$NewGame/Configs/Scroll/Grid/duration/LineEdit.text = str(current_own_game.duration)
+	showPlayersList()
+	check_config_errors()
 
 func onClickBack():
 	visible = false
