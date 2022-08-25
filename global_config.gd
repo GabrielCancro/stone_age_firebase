@@ -1,6 +1,6 @@
 extends Node
 
-var version = "v0.3.0"
+var version = 1000302
 var USER = null
 var GAME = null
 var PLAYER = null
@@ -40,3 +40,9 @@ func get_total_turns():
 	var _total_turns = GC.GAME.init_turns + hours_past * GC.GAME.turns_phs # turns per hour
 	if _total_turns > GC.GAME.max_turns: _total_turns = GC.GAME.max_turns
 	return _total_turns
+
+func get_version_str(ver = version):
+	var st = "v" + str(int(str(ver).substr(1,2))) + "."
+	st += str(int(str(ver).substr(3,2))) + "."
+	st += str(int(str(ver).substr(5,2)))
+	return st

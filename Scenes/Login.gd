@@ -12,22 +12,25 @@ func _ready():
 	$LogIn/VBox/CheckBox.connect("button_down",self,"onClick",["check"])
 	$LogIn/VBox/pass.connect("focus_entered",self,"onClick",["focus_pass"])
 	$LogIn/btn_quit.connect("button_down",self,"onClick",["quit"])
+	$RequireUpdate/btn_quit.connect("button_down",self,"onClick",["quit"])
 	$NewAccount/VBox/btn_create.connect("button_down",self,"onClick",["NewAccount","create"])
 	$NewAccount/btn_back.connect("button_down",self,"onClick",["NewAccount","back"])
 	$NewAccount/VBox/code/btn_create.connect("button_down",self,"onClick",["NewAccount","send_code"])
-	$Forgot/btn_back.connect("button_down",self,"onClick",["forgot_back"])
+	$ForgotPanel.connect("close",self,"onClick",["show_login"])
 	$Changelog/btn_ok.connect("button_down",self,"onClick",["changelog"])
 	$btn_version.connect("button_down",self,"onClick",["version"])
 	CLOCK.init()
 	$Changelog.visible = false
-	$btn_version.text = GC.version
-	
+	$btn_version.text = GC.get_version_str()
 	$LogIn.visible = false
-	$Forgot.visible = false
 	FM.init()
 	FM.pull_data()
 	yield(FM,"complete_pull")
 	if(FM.DATA):
+		if(FM.DATA.min_version_required > GC.version):
+			$RequireUpdate.visible = true
+			$RequireUpdate/Label_ver.text = "\nsu versión es: "+GC.get_version_str() 
+			$RequireUpdate/Label_ver.text += "\nse requiere: "+GC.get_version_str(FM.DATA.min_version_required) 
 		$LogIn.visible = true
 	
 	if("remember_user" in StoreData.DATA && StoreData.DATA.remember_user):
@@ -36,10 +39,10 @@ func _ready():
 		$LogIn/VBox/pass.text = StoreData.DATA.user_pass
 		if("muted" in StoreData.DATA): $LogIn/Mute.pressed = StoreData.DATA.muted
 	
-	if(!"changelog_showed" in StoreData.DATA || StoreData.DATA.changelog_showed != GC.version):
-		StoreData.DATA.changelog_showed = GC.version
+	if(!"changelog_showed" in StoreData.DATA || StoreData.DATA.changelog_showed != GC.get_version_str()):
+		StoreData.DATA.changelog_showed = GC.get_version_str()
 		$Changelog.visible = true
-		$Changelog/Label_title.text += GC.version
+		$Changelog/Label_title.text = "CHANGELOG "+GC.get_version_str()
 
 func onClick(btn,sub=""):
 	print(btn)
@@ -51,10 +54,9 @@ func onClick(btn,sub=""):
 		$NewAccount/Label_error.text = ""
 	if btn=="forgot":
 		$LogIn.visible = false
-		$Forgot.visible = true
-	if btn=="forgot_back":
+		$ForgotPanel.showForgotPanel()
+	if btn=="show_login":
 		$LogIn.visible = true
-		$Forgot.visible = false
 	if btn=="NewAccount":
 		if sub=="back":
 			$LogIn.visible = true
@@ -66,9 +68,14 @@ func onClick(btn,sub=""):
 			if $NewAccount/VBox/mail.text=="": 
 				show_float_message("FALTA UN MAIL")
 				return
+			for user in FM.DATA.users:
+				if $NewAccount/VBox/mail.text==FM.DATA.users[user].mail: 
+					show_float_message("ESE MAIL YA ESTA REGISTRADO!")
+					return
 			$NewAccount/VBox/code/btn_create.disabled = true
+			randomize()
 			CODE = randi()%9000+1000
-			$MailSender.send(CODE)
+			$MailSender.send(CODE,$NewAccount/VBox/mail.text)
 			$NewAccount/code_message.visible = true
 	if btn=="login":
 		login()
@@ -80,6 +87,7 @@ func onClick(btn,sub=""):
 		$Changelog.visible = false
 	if btn=="version":
 		$Changelog.visible = true
+		$Changelog/Label_title.text = "CHANGELOG "+GC.get_version_str()
 
 func createAccount():
 	var user_data = { 
@@ -147,5 +155,5 @@ func show_float_message(msg):
 	var mi_id = MSG_ID
 	$float_message.visible = true
 	$float_message/Label.text = msg
-	yield(get_tree().create_timer(3),"timeout")
+	yield(get_tree().create_timer(4),"timeout")
 	if mi_id==MSG_ID: $float_message.visible = false

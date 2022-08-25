@@ -61,13 +61,16 @@ func update_winners():
 		$WinsPanel/scroll/name.text += w.name+"\n"
 		$WinsPanel/scroll/name/wins.text += str(w.wins)+"\n"
 
-func add_friend():	
+func add_friend():
 	var fr = $WinsPanel/LineEdit.text.to_upper()
-	if fr in GC.USER["friends"]: return
 	if !fr in FM.DATA.users: return
-	$WinsPanel/LineEdit/btn_add.disabled = true
-	if !"friends" in GC.USER: GC.USER["friends"] = []
-	GC.USER["friends"].append(fr)
+	if fr == GC.USER.name: return
+	if fr in GC.USER["friends"]: 
+		GC.USER["friends"].erase(fr)
+	else:
+		$WinsPanel/LineEdit/btn_add.disabled = true
+		if !"friends" in GC.USER: GC.USER["friends"] = []
+		GC.USER["friends"].append(fr)
 	FM.DATA.users[GC.USER.name] = GC.USER
 	FM.push_data("users/"+GC.USER.name)
 	yield(FM,"complete_push")
