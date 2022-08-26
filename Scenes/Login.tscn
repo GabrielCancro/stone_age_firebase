@@ -208,6 +208,7 @@ theme = ExtResource( 2 )
 text = "Salir"
 
 [node name="ForgotPanel" type="Panel" parent="."]
+visible = false
 margin_left = 270.0
 margin_top = 39.0
 margin_right = 562.0
@@ -316,6 +317,7 @@ text = "
 autowrap = true
 
 [node name="NewAccount" type="Panel" parent="."]
+visible = false
 margin_left = 204.0
 margin_top = 28.0
 margin_right = 625.0
@@ -519,9 +521,6 @@ margin_right = 64.0
 margin_bottom = -29.0
 text = "SALIR"
 
-[node name="MailSender" type="HTTPRequest" parent="."]
-script = ExtResource( 9 )
-
 [node name="float_message" type="ColorRect" parent="."]
 visible = false
 anchor_left = 0.5
@@ -546,3 +545,6 @@ text = "CLAVE INCORRECTA"
 align = 1
 valign = 1
 autowrap = true
+
+[node name="MailSender" type="HTTPRequest" parent="."]
+script = ExtResource( 9 )
