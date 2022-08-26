@@ -1,6 +1,6 @@
 extends Node
 
-var version = 1000302
+var version = 1000303
 var USER = null
 var GAME = null
 var PLAYER = null

@@ -20,7 +20,7 @@ func showNewGamePanel(gameId=null):
 	$NewGame.visible = true
 	$NewGame/Players/Label_error.text = ""
 	players = [GC.USER.name]
-	in!gameId: check_own_game()
+	if !gameId: check_own_game()
 
 func check_own_game():
 	$NewGame/Label_exist.text = ""

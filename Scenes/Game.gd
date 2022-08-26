@@ -9,6 +9,7 @@ func _ready():
 	$Header/btn_civ.connect("button_down",self,"onClick",["civ"])
 	CLOCK.init()
 	set_now_time()
+	GC.FINISHED = false
 	check_finished_game()
 	if(GC.PLAYER.turn==0 && !GC.FINISHED): $HelpPanel.showHelp("intro")
 	for btn in $HelpButtons.get_children(): btn.connect("button_down",self,"onClickHelp",[btn])
@@ -53,6 +54,7 @@ func set_now_time():
 	$Header/end_turn/btn_turn.disabled = false
 
 func updateTimeUi():
+	if GC.FINISHED: return
 	GC.ADVANCED_TIME += 1
 	var time_passed = GC.NOW_TIME + GC.ADVANCED_TIME - GC.GAME.start_time
 	var tm = GC.GAME.duration*60*60 - time_passed

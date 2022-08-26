@@ -19,6 +19,9 @@ margin_top = 40.0
 margin_bottom = 40.0
 color = Color( 0, 0, 0, 0.392157 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Map" type="Sprite" parent="."]
 modulate = Color( 0.290196, 0.290196, 0.290196, 0.760784 )
@@ -273,6 +276,9 @@ margin_bottom = 37.0
 rect_min_size = Vector2( 35, 35 )
 texture = ExtResource( 10 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="scores" type="Label" parent="HeaderTable/ico5"]
 modulate = Color( 0.847059, 0.847059, 0.847059, 1 )
@@ -284,6 +290,20 @@ margin_right = -37.0
 theme = ExtResource( 2 )
 custom_fonts/font = ExtResource( 11 )
 text = "5000"
+align = 2
+valign = 2
+
+[node name="lab_scores" type="Label" parent="HeaderTable/ico5"]
+modulate = Color( 0.670588, 0.670588, 0.670588, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -43.0
+margin_top = 7.0
+margin_right = -37.0
+margin_bottom = -11.0
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 11 )
+text = "BOTÍN"
 align = 2
 valign = 2
 
@@ -299,6 +319,23 @@ custom_fonts/font = ExtResource( 11 )
 text = "10"
 valign = 2
 autowrap = true
+
+[node name="lab_looters" type="Label" parent="HeaderTable/ico5"]
+modulate = Color( 0.670588, 0.670588, 0.670588, 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 38.0
+margin_top = 7.0
+margin_right = 92.0
+margin_bottom = -11.0
+theme = ExtResource( 2 )
+custom_fonts/font = ExtResource( 11 )
+text = "SAQUEADORES"
+valign = 2
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="FinalTable" type="ScrollContainer" parent="."]
 anchor_right = 1.0
