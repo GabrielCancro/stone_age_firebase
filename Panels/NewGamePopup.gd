@@ -2,6 +2,9 @@ extends ColorRect
 
 var players = []
 var current_own_game = null
+var ConfigVars = null
+signal on_play_click()
+signal close()
 
 func _ready():
 	visible = false
@@ -9,19 +12,58 @@ func _ready():
 	$NewGame/Players/btn_add.connect("button_down",self,"onClickAddPLayer")
 	$NewGame/btn_create.connect("button_down",self,"onClickCreateNewGame")
 	$NewGame/btn_delete.connect("button_down",self,"onClickDelete")
-
-func _input(event):
-	if event is InputEventKey and event.pressed:
-		yield(get_tree().create_timer(.1),"timeout")
-		check_config_errors()
+	$NewGame/btn_play.connect("button_down",self,"onClickPlay")
+	ConfigVars = $NewGame/Configs/Scroll/Grid
 
 func showNewGamePanel(gameId=null):
 	visible = true
 	$NewGame.visible = true
+	$NewGame/btn_create.visible = false
+	$NewGame/btn_delete.visible = false
+	$NewGame/btn_play.visible = false
 	$NewGame/Players/Label_error.text = ""
-	players = [GC.USER.name]
-	if !gameId: check_own_game()
+	$NewGame/Label_exist.text = ""	
+	current_own_game = null
+	$NewGame/Configs/Scroll.remove_child(ConfigVars)
+	ConfigVars.queue_free()
+	ConfigVars = load("res://Games/StoneAge/ConfigVars.tscn").instance()
+	$NewGame/Configs/Scroll.add_child(ConfigVars)
+	if !gameId: 
+		players = [GC.USER.name]
+		check_own_game()
+		if current_own_game: 
+			gameId = current_own_game.name
+			$NewGame/btn_delete.visible = true
+		else: $NewGame/btn_create.visible = true
+	if gameId: 
+		var game = FM.DATA.games[gameId]
+		if current_own_game!=game:$NewGame/btn_play.visible = true
+		$NewGame/ReadOnlyStop.visible = true
+		$NewGame/TitleEdit.text = game.desc
+		$NewGame/Label_exist.text = "Partida de "+game.own
+		if current_own_game==game: $NewGame/Label_exist.text = "Ya tienes una partida activa!"
+		players = game.players.keys()
+		ConfigVars.set_data_from_game(game)
+		ConfigVars.setReadOnly(true)
+	showPlayersList()
 
+func set_game_configs(game,owner=false):
+	$NewGame/TitleEdit.text = game.desc
+	if owner: $NewGame/Label_exist.text = "Ya tienes una partida activa!"
+	else: $NewGame/Label_exist.text = "Partida de "+GC.GAME.own
+	if owner: $NewGame/btn_delete.visible = true
+	$NewGame/ReadOnlyStop.visible = true
+	players = game.players.keys()
+	ConfigVars.set_data_from_game(game)
+	if !"init_turns" in game: game.init_turns = 0
+	$NewGame/Configs/Scroll/Grid/init_turns/LineEdit.text = str(game.init_turns)
+	if !"max_turns" in game: game.max_turns = 0
+	$NewGame/Configs/Scroll/Grid/total_turns/LineEdit.text = str(game.max_turns)
+	if !"turns_phs" in game: game.turns_phs = 0
+	$NewGame/Configs/Scroll/Grid/phs_turns/LineEdit.text = str(game.turns_phs)
+	if !"duration" in game: game.duration = 0
+	$NewGame/Configs/Scroll/Grid/duration/LineEdit.text = str(game.duration)
+	
 func check_own_game():
 	$NewGame/Label_exist.text = ""
 	$NewGame/btn_delete.visible = false
@@ -30,23 +72,6 @@ func check_own_game():
 		if "own" in game && game.own == GC.USER.name: 
 			current_own_game = game
 			break
-	if current_own_game:
-		$NewGame/TitleEdit.text = current_own_game.desc
-		$NewGame/btn_create.visible = false
-		$NewGame/Label_exist.text = "Ya tienes una partida activa!"
-		$NewGame/btn_delete.visible = true
-		$NewGame/ReadOnlyStop.visible = true
-		players = current_own_game.players.keys()
-		if !"init_turns" in current_own_game: current_own_game.init_turns = 0
-		$NewGame/Configs/Scroll/Grid/init_turns/LineEdit.text = str(current_own_game.init_turns)
-		if !"max_turns" in current_own_game: current_own_game.max_turns = 0
-		$NewGame/Configs/Scroll/Grid/total_turns/LineEdit.text = str(current_own_game.max_turns)
-		if !"turns_phs" in current_own_game: current_own_game.turns_phs = 0
-		$NewGame/Configs/Scroll/Grid/phs_turns/LineEdit.text = str(current_own_game.turns_phs)
-		if !"duration" in current_own_game: current_own_game.duration = 0
-		$NewGame/Configs/Scroll/Grid/duration/LineEdit.text = str(current_own_game.duration)
-	showPlayersList()
-	check_config_errors()
 
 func onClickBack():
 	visible = false
@@ -58,7 +83,7 @@ func onClickAddPLayer():
 		yield(get_tree().create_timer(2),"timeout")
 		$NewGame/Players/Label_error.text = ""
 	elif !name in FM.DATA.users:
-		$NewGame/Players/Label_error.text = "Jugador Inexistnte"
+		$NewGame/Players/Label_error.text = "Jugador Inexistente"
 		yield(get_tree().create_timer(2),"timeout")
 		$NewGame/Players/Label_error.text = ""
 	else: 
@@ -72,11 +97,12 @@ func showPlayersList():
 	for i in players: $NewGame/Players/Label_players.text += i+"\n"
 
 func onClickCreateNewGame():
+	var config_data = ConfigVars.get_config_data()
+	if !config_data: return
 	$NewGame.visible = false
 	FM.DATA.games_id += 1
 	FM.push_var("","games_id",FM.DATA.games_id)
 	yield(FM,"complete_push")
-	check_config_errors()
 	var game_name = "partida "+str(FM.DATA.games_id)
 	var players_data = {}
 	for nm in players:
@@ -91,40 +117,14 @@ func onClickCreateNewGame():
 		"start_time": yield( CLOCK.get_time(),"complete" ),
 		"start_os_date": OS.get_datetime(),
 		"players": players_data,
-		"max_turns": int($NewGame/Configs/Scroll/Grid/total_turns/LineEdit.text),
-		"init_turns": int($NewGame/Configs/Scroll/Grid/init_turns/LineEdit.text),
-		"turns_phs": int($NewGame/Configs/Scroll/Grid/phs_turns/LineEdit.text),
-		"duration": int($NewGame/Configs/Scroll/Grid/duration/LineEdit.text),
 		"own": GC.USER.name,
-		"pest_event": -1
-	}	
+		"gameType": $NewGame/Configs/GameTypeSelector.text
+	}
+	for k in config_data.keys(): FM.DATA.games[game_name][k] = config_data[k]
 	if FM.DATA.games[game_name]["desc"]=="": FM.DATA.games[game_name]["desc"] = game_name
 	FM.push_data("games/"+game_name)
 	yield(FM,"complete_push")
 	get_tree().reload_current_scene()
-
-func check_config_errors():
-	var correct = true
-	if !$NewGame/Configs/Scroll/Grid/init_turns/LineEdit.text.is_valid_integer():
-		$NewGame/Configs/Scroll/Grid/init_turns/LineEdit.text = ""
-		correct = false
-	if !$NewGame/Configs/Scroll/Grid/phs_turns/LineEdit.text.is_valid_integer():
-		$NewGame/Configs/Scroll/Grid/phs_turns/LineEdit.text = ""
-		correct = false
-	if !$NewGame/Configs/Scroll/Grid/total_turns/LineEdit.text.is_valid_integer():
-		$NewGame/Configs/Scroll/Grid/total_turns/LineEdit.text = ""
-		correct = false
-	if !$NewGame/Configs/Scroll/Grid/final_await/LineEdit.text.is_valid_integer():
-		$NewGame/Configs/Scroll/Grid/final_await/LineEdit.text = ""
-		correct = false
-	if correct:
-		var max_turns = int($NewGame/Configs/Scroll/Grid/total_turns/LineEdit.text)
-		var init_turns = int($NewGame/Configs/Scroll/Grid/init_turns/LineEdit.text)
-		var turns_phs = int($NewGame/Configs/Scroll/Grid/phs_turns/LineEdit.text)
-		var hs_await = int($NewGame/Configs/Scroll/Grid/final_await/LineEdit.text)
-		var duration = ceil( (max_turns-init_turns) / turns_phs ) + hs_await
-		$NewGame/Configs/Scroll/Grid/duration/LineEdit.text = str(duration)
-	else: $NewGame/Configs/Scroll/Grid/duration/LineEdit.text = "?"
 
 func onClickDelete():
 	if !current_own_game: return
@@ -135,3 +135,7 @@ func onClickDelete():
 	FM.delete_path("games/"+current_own_game.name)
 	yield(FM,"complete_remove")
 	get_tree().reload_current_scene()
+
+func onClickPlay():
+	emit_signal("on_play")
+	get_tree().change_scene("res://Scenes/Game.tscn")

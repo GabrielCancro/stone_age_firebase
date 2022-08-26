@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=1]
 [ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Panels/NewGamePopup.gd" type="Script" id=3]
-[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://assets/AnotherGame_minIco.png" type="Texture" id=4]
 [ext_resource path="res://assets/font/new_theme.tres" type="Theme" id=5]
 [ext_resource path="res://assets/font/font_super_small.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/StoneAge_minIco.png" type="Texture" id=7]
 
 [node name="NewGamePopup" type="ColorRect"]
 margin_right = 800.0
@@ -120,6 +121,12 @@ custom_fonts/font = ExtResource( 2 )
 text = "Jugador Inexistente"
 valign = 1
 
+[node name="ReadOnlyStop" type="ColorRect" parent="NewGame"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.501961, 0.501961, 0.501961, 0.0784314 )
+
 [node name="Configs" type="ColorRect" parent="NewGame"]
 margin_left = 254.0
 margin_top = 70.0
@@ -135,17 +142,16 @@ margin_right = 209.0
 margin_bottom = 49.0
 rect_min_size = Vector2( 0, 40 )
 custom_fonts/font = ExtResource( 2 )
-text = "STONE_AGE"
+text = "StoneAge"
 icon = ExtResource( 4 )
-expand_icon = true
-items = [ "STONE_AGE", ExtResource( 4 ), false, 0, null ]
+items = [ "StoneAge", ExtResource( 7 ), false, 0, null, "AnotherGame", ExtResource( 4 ), true, 1, null ]
 selected = 0
 
 [node name="Scroll" type="ScrollContainer" parent="NewGame/Configs"]
 margin_left = 9.0
 margin_top = 53.0
 margin_right = 226.0
-margin_bottom = 257.0
+margin_bottom = 222.0
 theme = ExtResource( 5 )
 
 [node name="Grid" type="GridContainer" parent="NewGame/Configs/Scroll"]
@@ -316,12 +322,6 @@ virtual_keyboard_enabled = false
 shortcut_keys_enabled = false
 selecting_enabled = false
 
-[node name="ReadOnlyStop" type="ColorRect" parent="NewGame"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-color = Color( 0.501961, 0.501961, 0.501961, 0.0784314 )
-
 [node name="btn_create" type="Button" parent="NewGame"]
 anchor_left = 0.5
 anchor_top = 1.0
@@ -332,6 +332,17 @@ margin_top = -22.0
 margin_right = 110.0
 margin_bottom = 20.0
 text = "CREAR PARTIDA"
+
+[node name="btn_play" type="Button" parent="NewGame"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = 210.0
+margin_top = -347.5
+margin_right = 381.0
+margin_bottom = -284.5
+text = "JUGAR >>"
 
 [node name="btn_delete" type="Button" parent="NewGame"]
 anchor_left = 0.5

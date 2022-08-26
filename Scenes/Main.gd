@@ -84,4 +84,5 @@ func customComparison(a,b):
 func onSelectGame(game):
 	GC.GAME = game
 	GC.PLAYER = game.players[GC.USER.name]
-	get_tree().change_scene("res://Scenes/Game.tscn")
+	$NewGamePopup.showNewGamePanel(game.name)
+#	get_tree().change_scene("res://Scenes/Game.tscn")
