@@ -37,9 +37,12 @@ margin_left = 7.0
 margin_right = -58.0
 custom_constants/line_spacing = 1
 custom_fonts/font = ExtResource( 1 )
-text = "Turnos Iniciales"
+text = "Turnos por hs"
 valign = 1
 autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="LineEdit" type="LineEdit" parent="Grid/init_turns"]
 anchor_right = 1.0
@@ -50,7 +53,7 @@ margin_right = -6.0
 margin_bottom = -4.0
 focus_mode = 1
 custom_fonts/font = ExtResource( 1 )
-text = "6"
+text = "5"
 align = 1
 context_menu_enabled = false
 shortcut_keys_enabled = false
@@ -69,7 +72,7 @@ margin_left = 7.0
 margin_right = -58.0
 custom_constants/line_spacing = 1
 custom_fonts/font = ExtResource( 1 )
-text = "Turnos Por Hora"
+text = "Turnos entre duelos"
 valign = 1
 autowrap = true
 
@@ -82,10 +85,13 @@ margin_right = -6.0
 margin_bottom = -4.0
 focus_mode = 1
 custom_fonts/font = ExtResource( 1 )
-text = "3"
+text = "15"
 align = 1
 context_menu_enabled = false
 shortcut_keys_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="total_turns" type="ColorRect" parent="Grid"]
 margin_top = 66.0
@@ -101,7 +107,7 @@ margin_left = 7.0
 margin_right = -58.0
 custom_constants/line_spacing = 1
 custom_fonts/font = ExtResource( 1 )
-text = "Turnos Totales"
+text = "Cantidad de duelos"
 valign = 1
 autowrap = true
 
@@ -114,12 +120,16 @@ margin_right = -6.0
 margin_bottom = -4.0
 focus_mode = 1
 custom_fonts/font = ExtResource( 1 )
-text = "30"
+text = "5"
 align = 1
 context_menu_enabled = false
 shortcut_keys_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="final_await" type="ColorRect" parent="Grid"]
+visible = false
 margin_top = 99.0
 margin_right = 200.0
 margin_bottom = 129.0
@@ -152,9 +162,9 @@ context_menu_enabled = false
 shortcut_keys_enabled = false
 
 [node name="duration" type="ColorRect" parent="Grid"]
-margin_top = 132.0
+margin_top = 99.0
 margin_right = 200.0
-margin_bottom = 162.0
+margin_bottom = 129.0
 rect_min_size = Vector2( 200, 30 )
 color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
 
@@ -179,12 +189,15 @@ margin_right = -6.0
 margin_bottom = -4.0
 focus_mode = 0
 custom_fonts/font = ExtResource( 1 )
-text = "Nan"
+text = "15"
 align = 1
 context_menu_enabled = false
 virtual_keyboard_enabled = false
 shortcut_keys_enabled = false
 selecting_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="title" type="ColorRect" parent="Grid"]
 visible = false
@@ -208,6 +221,10 @@ valign = 1
 autowrap = true
 
 [node name="ReadOnlyStop" type="ColorRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.501961, 0.501961, 0.501961, 0.203922 )
+__meta__ = {
+"_edit_use_anchors_": false
+}

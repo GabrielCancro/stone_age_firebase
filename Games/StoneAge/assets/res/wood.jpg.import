@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/build.jpg-cd9cf566b6371357c8a5a1447bd8eba6.stex"
+path="res://.import/wood.jpg-41a5be8324bfe4679f17e071fc10df08.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/build.jpg"
-dest_files=[ "res://.import/build.jpg-cd9cf566b6371357c8a5a1447bd8eba6.stex" ]
+source_file="res://Games/StoneAge/assets/res/wood.jpg"
+dest_files=[ "res://.import/wood.jpg-41a5be8324bfe4679f17e071fc10df08.stex" ]
 
 [params]
 

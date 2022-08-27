@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/food.jpg-dd28aad67cd27b6a035052c81d9ba9b7.stex"
+path="res://.import/camp.jpg-54e7429bfb00c84790e4000e7412dd2d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/food.jpg"
-dest_files=[ "res://.import/food.jpg-dd28aad67cd27b6a035052c81d9ba9b7.stex" ]
+source_file="res://Games/StoneAge/assets/res/camp.jpg"
+dest_files=[ "res://.import/camp.jpg-54e7429bfb00c84790e4000e7412dd2d.stex" ]
 
 [params]
 

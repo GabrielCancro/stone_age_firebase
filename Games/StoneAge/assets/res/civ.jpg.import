@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/civ.jpg-9a8b4c82ab81dc79bf3c5a672e993402.stex"
+path="res://.import/civ.jpg-719a8c3634248f331514ced590e8de42.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/civ.jpg"
-dest_files=[ "res://.import/civ.jpg-9a8b4c82ab81dc79bf3c5a672e993402.stex" ]
+source_file="res://Games/StoneAge/assets/res/civ.jpg"
+dest_files=[ "res://.import/civ.jpg-719a8c3634248f331514ced590e8de42.stex" ]
 
 [params]
 

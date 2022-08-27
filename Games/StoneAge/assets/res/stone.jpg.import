@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/score.jpg-f295130d15c6dfa37c194c3081803d8c.stex"
+path="res://.import/stone.jpg-69d51e9c93063c8779190c301dabe425.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/score.jpg"
-dest_files=[ "res://.import/score.jpg-f295130d15c6dfa37c194c3081803d8c.stex" ]
+source_file="res://Games/StoneAge/assets/res/stone.jpg"
+dest_files=[ "res://.import/stone.jpg-69d51e9c93063c8779190c301dabe425.stex" ]
 
 [params]
 

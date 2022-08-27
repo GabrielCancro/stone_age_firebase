@@ -1,16 +1,17 @@
 [gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Prefabs/EndPanel.gd" type="Script" id=1]
+[ext_resource path="res://Games/StoneAge/nodes/EndPanel.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=2]
-[ext_resource path="res://assets/villager.jpg" type="Texture" id=3]
-[ext_resource path="res://assets/build.jpg" type="Texture" id=4]
+[ext_resource path="res://Games/StoneAge/assets/res/villager.jpg" type="Texture" id=3]
+[ext_resource path="res://Games/StoneAge/assets/res/build.jpg" type="Texture" id=4]
 [ext_resource path="res://assets/font/font_big_outline.tres" type="DynamicFont" id=5]
-[ext_resource path="res://assets/tool.jpg" type="Texture" id=6]
-[ext_resource path="res://assets/camp.jpg" type="Texture" id=7]
+[ext_resource path="res://Games/StoneAge/assets/res/tool.jpg" type="Texture" id=6]
+[ext_resource path="res://Games/StoneAge/assets/res/camp.jpg" type="Texture" id=7]
 [ext_resource path="res://Games/StoneAge/assets/map/map_blur.jpg" type="Texture" id=8]
-[ext_resource path="res://Prefabs/ScoreLine.tscn" type="PackedScene" id=9]
-[ext_resource path="res://assets/looter.jpg" type="Texture" id=10]
+[ext_resource path="res://Games/StoneAge/nodes/ScoreLine.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Games/StoneAge/assets/res/looter.jpg" type="Texture" id=10]
 [ext_resource path="res://assets/font/font_super_small.tres" type="DynamicFont" id=11]
+
 
 
 [node name="EndPanel" type="ColorRect"]

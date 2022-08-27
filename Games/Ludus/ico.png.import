@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/camp.jpg-fdc4a35e7fb418853acb68aa890ee7c5.stex"
+path="res://.import/ico.png-40ce66c845b2ca6ede11ff076277ec5f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/camp.jpg"
-dest_files=[ "res://.import/camp.jpg-fdc4a35e7fb418853acb68aa890ee7c5.stex" ]
+source_file="res://Games/Ludus/ico.png"
+dest_files=[ "res://.import/ico.png-40ce66c845b2ca6ede11ff076277ec5f.stex" ]
 
 [params]
 

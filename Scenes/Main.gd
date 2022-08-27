@@ -1,6 +1,7 @@
 extends Node2D
 
 var OWN_GAME = null
+var GameLine = preload("res://Panels/gameLine.tscn")
 var winners = []
 
 func _ready():
@@ -23,14 +24,6 @@ func onClick(btn):
 	if btn=="new":
 		$NewGamePopup.showNewGamePanel()
 
-#func check_time():
-#	var nowTime = yield(CLOCK.get_time(),"complete")
-#	var played_time = nowTime-FM.DATA.games.gm1.start_time
-#	print("START TIME: ",FM.DATA.games.gm1.start_time)
-#	print("NOW TIME: ",nowTime)
-#	print("PLAYED TIME: ",played_time)
-#	print("TURNS: ",floor(played_time/25))
-
 func set_game_button():
 	if !"games" in FM.DATA: 
 		FM.DATA.games = {}
@@ -39,12 +32,15 @@ func set_game_button():
 	for i in FM.DATA.games:
 		var game = FM.DATA.games[i]
 		if GC.USER.name in game.players.keys():
-			var btn = Button.new()
+			var btn = GameLine.instance()
 			if(!"desc" in game): game.desc = game.name
-			btn.text = game.desc
+			btn.get_node("Button/Title").text = game.desc + "  ("+game.own+")"
+			btn.get_node("Button/Desc").text = game.gameType
+			if("finished"in game && game.finished): btn.get_node("Button/Desc").text += " (finalizada)"
+			else: btn.get_node("Button/Desc").text += " (duración total "+str(game.duration)+"hs)"
 			$Games/VBox.add_child(btn)
 			if !GC.USER.name in game.players: btn.disabled = true
-			btn.connect("button_down",self,"onSelectGame",[game])
+			btn.get_node("Button").connect("button_down",self,"onSelectGame",[game])
 
 func update_winners():
 	if !"friends" in GC.USER: GC.USER["friends"] = []

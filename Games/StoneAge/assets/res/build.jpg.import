@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/StoneAge_minIco.png-df52d5f494e0274e1eba4e5f8e8ef805.stex"
+path="res://.import/build.jpg-fafdc2d329cd5d324da74608ff717e6f.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Games/StoneAge/assets/StoneAge_minIco.png"
-dest_files=[ "res://.import/StoneAge_minIco.png-df52d5f494e0274e1eba4e5f8e8ef805.stex" ]
+source_file="res://Games/StoneAge/assets/res/build.jpg"
+dest_files=[ "res://.import/build.jpg-fafdc2d329cd5d324da74608ff717e6f.stex" ]
 
 [params]
 

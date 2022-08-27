@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/font/themeA.tres" type="Theme" id=1]
+[ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=2]
+
+[node name="gameLine" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -400.0
+margin_bottom = -340.0
+rect_min_size = Vector2( 400, 70 )
+theme = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="Button"]
+margin_left = 6.0
+margin_top = 4.0
+margin_right = 393.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 180, 20 )
+custom_fonts/font = ExtResource( 2 )
+text = "Partida 1050 (MOLE)"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Desc" type="Label" parent="Button"]
+modulate = Color( 0.807843, 0.807843, 0.807843, 1 )
+margin_left = 8.0
+margin_top = 41.0
+margin_right = 391.0
+margin_bottom = 61.0
+rect_min_size = Vector2( 180, 20 )
+custom_fonts/font = ExtResource( 2 )
+text = "StoneAge (finalizada)"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

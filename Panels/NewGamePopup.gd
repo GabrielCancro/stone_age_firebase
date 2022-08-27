@@ -3,6 +3,7 @@ extends ColorRect
 var players = []
 var current_own_game = null
 var ConfigVars = null
+var gameId = null
 signal on_play_click()
 signal close()
 
@@ -13,22 +14,19 @@ func _ready():
 	$NewGame/btn_create.connect("button_down",self,"onClickCreateNewGame")
 	$NewGame/btn_delete.connect("button_down",self,"onClickDelete")
 	$NewGame/btn_play.connect("button_down",self,"onClickPlay")
-	ConfigVars = $NewGame/Configs/Scroll/Grid
+	$NewGame/Configs/GameTypeSelector.connect("item_selected",self,"onSelectGame")
+	ConfigVars = $NewGame/Configs/Scroll.get_child(0)
 
-func showNewGamePanel(gameId=null):
+func showNewGamePanel(_gameId=null):
+	gameId = _gameId
 	visible = true
 	$NewGame.visible = true
 	$NewGame/btn_create.visible = false
 	$NewGame/btn_delete.visible = false
 	$NewGame/btn_play.visible = false
 	$NewGame/Players/Label_error.text = ""
-	$NewGame/Label_exist.text = ""	
+	$NewGame/Label_exist.text = ""
 	current_own_game = null
-	$NewGame/Configs/Scroll.remove_child(ConfigVars)
-	ConfigVars.queue_free()
-	ConfigVars = load("res://Games/StoneAge/ConfigVars.tscn").instance()
-	$NewGame/Configs/Scroll.add_child(ConfigVars)
-	ConfigVars.setReadOnly(false)
 	$NewGame/ReadOnlyStop.visible = false
 	$NewGame/Configs/ReadOnlyGame.visible = false
 	if !gameId: 
@@ -40,32 +38,34 @@ func showNewGamePanel(gameId=null):
 		else: $NewGame/btn_create.visible = true
 	if gameId: 
 		var game = FM.DATA.games[gameId]
-		if current_own_game!=game:$NewGame/btn_play.visible = true
+		if current_own_game!=game:$NewGame/btn_play.visible = true		
 		$NewGame/ReadOnlyStop.visible = true
 		$NewGame/TitleEdit.text = game.desc
 		$NewGame/Label_exist.text = "Partida de "+game.own
 		if current_own_game==game: $NewGame/Label_exist.text = "Ya tienes una partida activa!"
 		players = game.players.keys()
-		ConfigVars.set_data_from_game(game)
-		ConfigVars.setReadOnly(true)
 		$NewGame/Configs/ReadOnlyGame.visible = true
+	onSelectGame(-1)
 	showPlayersList()
 
-func set_game_configs(game,owner=false):
-	$NewGame/TitleEdit.text = game.desc
-	if owner: $NewGame/Label_exist.text = "Ya tienes una partida activa!"
-	else: $NewGame/Label_exist.text = "Partida de "+GC.GAME.own
-	if owner: $NewGame/btn_delete.visible = true
-	players = game.players.keys()
-	ConfigVars.set_data_from_game(game)
-	if !"init_turns" in game: game.init_turns = 0
-	$NewGame/Configs/Scroll/Grid/init_turns/LineEdit.text = str(game.init_turns)
-	if !"max_turns" in game: game.max_turns = 0
-	$NewGame/Configs/Scroll/Grid/total_turns/LineEdit.text = str(game.max_turns)
-	if !"turns_phs" in game: game.turns_phs = 0
-	$NewGame/Configs/Scroll/Grid/phs_turns/LineEdit.text = str(game.turns_phs)
-	if !"duration" in game: game.duration = 0
-	$NewGame/Configs/Scroll/Grid/duration/LineEdit.text = str(game.duration)
+func onSelectGame(index):
+	if(gameId):
+		for i in $NewGame/Configs/GameTypeSelector.get_item_count():
+			if $NewGame/Configs/GameTypeSelector.get_item_text(i) == FM.DATA.games[gameId].gameType:
+				index = i
+	elif(index==-1): index = 0
+	$NewGame/Configs/GameTypeSelector.select(index)	
+	$NewGame/Configs/Scroll.remove_child(ConfigVars)
+	ConfigVars.queue_free()
+	var gameName = $NewGame/Configs/GameTypeSelector.get_item_text(index)
+	print("SELECTED-",index," ",gameName)
+	$NewGame/Configs/GameIcon.texture = load("res://Games/"+gameName+"/ico.png")
+	ConfigVars = load("res://Games/"+gameName+"/ConfigVars.tscn").instance()
+	$NewGame/Configs/Scroll.add_child(ConfigVars)
+	ConfigVars.setReadOnly(false)
+	if(gameId):
+		ConfigVars.set_data_from_game(FM.DATA.games[gameId])
+		ConfigVars.setReadOnly(true)
 	
 func check_own_game():
 	$NewGame/Label_exist.text = ""
@@ -141,4 +141,4 @@ func onClickDelete():
 
 func onClickPlay():
 	emit_signal("on_play")
-	get_tree().change_scene("res://Scenes/Game.tscn")
+	get_tree().change_scene("res://Games/"+FM.DATA.games[gameId].gameType+"/Game.tscn")
