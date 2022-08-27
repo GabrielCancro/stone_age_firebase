@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/villager_4.mp3-becce5ce23af93b3779ef14c2217a5ef.mp3str"
+
+[deps]
+
+source_file="res://Games/StoneAge/assets/sfx/villager_4.mp3"
+dest_files=[ "res://.import/villager_4.mp3-becce5ce23af93b3779ef14c2217a5ef.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

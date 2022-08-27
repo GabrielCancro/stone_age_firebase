@@ -28,6 +28,9 @@ func showNewGamePanel(gameId=null):
 	ConfigVars.queue_free()
 	ConfigVars = load("res://Games/StoneAge/ConfigVars.tscn").instance()
 	$NewGame/Configs/Scroll.add_child(ConfigVars)
+	ConfigVars.setReadOnly(false)
+	$NewGame/ReadOnlyStop.visible = false
+	$NewGame/Configs/ReadOnlyGame.visible = false
 	if !gameId: 
 		players = [GC.USER.name]
 		check_own_game()
@@ -45,6 +48,7 @@ func showNewGamePanel(gameId=null):
 		players = game.players.keys()
 		ConfigVars.set_data_from_game(game)
 		ConfigVars.setReadOnly(true)
+		$NewGame/Configs/ReadOnlyGame.visible = true
 	showPlayersList()
 
 func set_game_configs(game,owner=false):
@@ -52,7 +56,6 @@ func set_game_configs(game,owner=false):
 	if owner: $NewGame/Label_exist.text = "Ya tienes una partida activa!"
 	else: $NewGame/Label_exist.text = "Partida de "+GC.GAME.own
 	if owner: $NewGame/btn_delete.visible = true
-	$NewGame/ReadOnlyStop.visible = true
 	players = game.players.keys()
 	ConfigVars.set_data_from_game(game)
 	if !"init_turns" in game: game.init_turns = 0

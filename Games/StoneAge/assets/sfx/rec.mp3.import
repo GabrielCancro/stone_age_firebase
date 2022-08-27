@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/rec.mp3-b73541d85f85b04413a1b2ffa37dbbb5.mp3str"
+
+[deps]
+
+source_file="res://Games/StoneAge/assets/sfx/rec.mp3"
+dest_files=[ "res://.import/rec.mp3-b73541d85f85b04413a1b2ffa37dbbb5.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

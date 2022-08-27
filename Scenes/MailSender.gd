@@ -7,8 +7,8 @@ func _ready():
 	connect("request_completed", self, "_http_request_completed")
 
 func send(code,email):
-	print(URL+" "+str(code))
-	return
+#	print(URL+" "+str(code))
+#	return
 	DATA="?from=critersoft@gmail.com"
 	DATA+="&to="+email
 	DATA+="&subject=Validación de usuario"

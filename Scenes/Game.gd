@@ -56,8 +56,8 @@ func set_now_time():
 func updateTimeUi():
 	if GC.FINISHED: return
 	GC.ADVANCED_TIME += 1
-	var time_passed = GC.NOW_TIME + GC.ADVANCED_TIME - GC.GAME.start_time
-	var tm = GC.GAME.duration*60*60 - time_passed
+	var time_passed = GC.NOW_TIME + GC.ADVANCED_TIME - float(GC.GAME.start_time)
+	var tm = float(GC.GAME.duration)*60*60 - time_passed
 	if tm < 0:
 		tm = 0
 		GC.FINISHED = true

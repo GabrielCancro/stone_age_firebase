@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/complete_turn.mp3-12cd4727016a1f9d7bce1d8f3ff87e79.mp3str"
+
+[deps]
+
+source_file="res://Games/StoneAge/assets/sfx/complete_turn.mp3"
+dest_files=[ "res://.import/complete_turn.mp3-12cd4727016a1f9d7bce1d8f3ff87e79.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

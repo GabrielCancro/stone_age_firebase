@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/on_turn.mp3-fb22c5f66483b26d990051d25bec6d35.mp3str"
+
+[deps]
+
+source_file="res://Games/StoneAge/assets/sfx/on_turn.mp3"
+dest_files=[ "res://.import/on_turn.mp3-fb22c5f66483b26d990051d25bec6d35.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

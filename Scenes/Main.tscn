@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=1]
 [ext_resource path="res://Scenes/Main.gd" type="Script" id=2]
 [ext_resource path="res://Panels/NewGamePopup.tscn" type="PackedScene" id=3]
-[ext_resource path="res://assets/map/map_blur.jpg" type="Texture" id=4]
+[ext_resource path="res://Games/StoneAge/assets/map/map_blur.jpg" type="Texture" id=4]
 [ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/font/BAARS.TTF" type="DynamicFontData" id=7]
 

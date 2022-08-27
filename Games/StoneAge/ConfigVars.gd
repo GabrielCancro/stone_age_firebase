@@ -24,10 +24,10 @@ func set_data_from_game(game):
 func get_config_data():
 	if !check_config_errors(): return null
 	return {
-		"init_turns": $Grid/init_turns/LineEdit.text,
-		"max_turns": $Grid/init_turns/LineEdit.text,
-		"turns_phs": $Grid/init_turns/LineEdit.text,
-		"duration": $Grid/init_turns/LineEdit.text,
+		"init_turns": int($Grid/init_turns/LineEdit.text),
+		"max_turns": int($Grid/init_turns/LineEdit.text),
+		"turns_phs": int($Grid/init_turns/LineEdit.text),
+		"duration": float($Grid/init_turns/LineEdit.text),
 	}
 
 func check_config_errors():
@@ -41,7 +41,7 @@ func check_config_errors():
 	if !$Grid/total_turns/LineEdit.text.is_valid_integer():
 		$Grid/total_turns/LineEdit.text = ""
 		correct = false
-	if !$Grid/final_await/LineEdit.text.is_valid_integer():
+	if !$Grid/final_await/LineEdit.text.is_valid_float():
 		$Grid/final_await/LineEdit.text = ""
 		correct = false
 	if correct:

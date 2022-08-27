@@ -3,10 +3,10 @@
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=1]
 [ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Panels/NewGamePopup.gd" type="Script" id=3]
-[ext_resource path="res://assets/AnotherGame_minIco.png" type="Texture" id=4]
+[ext_resource path="res://Games/StoneAge/assets/AnotherGame_minIco.png" type="Texture" id=4]
 [ext_resource path="res://assets/font/new_theme.tres" type="Theme" id=5]
 [ext_resource path="res://assets/font/font_super_small.tres" type="DynamicFont" id=6]
-[ext_resource path="res://assets/StoneAge_minIco.png" type="Texture" id=7]
+[ext_resource path="res://Games/StoneAge/assets/StoneAge_minIco.png" type="Texture" id=7]
 
 [node name="NewGamePopup" type="ColorRect"]
 margin_right = 800.0
@@ -122,7 +122,6 @@ text = "Jugador Inexistente"
 valign = 1
 
 [node name="ReadOnlyStop" type="ColorRect" parent="NewGame"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.501961, 0.501961, 0.501961, 0.0784314 )
@@ -143,9 +142,15 @@ margin_bottom = 49.0
 rect_min_size = Vector2( 0, 40 )
 custom_fonts/font = ExtResource( 2 )
 text = "StoneAge"
-icon = ExtResource( 4 )
+icon = ExtResource( 7 )
 items = [ "StoneAge", ExtResource( 7 ), false, 0, null, "AnotherGame", ExtResource( 4 ), true, 1, null ]
 selected = 0
+
+[node name="ReadOnlyGame" type="ColorRect" parent="NewGame/Configs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = -170.0
+color = Color( 0.501961, 0.501961, 0.501961, 0.0784314 )
 
 [node name="Scroll" type="ScrollContainer" parent="NewGame/Configs"]
 margin_left = 9.0
