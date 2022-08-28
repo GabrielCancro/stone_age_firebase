@@ -35,9 +35,9 @@ func get_random_card():
 	return [rec,bon]
 
 func set_card_data(card,data):
-	card.get_node("rec/r1").texture = load("res://assets/"+data[0]+".jpg")
-	card.get_node("bon/r1").texture = load("res://assets/"+data[1]+".jpg")
-	card.get_node("cost2/r1").texture = load("res://assets/"+data[1]+".jpg")
+	card.get_node("rec/r1").texture = load("res://Games/StoneAge/assets/res/"+data[0]+".jpg")
+	card.get_node("bon/r1").texture = load("res://Games/StoneAge/assets/res/"+data[1]+".jpg")
+	card.get_node("cost2/r1").texture = load("res://Games/StoneAge/assets/res/"+data[1]+".jpg")
 	if(!"civ_bonif" in GC.PLAYER): GC.PLAYER["civ_bonif"] = []
 	var wood_cost = 3 + floor(GC.PLAYER.civ_bonif.size()/2) + card.get_index()
 	card.get_node("cost/Label").text = "-"+str( wood_cost )
