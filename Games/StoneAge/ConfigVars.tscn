@@ -11,9 +11,6 @@ margin_bottom = -240.0
 rect_min_size = Vector2( 200, 165 )
 rect_pivot_offset = Vector2( -520, -55 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Grid" type="GridContainer" parent="."]
 margin_right = 200.0
@@ -146,7 +143,7 @@ margin_right = -6.0
 margin_bottom = -4.0
 focus_mode = 1
 custom_fonts/font = ExtResource( 1 )
-text = "2"
+text = "1"
 align = 1
 context_menu_enabled = false
 shortcut_keys_enabled = false
@@ -208,6 +205,7 @@ valign = 1
 autowrap = true
 
 [node name="ReadOnlyStop" type="ColorRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.501961, 0.501961, 0.501961, 0.203922 )

@@ -1,6 +1,8 @@
-[gd_resource type="Theme" load_steps=5 format=2]
+[gd_resource type="Theme" load_steps=7 format=2]
 
 [ext_resource path="res://assets/font/BAARS.TTF" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/check_on.png" type="Texture" id=2]
+[ext_resource path="res://assets/check_off.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=2]
 size = 32
@@ -16,5 +18,7 @@ font_data = ExtResource( 1 )
 
 [resource]
 Button/fonts/font = SubResource( 2 )
+CheckBox/icons/checked = ExtResource( 2 )
+CheckBox/icons/unchecked = ExtResource( 3 )
 Label/fonts/font = SubResource( 1 )
 LineEdit/fonts/font = SubResource( 3 )
