@@ -28,7 +28,7 @@ func get_config_data():
 		"init_turns": int($Grid/init_turns/LineEdit.text),
 		"max_turns": int($Grid/total_turns/LineEdit.text),
 		"turns_phs": int($Grid/phs_turns/LineEdit.text),
-		"duration": float($Grid/final_await/LineEdit.text),
+		"duration": float($Grid/duration/LineEdit.text),
 	}
 
 func check_config_errors():

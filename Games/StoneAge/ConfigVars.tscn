@@ -11,6 +11,9 @@ margin_bottom = -240.0
 rect_min_size = Vector2( 200, 165 )
 rect_pivot_offset = Vector2( -520, -55 )
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Grid" type="GridContainer" parent="."]
 margin_right = 200.0
