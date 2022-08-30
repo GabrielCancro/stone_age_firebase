@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/font/font_super_small.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Games/StoneAge/ConfigVars.gd" type="Script" id=2]
+[ext_resource path="res://Games/Ludus/ConfigVars.gd" type="Script" id=2]
 
 [node name="ConfigVars" type="Control"]
 anchor_right = 1.0
@@ -11,9 +11,6 @@ margin_bottom = -240.0
 rect_min_size = Vector2( 200, 165 )
 rect_pivot_offset = Vector2( -520, -55 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Grid" type="GridContainer" parent="."]
 margin_right = 200.0
@@ -37,12 +34,9 @@ margin_left = 7.0
 margin_right = -58.0
 custom_constants/line_spacing = 1
 custom_fonts/font = ExtResource( 1 )
-text = "Turnos por hs"
+text = "Turnos iniciales"
 valign = 1
 autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="LineEdit" type="LineEdit" parent="Grid/init_turns"]
 anchor_right = 1.0
@@ -72,11 +66,43 @@ margin_left = 7.0
 margin_right = -58.0
 custom_constants/line_spacing = 1
 custom_fonts/font = ExtResource( 1 )
-text = "Turnos entre duelos"
+text = "Turnos por hs"
 valign = 1
 autowrap = true
 
 [node name="LineEdit" type="LineEdit" parent="Grid/phs_turns"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 148.0
+margin_top = 6.0
+margin_right = -6.0
+margin_bottom = -4.0
+focus_mode = 1
+custom_fonts/font = ExtResource( 1 )
+text = "5"
+align = 1
+context_menu_enabled = false
+shortcut_keys_enabled = false
+
+[node name="duel_period" type="ColorRect" parent="Grid"]
+margin_top = 66.0
+margin_right = 200.0
+margin_bottom = 96.0
+rect_min_size = Vector2( 200, 30 )
+color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
+
+[node name="Label" type="Label" parent="Grid/duel_period"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_right = -58.0
+custom_constants/line_spacing = 1
+custom_fonts/font = ExtResource( 1 )
+text = "Turnos entre duelos"
+valign = 1
+autowrap = true
+
+[node name="LineEdit" type="LineEdit" parent="Grid/duel_period"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 148.0
@@ -93,14 +119,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="total_turns" type="ColorRect" parent="Grid"]
-margin_top = 66.0
+[node name="total_duels" type="ColorRect" parent="Grid"]
+margin_top = 99.0
 margin_right = 200.0
-margin_bottom = 96.0
+margin_bottom = 129.0
 rect_min_size = Vector2( 200, 30 )
 color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
 
-[node name="Label" type="Label" parent="Grid/total_turns"]
+[node name="Label" type="Label" parent="Grid/total_duels"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 7.0
@@ -111,7 +137,7 @@ text = "Cantidad de duelos"
 valign = 1
 autowrap = true
 
-[node name="LineEdit" type="LineEdit" parent="Grid/total_turns"]
+[node name="LineEdit" type="LineEdit" parent="Grid/total_duels"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 148.0
@@ -128,43 +154,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="final_await" type="ColorRect" parent="Grid"]
-visible = false
-margin_top = 99.0
-margin_right = 200.0
-margin_bottom = 129.0
-rect_min_size = Vector2( 200, 30 )
-color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
-
-[node name="Label" type="Label" parent="Grid/final_await"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 7.0
-margin_right = -58.0
-custom_constants/line_spacing = 1
-custom_fonts/font = ExtResource( 1 )
-text = "Espera Final (hs)"
-valign = 1
-autowrap = true
-
-[node name="LineEdit" type="LineEdit" parent="Grid/final_await"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 148.0
-margin_top = 6.0
-margin_right = -6.0
-margin_bottom = -4.0
-focus_mode = 1
-custom_fonts/font = ExtResource( 1 )
-text = "2"
-align = 1
-context_menu_enabled = false
-shortcut_keys_enabled = false
-
 [node name="duration" type="ColorRect" parent="Grid"]
-margin_top = 99.0
+margin_top = 132.0
 margin_right = 200.0
-margin_bottom = 129.0
+margin_bottom = 162.0
 rect_min_size = Vector2( 200, 30 )
 color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
 
@@ -198,27 +191,6 @@ selecting_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="title" type="ColorRect" parent="Grid"]
-visible = false
-margin_top = 165.0
-margin_right = 200.0
-margin_bottom = 180.0
-rect_min_size = Vector2( 200, 15 )
-color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
-
-[node name="Label" type="Label" parent="Grid/title"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 7.0
-margin_right = -8.0
-custom_colors/font_color = Color( 0.882353, 1, 0.415686, 1 )
-custom_constants/line_spacing = 1
-custom_fonts/font = ExtResource( 1 )
-text = "Stone Age Config Vars"
-align = 1
-valign = 1
-autowrap = true
 
 [node name="ReadOnlyStop" type="ColorRect" parent="."]
 visible = false
