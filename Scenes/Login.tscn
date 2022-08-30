@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Scenes/Login.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=2]
@@ -11,29 +11,6 @@
 [ext_resource path="res://Scenes/MailSender.gd" type="Script" id=9]
 [ext_resource path="res://assets/font/font_super_small.tres" type="DynamicFont" id=10]
 [ext_resource path="res://Panels/Login_ForgotPanel.gd" type="Script" id=11]
-
-[sub_resource type="GDScript" id=2]
-script/source = "extends Sprite
-
-var can_grab = true
-var grabbed_offset = Vector2()
-var drag_radius = 30
-var draging = false
-
-func _input(event):
-	if event is InputEventMouseButton:
-		can_grab = event.pressed
-		if(get_global_mouse_position().distance_to(position) < drag_radius):
-			grabbed_offset = position - get_global_mouse_position()
-			GC.DRAGING_ELEMENT = self
-			z_index = 2
-		if !event.pressed: 
-			GC.DRAGING_ELEMENT = null
-			z_index = 0
-
-func _process(delta):
-	pass
-"
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -49,22 +26,22 @@ scale = Vector2( 1.68667, 1.68667 )
 texture = ExtResource( 7 )
 region_rect = Rect2( 100, 50, 1080, 600 )
 
-[node name="Villager" type="Sprite" parent="."]
+[node name="Deco" type="Node2D" parent="."]
+
+[node name="Villager" type="Sprite" parent="Deco"]
 position = Vector2( 197, 261 )
 scale = Vector2( 1.53333, 1.53333 )
 texture = ExtResource( 6 )
-script = SubResource( 2 )
 
-[node name="Villager2" type="Sprite" parent="."]
+[node name="Villager2" type="Sprite" parent="Deco"]
 position = Vector2( 173, 116 )
+scale = Vector2( 1, 1 )
 texture = ExtResource( 5 )
-script = SubResource( 2 )
 
-[node name="Villager4" type="Sprite" parent="."]
+[node name="Villager4" type="Sprite" parent="Deco"]
 position = Vector2( 90, 210 )
 scale = Vector2( 1.03368, 1.03368 )
 texture = ExtResource( 4 )
-script = SubResource( 2 )
 
 [node name="Label_connection1" type="Label" parent="."]
 anchor_top = 1.0
