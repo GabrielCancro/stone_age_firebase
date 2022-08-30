@@ -91,6 +91,7 @@ FM="*res://Firebase/FirebaseManager.gd"
 GC="*res://global_config.gd"
 CLOCK="*res://clock_service.gd"
 StoreData="*res://StoreData.gd"
+Ludus="*res://Games/Ludus/Ludus.gd"
 
 [display]
 

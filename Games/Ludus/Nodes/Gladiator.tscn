@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Games/Ludus/ico.png" type="Texture" id=1]
+
+[node name="Gladiator" type="Sprite"]
+scale = Vector2( 0.523438, 0.523438 )
+texture = ExtResource( 1 )

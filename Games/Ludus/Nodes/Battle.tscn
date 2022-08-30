@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Games/Ludus/Nodes/Gladiator.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Games/Ludus/Nodes/Battle.gd" type="Script" id=2]
+
+[node name="Battle" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Gladiator" parent="." instance=ExtResource( 1 )]
+position = Vector2( 56, 60 )
+
+[node name="Gladiator2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 155, 10 )
+
+[node name="Gladiator" parent="Gladiator2" instance=ExtResource( 1 )]
+position = Vector2( -137.552, -156.657 )
+
+[node name="Gladiator2" parent="Gladiator2" instance=ExtResource( 1 )]
+position = Vector2( -441.313, -114.627 )
+
+[node name="Gladiator3" parent="Gladiator2" instance=ExtResource( 1 )]
+position = Vector2( -481.432, 74.5074 )

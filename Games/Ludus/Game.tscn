@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Games/Ludus/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=2]
+[ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Games/Ludus/Nodes/Battle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/font/font_super_small.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Games/Ludus/ico.png" type="Texture" id=46]
 
 [node name="Game" type="Node2D"]
@@ -11,24 +14,18 @@ script = ExtResource( 1 )
 margin_right = 800.0
 margin_bottom = 400.0
 theme = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="TextureRect" type="TextureRect" parent="Header"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -120.0
-margin_top = -151.0
-margin_right = 120.0
-margin_bottom = 89.0
+margin_left = -50.0
+margin_top = -6.0
+margin_right = 50.0
+margin_bottom = 94.0
 texture = ExtResource( 46 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="btn_quit" type="Button" parent="Header"]
 anchor_right = 1.0
@@ -36,9 +33,6 @@ margin_left = 727.0
 margin_bottom = 42.0
 theme = ExtResource( 2 )
 text = "X"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label" type="Label" parent="Header"]
 anchor_top = 1.0
@@ -64,3 +58,58 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="Chars" type="Control" parent="."]
+margin_left = 33.0
+margin_top = 29.0
+margin_right = 133.0
+margin_bottom = 142.0
+theme = ExtResource( 2 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Chars"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="hp" type="Label" parent="Chars/VBoxContainer"]
+margin_right = 85.0
+margin_bottom = 15.0
+custom_fonts/font = ExtResource( 3 )
+text = "HP"
+
+[node name="atk" type="Label" parent="Chars/VBoxContainer"]
+margin_top = 19.0
+margin_right = 85.0
+margin_bottom = 34.0
+custom_fonts/font = ExtResource( 3 )
+text = "ATK"
+
+[node name="res" type="Label" parent="Chars/VBoxContainer"]
+margin_top = 38.0
+margin_right = 85.0
+margin_bottom = 53.0
+custom_fonts/font = ExtResource( 3 )
+text = "RES"
+
+[node name="def_filo" type="Label" parent="Chars/VBoxContainer"]
+margin_top = 57.0
+margin_right = 85.0
+margin_bottom = 66.0
+custom_fonts/font = ExtResource( 5 )
+text = "   CORTANTE"
+
+[node name="def_perf" type="Label" parent="Chars/VBoxContainer"]
+margin_top = 70.0
+margin_right = 85.0
+margin_bottom = 79.0
+custom_fonts/font = ExtResource( 5 )
+text = "   PERFORANTE"
+
+[node name="def_perf2" type="Label" parent="Chars/VBoxContainer"]
+margin_top = 83.0
+margin_right = 85.0
+margin_bottom = 92.0
+custom_fonts/font = ExtResource( 5 )
+text = "   APLASTANTE"
+
+[node name="Battle" parent="." instance=ExtResource( 4 )]
+position = Vector2( 583, 138 )
