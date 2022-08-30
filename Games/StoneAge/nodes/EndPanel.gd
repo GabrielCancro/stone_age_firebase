@@ -83,10 +83,13 @@ func show_final_table():
 	return pjs_order[0]
 
 func check_new_win(winner_name):
-	if !"is_winner" in GC.PLAYER && GC.GAME.players.keys().size()>2: 
+	var cnt_players = GC.GAME.players.keys().size()
+	for p in GC.GAME.players: if(GC.GAME.players[p].turn<GC.GAME.max_turns/2): cnt_players -= 1
+	if !"is_winner" in GC.PLAYER && cnt_players>2: 
 		GC.PLAYER["is_winner"] = (winner_name == GC.USER.name)
 		if(GC.PLAYER["is_winner"]):
 			GC.USER.wins += 1
+			FM.DATA.users[GC.USER.name] = GC.USER
 			FM.push_data("games/"+GC.GAME.name+"/players/"+GC.USER.name)
 			yield(FM,"complete_push")
 			FM.DATA.users[GC.USER.name] = GC.USER

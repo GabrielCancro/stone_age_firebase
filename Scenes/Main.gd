@@ -35,6 +35,7 @@ func set_game_button():
 			var btn = GameLine.instance()
 			if(!"desc" in game): game.desc = game.name
 			btn.get_node("Button/Title").text = game.desc + "  ("+game.own+")"
+			if !"gameType" in game: game["gameType"] = "StoneAge"
 			btn.get_node("Button/Desc").text = game.gameType
 			if("finished"in game && game.finished): btn.get_node("Button/Desc").text += " (finalizada)"
 			else: btn.get_node("Button/Desc").text += " (duración total "+str(game.duration)+"hs)"
