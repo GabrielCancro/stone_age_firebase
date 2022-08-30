@@ -3,7 +3,7 @@
 [ext_resource path="res://Games/Ludus/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=2]
 [ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=3]
-[ext_resource path="res://Games/Ludus/Nodes/Battle.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Games/Ludus/nodes/Battle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/font/font_super_small.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Games/Ludus/ico.png" type="Texture" id=46]
 
@@ -112,4 +112,4 @@ custom_fonts/font = ExtResource( 5 )
 text = "   APLASTANTE"
 
 [node name="Battle" parent="." instance=ExtResource( 4 )]
-position = Vector2( 583, 138 )
+position = Vector2( 390, 160 )

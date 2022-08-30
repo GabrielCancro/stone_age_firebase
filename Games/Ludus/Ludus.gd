@@ -1,7 +1,7 @@
 extends Node
 
 var pjs = { 
-	"M":{"hp":50,"atk":20,"res":0,"def_filo":20,"def_perf":20,"def_ap":20,"agi":0},
+	"M":0, #{"hp":50,"atk":20,"res":0,"def_filo":20,"def_perf":20,"def_ap":20,"agi":0},
 	"E":0,
 	"Y":0,
 	"L":0,
