@@ -61,10 +61,12 @@ func updateTimeUi():
 	if tm < 0:
 		tm = 0
 		GC.FINISHED = true
-		GC.GAME["finished"] = true
-		FM.DATA.games[GC.GAME.name] = GC.GAME
-		FM.push_data("games/"+GC.GAME.name)
-		yield(FM,"complete_push")
+		for p in GC.GAME.players: if(GC.GAME.players[p].turn < GC.GAME.max_turns): GC.FINISHED = false
+		if !"finished" in GC.GAME && GC.FINISHED:
+			GC.GAME["finished"] = true
+			FM.DATA.games[GC.GAME.name] = GC.GAME
+			FM.push_data("games/"+GC.GAME.name)
+			yield(FM,"complete_push")
 	check_finished_game()
 	var frm = {
 		"seg": str(int(tm)%60).pad_zeros(2),

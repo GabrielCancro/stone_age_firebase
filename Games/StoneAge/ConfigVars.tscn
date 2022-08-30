@@ -1,14 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/font/font_super_small.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Games/StoneAge/ConfigVars.gd" type="Script" id=2]
+[ext_resource path="res://assets/font/themeA.tres" type="Theme" id=3]
 
 [node name="ConfigVars" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -600.0
 margin_bottom = -240.0
-rect_min_size = Vector2( 200, 165 )
+rect_min_size = Vector2( 200, 200 )
 rect_pivot_offset = Vector2( -520, -55 )
 script = ExtResource( 2 )
 __meta__ = {
@@ -185,6 +186,38 @@ context_menu_enabled = false
 virtual_keyboard_enabled = false
 shortcut_keys_enabled = false
 selecting_enabled = false
+
+[node name="wait_all" type="ColorRect" parent="Grid"]
+margin_top = 165.0
+margin_right = 200.0
+margin_bottom = 195.0
+rect_min_size = Vector2( 200, 30 )
+color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
+
+[node name="Label" type="Label" parent="Grid/wait_all"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_right = -58.0
+custom_constants/line_spacing = 1
+custom_fonts/font = ExtResource( 1 )
+text = "Esperar a todos los jugadores al finalizar"
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CheckBox" type="CheckBox" parent="Grid/wait_all"]
+margin_left = 157.0
+margin_top = 1.0
+margin_right = 195.0
+margin_bottom = 45.0
+rect_scale = Vector2( 0.7, 0.7 )
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="title" type="ColorRect" parent="Grid"]
 visible = false

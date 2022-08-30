@@ -21,6 +21,7 @@ func set_data_from_game(game):
 	$Grid/phs_turns/LineEdit.text = str(game.turns_phs)
 	if !"duration" in game: game.duration = 0
 	$Grid/duration/LineEdit.text = str(game.duration)
+	if "wait_all"in game: $Grid/wait_all/CheckBox.pressed = game.wait_all
 
 func get_config_data():
 	if !check_config_errors(): return null
@@ -29,6 +30,7 @@ func get_config_data():
 		"max_turns": int($Grid/total_turns/LineEdit.text),
 		"turns_phs": int($Grid/phs_turns/LineEdit.text),
 		"duration": float($Grid/duration/LineEdit.text),
+		"wait_all": $Grid/wait_all/CheckBox.pressed,
 	}
 
 func check_config_errors():
