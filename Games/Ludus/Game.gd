@@ -1,6 +1,5 @@
 extends Node2D
 
-
 func _ready():
 	$Header/btn_quit.connect("button_down",self,"onClick",["quit"])
 

@@ -1,10 +1,16 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Games/Ludus/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=2]
 [ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=3]
 [ext_resource path="res://Games/Ludus/nodes/Battle.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/font/font_super_small.tres" type="DynamicFont" id=5]
+[ext_resource path="res://Games/Ludus/Nodes/Equip.gd" type="Script" id=6]
+[ext_resource path="res://Games/Ludus/Nodes/Actions.gd" type="Script" id=7]
+[ext_resource path="res://Games/Ludus/nodes/Gladio.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Games/Ludus/Nodes/Chars.gd" type="Script" id=9]
+[ext_resource path="res://assets/font/font_big_outline.tres" type="DynamicFont" id=10]
+[ext_resource path="res://Games/Ludus/Nodes/Turner.gd" type="Script" id=11]
 [ext_resource path="res://Games/Ludus/ico.png" type="Texture" id=46]
 
 [node name="Game" type="Node2D"]
@@ -16,6 +22,7 @@ margin_bottom = 400.0
 theme = ExtResource( 2 )
 
 [node name="TextureRect" type="TextureRect" parent="Header"]
+visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -59,57 +66,395 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Chars" type="Control" parent="."]
-margin_left = 33.0
-margin_top = 29.0
-margin_right = 133.0
-margin_bottom = 142.0
+[node name="Turner" type="Panel" parent="."]
+margin_left = 516.0
+margin_top = 4.0
+margin_right = 637.0
+margin_bottom = 39.0
 theme = ExtResource( 2 )
+script = ExtResource( 11 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Chars"]
-margin_right = 40.0
+[node name="Button" type="Button" parent="Turner"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 5 )
+text = "Finalizar Turno"
+
+[node name="Chars" type="Control" parent="."]
+margin_right = 240.0
+margin_bottom = 184.0
+rect_pivot_offset = Vector2( -196, -12 )
+theme = ExtResource( 2 )
+script = ExtResource( 9 )
+
+[node name="Panel" type="Panel" parent="Chars"]
+margin_left = 94.0
+margin_top = 45.0
+margin_right = 147.0
+margin_bottom = 101.0
+
+[node name="ColorRect" type="ColorRect" parent="Chars/Panel"]
+modulate = Color( 1, 1, 1, 0.0784314 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Gladio" parent="Chars/Panel" instance=ExtResource( 8 )]
+visible = false
+position = Vector2( 25, 28 )
+
+[node name="hp" type="Label" parent="Chars"]
+margin_left = 102.0
+margin_top = 18.0
+margin_right = 172.0
+margin_bottom = 33.0
+custom_fonts/font = ExtResource( 3 )
+text = "HP 500"
+align = 1
+
+[node name="atk" type="Label" parent="Chars"]
+margin_left = 160.0
+margin_top = 58.0
+margin_right = 230.0
+margin_bottom = 73.0
+custom_fonts/font = ExtResource( 3 )
+text = "ATK 28"
+align = 1
+
+[node name="type" type="Label" parent="Chars/atk"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 18.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 5 )
+text = "ESPADA"
+align = 1
+
+[node name="def" type="Label" parent="Chars"]
+margin_left = 20.0
+margin_top = 46.0
+margin_right = 90.0
+margin_bottom = 61.0
+custom_fonts/font = ExtResource( 3 )
+text = "DEF 20"
+align = 1
+
+[node name="esp" type="Label" parent="Chars/def"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -8.0
+margin_top = 18.0
+margin_right = -8.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 5 )
+text = "ESPADA +5"
+align = 2
+
+[node name="lan" type="Label" parent="Chars/def"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -8.0
+margin_top = 29.0
+margin_right = -8.0
+margin_bottom = 29.0
+custom_fonts/font = ExtResource( 5 )
+text = "LANZA +5"
+align = 2
+
+[node name="maz" type="Label" parent="Chars/def"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -8.0
+margin_top = 40.0
+margin_right = -8.0
 margin_bottom = 40.0
-
-[node name="hp" type="Label" parent="Chars/VBoxContainer"]
-margin_right = 85.0
-margin_bottom = 15.0
-custom_fonts/font = ExtResource( 3 )
-text = "HP"
-
-[node name="atk" type="Label" parent="Chars/VBoxContainer"]
-margin_top = 19.0
-margin_right = 85.0
-margin_bottom = 34.0
-custom_fonts/font = ExtResource( 3 )
-text = "ATK"
-
-[node name="res" type="Label" parent="Chars/VBoxContainer"]
-margin_top = 38.0
-margin_right = 85.0
-margin_bottom = 53.0
-custom_fonts/font = ExtResource( 3 )
-text = "RES"
-
-[node name="def_filo" type="Label" parent="Chars/VBoxContainer"]
-margin_top = 57.0
-margin_right = 85.0
-margin_bottom = 66.0
 custom_fonts/font = ExtResource( 5 )
-text = "   CORTANTE"
+text = "MAZA +5"
+align = 2
 
-[node name="def_perf" type="Label" parent="Chars/VBoxContainer"]
-margin_top = 70.0
-margin_right = 85.0
-margin_bottom = 79.0
-custom_fonts/font = ExtResource( 5 )
-text = "   PERFORANTE"
+[node name="en" type="Label" parent="Chars"]
+margin_left = 29.0
+margin_top = 110.0
+margin_right = 151.0
+margin_bottom = 125.0
+custom_fonts/font = ExtResource( 3 )
+text = "ENERGÍA 10/10"
+align = 1
 
-[node name="def_perf2" type="Label" parent="Chars/VBoxContainer"]
-margin_top = 83.0
-margin_right = 85.0
-margin_bottom = 92.0
-custom_fonts/font = ExtResource( 5 )
-text = "   APLASTANTE"
+[node name="mo" type="Label" parent="Chars"]
+margin_left = 118.0
+margin_top = 131.0
+margin_right = 190.0
+margin_bottom = 146.0
+custom_fonts/font = ExtResource( 3 )
+text = "ORO x43"
+align = 1
+
+[node name="add" type="Label" parent="Chars"]
+margin_left = 159.0
+margin_top = 124.0
+margin_right = 247.0
+margin_bottom = 160.0
+custom_colors/font_color = Color( 1, 0.992157, 0.027451, 1 )
+custom_constants/shadow_offset_x = 12
+custom_fonts/font = ExtResource( 10 )
+text = "+5"
+align = 2
+valign = 1
+
+[node name="Tween" type="Tween" parent="Chars/add"]
 
 [node name="Battle" parent="." instance=ExtResource( 4 )]
+visible = false
 position = Vector2( 390, 160 )
+
+[node name="Actions" type="Panel" parent="."]
+margin_left = 270.0
+margin_top = 89.0
+margin_right = 453.0
+margin_bottom = 279.0
+theme = ExtResource( 2 )
+script = ExtResource( 7 )
+
+[node name="VBox" type="VBoxContainer" parent="Actions"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -61.0
+margin_bottom = 44.0
+
+[node name="Label" type="Label" parent="Actions/VBox"]
+margin_right = 122.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 3 )
+text = "Acciones"
+valign = 2
+
+[node name="en" type="Button" parent="Actions/VBox"]
+margin_top = 24.0
+margin_right = 122.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 5 )
+text = "Reponer Energia"
+
+[node name="atk" type="Button" parent="Actions/VBox"]
+margin_top = 48.0
+margin_right = 122.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 5 )
+text = "Entenar Ataque"
+
+[node name="def" type="Button" parent="Actions/VBox"]
+margin_top = 72.0
+margin_right = 122.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 5 )
+text = "Entenar Defensa"
+
+[node name="hp" type="Button" parent="Actions/VBox"]
+margin_top = 96.0
+margin_right = 122.0
+margin_bottom = 116.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 5 )
+text = "Entenar Resistencia"
+
+[node name="mo" type="Button" parent="Actions/VBox"]
+margin_top = 120.0
+margin_right = 122.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 5 )
+text = "Encomienda"
+
+[node name="cr" type="Button" parent="Actions/VBox"]
+margin_top = 144.0
+margin_right = 122.0
+margin_bottom = 164.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 5 )
+text = "Construir"
+
+[node name="VBoxValues" type="VBoxContainer" parent="Actions"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 126.0
+margin_right = -12.0
+margin_bottom = 44.0
+
+[node name="Label" type="Label" parent="Actions/VBoxValues"]
+margin_right = 45.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 3 )
+text = "10"
+align = 1
+valign = 2
+
+[node name="en" type="Button" parent="Actions/VBoxValues"]
+margin_top = 24.0
+margin_right = 45.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 5 )
+text = "0"
+
+[node name="atk" type="Button" parent="Actions/VBoxValues"]
+margin_top = 48.0
+margin_right = 45.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 5 )
+text = "0"
+
+[node name="def" type="Button" parent="Actions/VBoxValues"]
+margin_top = 72.0
+margin_right = 45.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 5 )
+text = "0"
+
+[node name="hp" type="Button" parent="Actions/VBoxValues"]
+margin_top = 96.0
+margin_right = 45.0
+margin_bottom = 116.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 5 )
+text = "0"
+
+[node name="mo" type="Button" parent="Actions/VBoxValues"]
+margin_top = 120.0
+margin_right = 45.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 5 )
+text = "0"
+
+[node name="cr" type="Button" parent="Actions/VBoxValues"]
+margin_top = 144.0
+margin_right = 45.0
+margin_bottom = 164.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 5 )
+text = "0"
+
+[node name="Equip" type="Panel" parent="."]
+margin_left = 487.0
+margin_top = 67.0
+margin_right = 647.0
+margin_bottom = 206.0
+theme = ExtResource( 2 )
+script = ExtResource( 6 )
+
+[node name="VBox" type="VBoxContainer" parent="Equip"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="Equip/VBox"]
+margin_right = 160.0
+margin_bottom = 20.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 3 )
+text = "Tipo de Arma"
+valign = 2
+
+[node name="val" type="Label" parent="Equip/VBox/Label"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 113.0
+custom_fonts/font = ExtResource( 3 )
+text = "3"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Button1" type="Button" parent="Equip/VBox"]
+margin_top = 24.0
+margin_right = 160.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 5 )
+text = "Espada"
+
+[node name="Button2" type="Button" parent="Equip/VBox"]
+margin_top = 48.0
+margin_right = 160.0
+margin_bottom = 68.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 5 )
+text = "Lanza"
+
+[node name="Button3" type="Button" parent="Equip/VBox"]
+margin_top = 72.0
+margin_right = 160.0
+margin_bottom = 92.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 5 )
+text = "Maza"
+
+[node name="blank_line" type="Label" parent="Equip/VBox"]
+margin_top = 96.0
+margin_right = 160.0
+margin_bottom = 116.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 3 )
+align = 1
+
+[node name="Label2" type="Label" parent="Equip/VBox"]
+margin_top = 120.0
+margin_right = 160.0
+margin_bottom = 140.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 3 )
+text = "Protección"
+valign = 2
+
+[node name="val" type="Label" parent="Equip/VBox/Label2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 113.0
+custom_fonts/font = ExtResource( 3 )
+text = "3"
+align = 1
+valign = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Button7" type="Button" parent="Equip/VBox"]
+margin_top = 144.0
+margin_right = 160.0
+margin_bottom = 164.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 5 )
+text = "Yelmo"
+
+[node name="Button6" type="Button" parent="Equip/VBox"]
+margin_top = 168.0
+margin_right = 160.0
+margin_bottom = 188.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 5 )
+text = "Brazales"
+
+[node name="Button4" type="Button" parent="Equip/VBox"]
+margin_top = 192.0
+margin_right = 160.0
+margin_bottom = 212.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 5 )
+text = "Pechera"
+
+[node name="Button5" type="Button" parent="Equip/VBox"]
+margin_top = 216.0
+margin_right = 160.0
+margin_bottom = 236.0
+rect_min_size = Vector2( 0, 20 )
+custom_fonts/font = ExtResource( 5 )
+text = "Escudo"
