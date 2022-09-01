@@ -293,7 +293,6 @@ text = "
 autowrap = true
 
 [node name="NewAccount" type="Panel" parent="."]
-visible = false
 margin_left = 204.0
 margin_top = 28.0
 margin_right = 625.0
@@ -334,12 +333,14 @@ align = 1
 margin_top = 48.0
 margin_right = 378.0
 margin_bottom = 94.0
+max_length = 10
 placeholder_text = "Nombre"
 
 [node name="pass" type="LineEdit" parent="NewAccount/VBox"]
 margin_top = 106.0
 margin_right = 378.0
 margin_bottom = 152.0
+max_length = 12
 placeholder_text = "Clave"
 
 [node name="mail" type="LineEdit" parent="NewAccount/VBox"]
