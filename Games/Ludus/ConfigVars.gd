@@ -41,3 +41,17 @@ func check_config_errors():
 		$Grid/duration/LineEdit.text = str(total_hs)
 	else: $Grid/duration/LineEdit.text = "?"
 	return correct
+
+func get_player_start_config():
+	return {
+		"hp":400,
+		"atk":20,
+		"atk_type":"ESPADA",
+		"def":10,
+		"def_esp":0,
+		"def_lan":0,
+		"def_maz":0,
+		"mo":0,
+		"en":10,
+		"en_max":10,
+	}

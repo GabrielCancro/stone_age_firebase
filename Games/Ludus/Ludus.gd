@@ -7,13 +7,14 @@ var pjs = {
 	"L":0,
 	"B":0 
 }
+
 var rounds = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
-	for i in range(7): new_round()
-	print(pjs)
+#	for i in range(7): new_round()
+#	print(pjs)
 
 func new_round():
 	rounds += 1

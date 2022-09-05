@@ -56,3 +56,10 @@ func check_config_errors():
 		$Grid/duration/LineEdit.text = str(duration)
 	else: $Grid/duration/LineEdit.text = "?"
 	return correct
+
+func get_player_start_config():
+	return {
+		"turn":0, "tool":0, "camp":0,"villager":5,"score":0,
+		"food":20,"wood":0,"adobe":0,"stone":0,"gold":0,"build":0,"looter":0,
+		"build_cards":[],"civ_cards":[],"civ_bonif":[],
+	}

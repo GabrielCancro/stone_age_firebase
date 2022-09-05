@@ -109,11 +109,7 @@ func onClickCreateNewGame():
 	var game_name = "partida "+str(FM.DATA.games_id)
 	var players_data = {}
 	for nm in players:
-		players_data[nm.to_upper()] = {
-			"turn":0, "tool":0, "camp":0,"villager":5,"score":0,
-			"food":20,"wood":0,"adobe":0,"stone":0,"gold":0,"build":0,"looter":0,
-			"build_cards":[],"civ_cards":[],"civ_bonif":[],
-		}
+		players_data[nm.to_upper()] = ConfigVars.get_player_start_config()
 	FM.DATA.games[game_name] = {
 		"name":game_name,
 		"desc":$NewGame/TitleEdit.text,

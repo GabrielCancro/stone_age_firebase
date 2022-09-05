@@ -1,29 +1,13 @@
 extends Control
 
-var data = {
-	"hp":520,
-	"atk":28,
-	"atk_type":"ESPADA",
-	"def":17,
-	"def_esp":3,
-	"def_lan":3,
-	"def_maz":1,
-	"mo":40,
-	"en":7,
-	"en_max":10,
-}
+var data = {}
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	$add.visible = false
 	update_chars()
 
 func update_chars():
+	data = GC.PLAYER
 	$hp.text = "HP "+str(data.hp)
 	$atk.text = "ATK "+str(data.atk)
 	$atk/type.text = data.atk_type
