@@ -71,7 +71,7 @@ func play_battle():
 	for oneRound in battle_data.rounds:
 		cntRound += 1
 		$Label.text = "ROUND "+str(cntRound)
-		yield(get_tree().create_timer(2),"timeout")
+		yield(get_tree().create_timer(.5),"timeout")
 		for ac in oneRound:
 			ac = ac.split("@")
 			var GLADIO = get_node("Gladio_"+ac[0])
@@ -84,10 +84,12 @@ func play_battle():
 			pop_hit(destine,ac[2])
 			$Tween.interpolate_property(GLADIO,"position",destine,origin,.2,Tween.TRANS_LINEAR,Tween.EASE_IN)
 			$Tween.start()
-			yield(get_tree().create_timer(2),"timeout")
+			yield(get_tree().create_timer(.7),"timeout")
 
 func pop_hit(pos,dam):
 	$PopHit/Label.text = "-"+str(dam)
 	$PopHit/Tween.interpolate_property($PopHit,"position",pos+Vector2(0,-50),pos+Vector2(0,-80),.5,Tween.TRANS_LINEAR,Tween.EASE_IN)
-	$PopHit/Tween.interpolate_property($PopHit,"modulate",Color(1,1,1,1),Color(1,1,1,0),.2,Tween.TRANS_LINEAR,Tween.EASE_IN,.3)
+#	$PopHit/Tween.interpolate_property($PopHit,"modulate",Color(1,1,1,1),Color(1,1,1,0),.2,Tween.TRANS_LINEAR,Tween.EASE_IN,.3)
 	$PopHit/Tween.start()
+	yield(get_tree().create_timer(.7),"timeout")
+	$PopHit.position.x = -300
