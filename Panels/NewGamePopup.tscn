@@ -1,15 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/font/themeA.tres" type="Theme" id=1]
 [ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Panels/NewGamePopup.gd" type="Script" id=3]
-[ext_resource path="res://assets/font/new_theme.tres" type="Theme" id=5]
+[ext_resource path="res://assets/themes/minimalUI/MinimalUI.tres" type="Theme" id=4]
 [ext_resource path="res://Games/StoneAge/ico.png" type="Texture" id=7]
 
 [node name="NewGamePopup" type="ColorRect"]
 margin_right = 800.0
 margin_bottom = 450.0
-theme = ExtResource( 1 )
+theme = ExtResource( 4 )
 color = Color( 0.117647, 0.117647, 0.117647, 0.964706 )
 script = ExtResource( 3 )
 __meta__ = {
@@ -39,7 +38,6 @@ margin_left = -245.0
 margin_top = -193.5
 margin_right = 245.0
 margin_bottom = 139.5
-theme = ExtResource( 1 )
 
 [node name="TitleEdit" type="LineEdit" parent="NewGame"]
 anchor_left = 0.5
@@ -50,7 +48,6 @@ margin_right = 223.5
 margin_bottom = 59.0
 rect_min_size = Vector2( 0, 40 )
 focus_mode = 1
-theme = ExtResource( 1 )
 align = 1
 max_length = 15
 placeholder_text = "Nombre De La Partida"
@@ -173,13 +170,11 @@ margin_left = 9.0
 margin_top = 53.0
 margin_right = 226.0
 margin_bottom = 222.0
-theme = ExtResource( 5 )
 
 [node name="Label" type="Label" parent="NewGame/Configs/Scroll"]
 margin_right = 200.0
 margin_bottom = 159.0
 rect_min_size = Vector2( 200, 0 )
-theme = ExtResource( 1 )
 custom_fonts/font = ExtResource( 2 )
 text = "Configuracion del juego
 Configuracion del juego

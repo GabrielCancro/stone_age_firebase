@@ -6,7 +6,7 @@ var MSG_ID = 0
 func _ready():
 	$LogIn.visible = true
 	$NewAccount.visible = false
-	$LogIn/VBox/btn_login.connect("button_down",self,"onClick",["login"])
+	$LogIn/btn_login.connect("button_down",self,"onClick",["login"])
 	$LogIn/btn_new.connect("button_down",self,"onClick",["new"])
 	$LogIn/btn_forgot.connect("button_down",self,"onClick",["forgot"])
 	$LogIn/VBox/CheckBox.connect("button_down",self,"onClick",["check"])

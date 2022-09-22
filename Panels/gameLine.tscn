@@ -6,13 +6,10 @@
 [node name="gameLine" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -400.0
-margin_bottom = -340.0
-rect_min_size = Vector2( 400, 70 )
+margin_right = -440.0
+margin_bottom = -330.0
+rect_min_size = Vector2( 360, 70 )
 theme = ExtResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Button" type="Button" parent="."]
 anchor_right = 1.0
@@ -22,10 +19,11 @@ __meta__ = {
 }
 
 [node name="Title" type="Label" parent="Button"]
-margin_left = 6.0
-margin_top = 4.0
-margin_right = 393.0
-margin_bottom = 40.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -22.5
+margin_bottom = -2.5
 rect_min_size = Vector2( 180, 20 )
 custom_fonts/font = ExtResource( 2 )
 text = "Partida 1050 (MOLE)"
@@ -37,10 +35,11 @@ __meta__ = {
 
 [node name="Desc" type="Label" parent="Button"]
 modulate = Color( 0.807843, 0.807843, 0.807843, 1 )
-margin_left = 8.0
-margin_top = 41.0
-margin_right = 391.0
-margin_bottom = 61.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = 0.5
+margin_bottom = 20.5
 rect_min_size = Vector2( 180, 20 )
 custom_fonts/font = ExtResource( 2 )
 text = "StoneAge (finalizada)"
