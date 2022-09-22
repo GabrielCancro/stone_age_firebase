@@ -11,9 +11,6 @@ margin_bottom = 450.0
 theme = ExtResource( 4 )
 color = Color( 0.117647, 0.117647, 0.117647, 0.964706 )
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Label2" type="Label" parent="."]
 anchor_top = 0.5
@@ -55,8 +52,8 @@ placeholder_text = "Nombre De La Partida"
 [node name="Label_exist" type="Label" parent="NewGame"]
 modulate = Color( 0.960784, 0.976471, 0.419608, 1 )
 anchor_right = 1.0
-margin_top = -21.0
-margin_bottom = 15.0
+margin_top = -26.0
+margin_bottom = 3.0
 custom_constants/line_spacing = -10
 text = "Ya tienes una partida activa!"
 align = 1
@@ -207,10 +204,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 210.0
-margin_top = -347.5
-margin_right = 381.0
-margin_bottom = -284.5
+margin_left = -86.0
+margin_top = -26.0
+margin_right = 85.0
+margin_bottom = 25.0
 text = "JUGAR >>"
 
 [node name="btn_delete" type="Button" parent="NewGame"]
@@ -218,10 +215,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 200.0
-margin_top = -342.5
-margin_right = 355.0
-margin_bottom = -292.5
+margin_left = -80.0
+margin_top = -25.5
+margin_right = 75.0
+margin_bottom = 24.5
 custom_colors/font_color_focus = Color( 1, 0, 0, 1 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 1, 0, 0, 1 )
@@ -229,8 +226,8 @@ custom_colors/font_color_pressed = Color( 1, 0, 0, 1 )
 text = "ELIMINAR"
 
 [node name="btn_back" type="Button" parent="NewGame"]
-margin_left = -35.0
-margin_top = -10.0
-margin_right = 34.0
-margin_bottom = 40.0
+margin_left = 461.0
+margin_top = -7.5
+margin_right = 501.0
+margin_bottom = 22.5
 text = "X"

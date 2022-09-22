@@ -96,8 +96,8 @@ modulate = Color( 1, 0, 0, 1 )
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -52.0
-margin_bottom = -16.0
+margin_top = -31.0
+margin_bottom = 5.0
 align = 1
 
 [node name="VBox" type="VBoxContainer" parent="LogIn"]
@@ -221,49 +221,49 @@ align = 1
 [node name="name" type="LineEdit" parent="ForgotPanel/VBox"]
 margin_top = 30.0
 margin_right = 252.0
-margin_bottom = 63.0
+margin_bottom = 67.0
 focus_next = NodePath("../pass")
 max_length = 50
 placeholder_text = "Nombre o Mail"
 
 [node name="btn_send_code" type="Button" parent="ForgotPanel/VBox"]
-margin_top = 70.0
+margin_top = 74.0
 margin_right = 252.0
-margin_bottom = 110.0
+margin_bottom = 114.0
 rect_min_size = Vector2( 0, 40 )
 custom_fonts/font = ExtResource( 8 )
 text = "ENVÍAME UN CÓDIGO"
 
 [node name="code" type="LineEdit" parent="ForgotPanel/VBox"]
-margin_top = 117.0
+margin_top = 121.0
 margin_right = 252.0
-margin_bottom = 150.0
+margin_bottom = 158.0
 focus_next = NodePath("../pass")
 max_length = 10
 placeholder_text = "Código Verificador"
 
 [node name="pass" type="LineEdit" parent="ForgotPanel/VBox"]
-margin_top = 157.0
+margin_top = 165.0
 margin_right = 252.0
-margin_bottom = 190.0
+margin_bottom = 202.0
 focus_next = NodePath("../btn_send_code")
 max_length = 10
 secret = true
 placeholder_text = "Nueva Clave"
 
 [node name="btn_change_pass" type="Button" parent="ForgotPanel/VBox"]
-margin_top = 197.0
+margin_top = 209.0
 margin_right = 252.0
-margin_bottom = 226.0
+margin_bottom = 238.0
 custom_colors/font_color = Color( 0.419608, 0.580392, 1, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Cambiar Clave!"
 
 [node name="btn_back" type="Button" parent="ForgotPanel"]
-margin_left = -21.0
-margin_top = -11.0
-margin_right = 32.0
-margin_bottom = 31.0
+margin_left = 261.0
+margin_top = -7.0
+margin_right = 301.0
+margin_bottom = 23.0
 text = "X"
 
 [node name="ColorRect" type="ColorRect" parent="ForgotPanel"]
@@ -296,7 +296,6 @@ text = "
 autowrap = true
 
 [node name="NewAccount" type="Panel" parent="."]
-visible = false
 margin_left = 204.0
 margin_top = 28.0
 margin_right = 625.0
@@ -304,10 +303,10 @@ margin_bottom = 339.0
 theme = ExtResource( 12 )
 
 [node name="btn_back" type="Button" parent="NewAccount"]
-margin_left = 378.0
-margin_top = -11.0
-margin_right = 431.0
-margin_bottom = 31.0
+margin_left = 392.0
+margin_top = -7.0
+margin_right = 432.0
+margin_bottom = 23.0
 text = "X"
 
 [node name="Label_error" type="Label" parent="NewAccount"]
@@ -336,27 +335,27 @@ align = 1
 [node name="name" type="LineEdit" parent="NewAccount/VBox"]
 margin_top = 35.0
 margin_right = 378.0
-margin_bottom = 68.0
+margin_bottom = 72.0
 max_length = 10
 placeholder_text = "Nombre"
 
 [node name="pass" type="LineEdit" parent="NewAccount/VBox"]
-margin_top = 80.0
+margin_top = 84.0
 margin_right = 378.0
-margin_bottom = 113.0
+margin_bottom = 121.0
 max_length = 12
 placeholder_text = "Clave"
 
 [node name="mail" type="LineEdit" parent="NewAccount/VBox"]
-margin_top = 125.0
+margin_top = 133.0
 margin_right = 378.0
-margin_bottom = 158.0
+margin_bottom = 170.0
 placeholder_text = "Mail"
 
 [node name="code" type="LineEdit" parent="NewAccount/VBox"]
-margin_top = 170.0
+margin_top = 182.0
 margin_right = 378.0
-margin_bottom = 203.0
+margin_bottom = 219.0
 placeholder_text = "Código Secreto"
 
 [node name="btn_create" type="Button" parent="NewAccount/VBox/code"]
@@ -366,9 +365,9 @@ margin_left = 242.0
 text = "OBTENER"
 
 [node name="btn_create" type="Button" parent="NewAccount/VBox"]
-margin_top = 215.0
+margin_top = 231.0
 margin_right = 378.0
-margin_bottom = 240.0
+margin_bottom = 260.0
 text = "CREAR CUENTA"
 
 [node name="code_message" type="ColorRect" parent="NewAccount"]

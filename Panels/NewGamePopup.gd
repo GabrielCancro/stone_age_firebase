@@ -38,7 +38,7 @@ func showNewGamePanel(_gameId=null):
 		else: $NewGame/btn_create.visible = true
 	if gameId: 
 		var game = FM.DATA.games[gameId]
-		if current_own_game!=game:$NewGame/btn_play.visible = true		
+		if current_own_game!=game:$NewGame/btn_play.visible = true
 		$NewGame/ReadOnlyStop.visible = true
 		$NewGame/TitleEdit.text = game.desc
 		$NewGame/Label_exist.text = "Partida de "+game.own
