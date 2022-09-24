@@ -59,6 +59,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Firebase/firebase_auth_lite/user.gd"
 }, {
+"base": "HBoxContainer",
+"class": "FriendEntry",
+"language": "GDScript",
+"path": "res://Scenes/FriendEntry/FriendEntry.gd"
+}, {
 "base": "Node",
 "class": "HTTPSSEClient",
 "language": "GDScript",
@@ -75,6 +80,7 @@ _global_script_class_icons={
 "FirebaseEventProcessorLite": "res://Firebase/firebase_database_lite/icon.png",
 "FirebaseReference": "res://Firebase/firebase_database_lite/icon.png",
 "FirebaseUser": "res://Firebase/firebase_auth_lite/icon.png",
+"FriendEntry": "",
 "HTTPSSEClient": "res://Firebase/firebase_database_lite/icon.png"
 }
 

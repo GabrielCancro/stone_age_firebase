@@ -67,24 +67,7 @@ margin_top = -63.5
 margin_right = 80.5
 margin_bottom = 62.5
 
-[node name="name" type="Label" parent="WinsPanel/scroll"]
-margin_right = 150.0
-margin_bottom = 36.0
-rect_min_size = Vector2( 150, 0 )
-custom_constants/line_spacing = 6
-custom_fonts/font = ExtResource( 5 )
-text = "
-"
-
-[node name="wins" type="Label" parent="WinsPanel/scroll/name"]
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -24.0
-margin_right = 8.0
-custom_constants/line_spacing = 6
-custom_fonts/font = ExtResource( 5 )
-align = 1
+[node name="FriendList" type="VBoxContainer" parent="WinsPanel/scroll"]
 
 [node name="LineEdit" type="LineEdit" parent="WinsPanel"]
 anchor_top = 1.0
@@ -172,3 +155,5 @@ valign = 1
 
 [node name="NewGamePopup" parent="." instance=ExtResource( 3 )]
 visible = false
+
+[connection signal="button_up" from="WinsPanel/LineEdit/btn_add" to="." method="_on_btn_add_button_up"]

@@ -32,7 +32,7 @@ func pull_data():
 	DATA = yield( ref, "complete_fetch" )
 	if(DATA):
 		emit_signal("complete_pull")
-#		print("< PULL DATA: ",DATA)
+#		print("< PULL DATA: ",JSON.print(DATA, "\t"))
 	else: 
 		yield(get_tree().create_timer(3),"timeout")
 #		print("re-conecting...")
@@ -60,3 +60,6 @@ func delete_path(path):
 	var result = yield(ref.remove(), "completed")
 	emit_signal("complete_remove")
 #	print("> PUSH VAR: ",path,"  >  ",{k:v})
+
+func check_user_exists(_name : String) -> bool:
+	return _name in FM.DATA.users

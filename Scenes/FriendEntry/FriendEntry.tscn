@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/FriendEntry/FriendEntry.gd" type="Script" id=1]
+
+[node name="FriendEntry" type="HBoxContainer"]
+anchor_right = 0.20125
+anchor_bottom = 0.0725
+size_flags_horizontal = 3
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="LabelName" type="Label" parent="."]
+margin_top = 7.0
+margin_right = 90.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "AMIGO"
+
+[node name="LabelWins" type="Label" parent="."]
+margin_left = 94.0
+margin_top = 7.0
+margin_right = 139.0
+margin_bottom = 21.0
+size_flags_horizontal = 3
+text = "0000"
+align = 1
+
+[node name="Button" type="Button" parent="."]
+margin_left = 143.0
+margin_right = 160.0
+margin_bottom = 29.0
+keep_pressed_outside = true
+text = "-"
+
+[connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]
