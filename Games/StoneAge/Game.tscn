@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://Games/StoneAge/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=2]
@@ -45,6 +45,106 @@
 [ext_resource path="res://Games/StoneAge/assets/res/looter.jpg" type="Texture" id=43]
 [ext_resource path="res://Games/StoneAge/assets/map/map_looter2.png" type="Texture" id=44]
 [ext_resource path="res://assets/font/font_super_small.tres" type="DynamicFont" id=45]
+[ext_resource path="res://Games/StoneAge/assets/dice_rolls.png" type="Texture" id=46]
+[ext_resource path="res://Games/StoneAge/nodes/Dices.gd" type="Script" id=47]
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 46 )
+region = Rect2( 0, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 46 )
+region = Rect2( 100, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 46 )
+region = Rect2( 200, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 46 )
+region = Rect2( 300, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 46 )
+region = Rect2( 400, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 46 )
+region = Rect2( 500, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 46 )
+region = Rect2( 600, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 46 )
+region = Rect2( 700, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 46 )
+region = Rect2( 800, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 46 )
+region = Rect2( 900, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 46 )
+region = Rect2( 1000, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 46 )
+region = Rect2( 1100, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 46 )
+region = Rect2( 1200, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 46 )
+region = Rect2( 1300, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 46 )
+region = Rect2( 1400, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 46 )
+region = Rect2( 1500, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 46 )
+region = Rect2( 1600, 0, 100, 100 )
+
+[sub_resource type="AtlasTexture" id=19]
+flags = 4
+atlas = ExtResource( 46 )
+region = Rect2( 1700, 0, 100, 100 )
+
+[sub_resource type="SpriteFrames" id=20]
+animations = [ {
+"frames": [ SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ), SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -130,6 +230,70 @@ texture = ExtResource( 35 )
 position = Vector2( 666, 181 )
 scale = Vector2( 0.745238, 0.745238 )
 texture = ExtResource( 44 )
+
+[node name="Dices" type="Node2D" parent="."]
+position = Vector2( 91, 164 )
+script = ExtResource( 47 )
+
+[node name="d1" type="AnimatedSprite" parent="Dices"]
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 20 )
+frame = 9
+speed_scale = 2.0
+
+[node name="d2" type="AnimatedSprite" parent="Dices"]
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 20 )
+frame = 9
+speed_scale = 2.0
+
+[node name="d3" type="AnimatedSprite" parent="Dices"]
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 20 )
+frame = 9
+speed_scale = 2.0
+
+[node name="d4" type="AnimatedSprite" parent="Dices"]
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 20 )
+frame = 8
+speed_scale = 2.0
+
+[node name="d5" type="AnimatedSprite" parent="Dices"]
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 20 )
+frame = 8
+speed_scale = 2.0
+
+[node name="d6" type="AnimatedSprite" parent="Dices"]
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 20 )
+frame = 7
+speed_scale = 2.0
+
+[node name="d7" type="AnimatedSprite" parent="Dices"]
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 20 )
+frame = 7
+speed_scale = 2.0
+
+[node name="d8" type="AnimatedSprite" parent="Dices"]
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 20 )
+frame = 7
+speed_scale = 2.0
+
+[node name="d9" type="AnimatedSprite" parent="Dices"]
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 20 )
+frame = 7
+speed_scale = 2.0
+
+[node name="d10" type="AnimatedSprite" parent="Dices"]
+scale = Vector2( 0.3, 0.3 )
+frames = SubResource( 20 )
+frame = 6
+speed_scale = 2.0
 
 [node name="Header" type="Panel" parent="."]
 margin_right = 800.0
