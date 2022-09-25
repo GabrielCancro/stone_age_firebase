@@ -51,6 +51,7 @@ func onStartDrag(node):
 	result[stay] -= 1
 	node.z_index = 2
 	update_label()
+	$Points.visible = true
 	
 func onFinishDrag(node):
 	var stay = get_stay(node)
@@ -60,6 +61,7 @@ func onFinishDrag(node):
 	result[stay] += 1
 	node.z_index = 0
 	update_label()
+	$Points.visible = false
 	emit_signal("set_node",node,stay,result)
 
 func get_stay(node):
