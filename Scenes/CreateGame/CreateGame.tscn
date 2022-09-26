@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/themes/minimalUI/MinimalUI.tres" type="Theme" id=1]
 [ext_resource path="res://Games/StoneAge/assets/new_map_bg_blur.jpg" type="Texture" id=2]
-[ext_resource path="res://assets/font/themeA.tres" type="Theme" id=3]
 [ext_resource path="res://assets/font/BAARS.TTF" type="DynamicFontData" id=4]
 [ext_resource path="res://Scenes/CreateGame/CreateGame.gd" type="Script" id=5]
 [ext_resource path="res://assets/font/font_super_small.tres" type="DynamicFont" id=6]
@@ -49,17 +48,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -298.0
-margin_top = -117.0
-margin_right = 298.0
-margin_bottom = 117.0
+margin_left = -216.0
+margin_top = -124.0
+margin_right = 216.0
+margin_bottom = 124.0
 rect_min_size = Vector2( 0, 40 )
 
 [node name="PlayerList" type="ColorRect" parent="Panel"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -424.0
-margin_bottom = -10.0
+margin_left = 14.0
+margin_top = 13.0
+margin_right = -251.0
+margin_bottom = -15.0
+rect_min_size = Vector2( 0, 220 )
 color = Color( 0, 0, 0, 1 )
 
 [node name="Title" type="ColorRect" parent="Panel/PlayerList"]
@@ -126,22 +128,43 @@ margin_right = 74.0
 margin_bottom = 151.0
 text = " Mole"
 
-[node name="Grid NEW" type="GridContainer" parent="Panel"]
-visible = false
-margin_left = 373.0
+[node name="Options" type="ColorRect" parent="Panel"]
+anchor_right = 1.0
+margin_left = 193.0
 margin_top = 13.0
-margin_right = 573.0
-margin_bottom = 208.0
-custom_constants/vseparation = 3
+margin_right = -16.0
+margin_bottom = 233.0
+rect_min_size = Vector2( 0, 220 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="Title" type="ColorRect" parent="Panel/Options"]
+anchor_right = 1.0
+margin_bottom = 38.0
+color = Color( 0.129412, 0.129412, 0.129412, 1 )
+
+[node name="Label" type="Label" parent="Panel/Options/Title"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 14.0
+margin_right = -54.0
+text = "Opciones"
+valign = 1
+
+[node name="Grid NEW" type="GridContainer" parent="Panel/Options"]
+margin_left = 10.0
+margin_top = 53.0
+margin_right = 210.0
+margin_bottom = 248.0
+custom_constants/vseparation = 11
 custom_constants/hseparation = 0
 
-[node name="init_turns" type="ColorRect" parent="Panel/Grid NEW"]
+[node name="init_turns" type="ColorRect" parent="Panel/Options/Grid NEW"]
 margin_right = 200.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
 color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
 
-[node name="Label" type="Label" parent="Panel/Grid NEW/init_turns"]
+[node name="Label" type="Label" parent="Panel/Options/Grid NEW/init_turns"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 7.0
@@ -152,7 +175,7 @@ text = "Duración de la partida"
 valign = 1
 autowrap = true
 
-[node name="OptionButton" type="OptionButton" parent="Panel/Grid NEW/init_turns"]
+[node name="OptionButton" type="OptionButton" parent="Panel/Options/Grid NEW/init_turns"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -167,14 +190,14 @@ align = 1
 items = [ "4hs", null, false, 0, null, "8hs", null, false, 1, null, "12hs", null, false, 2, null, "24hs", null, false, 3, null ]
 selected = 0
 
-[node name="phs_turns" type="ColorRect" parent="Panel/Grid NEW"]
-margin_top = 33.0
+[node name="phs_turns" type="ColorRect" parent="Panel/Options/Grid NEW"]
+margin_top = 41.0
 margin_right = 200.0
-margin_bottom = 63.0
+margin_bottom = 71.0
 rect_min_size = Vector2( 200, 30 )
 color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
 
-[node name="Label" type="Label" parent="Panel/Grid NEW/phs_turns"]
+[node name="Label" type="Label" parent="Panel/Options/Grid NEW/phs_turns"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 7.0
@@ -185,7 +208,7 @@ text = "Tipo de partida"
 valign = 1
 autowrap = true
 
-[node name="OptionButton" type="OptionButton" parent="Panel/Grid NEW/phs_turns"]
+[node name="OptionButton" type="OptionButton" parent="Panel/Options/Grid NEW/phs_turns"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -200,14 +223,14 @@ align = 1
 items = [ "CERRADA", null, false, 0, null, "ABIERTA", null, false, 1, null ]
 selected = 0
 
-[node name="total_turns" type="ColorRect" parent="Panel/Grid NEW"]
-margin_top = 66.0
+[node name="total_turns" type="ColorRect" parent="Panel/Options/Grid NEW"]
+margin_top = 82.0
 margin_right = 200.0
-margin_bottom = 96.0
+margin_bottom = 112.0
 rect_min_size = Vector2( 200, 30 )
 color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
 
-[node name="Label" type="Label" parent="Panel/Grid NEW/total_turns"]
+[node name="Label" type="Label" parent="Panel/Options/Grid NEW/total_turns"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 7.0
@@ -218,7 +241,7 @@ text = "Turnos totales"
 valign = 1
 autowrap = true
 
-[node name="OptionButton" type="OptionButton" parent="Panel/Grid NEW/total_turns"]
+[node name="OptionButton" type="OptionButton" parent="Panel/Options/Grid NEW/total_turns"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -233,14 +256,14 @@ align = 1
 items = [ "30 turnos", null, false, 0, null, "40 turnos", null, false, 1, null ]
 selected = 0
 
-[node name="final_await" type="ColorRect" parent="Panel/Grid NEW"]
-margin_top = 99.0
+[node name="final_await" type="ColorRect" parent="Panel/Options/Grid NEW"]
+margin_top = 123.0
 margin_right = 200.0
-margin_bottom = 129.0
+margin_bottom = 153.0
 rect_min_size = Vector2( 200, 30 )
 color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
 
-[node name="OptionButton" type="OptionButton" parent="Panel/Grid NEW/final_await"]
+[node name="OptionButton" type="OptionButton" parent="Panel/Options/Grid NEW/final_await"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 1 )
@@ -249,90 +272,13 @@ align = 1
 items = [ "Turnos progresivos (x hs)", null, false, 0, null, "Todos los turnos al inicio", null, false, 1, null ]
 selected = 0
 
-[node name="duration" type="ColorRect" parent="Panel/Grid NEW"]
-margin_top = 132.0
-margin_right = 200.0
-margin_bottom = 162.0
-rect_min_size = Vector2( 200, 30 )
-color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
-
-[node name="Label" type="Label" parent="Panel/Grid NEW/duration"]
-anchor_right = 1.0
+[node name="btn_create" type="Button" parent="Panel"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = 7.0
-margin_right = -58.0
-custom_constants/line_spacing = 1
-custom_fonts/font = ExtResource( 6 )
-text = "Duración Total (hs)"
-valign = 1
-autowrap = true
-
-[node name="LineEdit" type="LineEdit" parent="Panel/Grid NEW/duration"]
-modulate = Color( 0.984314, 1, 0.796078, 1 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 148.0
-margin_top = 6.0
-margin_right = -6.0
-margin_bottom = -4.0
-focus_mode = 0
-custom_fonts/font = ExtResource( 6 )
-text = "Nan"
-align = 1
-context_menu_enabled = false
-virtual_keyboard_enabled = false
-shortcut_keys_enabled = false
-selecting_enabled = false
-
-[node name="wait_all" type="ColorRect" parent="Panel/Grid NEW"]
-margin_top = 165.0
-margin_right = 200.0
-margin_bottom = 195.0
-rect_min_size = Vector2( 200, 30 )
-color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
-
-[node name="Label" type="Label" parent="Panel/Grid NEW/wait_all"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 7.0
-margin_right = -58.0
-custom_constants/line_spacing = 1
-custom_fonts/font = ExtResource( 6 )
-text = "Esperar a todos los jugadores al finalizar"
-valign = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="CheckBox" type="CheckBox" parent="Panel/Grid NEW/wait_all"]
-margin_left = 157.0
-margin_top = 1.0
-margin_right = 195.0
-margin_bottom = 45.0
-rect_scale = Vector2( 0.7, 0.7 )
-theme = ExtResource( 3 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="title" type="ColorRect" parent="Panel/Grid NEW"]
-visible = false
-margin_top = 165.0
-margin_right = 200.0
-margin_bottom = 180.0
-rect_min_size = Vector2( 200, 15 )
-color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
-
-[node name="Label" type="Label" parent="Panel/Grid NEW/title"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 7.0
-margin_right = -8.0
-custom_colors/font_color = Color( 0.882353, 1, 0.415686, 1 )
-custom_constants/line_spacing = 1
-custom_fonts/font = ExtResource( 6 )
-text = "Stone Age Config Vars"
-align = 1
-valign = 1
-autowrap = true
+margin_left = -62.0
+margin_top = -7.0
+margin_right = 63.0
+margin_bottom = 38.0
+text = "CREAR"
