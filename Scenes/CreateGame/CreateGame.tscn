@@ -94,6 +94,7 @@ margin_left = 18.0
 margin_top = 47.0
 margin_right = 161.0
 margin_bottom = 214.0
+scroll_horizontal_enabled = false
 
 [node name="VBox" type="VBoxContainer" parent="Panel/PlayerList/Scroll"]
 margin_right = 74.0
@@ -152,10 +153,10 @@ valign = 1
 
 [node name="Grid NEW" type="GridContainer" parent="Panel/Options"]
 margin_left = 10.0
-margin_top = 53.0
+margin_top = 44.0
 margin_right = 210.0
-margin_bottom = 248.0
-custom_constants/vseparation = 11
+margin_bottom = 239.0
+custom_constants/vseparation = 5
 custom_constants/hseparation = 0
 
 [node name="init_turns" type="ColorRect" parent="Panel/Options/Grid NEW"]
@@ -191,9 +192,9 @@ items = [ "4hs", null, false, 0, null, "8hs", null, false, 1, null, "12hs", null
 selected = 0
 
 [node name="phs_turns" type="ColorRect" parent="Panel/Options/Grid NEW"]
-margin_top = 41.0
+margin_top = 35.0
 margin_right = 200.0
-margin_bottom = 71.0
+margin_bottom = 65.0
 rect_min_size = Vector2( 200, 30 )
 color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
 
@@ -224,9 +225,9 @@ items = [ "CERRADA", null, false, 0, null, "ABIERTA", null, false, 1, null ]
 selected = 0
 
 [node name="total_turns" type="ColorRect" parent="Panel/Options/Grid NEW"]
-margin_top = 82.0
+margin_top = 70.0
 margin_right = 200.0
-margin_bottom = 112.0
+margin_bottom = 100.0
 rect_min_size = Vector2( 200, 30 )
 color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
 
@@ -257,9 +258,9 @@ items = [ "30 turnos", null, false, 0, null, "40 turnos", null, false, 1, null ]
 selected = 0
 
 [node name="final_await" type="ColorRect" parent="Panel/Options/Grid NEW"]
-margin_top = 123.0
+margin_top = 105.0
 margin_right = 200.0
-margin_bottom = 153.0
+margin_bottom = 135.0
 rect_min_size = Vector2( 200, 30 )
 color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
 
@@ -271,6 +272,34 @@ text = "Turnos progresivos (x hs)"
 align = 1
 items = [ "Turnos progresivos (x hs)", null, false, 0, null, "Todos los turnos al inicio", null, false, 1, null ]
 selected = 0
+
+[node name="total_turns2" type="ColorRect" parent="Panel/Options/Grid NEW"]
+margin_top = 140.0
+margin_right = 200.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 200, 30 )
+color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
+
+[node name="Label" type="Label" parent="Panel/Options/Grid NEW/total_turns2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_right = -58.0
+custom_constants/line_spacing = 1
+custom_fonts/font = ExtResource( 6 )
+text = "Terminar antes si todos completan sus turnos"
+valign = 1
+autowrap = true
+
+[node name="CheckBox" type="CheckBox" parent="Panel/Options/Grid NEW/total_turns2"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -27.0
+margin_top = -13.5
+margin_right = -9.0
+margin_bottom = 13.5
 
 [node name="btn_create" type="Button" parent="Panel"]
 anchor_left = 0.5

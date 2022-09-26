@@ -11,7 +11,7 @@ func showFriendList():
 	for chk in $Panel/PlayerList/Scroll/VBox.get_children(): chk.queue_free()
 	for f in GC.USER["friends"]:
 		var chk = CheckBox.new()
-		chk.text = f
+		chk.text = str(f)
 		$Panel/PlayerList/Scroll/VBox.add_child(chk)
 
 func onCancelClick():
