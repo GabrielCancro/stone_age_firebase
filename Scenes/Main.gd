@@ -13,6 +13,7 @@ func _ready():
 	$User/Label.text = "Bienvenido "+GC.USER.name+"!"
 	$User/btn_logout.connect("button_down",self,"onClick",["logout"])
 	$User/btn_new.connect("button_down",self,"onClick",["new"])
+	$User/btn_new_game.connect("button_down",self,"onClick",["new_game"])
 	CLOCK.init()
 	FM.pull_data()
 	yield(FM,"complete_pull")
@@ -26,6 +27,8 @@ func onClick(btn):
 		get_tree().change_scene("res://Scenes/Login.tscn")
 	if btn=="new":
 		$NewGamePopup.showNewGamePanel()
+	if btn=="new_game":
+		get_tree().change_scene("res://Scenes/CreateGame/CreateGame.tscn")
 
 func set_game_button():
 	if !"games" in FM.DATA:

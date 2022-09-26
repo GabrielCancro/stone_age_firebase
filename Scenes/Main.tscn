@@ -129,6 +129,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="btn_new_game" type="Button" parent="User"]
+anchor_right = 1.0
+margin_left = 312.0
+margin_top = 354.0
+margin_right = -286.0
+margin_bottom = 396.0
+text = "NUEVA PARTIDA"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="GameList" type="Panel" parent="."]
 margin_left = 229.0
 margin_top = 53.0
