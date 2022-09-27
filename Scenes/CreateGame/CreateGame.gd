@@ -19,7 +19,7 @@ func showFriendList():
 	
 	for f in GC.USER["friends"]:
 		var chk = CheckBox.new()
-		chk.text = f
+		chk.text = str(f)
 		$Panel/PlayerList/Scroll/VBox.add_child(chk)
 	
 	for chk in $Panel/PlayerList/Scroll/VBox.get_children():
