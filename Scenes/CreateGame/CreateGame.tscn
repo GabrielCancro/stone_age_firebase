@@ -311,3 +311,21 @@ margin_top = -7.0
 margin_right = 63.0
 margin_bottom = 38.0
 text = "CREAR"
+
+[node name="Creating" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0352941, 0.0352941, 0.0352941, 0.901961 )
+
+[node name="Label" type="Label" parent="Creating"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -165.5
+margin_top = -84.0
+margin_right = 165.5
+margin_bottom = 84.0
+text = "Creando nueva partida..."
+align = 1
+valign = 1

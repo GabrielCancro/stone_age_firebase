@@ -29,6 +29,7 @@ func onCancelClick():
 	get_tree().change_scene("res://Scenes/Main.tscn")
 
 func onCreateClick():
+	$Creating.visible = true
 	FM.DATA.games_id += 1
 	FM.push_var("","games_id",FM.DATA.games_id)
 	yield(FM,"complete_push")
