@@ -1,6 +1,6 @@
 extends Control
 
-
+var configValues
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	showFriendList()
@@ -8,6 +8,14 @@ func _ready():
 	$Creating.visible = false
 	$Title/btn_cancel.connect("button_down",self,"onCancelClick")
 	$Panel/btn_create.connect("button_down",self,"onCreateClick")
+	$Panel/Options/Scroll/Grid/init_turns/NumberSelector.connect("change",self,"onChangeConfig")
+	$Panel/Options/Scroll/Grid/turns_phs/NumberSelector.connect("change",self,"onChangeConfig")
+	$Panel/Options/Scroll/Grid/open_close/OptionButton.connect("button_up",self,"onChangeConfig")
+	$Panel/Options/Scroll/Grid/total_turns/NumberSelector.connect("change",self,"onChangeConfig")
+	$Panel/Options/Scroll/Grid/final_await/NumberSelector.connect("change",self,"onChangeConfig")
+	$Panel/Options/Scroll/Grid/early_finish/CheckBox.connect("button_up",self,"onChangeConfig")
+	$Panel/Options/Scroll/Grid/wait_all/CheckBox.connect("button_up",self,"onChangeConfig")
+	onChangeConfig()
 
 func showFriendList():
 	if !"friends" in GC.USER: GC.USER["friends"] = []
@@ -47,29 +55,33 @@ func onCreateClick():
 		"own": GC.USER.name,
 		"gameType": "StoneAge",
 	}
-	var configVars = get_config_from_options()
-	for cnf in configVars.keys(): FM.DATA.games[game_name][cnf] = configVars[cnf]
+	for cnf in configValues.keys(): FM.DATA.games[game_name][cnf] = configValues[cnf]
 	FM.push_data("games/"+game_name)
 	yield(FM,"complete_push")
 	get_tree().change_scene("res://Scenes/Main.tscn")
 
-func get_config_from_options():
-	var cnf = {
-		"init_turns": 5,
-		"max_turns": 40,
-		"turns_phs": 10,
+func onChangeConfig():
+	configValues = {
+		"init_turns": $Panel/Options/Scroll/Grid/init_turns/NumberSelector.value,
+		"turns_phs": $Panel/Options/Scroll/Grid/turns_phs/NumberSelector.value,
+		"max_turns": $Panel/Options/Scroll/Grid/total_turns/NumberSelector.value,
+		"isOpen": ($Panel/Options/Scroll/Grid/open_close/OptionButton.selected == 1),
 		"duration": 0,
-		"wait_all": false,
+		"final_await": $Panel/Options/Scroll/Grid/final_await/NumberSelector.value,
+		"wait_all": $Panel/Options/Scroll/Grid/wait_all/CheckBox.pressed,
+		"early_finish": $Panel/Options/Scroll/Grid/early_finish/CheckBox.pressed,
 	}
-	cnf["duration"] = [1,2,4,8,12,16,24][$"Panel/Options/Grid NEW/total_hs/OptionButton".selected]
-	cnf["max_turns"] = 30 + $"Panel/Options/Grid NEW/total_turns/OptionButton".selected * 10
-	cnf["isOpen"] = ( $"Panel/Options/Grid NEW/open_close/OptionButton".selected == 1 )
-	if($"Panel/Options/Grid NEW/progresive/OptionButton".selected==1):
-		cnf["turns_phs"] = 99
-	else:
-		cnf["turns_phs"] = [99,99,15,8,12,16,24][$"Panel/Options/Grid NEW/total_hs/OptionButton".selected]
-	return cnf;
 	
+	var duration = ceil( (configValues.max_turns - configValues.init_turns) / configValues.turns_phs )
+	configValues.duration = duration + configValues.final_await
+	$Panel/Options/Title/total_hs.text = str(duration)+" hs"
+	
+	if(configValues.wait_all):
+		$Panel/Options/Scroll/Grid/final_await.modulate.a = .2
+		$Panel/Options/Title/total_hs.text = "?? hs"
+	else: $Panel/Options/Scroll/Grid/final_await.modulate.a = 1
+
+
 func onCheckPlayerList():
 	print("AAAAA")
 	var cnt = 0
