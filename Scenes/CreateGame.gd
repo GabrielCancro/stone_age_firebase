@@ -74,7 +74,7 @@ func onChangeConfig():
 	
 	var duration = ceil( (configValues.max_turns - configValues.init_turns) / configValues.turns_phs )
 	configValues.duration = duration + configValues.final_await
-	$Panel/Options/Title/total_hs.text = str(duration)+" hs"
+	$Panel/Options/Title/total_hs.text = str(configValues.duration)+" hs"
 	
 	if(configValues.wait_all):
 		$Panel/Options/Scroll/Grid/final_await.modulate.a = .2
