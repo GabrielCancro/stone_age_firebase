@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/themes/minimalUI/MinimalUI.tres" type="Theme" id=1]
+[ext_resource path="res://Scenes/NumberSelector/NumberSelector.gd" type="Script" id=3]
+
+[node name="NumberSelector" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -725.0
+margin_bottom = -375.0
+rect_min_size = Vector2( 75, 25 )
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.27451, 0.27451, 0.27451, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -36.5
+margin_top = -11.5
+margin_right = 36.5
+margin_bottom = 11.5
+color = Color( 0, 0, 0, 1 )
+
+[node name="dec" type="Button" parent="."]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -4.0
+margin_top = -14.5
+margin_right = 26.0
+margin_bottom = 14.5
+text = " < "
+flat = true
+
+[node name="inc" type="Button" parent="."]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -26.0
+margin_top = -14.5
+margin_right = 4.0
+margin_bottom = 14.5
+text = " > "
+flat = true
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -36.0
+margin_top = -13.5
+margin_right = 36.0
+margin_bottom = 13.5
+text = "0"
+align = 1
+valign = 1

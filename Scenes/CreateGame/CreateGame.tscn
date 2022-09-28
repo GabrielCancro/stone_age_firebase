@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/themes/minimalUI/MinimalUI.tres" type="Theme" id=1]
 [ext_resource path="res://Games/StoneAge/assets/new_map_bg_blur.jpg" type="Texture" id=2]
+[ext_resource path="res://Scenes/NumberSelector/NumberSelector.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/font/BAARS.TTF" type="DynamicFontData" id=4]
 [ext_resource path="res://Scenes/CreateGame/CreateGame.gd" type="Script" id=5]
 [ext_resource path="res://assets/font/font_super_small.tres" type="DynamicFont" id=6]
@@ -159,24 +160,25 @@ margin_bottom = 239.0
 custom_constants/vseparation = 5
 custom_constants/hseparation = 0
 
-[node name="init_turns" type="ColorRect" parent="Panel/Options/Grid NEW"]
+[node name="total_hs" type="ColorRect" parent="Panel/Options/Grid NEW"]
 margin_right = 200.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 200, 30 )
 color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
 
-[node name="Label" type="Label" parent="Panel/Options/Grid NEW/init_turns"]
+[node name="Label" type="Label" parent="Panel/Options/Grid NEW/total_hs"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 7.0
 margin_right = -58.0
 custom_constants/line_spacing = 1
 custom_fonts/font = ExtResource( 6 )
-text = "Duración de la partida"
+text = "Duración de la 
+partida (hs)"
 valign = 1
 autowrap = true
 
-[node name="OptionButton" type="OptionButton" parent="Panel/Options/Grid NEW/init_turns"]
+[node name="OptionButton" type="OptionButton" parent="Panel/Options/Grid NEW/total_hs"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -186,19 +188,19 @@ margin_top = -12.0
 margin_right = -3.0
 margin_bottom = 12.0
 custom_fonts/font = SubResource( 1 )
-text = "4hs"
+text = "1hs"
 align = 1
-items = [ "4hs", null, false, 0, null, "8hs", null, false, 1, null, "12hs", null, false, 2, null, "24hs", null, false, 3, null ]
+items = [ "1hs", null, false, 0, null, "2hs", null, false, 1, null, "4hs", null, false, 2, null, "8hs", null, false, 3, null, "12", null, false, 4, null, "16", null, false, 5, null, "24", null, false, 6, null ]
 selected = 0
 
-[node name="phs_turns" type="ColorRect" parent="Panel/Options/Grid NEW"]
+[node name="open_close" type="ColorRect" parent="Panel/Options/Grid NEW"]
 margin_top = 35.0
 margin_right = 200.0
 margin_bottom = 65.0
 rect_min_size = Vector2( 200, 30 )
 color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
 
-[node name="Label" type="Label" parent="Panel/Options/Grid NEW/phs_turns"]
+[node name="Label" type="Label" parent="Panel/Options/Grid NEW/open_close"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 7.0
@@ -209,7 +211,7 @@ text = "Tipo de partida"
 valign = 1
 autowrap = true
 
-[node name="OptionButton" type="OptionButton" parent="Panel/Options/Grid NEW/phs_turns"]
+[node name="OptionButton" type="OptionButton" parent="Panel/Options/Grid NEW/open_close"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -257,14 +259,14 @@ align = 1
 items = [ "30 turnos", null, false, 0, null, "40 turnos", null, false, 1, null ]
 selected = 0
 
-[node name="final_await" type="ColorRect" parent="Panel/Options/Grid NEW"]
+[node name="progresive" type="ColorRect" parent="Panel/Options/Grid NEW"]
 margin_top = 105.0
 margin_right = 200.0
 margin_bottom = 135.0
 rect_min_size = Vector2( 200, 30 )
 color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
 
-[node name="OptionButton" type="OptionButton" parent="Panel/Options/Grid NEW/final_await"]
+[node name="OptionButton" type="OptionButton" parent="Panel/Options/Grid NEW/progresive"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 1 )
@@ -273,14 +275,14 @@ align = 1
 items = [ "Turnos progresivos (x hs)", null, false, 0, null, "Todos los turnos al inicio", null, false, 1, null ]
 selected = 0
 
-[node name="total_turns2" type="ColorRect" parent="Panel/Options/Grid NEW"]
+[node name="early_finish" type="ColorRect" parent="Panel/Options/Grid NEW"]
 margin_top = 140.0
 margin_right = 200.0
 margin_bottom = 170.0
 rect_min_size = Vector2( 200, 30 )
 color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
 
-[node name="Label" type="Label" parent="Panel/Options/Grid NEW/total_turns2"]
+[node name="Label" type="Label" parent="Panel/Options/Grid NEW/early_finish"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 7.0
@@ -291,7 +293,195 @@ text = "Terminar antes si todos completan sus turnos"
 valign = 1
 autowrap = true
 
-[node name="CheckBox" type="CheckBox" parent="Panel/Options/Grid NEW/total_turns2"]
+[node name="CheckBox" type="CheckBox" parent="Panel/Options/Grid NEW/early_finish"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -27.0
+margin_top = -13.5
+margin_right = -9.0
+margin_bottom = 13.5
+
+[node name="Options2" type="ColorRect" parent="Panel"]
+anchor_right = 1.0
+margin_left = 431.0
+margin_top = 13.0
+margin_right = 222.0
+margin_bottom = 233.0
+rect_min_size = Vector2( 0, 220 )
+color = Color( 0, 0, 0, 1 )
+
+[node name="Title" type="ColorRect" parent="Panel/Options2"]
+anchor_right = 1.0
+margin_bottom = 38.0
+color = Color( 0.129412, 0.129412, 0.129412, 1 )
+
+[node name="Label" type="Label" parent="Panel/Options2/Title"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 14.0
+margin_right = -54.0
+text = "Opciones"
+valign = 1
+
+[node name="Grid NEW" type="GridContainer" parent="Panel/Options2"]
+margin_left = 10.0
+margin_top = 44.0
+margin_right = 210.0
+margin_bottom = 239.0
+custom_constants/vseparation = 5
+custom_constants/hseparation = 0
+
+[node name="total_hs" type="ColorRect" parent="Panel/Options2/Grid NEW"]
+margin_right = 200.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 200, 30 )
+color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
+
+[node name="Label" type="Label" parent="Panel/Options2/Grid NEW/total_hs"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_right = -58.0
+custom_constants/line_spacing = 1
+custom_fonts/font = ExtResource( 6 )
+text = "Turnos Iniciales"
+valign = 1
+autowrap = true
+
+[node name="NumberSelector" parent="Panel/Options2/Grid NEW/total_hs" instance=ExtResource( 3 )]
+margin_left = 122.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -2.0
+value = 5
+
+[node name="total_hs2" type="ColorRect" parent="Panel/Options2/Grid NEW"]
+margin_top = 35.0
+margin_right = 200.0
+margin_bottom = 65.0
+rect_min_size = Vector2( 200, 30 )
+color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
+
+[node name="Label" type="Label" parent="Panel/Options2/Grid NEW/total_hs2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_right = -58.0
+custom_constants/line_spacing = 1
+custom_fonts/font = ExtResource( 6 )
+text = "Turnos por hora"
+valign = 1
+autowrap = true
+
+[node name="NumberSelector" parent="Panel/Options2/Grid NEW/total_hs2" instance=ExtResource( 3 )]
+margin_left = 122.0
+margin_top = 3.0
+margin_right = -3.0
+margin_bottom = -2.0
+
+[node name="open_close" type="ColorRect" parent="Panel/Options2/Grid NEW"]
+margin_top = 70.0
+margin_right = 200.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 200, 30 )
+color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
+
+[node name="Label" type="Label" parent="Panel/Options2/Grid NEW/open_close"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_right = -58.0
+custom_constants/line_spacing = 1
+custom_fonts/font = ExtResource( 6 )
+text = "Tipo de partida"
+valign = 1
+autowrap = true
+
+[node name="OptionButton" type="OptionButton" parent="Panel/Options2/Grid NEW/open_close"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -93.0
+margin_top = -12.0
+margin_right = -3.0
+margin_bottom = 12.0
+custom_fonts/font = SubResource( 1 )
+text = "CERRADA"
+align = 1
+items = [ "CERRADA", null, false, 0, null, "ABIERTA", null, false, 1, null ]
+selected = 0
+
+[node name="total_turns" type="ColorRect" parent="Panel/Options2/Grid NEW"]
+margin_top = 105.0
+margin_right = 200.0
+margin_bottom = 135.0
+rect_min_size = Vector2( 200, 30 )
+color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
+
+[node name="Label" type="Label" parent="Panel/Options2/Grid NEW/total_turns"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_right = -58.0
+custom_constants/line_spacing = 1
+custom_fonts/font = ExtResource( 6 )
+text = "Turnos totales"
+valign = 1
+autowrap = true
+
+[node name="OptionButton" type="OptionButton" parent="Panel/Options2/Grid NEW/total_turns"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -90.0
+margin_top = -12.0
+margin_right = -3.0
+margin_bottom = 12.0
+custom_fonts/font = SubResource( 1 )
+text = "30 turnos"
+align = 1
+items = [ "30 turnos", null, false, 0, null, "40 turnos", null, false, 1, null ]
+selected = 0
+
+[node name="progresive" type="ColorRect" parent="Panel/Options2/Grid NEW"]
+margin_top = 140.0
+margin_right = 200.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 200, 30 )
+color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
+
+[node name="OptionButton" type="OptionButton" parent="Panel/Options2/Grid NEW/progresive"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 1 )
+text = "Turnos progresivos (x hs)"
+align = 1
+items = [ "Turnos progresivos (x hs)", null, false, 0, null, "Todos los turnos al inicio", null, false, 1, null ]
+selected = 0
+
+[node name="early_finish" type="ColorRect" parent="Panel/Options2/Grid NEW"]
+margin_top = 175.0
+margin_right = 200.0
+margin_bottom = 205.0
+rect_min_size = Vector2( 200, 30 )
+color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
+
+[node name="Label" type="Label" parent="Panel/Options2/Grid NEW/early_finish"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_right = -58.0
+custom_constants/line_spacing = 1
+custom_fonts/font = ExtResource( 6 )
+text = "Terminar antes si todos completan sus turnos"
+valign = 1
+autowrap = true
+
+[node name="CheckBox" type="CheckBox" parent="Panel/Options2/Grid NEW/early_finish"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -313,6 +503,7 @@ margin_bottom = 38.0
 text = "CREAR"
 
 [node name="Creating" type="ColorRect" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.0352941, 0.0352941, 0.0352941, 0.901961 )

@@ -5,6 +5,7 @@ extends Control
 func _ready():
 	showFriendList()
 	CLOCK.init()
+	$Creating.visible = false
 	$Title/btn_cancel.connect("button_down",self,"onCancelClick")
 	$Panel/btn_create.connect("button_down",self,"onCreateClick")
 
@@ -45,17 +46,30 @@ func onCreateClick():
 		"players": players_data,
 		"own": GC.USER.name,
 		"gameType": "StoneAge",
-		
-		"init_turns": 5,
-		"max_turns": 40,
-		"turns_phs": 10,
-		"duration": 4,
-		"wait_all": false,
 	}
+	var configVars = get_config_from_options()
+	for cnf in configVars.keys(): FM.DATA.games[game_name][cnf] = configVars[cnf]
 	FM.push_data("games/"+game_name)
 	yield(FM,"complete_push")
 	get_tree().change_scene("res://Scenes/Main.tscn")
 
+func get_config_from_options():
+	var cnf = {
+		"init_turns": 5,
+		"max_turns": 40,
+		"turns_phs": 10,
+		"duration": 0,
+		"wait_all": false,
+	}
+	cnf["duration"] = [1,2,4,8,12,16,24][$"Panel/Options/Grid NEW/total_hs/OptionButton".selected]
+	cnf["max_turns"] = 30 + $"Panel/Options/Grid NEW/total_turns/OptionButton".selected * 10
+	cnf["isOpen"] = ( $"Panel/Options/Grid NEW/open_close/OptionButton".selected == 1 )
+	if($"Panel/Options/Grid NEW/progresive/OptionButton".selected==1):
+		cnf["turns_phs"] = 99
+	else:
+		cnf["turns_phs"] = [99,99,15,8,12,16,24][$"Panel/Options/Grid NEW/total_hs/OptionButton".selected]
+	return cnf;
+	
 func onCheckPlayerList():
 	print("AAAAA")
 	var cnt = 0
