@@ -83,7 +83,6 @@ func onChangeConfig():
 
 
 func onCheckPlayerList():
-	print("AAAAA")
 	var cnt = 0
 	for chk in $Panel/PlayerList/Scroll/VBox.get_children():
 		if chk.get_index()==0: chk.pressed = true
