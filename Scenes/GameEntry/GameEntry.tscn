@@ -1,0 +1,104 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/themes/minimalUI/MinimalUI.tres" type="Theme" id=1]
+[ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/font/font_big_outline.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Scenes/GameEntry/GameEntry.gd" type="Script" id=4]
+[ext_resource path="res://assets/font/font_super_small.tres" type="DynamicFont" id=5]
+
+[node name="GameEntry" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -287.0
+margin_bottom = -360.0
+rect_min_size = Vector2( 360, 40 )
+theme = ExtResource( 1 )
+script = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Title" type="Label" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 2.0
+margin_top = -20.0
+margin_right = -331.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 180, 20 )
+custom_fonts/font = ExtResource( 2 )
+text = "Partida 1050"
+align = 1
+valign = 1
+
+[node name="Own" type="Label" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 2.0
+margin_top = 1.0
+margin_right = -331.0
+margin_bottom = 21.0
+rect_min_size = Vector2( 180, 20 )
+custom_colors/font_color = Color( 0.956863, 1, 0.588235, 1 )
+custom_fonts/font = ExtResource( 5 )
+text = "MOLE"
+align = 1
+valign = 1
+
+[node name="Open" type="Label" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 338.0
+margin_top = -16.0
+margin_right = -56.0
+margin_bottom = 17.0
+custom_fonts/font = ExtResource( 5 )
+text = "PARTIDA
+ABIERTA"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Duration" type="Label" parent="."]
+modulate = Color( 0.807843, 0.807843, 0.807843, 1 )
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 177.0
+margin_top = -16.0
+margin_right = -185.0
+margin_bottom = 4.0
+custom_fonts/font = ExtResource( 2 )
+text = "Duración 10hs"
+align = 1
+valign = 1
+
+[node name="ResTime" type="Label" parent="."]
+modulate = Color( 0.807843, 0.807843, 0.807843, 1 )
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 165.0
+margin_right = -175.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 5 )
+text = "Faltan 10hs para finalizar"
+align = 1
+valign = 1
+
+[node name="Button" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 470.0
+margin_top = 1.0
+margin_right = -1.0
+margin_bottom = -1.0
+custom_fonts/font = ExtResource( 3 )
+text = ">"

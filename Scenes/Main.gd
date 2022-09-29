@@ -5,7 +5,7 @@ const FriendEntry := preload("res://Scenes/FriendEntry/FriendEntry.tscn")
 onready var n_FriendList := $WinsPanel/scroll/FriendList
 
 var OWN_GAME = null
-var GameLine = preload("res://Panels/gameLine.tscn")
+var GameEntry = preload("res://Scenes/GameEntry/GameEntry.tscn")
 var winners = []
 
 func _ready():
@@ -15,6 +15,8 @@ func _ready():
 	$User/btn_new.connect("button_down",self,"onClick",["new"])
 	$User/btn_new_game.connect("button_down",self,"onClick",["new_game"])
 	CLOCK.init()
+	CLOCK.get_time()
+	GC.NOW_TIME =  yield( CLOCK,"complete" )
 	FM.pull_data()
 	yield(FM,"complete_pull")
 	$User/btn_logout.disabled = false
@@ -36,18 +38,10 @@ func set_game_button():
 		FM.push_data("games")
 		yield(FM,"complete_push")
 	for i in FM.DATA.games:
-		var game = FM.DATA.games[i]
-		if GC.USER.name in game.players.keys():
-			var btn = GameLine.instance()
-			if(!"desc" in game): game.desc = game.name
-			btn.get_node("Button/Title").text = game.desc + "  ("+game.own+")"
-			if !"gameType" in game: game["gameType"] = "StoneAge"
-			btn.get_node("Button/Desc").text = game.gameType
-			if("finished"in game && game.finished): btn.get_node("Button/Desc").text += " (finalizada)"
-			else: btn.get_node("Button/Desc").text += " (duración total "+str(game.duration)+"hs)"
-			$Games/VBox.add_child(btn)
-			if !GC.USER.name in game.players: btn.disabled = true
-			btn.get_node("Button").connect("button_down",self,"onSelectGame",[game])
+		var ge = GameEntry.instance()
+		ge.set_game_data(FM.DATA.games[i])
+		ge.connect("on_select",self,"onSelectGame")
+		$GameList/Games/VBox.add_child(ge)
 
 func update_winners():
 	if !"friends" in GC.USER: GC.USER["friends"] = []

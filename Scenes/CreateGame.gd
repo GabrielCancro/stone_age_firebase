@@ -10,7 +10,7 @@ func _ready():
 	$Panel/btn_create.connect("button_down",self,"onCreateClick")
 	$Panel/Options/Scroll/Grid/init_turns/NumberSelector.connect("change",self,"onChangeConfig")
 	$Panel/Options/Scroll/Grid/turns_phs/NumberSelector.connect("change",self,"onChangeConfig")
-	$Panel/Options/Scroll/Grid/open_close/OptionButton.connect("button_up",self,"onChangeConfig")
+	$Panel/Options/Scroll/Grid/open_close/OptionButton.connect("item_selected",self,"onChangeConfig")
 	$Panel/Options/Scroll/Grid/total_turns/NumberSelector.connect("change",self,"onChangeConfig")
 	$Panel/Options/Scroll/Grid/final_await/NumberSelector.connect("change",self,"onChangeConfig")
 	$Panel/Options/Scroll/Grid/early_finish/CheckBox.connect("button_up",self,"onChangeConfig")
@@ -60,7 +60,7 @@ func onCreateClick():
 	yield(FM,"complete_push")
 	get_tree().change_scene("res://Scenes/Main.tscn")
 
-func onChangeConfig():
+func onChangeConfig(id=-1):
 	configValues = {
 		"init_turns": $Panel/Options/Scroll/Grid/init_turns/NumberSelector.value,
 		"turns_phs": $Panel/Options/Scroll/Grid/turns_phs/NumberSelector.value,
