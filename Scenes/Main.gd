@@ -15,8 +15,6 @@ func _ready():
 	$User/btn_new.connect("button_down",self,"onClick",["new"])
 	$User/btn_new_game.connect("button_down",self,"onClick",["new_game"])
 	CLOCK.init()
-	CLOCK.get_time()
-	GC.NOW_TIME =  yield( CLOCK,"complete" )
 	FM.pull_data()
 	yield(FM,"complete_pull")
 	$User/btn_logout.disabled = false
@@ -42,6 +40,9 @@ func set_game_button():
 		ge.set_game_data(FM.DATA.games[i])
 		ge.connect("on_select",self,"onSelectGame")
 		$GameList/Games/VBox.add_child(ge)
+	CLOCK.get_time()
+	GC.NOW_TIME =  yield( CLOCK,"complete" )
+	for GE in $GameList/Games/VBox.get_children(): GE.updateDuration()
 
 func update_winners():
 	if !"friends" in GC.USER: GC.USER["friends"] = []
@@ -78,14 +79,13 @@ func add_friend(_friend_name : String):
 	if _friend_name == GC.USER.name || _friend_name in GC.USER["friends"]:
 		return
 	
-	if !FM.check_user_exists(_friend_name): return
-	
+	if !FM.check_user_exists(_friend_name): return	
 	$WinsPanel/LineEdit/btn_add.disabled = true
 	
 	if !"friends" in GC.USER: GC.USER["friends"] = []
-	GC.USER["friends"].append(_friend_name)		
+	GC.USER["friends"].append(_friend_name)
 	FM.DATA.users[GC.USER.name] = GC.USER
-	FM.push_data("users/"+GC.USER.name)	
+	FM.push_data("users/"+GC.USER.name)
 	yield(FM,"complete_push")
 	
 	$WinsPanel/LineEdit/btn_add.disabled = false
@@ -96,6 +96,10 @@ func customComparison(a,b):
 
 func onSelectGame(game):
 	GC.GAME = game
+	if(!GC.USER.name in GC.GAME.players):
+		GC.GAME.players[GC.USER.name] = GC.get_player_start_config()
+		FM.push_data("games/"+GC.GAME.name+"/players/"+GC.USER.name)
+		yield(FM,"complete_push")
 	GC.PLAYER = game.players[GC.USER.name]
 	$NewGamePopup.showNewGamePanel(game.name)
 #	get_tree().change_scene("res://Scenes/Game.tscn")

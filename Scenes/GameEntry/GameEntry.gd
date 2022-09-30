@@ -10,21 +10,30 @@ func _ready():
 
 func set_game_data(game):
 	gameData = game
-	$Button.disabled = !(GC.USER.name in game.players.keys())
 	$Title.text = game.name
-	$Own.text = game.own
-	$Open.text = "PARTIDA\nCERRADA"
+	$Own.text = "Creada por "+game.own
 	if("isOpen"in game && game.isOpen): 
-		$Open.text = "PARTIDA\nABIERTA"
-		$Open.modulate = Color(2,2,1,1)
-	if("finished"in game && game.finished): 
-		$Duration.text = "(finalizada)"
-		$ResTime.text = "La partida ya finalizó"
+		$OpenIcon.texture = preload("res://assets/world_icon.png")
+		$OpenIcon.modulate = Color("ced48d")
+		$Players.text = str(game.players.size())+"/6"
+	else:
+		$OpenIcon.texture = preload("res://assets/lock_icon.png")
+		$Players.text = str(game.players.size())+"/"+str(game.players.size())
+	$Time/Duration.text = str(game.duration)+"hs"
+	if("finished"in game && game.finished):		
+		$Time/ResTime.text = "finalizada"
 	else: 
-		$Duration.text = "Duración "+str(game.duration)+"hs"
-		var rt = floor( (GC.NOW_TIME - game.start_time) / (60*60) )
-		$ResTime.text = "Faltan "+str(game.duration-rt)+"hs para finalizar"
-	$Button.disabled = !(GC.USER.name in game.players.keys())
+		$Time/Duration.text = str(game.duration)+"hs"
+		$Time/ResTime.text = "en juego.."
+		
+	if( !game.isOpen && !GC.USER.name in game.players.keys() ): $Button.disabled = true 
+	if( game.isOpen && game.players.keys().size()>=6 ): $Button.disabled = true
+	if($Button.disabled): $Button.modulate.a = .3
+
+func updateDuration():
+	var rt = floor( (GC.NOW_TIME - gameData.start_time) / (60*60) )
+	rt = max(0,gameData.duration-rt)
+	$Time/ResTime.text = "quedan "+str(rt)+"hs"
 
 func onClick():
 	print(gameData)
