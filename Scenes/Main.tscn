@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/themes/minimalUI/MinimalUI.tres" type="Theme" id=1]
 [ext_resource path="res://Scenes/Main.gd" type="Script" id=2]
-[ext_resource path="res://Panels/NewGamePopup.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Games/StoneAge/assets/map/map_blur.jpg" type="Texture" id=4]
 [ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=5]
 [ext_resource path="res://Scenes/FriendEntry/FriendEntry.tscn" type="PackedScene" id=6]
@@ -46,27 +45,13 @@ margin_bottom = 42.0
 disabled = true
 text = "LogOut"
 
-[node name="btn_new" type="Button" parent="User"]
-anchor_right = 1.0
-margin_left = 517.0
-margin_top = 354.0
-margin_right = -4.0
-margin_bottom = 396.0
-text = "HOSPEDAR PARTIDA"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="btn_new_game" type="Button" parent="User"]
 anchor_right = 1.0
-margin_left = 312.0
-margin_top = 354.0
-margin_right = -286.0
-margin_bottom = 396.0
+margin_left = 544.0
+margin_top = 353.0
+margin_right = -5.0
+margin_bottom = 395.0
 text = "NUEVA PARTIDA"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="WinsPanel" type="ColorRect" parent="."]
 margin_left = 20.0
@@ -169,8 +154,5 @@ margin_right = 514.0
 margin_bottom = 207.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-
-[node name="NewGamePopup" parent="." instance=ExtResource( 3 )]
-visible = false
 
 [connection signal="button_up" from="WinsPanel/LineEdit/btn_add" to="." method="_on_btn_add_button_up"]

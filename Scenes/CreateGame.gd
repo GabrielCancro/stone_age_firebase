@@ -39,7 +39,7 @@ func onCancelClick():
 
 func onCreateClick():
 	$Creating.visible = true
-	FM.DATA.games_id += 1
+	FM.DATA.games_id += 1	
 	FM.push_var("","games_id",FM.DATA.games_id)
 	yield(FM,"complete_push")
 	var game_name = "partida "+str(FM.DATA.games_id)
