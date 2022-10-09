@@ -30,6 +30,8 @@ func onClick(btn):
 	if btn=="new":
 		$NewGamePopup.showNewGamePanel()
 	if btn=="new_game":
+		get_tree().change_scene("res://Scenes/CreateGame.tscn")
+		return
 		if !GC.OWN_GAME_ID: get_tree().change_scene("res://Scenes/CreateGame.tscn")
 		else: onSelectGame(FM.DATA.games[GC.OWN_GAME_ID])
 
@@ -38,15 +40,27 @@ func set_game_button():
 		FM.DATA.games = {}
 		FM.push_data("games")
 		yield(FM,"complete_push")
-	for i in FM.DATA.games:
-		var ge = GameEntry.instance()
-		ge.set_game_data(FM.DATA.games[i])
-		ge.connect("on_select",self,"onSelectGame")
-		$GameList/Games/VBox.add_child(ge)
+	_add_break("Tus Partidas Activas")
+	for i in FM.DATA.games: if(GC.USER.name in FM.DATA.games[i].players): _add_game_entry(i)
+	_add_break("Partidas Públicas")
+	for i in FM.DATA.games: if(!GC.USER.name in FM.DATA.games[i].players && FM.DATA.games[i].is_open): _add_game_entry(i)
+	_add_break("Partidas Cerradas")
+	for i in FM.DATA.games: if(!GC.USER.name in FM.DATA.games[i].players && !FM.DATA.games[i].is_open): _add_game_entry(i)
 	CLOCK.get_time()
 	GC.NOW_TIME =  yield( CLOCK,"complete" )
-	for GE in $GameList/Games/VBox.get_children(): GE.updateDuration()
+	for GE in $GameList/Games/VBox.get_children(): if(GE.name.find('GameEntry')!=-1): GE.updateDuration()
 
+func _add_game_entry(i):
+	var ge = GameEntry.instance()
+	ge.set_game_data(FM.DATA.games[i])
+	ge.connect("on_select",self,"onSelectGame")
+	$GameList/Games/VBox.add_child(ge)
+
+func _add_break(txt="------"):
+	var lbl = Label.new()
+	lbl.text = txt
+	$GameList/Games/VBox.add_child(lbl)
+		
 func update_winners():
 	if !"friends" in GC.USER: GC.USER["friends"] = []
 	if !"wins" in GC.USER: GC.USER["wins"] = 0
@@ -99,15 +113,8 @@ func customComparison(a,b):
 
 func onSelectGame(game):
 	GC.GAME = game
-#	if(!GC.USER.name in GC.GAME.players):
-#		GC.GAME.players[GC.USER.name] = GC.get_player_start_config()
-#		FM.push_data("games/"+GC.GAME.name+"/players/"+GC.USER.name)
-#		yield(FM,"complete_push")
-#	GC.PLAYER = game.players[GC.USER.name]
-#	$NewGamePopup.showNewGamePanel(game.name)
 	var GInfo = GameInfoScene.instance()
 	add_child(GInfo)
-#	get_tree().change_scene("res://Scenes/Game.tscn")
 
 func _on_btn_add_button_up():
 	var _name = $WinsPanel/LineEdit.text.strip_edges().to_upper()
@@ -117,7 +124,7 @@ func _on_btn_add_button_up():
 func check_own_game():
 	GC.OWN_GAME_ID = null
 	for game in FM.DATA.games:
-		if GC.USER.name in FM.DATA.games[game].players.keys():
+		if GC.USER.name == FM.DATA.games[game].own:
 			GC.OWN_GAME_ID = game
 			break;
 	if GC.OWN_GAME_ID: $User/btn_new_game.text = "IR A MI PARTIDA"

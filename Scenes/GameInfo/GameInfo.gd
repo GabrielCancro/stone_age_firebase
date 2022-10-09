@@ -25,6 +25,11 @@ func onClickBack():
 	queue_free()
 
 func onClickPlay():
+	disableAll()
+	if (!GC.USER.name in GC.GAME.players):
+		GC.GAME.players[GC.USER.name] = GC.get_player_start_config()
+		FM.push_data("games/"+GC.GAME.name+"/players/"+GC.USER.name)
+		yield(FM,"complete_push")
 	GC.PLAYER = GC.GAME.players[GC.USER.name]
 	get_tree().change_scene("res://Games/"+GC.GAME.gameType+"/Game.tscn")
 
@@ -36,3 +41,8 @@ func onClickDelete():
 	FM.delete_path("games/"+GC.OWN_GAME_ID)
 	yield(FM,"complete_remove")
 	get_tree().reload_current_scene()
+
+func disableAll():
+	$Panel/btn_back.disabled = true
+	$Panel/btn_play.disabled = true
+	$Panel/btn_delete.disabled = true
