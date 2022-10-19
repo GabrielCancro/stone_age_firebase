@@ -20,12 +20,12 @@ func set_game_data(game):
 		$OpenIcon.texture = preload("res://assets/lock_icon.png")
 		$Players.text = str(game.players.size())+"/"+str(game.players.size())
 	$Time/Duration.text = str(game.duration)+"hs"
-	if("finished"in game && game.finished):		
+	if("finished"in game && game.finished):
 		$Time/ResTime.text = "finalizada"
 	else: 
 		$Time/Duration.text = str(game.duration)+"hs"
 		$Time/ResTime.text = "en juego.."
-		
+	if(!game.has("isOpen")): game["isOpen"] = false
 	if( !game.isOpen && !GC.USER.name in game.players.keys() ): $Button.disabled = true 
 	if( game.isOpen && game.players.keys().size()>=6 ): $Button.disabled = true
 	if($Button.disabled): $Button.modulate.a = .3
