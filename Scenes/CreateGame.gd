@@ -39,7 +39,7 @@ func onCancelClick():
 
 func onCreateClick():
 	$Creating.visible = true
-	FM.DATA.games_id += 1
+	FM.DATA.games_id += 1	
 	FM.push_var("","games_id",FM.DATA.games_id)
 	yield(FM,"complete_push")
 	var game_name = "partida "+str(FM.DATA.games_id)
@@ -65,7 +65,7 @@ func onChangeConfig(id=-1):
 		"init_turns": $Panel/Options/Scroll/Grid/init_turns/NumberSelector.value,
 		"turns_phs": $Panel/Options/Scroll/Grid/turns_phs/NumberSelector.value,
 		"max_turns": $Panel/Options/Scroll/Grid/total_turns/NumberSelector.value,
-		"isOpen": ($Panel/Options/Scroll/Grid/open_close/OptionButton.selected == 1),
+		"is_open": ($Panel/Options/Scroll/Grid/open_close/OptionButton.selected == 1),
 		"duration": 0,
 		"final_await": $Panel/Options/Scroll/Grid/final_await/NumberSelector.value,
 		"wait_all": $Panel/Options/Scroll/Grid/wait_all/CheckBox.pressed,

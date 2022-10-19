@@ -12,7 +12,7 @@ func set_game_data(game):
 	gameData = game
 	$Title.text = game.name
 	$Own.text = "Creada por "+game.own
-	if("isOpen"in game && game.isOpen): 
+	if(game.is_open): 
 		$OpenIcon.texture = preload("res://assets/world_icon.png")
 		$OpenIcon.modulate = Color("ced48d")
 		$Players.text = str(game.players.size())+"/6"
@@ -25,10 +25,13 @@ func set_game_data(game):
 	else: 
 		$Time/Duration.text = str(game.duration)+"hs"
 		$Time/ResTime.text = "en juego.."
+
 	if(!game.has("isOpen")): game["isOpen"] = false
-	if( !game.isOpen && !GC.USER.name in game.players.keys() ): $Button.disabled = true 
-	if( game.isOpen && game.players.keys().size()>=6 ): $Button.disabled = true
+	if( !game.is_open && !GC.USER.name in game.players.keys() ): $Button.disabled = true 
+	if( game.is_open && game.players.keys().size()>=6 ): $Button.disabled = true
+	if( !GC.USER.name in game.players.keys() ): $Button/TextureRect.texture = preload("res://assets/add_player_icon.png")
 	if($Button.disabled): $Button.modulate.a = .3
+	
 
 func updateDuration():
 	var rt = floor( (GC.NOW_TIME - gameData.start_time) / (60*60) )

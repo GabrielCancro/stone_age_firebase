@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/themes/minimalUI/MinimalUI.tres" type="Theme" id=1]
 [ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/user_icon.png" type="Texture" id=6]
 [ext_resource path="res://assets/world_icon.png" type="Texture" id=7]
 [ext_resource path="res://assets/clock_icon.png" type="Texture" id=8]
+[ext_resource path="res://assets/play_icon.png" type="Texture" id=9]
 
 [node name="GameEntry" type="Control"]
 margin_right = 500.0
@@ -138,4 +139,10 @@ margin_top = 2.0
 margin_right = -2.0
 margin_bottom = -2.0
 custom_fonts/font = ExtResource( 3 )
-text = ">"
+
+[node name="TextureRect" type="TextureRect" parent="Button"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6

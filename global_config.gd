@@ -12,6 +12,7 @@ var WORK_VILLAGERS = 0
 var BUILD_TO_CONSTRUCT = null
 var CIV_TO_CONSTRUCT = null
 var SOUND = null
+var OWN_GAME_ID = null # if USER has any own game
 var FINISHED = false #game is finished
 
 signal complete_reload_data
