@@ -19,6 +19,7 @@ func _ready():
 	$ForgotPanel.connect("close",self,"onClick",["show_login"])
 	$Changelog/btn_ok.connect("button_down",self,"onClick",["changelog"])
 	$btn_version.connect("button_down",self,"onClick",["version"])
+	$NinePatchRect/btn_login2.connect("button_down",self,"onClick",["loginNew"])
 	CLOCK.init()
 	$Changelog.visible = false
 	$btn_version.text = GC.get_version_str()
@@ -88,6 +89,9 @@ func onClick(btn,sub=""):
 	if btn=="version":
 		$Changelog.visible = true
 		$Changelog/Label_title.text = "CHANGELOG "+GC.get_version_str()
+	if btn=="loginNew":
+		get_tree().change_scene("res://Scenes/LoginNew.tscn")
+		
 
 func createAccount():
 	var user_data = { 
