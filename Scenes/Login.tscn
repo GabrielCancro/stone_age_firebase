@@ -613,7 +613,6 @@ margin_bottom = -29.0
 text = "SALIR"
 
 [node name="float_message" type="ColorRect" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5

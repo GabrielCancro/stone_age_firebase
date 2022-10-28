@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://assets/login/login_spear.png" type="Texture" id=1]
 [ext_resource path="res://Games/StoneAge/assets/new_map_bg_blur.jpg" type="Texture" id=2]
@@ -38,7 +38,27 @@ size = 25
 extra_spacing_top = 7
 font_data = ExtResource( 7 )
 
+[sub_resource type="StyleBoxEmpty" id=7]
+
 [sub_resource type="StyleBoxEmpty" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=8]
+
+[sub_resource type="DynamicFontData" id=9]
+font_path = "res://assets/font/bBagian.ttf"
+
+[sub_resource type="DynamicFont" id=10]
+size = 18
+extra_spacing_top = -6
+extra_spacing_bottom = -6
+font_data = SubResource( 9 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 32
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_top = -6
+extra_spacing_bottom = -6
+font_data = SubResource( 9 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 30
@@ -90,8 +110,8 @@ stretch_mode = 6
 [node name="TextureRect3" type="TextureRect" parent="Background"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_top = -203.0
-margin_right = 216.0
+margin_top = -339.0
+margin_right = 361.0
 texture = ExtResource( 1 )
 expand = true
 
@@ -100,8 +120,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -355.0
-margin_top = -152.0
+margin_left = -404.0
+margin_top = -173.0
 texture = ExtResource( 3 )
 expand = true
 
@@ -111,89 +131,120 @@ anims/wood = SubResource( 1 )
 [node name="Label" type="Label" parent="."]
 modulate = Color( 1, 1, 1, 0.733333 )
 margin_left = 312.0
-margin_top = 94.0
+margin_top = 87.0
 margin_right = 484.0
-margin_bottom = 153.0
+margin_bottom = 146.0
 custom_colors/font_color = Color( 0.466667, 0, 0, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Log In"
 align = 1
 valign = 1
 
-[node name="TextureRect5" type="TextureRect" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -490.0
-margin_top = -183.0
-margin_right = -316.0
-margin_bottom = -134.0
-texture = ExtResource( 9 )
-expand = true
-
-[node name="TextureRect6" type="TextureRect" parent="."]
+[node name="Input_name" type="TextureRect" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -500.0
-margin_top = -237.0
+margin_top = -253.0
 margin_right = -303.0
-margin_bottom = -191.0
+margin_bottom = -207.0
 texture = ExtResource( 10 )
 expand = true
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="LineEdit" type="LineEdit" parent="."]
-margin_left = 331.0
-margin_top = 162.0
+[node name="LineEdit" type="LineEdit" parent="Input_name"]
+margin_left = 31.0
+margin_top = -1.0
+margin_right = 182.0
+margin_bottom = 44.0
+focus_mode = 1
+custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+custom_fonts/font = SubResource( 3 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 4 )
+placeholder_text = "NAMEUSER"
+
+[node name="Input_pass" type="TextureRect" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -490.0
+margin_top = -205.0
+margin_right = -316.0
+margin_bottom = -156.0
+texture = ExtResource( 9 )
+expand = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="LineEdit" type="LineEdit" parent="Input_pass"]
+margin_left = 21.0
+margin_top = -1.0
+margin_right = 174.0
+margin_bottom = 44.0
+focus_mode = 1
+custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
+custom_fonts/font = SubResource( 3 )
+custom_styles/focus = SubResource( 8 )
+custom_styles/normal = SubResource( 4 )
+secret = true
+secret_character = "x"
+placeholder_text = "PASSWORD"
+
+[node name="btn_remember" type="Button" parent="."]
+margin_left = 319.0
+margin_top = 249.0
 margin_right = 482.0
-margin_bottom = 207.0
-focus_mode = 0
-custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
-custom_fonts/font = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
-text = "NAMEUSER"
+margin_bottom = 270.0
+flat = true
+expand_icon = true
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="LineEdit3" type="LineEdit" parent="."]
-margin_left = 331.0
-margin_top = 162.0
-margin_right = 482.0
-margin_bottom = 207.0
-focus_mode = 0
-custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
-custom_fonts/font = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
-text = "NAMEUSER"
+[node name="lb_exit" type="Label" parent="btn_remember"]
+modulate = Color( 1, 1, 1, 0.882353 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_colors/font_color = Color( 0.109804, 0.109804, 0.109804, 1 )
+custom_fonts/font = SubResource( 10 )
+text = "[  ] RECORDAR CLAVE"
+valign = 1
 
-[node name="LineEdit2" type="LineEdit" parent="."]
-margin_left = 331.0
-margin_top = 216.0
-margin_right = 484.0
-margin_bottom = 261.0
-focus_mode = 0
-custom_colors/font_color = Color( 0.203922, 0.203922, 0.203922, 1 )
-custom_fonts/font = SubResource( 3 )
-custom_styles/normal = SubResource( 4 )
-text = "PASSWORD"
+[node name="lb_X" type="Label" parent="btn_remember"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_left = -16.0
+margin_top = -20.5
+margin_right = 30.0
+margin_bottom = 20.5
+custom_colors/font_color = Color( 0.137255, 0.105882, 0.105882, 1 )
+custom_fonts/font = SubResource( 11 )
+text = "x"
+align = 1
+valign = 1
 
 [node name="Button" type="Button" parent="."]
 modulate = Color( 1, 1, 1, 0.698039 )
 margin_left = 342.0
-margin_top = 266.0
+margin_top = 262.0
 margin_right = 439.0
-margin_bottom = 360.0
+margin_bottom = 356.0
 focus_mode = 0
 icon = ExtResource( 11 )
 flat = true
 expand_icon = true
 
-[node name="Label2" type="Label" parent="."]
-modulate = Color( 1, 1, 1, 0.733333 )
-margin_left = 305.0
-margin_top = 293.0
-margin_right = 477.0
-margin_bottom = 352.0
+[node name="lb_enter" type="Label" parent="Button"]
+margin_left = -37.0
+margin_top = 27.0
+margin_right = 135.0
+margin_bottom = 86.0
 rect_rotation = -6.1742
 custom_colors/font_color = Color( 0.152941, 0.027451, 0.027451, 1 )
 custom_fonts/font = SubResource( 5 )
@@ -201,13 +252,24 @@ text = "ENTRAR"
 align = 1
 valign = 1
 
-[node name="Label3" type="Label" parent="."]
+[node name="btn_account" type="Button" parent="."]
+margin_left = 603.0
+margin_top = 267.0
+margin_right = 696.0
+margin_bottom = 366.0
+focus_mode = 0
+flat = true
+expand_icon = true
+
+[node name="lb_account" type="Label" parent="btn_account"]
 modulate = Color( 1, 1, 1, 0.733333 )
-margin_left = 611.0
-margin_top = 380.0
-margin_right = 783.0
-margin_bottom = 445.0
-rect_rotation = -59.366
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -17.0
+margin_top = 59.0
+margin_right = -17.0
+margin_bottom = 59.0
+rect_rotation = -56.5091
 custom_colors/font_color = Color( 0.109804, 0.109804, 0.109804, 1 )
 custom_fonts/font = SubResource( 6 )
 text = "Nueva
@@ -215,13 +277,26 @@ Cuenta"
 align = 1
 valign = 1
 
-[node name="Label4" type="Label" parent="."]
+[node name="btn_exit" type="Button" parent="."]
+margin_left = 103.0
+margin_top = 276.0
+margin_right = 193.0
+margin_bottom = 338.0
+focus_mode = 0
+flat = true
+expand_icon = true
+
+[node name="lb_exit" type="Label" parent="btn_exit"]
 modulate = Color( 1, 1, 1, 0.733333 )
-margin_left = 69.0
-margin_top = 322.0
-margin_right = 133.0
-margin_bottom = 359.0
-rect_rotation = 8.8974
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -64.5
+margin_top = -14.0
+margin_right = 32.5
+margin_bottom = 80.0
+rect_rotation = -31.5252
 custom_colors/font_color = Color( 0.109804, 0.109804, 0.109804, 1 )
 custom_fonts/font = SubResource( 6 )
 text = "SALIR"

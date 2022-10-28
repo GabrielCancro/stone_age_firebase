@@ -1,17 +1,27 @@
 extends Control
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	$Background/AnimationPlayer.play("wood")
-	pass # Replace with function body.
+	$btn_account.connect("button_down",self,"onClickAccount")
+	$btn_exit.connect("button_down",self,"onClickExit")
+	$btn_remember.connect("button_down",self,"onRememberClick")
+	checkRemember()
 
+func onClickAccount():
+	get_tree().change_scene("res://Scenes/CreateAccount.tscn")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func onClickExit():
+	get_tree().quit()
+
+func onRememberClick():
+	$btn_remember/lb_X.visible = !$btn_remember/lb_X.visible
+	StoreData.DATA["remember_user"] = $btn_remember/lb_X.visible
+	checkRemember()
+
+func checkRemember():
+	$btn_remember/lb_X.visible = false
+	if("remember_user" in StoreData.DATA && StoreData.DATA.remember_user):
+		$btn_remember/lb_X.visible = true
+		$Input_name/LineEdit.text = StoreData.DATA.user_name
+		$Input_pass/LineEdit.text = StoreData.DATA.user_pass
+#		if("muted" in StoreData.DATA): $LogIn/Mute.pressed = StoreData.DATA.muted
