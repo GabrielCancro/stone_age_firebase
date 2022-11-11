@@ -98,36 +98,36 @@ margin_bottom = 250.0
 scroll_horizontal_enabled = false
 
 [node name="VBox" type="VBoxContainer" parent="Panel/PlayerList/Scroll"]
-margin_right = 74.0
-margin_bottom = 151.0
+margin_right = 63.0
+margin_bottom = 131.0
 
 [node name="Ch1" type="CheckBox" parent="Panel/PlayerList/Scroll/VBox"]
-margin_right = 74.0
-margin_bottom = 27.0
+margin_right = 63.0
+margin_bottom = 23.0
 text = " Mole"
 
 [node name="Ch2" type="CheckBox" parent="Panel/PlayerList/Scroll/VBox"]
-margin_top = 31.0
-margin_right = 74.0
-margin_bottom = 58.0
+margin_top = 27.0
+margin_right = 63.0
+margin_bottom = 50.0
 text = " Mole"
 
 [node name="Ch3" type="CheckBox" parent="Panel/PlayerList/Scroll/VBox"]
-margin_top = 62.0
-margin_right = 74.0
-margin_bottom = 89.0
+margin_top = 54.0
+margin_right = 63.0
+margin_bottom = 77.0
 text = " Mole"
 
 [node name="Ch4" type="CheckBox" parent="Panel/PlayerList/Scroll/VBox"]
-margin_top = 93.0
-margin_right = 74.0
-margin_bottom = 120.0
+margin_top = 81.0
+margin_right = 63.0
+margin_bottom = 104.0
 text = " Mole"
 
 [node name="Ch5" type="CheckBox" parent="Panel/PlayerList/Scroll/VBox"]
-margin_top = 124.0
-margin_right = 74.0
-margin_bottom = 151.0
+margin_top = 108.0
+margin_right = 63.0
+margin_bottom = 131.0
 text = " Mole"
 
 [node name="Options" type="ColorRect" parent="Panel"]

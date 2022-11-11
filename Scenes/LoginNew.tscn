@@ -229,7 +229,7 @@ text = "x"
 align = 1
 valign = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="btn_enter" type="Button" parent="."]
 modulate = Color( 1, 1, 1, 0.698039 )
 margin_left = 342.0
 margin_top = 262.0
@@ -240,7 +240,7 @@ icon = ExtResource( 11 )
 flat = true
 expand_icon = true
 
-[node name="lb_enter" type="Label" parent="Button"]
+[node name="lb_enter" type="Label" parent="btn_enter"]
 margin_left = -37.0
 margin_top = 27.0
 margin_right = 135.0

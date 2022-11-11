@@ -41,6 +41,7 @@ func set_game_button():
 		FM.push_data("games")
 		yield(FM,"complete_push")
 	_add_break("Tus Partidas Activas")
+	for i in FM.DATA.games: if(!"is_open" in FM.DATA.games[i]): FM.DATA.games[i]["is_open"] = false
 	for i in FM.DATA.games: if(GC.USER.name in FM.DATA.games[i].players): _add_game_entry(i)
 	_add_break("Partidas Públicas")
 	for i in FM.DATA.games: if(!GC.USER.name in FM.DATA.games[i].players && FM.DATA.games[i].is_open): _add_game_entry(i)

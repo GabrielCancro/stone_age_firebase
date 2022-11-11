@@ -5,6 +5,7 @@ func _ready():
 	$btn_account.connect("button_down",self,"onClickAccount")
 	$btn_exit.connect("button_down",self,"onClickExit")
 	$btn_remember.connect("button_down",self,"onRememberClick")
+	$btn_enter.connect("button_down",self,"onEnterClick")
 	checkRemember()
 
 func onClickAccount():
@@ -25,3 +26,28 @@ func checkRemember():
 		$Input_name/LineEdit.text = StoreData.DATA.user_name
 		$Input_pass/LineEdit.text = StoreData.DATA.user_pass
 #		if("muted" in StoreData.DATA): $LogIn/Mute.pressed = StoreData.DATA.muted
+
+func onEnterClick():
+	var user_data = { 
+		"name":$Input_name/LineEdit.text.to_upper(),
+		"pass":$Input_pass/LineEdit.text,
+		"mpass":$Input_pass/LineEdit.text.md5_text(),
+	}
+	$Input_pass/LineEdit.text = ""
+	if !"users" in FM.DATA: FM.DATA.users = {}
+	if !user_data.name in FM.DATA.users:
+#		$LogIn/Label_error.text = "USUARIO INEXISTENTE"
+		pass
+	else:
+		if FM.DATA.users[user_data.name].mpass == user_data.mpass:
+			GC.USER = FM.DATA.users[user_data.name]
+			StoreData.DATA["remember_user"] = $btn_remember/lb_X.visible
+			StoreData.DATA["user_name"] = user_data.name
+			StoreData.DATA["user_pass"] = user_data.pass
+			StoreData.DATA["muted"] = false #$LogIn/Mute.pressed
+			StoreData.save_store_data()
+			print("TE LOGUEASTE COMO >> ",GC.USER)
+			get_tree().change_scene("res://Scenes/Main.tscn")
+		else:
+#			$LogIn/Label_error.text = "CLAVE INCORRECTA"
+			pass
