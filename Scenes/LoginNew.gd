@@ -6,7 +6,14 @@ func _ready():
 	$btn_exit.connect("button_down",self,"onClickExit")
 	$btn_remember.connect("button_down",self,"onRememberClick")
 	$btn_enter.connect("button_down",self,"onEnterClick")
+
+	CLOCK.init()
+	FM.init()
+	FM.pull_data()
+	yield(FM,"complete_pull")
 	checkRemember()
+	checkOldVersion()
+
 
 func onClickAccount():
 	get_tree().change_scene("res://Scenes/CreateAccount.tscn")
@@ -18,6 +25,13 @@ func onRememberClick():
 	$btn_remember/lb_X.visible = !$btn_remember/lb_X.visible
 	StoreData.DATA["remember_user"] = $btn_remember/lb_X.visible
 	checkRemember()
+
+func checkOldVersion():
+	if(FM.DATA && FM.DATA.min_version_required > GC.version):
+		print("YOU HAVE A OLD VERSION!!! UPDATE PLEASE!")
+#		$RequireUpdate.visible = true
+#		$RequireUpdate/Label_ver.text = "\nsu versión es: "+GC.get_version_str() 
+#		$RequireUpdate/Label_ver.text += "\nse requiere: "+GC.get_version_str(FM.DATA.min_version_required) 
 
 func checkRemember():
 	$btn_remember/lb_X.visible = false

@@ -26,7 +26,7 @@ func _ready():
 func onClick(btn):
 	if btn=="logout":
 		GC.USER = null
-		get_tree().change_scene("res://Scenes/Login.tscn")
+		get_tree().change_scene("res://Scenes/LoginNew.tscn")
 	if btn=="new":
 		$NewGamePopup.showNewGamePanel()
 	if btn=="new_game":

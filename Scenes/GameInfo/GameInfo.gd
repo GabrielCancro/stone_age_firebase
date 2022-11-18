@@ -9,7 +9,7 @@ func _ready():
 	$Panel/btn_delete.visible = ( GC.GAME.name == GC.OWN_GAME_ID ) 
 	set_data()
 
-func set_data():
+func set_data_OLD():
 	$Panel/Title.text = GC.GAME.name
 	$Panel/ScrollInfo/Info.text = "<GAME DATA>\n"
 	for k in GC.GAME:
@@ -20,6 +20,21 @@ func set_data():
 		elif GC.GAME[k] is bool: $Panel/ScrollInfo/Info.text += str(GC.GAME[k])+"\n"
 		else: $Panel/ScrollInfo/Info.text += "[object]\n"
 #	$Panel/ScrollInfo/Info.text = JSON.print(GC.GAME, "       ")
+
+func set_data():
+	$Panel/Title.text = GC.GAME.name
+	var lb = $Panel/ScrollInfo/Info
+	lb.text = "INFORMACIÓN DE LA PARTIDA\n"
+	lb.text += GC.GAME.gameType+" - "+str(GC.GAME.desc)+" de "+GC.GAME.own+"\n"
+	if GC.GAME.is_open: lb.text += "Partida pública\n"
+	else: lb.text += "Partida cerrada\n"
+	lb.text += "Turnos iniciales: "+str(GC.GAME.init_turns)+"\n"
+	lb.text += "Turnos por hora: "+str(GC.GAME.turns_phs)+"\n"
+	lb.text += "Turnos totales: "+str(GC.GAME.max_turns)+"\n"
+	lb.text += "Espera final: "+str(GC.GAME.final_await)+"hs"+"\n"
+	lb.text += "Duración de la partida: "+str(GC.GAME.duration)+"hs"+"\n"
+	lb.text += "Jugadores:\n"
+	for j in GC.GAME.players: lb.text += "  -"+j+"\n"
 
 func onClickBack():
 	queue_free()

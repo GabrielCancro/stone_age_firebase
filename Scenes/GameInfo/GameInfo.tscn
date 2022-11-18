@@ -20,10 +20,10 @@ margin_bottom = 400.0
 color = Color( 0.078125, 0.078125, 0.078125, 0.862745 )
 
 [node name="Panel" type="Panel" parent="."]
-margin_left = 248.0
-margin_top = 66.0
-margin_right = 524.0
-margin_bottom = 348.0
+margin_left = 223.0
+margin_top = 52.0
+margin_right = 570.0
+margin_bottom = 334.0
 
 [node name="btn_back" type="Button" parent="Panel"]
 anchor_left = 1.0
