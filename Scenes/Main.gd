@@ -11,14 +11,14 @@ var winners = []
 
 func _ready():
 #	$NewGamePopup.visible = false
-	$User/Label.text = "Bienvenido "+GC.USER.name+"!"
-	$User/btn_logout.connect("button_down",self,"onClick",["logout"])
-	$User/btn_new_game.connect("button_down",self,"onClick",["new_game"])
-	$User/btn_new_game.visible = false
+	$lb_user.text = GC.USER.name
+	$btn_logout.connect("button_down",self,"onClick",["logout"])
+	$btn_new_game.connect("button_down",self,"onClick",["new_game"])
+	$btn_new_game.visible = false
 	CLOCK.init()
 	FM.pull_data()
 	yield(FM,"complete_pull")
-	$User/btn_logout.disabled = false
+	$btn_logout.disabled = false
 	update_winners()
 	set_game_button()
 	check_own_game()
@@ -128,5 +128,5 @@ func check_own_game():
 		if GC.USER.name == FM.DATA.games[game].own:
 			GC.OWN_GAME_ID = game
 			break;
-	if GC.OWN_GAME_ID: $User/btn_new_game.text = "IR A MI PARTIDA"
-	$User/btn_new_game.visible = true
+	if GC.OWN_GAME_ID: $btn_new_game/lb_enter.text = "IR A MI PARTIDA"
+	$btn_new_game.visible = true

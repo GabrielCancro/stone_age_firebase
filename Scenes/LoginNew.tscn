@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://assets/login/login_spear.png" type="Texture" id=1]
 [ext_resource path="res://Games/StoneAge/assets/new_map_bg_blur.jpg" type="Texture" id=2]
@@ -11,6 +11,10 @@
 [ext_resource path="res://assets/login/login_edit1.png" type="Texture" id=9]
 [ext_resource path="res://assets/login/login_edit2.png" type="Texture" id=10]
 [ext_resource path="res://assets/login/hand.png" type="Texture" id=11]
+
+[sub_resource type="DynamicFont" id=14]
+size = 21
+font_data = ExtResource( 8 )
 
 [sub_resource type="Animation" id=1]
 resource_name = "wood"
@@ -70,6 +74,12 @@ extra_spacing_top = -6
 extra_spacing_bottom = -6
 font_data = ExtResource( 7 )
 
+[sub_resource type="DynamicFont" id=12]
+size = 17
+extra_spacing_top = -4
+extra_spacing_bottom = -4
+font_data = ExtResource( 7 )
+
 [node name="LoginNew" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -100,6 +110,36 @@ rect_pivot_offset = Vector2( 40, 20 )
 texture = ExtResource( 5 )
 expand = true
 
+[node name="hand" type="TextureRect" parent="Background/wood"]
+modulate = Color( 1, 1, 1, 0.498039 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.8571
+margin_top = -23.2638
+margin_right = 13.1429
+margin_bottom = 5.73623
+rect_rotation = -19.9128
+rect_pivot_offset = Vector2( 40, 20 )
+texture = ExtResource( 11 )
+expand = true
+
+[node name="hand2" type="TextureRect" parent="Background/wood"]
+modulate = Color( 1, 1, 1, 0.498039 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -10.1327
+margin_top = 17.1093
+margin_right = 23.8673
+margin_bottom = 46.1093
+rect_rotation = 15.7828
+rect_pivot_offset = Vector2( 40, 20 )
+texture = ExtResource( 11 )
+expand = true
+
 [node name="TextureRect2" type="TextureRect" parent="Background"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -114,6 +154,18 @@ margin_top = -339.0
 margin_right = 361.0
 texture = ExtResource( 1 )
 expand = true
+
+[node name="lb_version" type="Label" parent="Background/TextureRect3"]
+modulate = Color( 1, 1, 1, 0.733333 )
+margin_left = 166.0
+margin_top = 62.0
+margin_right = 247.0
+margin_bottom = 88.0
+custom_colors/font_color = Color( 0.132813, 0.0930834, 0.082489, 1 )
+custom_fonts/font = SubResource( 14 )
+text = "v2.0"
+align = 1
+valign = 1
 
 [node name="TextureRect4" type="TextureRect" parent="Background"]
 anchor_left = 1.0
@@ -274,6 +326,33 @@ custom_colors/font_color = Color( 0.109804, 0.109804, 0.109804, 1 )
 custom_fonts/font = SubResource( 6 )
 text = "Nueva
 Cuenta"
+align = 1
+valign = 1
+
+[node name="btn_forgot" type="Button" parent="."]
+margin_left = 721.0
+margin_top = 341.0
+margin_right = 814.0
+margin_bottom = 394.0
+flat = true
+expand_icon = true
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="lb_forgot" type="Label" parent="btn_forgot"]
+modulate = Color( 1, 1, 1, 0.733333 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -20.0
+margin_top = 40.0
+margin_right = -20.0
+margin_bottom = 40.0
+rect_rotation = -31.0658
+custom_colors/font_color = Color( 0.0431373, 0.0509804, 0.180392, 1 )
+custom_fonts/font = SubResource( 12 )
+text = "PERDI MI 
+CLAVE"
 align = 1
 valign = 1
 

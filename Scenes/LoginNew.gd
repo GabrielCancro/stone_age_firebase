@@ -3,6 +3,7 @@ extends Control
 func _ready():
 	$Background/AnimationPlayer.play("wood")
 	$btn_account.connect("button_down",self,"onClickAccount")
+	$btn_forgot.connect("button_down",self,"onClickForgot")
 	$btn_exit.connect("button_down",self,"onClickExit")
 	$btn_remember.connect("button_down",self,"onRememberClick")
 	$btn_enter.connect("button_down",self,"onEnterClick")
@@ -17,6 +18,9 @@ func _ready():
 
 func onClickAccount():
 	get_tree().change_scene("res://Scenes/CreateAccount.tscn")
+
+func onClickForgot():
+	get_tree().change_scene("res://Scenes/ForgotPassword.tscn")
 
 func onClickExit():
 	get_tree().quit()

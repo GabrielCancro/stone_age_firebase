@@ -297,7 +297,6 @@ margin_bottom = 73.0
 text = "Salir"
 
 [node name="ForgotPanel" type="Panel" parent="."]
-visible = false
 margin_left = 270.0
 margin_top = 39.0
 margin_right = 562.0

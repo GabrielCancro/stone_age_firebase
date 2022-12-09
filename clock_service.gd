@@ -10,7 +10,9 @@ func init():
 
 func get_time():
 #	http.request(HTTPClient.METHOD_GET,"https://timeapi.io/api/Time/current/zone?timeZone=America/Argentina/Buenos_Aires")
-	http.request("https://web-server-heroku.herokuapp.com/time")
+#	http.request("https://web-server-heroku.herokuapp.com/time")
+	http.request("http://worldtimeapi.org/api/timezone/America/Argentina/Buenos_Aires")
+	
 	return self
 
 #func _on_request_completed(result, response_code, headers, body):
@@ -23,4 +25,5 @@ func get_time():
 
 func _on_request_completed(result, response_code, headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
-	emit_signal("complete",json.result.time)
+	print(json.result)
+	emit_signal("complete",json.result.unixtime)
