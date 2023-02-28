@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/tool.png-848daf1e0126a8e6a9a53bf3acdaddff.stex"
+path="res://.import/tool.png-3064638f06944d73e27b780b2895c696.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Games/StoneAge/assets/new_res/tool.png"
-dest_files=[ "res://.import/tool.png-848daf1e0126a8e6a9a53bf3acdaddff.stex" ]
+source_file="res://Games/StoneAge/assets/res/tool.png"
+dest_files=[ "res://.import/tool.png-3064638f06944d73e27b780b2895c696.stex" ]
 
 [params]
 

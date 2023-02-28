@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/score.jpg-52d085b784bf66101f30c9a738aae34e.stex"
+path="res://.import/villager.png-86147ce173386b1175cef967c8bafb88.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Games/StoneAge/assets/res/score.jpg"
-dest_files=[ "res://.import/score.jpg-52d085b784bf66101f30c9a738aae34e.stex" ]
+source_file="res://Games/StoneAge/assets/res/villager.png"
+dest_files=[ "res://.import/villager.png-86147ce173386b1175cef967c8bafb88.stex" ]
 
 [params]
 

@@ -1,21 +1,15 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://Games/StoneAge/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=2]
 [ext_resource path="res://Games/StoneAge/nodes/Drager.gd" type="Script" id=3]
 [ext_resource path="res://Games/StoneAge/assets/area.png" type="Texture" id=4]
 [ext_resource path="res://Games/StoneAge/assets/map/map_blur.jpg" type="Texture" id=5]
-[ext_resource path="res://Games/StoneAge/assets/res/gold.jpg" type="Texture" id=6]
+[ext_resource path="res://Games/StoneAge/assets/res/looter.png" type="Texture" id=6]
 [ext_resource path="res://Games/StoneAge/nodes/Interaction.gd" type="Script" id=7]
 [ext_resource path="res://assets/font/BAARS.TTF" type="DynamicFontData" id=8]
 [ext_resource path="res://Games/StoneAge/nodes/rec_panel.gd" type="Script" id=9]
-[ext_resource path="res://Games/StoneAge/assets/res/food.jpg" type="Texture" id=10]
 [ext_resource path="res://Games/StoneAge/assets/Aldeano.png" type="Texture" id=11]
-[ext_resource path="res://Games/StoneAge/assets/res/tool.jpg" type="Texture" id=12]
-[ext_resource path="res://Games/StoneAge/assets/res/camp.jpg" type="Texture" id=13]
-[ext_resource path="res://Games/StoneAge/assets/res/wood.jpg" type="Texture" id=14]
-[ext_resource path="res://Games/StoneAge/assets/res/adobe.jpg" type="Texture" id=15]
-[ext_resource path="res://Games/StoneAge/assets/res/stone.jpg" type="Texture" id=16]
 [ext_resource path="res://Games/StoneAge/assets/map/map_tool.png" type="Texture" id=17]
 [ext_resource path="res://Games/StoneAge/assets/map/map_food.png" type="Texture" id=18]
 [ext_resource path="res://Games/StoneAge/assets/map/map_camp.png" type="Texture" id=19]
@@ -32,27 +26,26 @@
 [ext_resource path="res://Games/StoneAge/assets/build_btn.jpg" type="Texture" id=30]
 [ext_resource path="res://assets/font/font_big_outline.tres" type="DynamicFont" id=31]
 [ext_resource path="res://Games/StoneAge/nodes/BuildPanel.gd" type="Script" id=32]
-[ext_resource path="res://Games/StoneAge/assets/res/build.jpg" type="Texture" id=33]
+[ext_resource path="res://Games/StoneAge/assets/res/house.png" type="Texture" id=33]
 [ext_resource path="res://Games/StoneAge/assets/build_circle.png" type="Texture" id=34]
 [ext_resource path="res://Games/StoneAge/assets/map/map_civ.png" type="Texture" id=35]
 [ext_resource path="res://Games/StoneAge/assets/civ_card.png" type="Texture" id=36]
 [ext_resource path="res://Games/StoneAge/nodes/CivPanel.gd" type="Script" id=37]
-[ext_resource path="res://Games/StoneAge/assets/res/civ.jpg" type="Texture" id=38]
-[ext_resource path="res://Games/StoneAge/assets/res/villager.jpg" type="Texture" id=39]
+[ext_resource path="res://Games/StoneAge/assets/res/civ.png" type="Texture" id=38]
+[ext_resource path="res://Games/StoneAge/assets/res/villager.png" type="Texture" id=39]
 [ext_resource path="res://Games/StoneAge/assets/sfx/villager_1.mp3" type="AudioStream" id=40]
 [ext_resource path="res://Games/StoneAge/nodes/Sounds.gd" type="Script" id=41]
 [ext_resource path="res://Games/StoneAge/assets/sfx/ms1.mp3" type="AudioStream" id=42]
-[ext_resource path="res://Games/StoneAge/assets/res/looter.jpg" type="Texture" id=43]
 [ext_resource path="res://Games/StoneAge/assets/map/map_looter2.png" type="Texture" id=44]
 [ext_resource path="res://assets/font/font_super_small.tres" type="DynamicFont" id=45]
-[ext_resource path="res://Games/StoneAge/assets/new_res/adobe.png" type="Texture" id=46]
-[ext_resource path="res://Games/StoneAge/assets/new_res/wood.png" type="Texture" id=47]
+[ext_resource path="res://Games/StoneAge/assets/res/adobe.png" type="Texture" id=46]
+[ext_resource path="res://Games/StoneAge/assets/res/wood.png" type="Texture" id=47]
 [ext_resource path="res://Games/StoneAge/assets/new_map.jpg" type="Texture" id=48]
-[ext_resource path="res://Games/StoneAge/assets/new_res/stone.png" type="Texture" id=49]
-[ext_resource path="res://Games/StoneAge/assets/new_res/camp.png" type="Texture" id=50]
-[ext_resource path="res://Games/StoneAge/assets/new_res/gold.png" type="Texture" id=51]
-[ext_resource path="res://Games/StoneAge/assets/new_res/tool.png" type="Texture" id=52]
-[ext_resource path="res://Games/StoneAge/assets/new_res/food.png" type="Texture" id=53]
+[ext_resource path="res://Games/StoneAge/assets/res/stone.png" type="Texture" id=49]
+[ext_resource path="res://Games/StoneAge/assets/res/camp.png" type="Texture" id=50]
+[ext_resource path="res://Games/StoneAge/assets/res/gold.png" type="Texture" id=51]
+[ext_resource path="res://Games/StoneAge/assets/res/tool.png" type="Texture" id=52]
+[ext_resource path="res://Games/StoneAge/assets/res/food.png" type="Texture" id=53]
 
 [sub_resource type="StyleBoxFlat" id=3]
 bg_color = Color( 0.196078, 0.196078, 0.196078, 1 )
@@ -365,14 +358,13 @@ texture = ExtResource( 4 )
 
 [node name="VILLAGER" type="Sprite" parent="Interaction/Drager/Points"]
 modulate = Color( 0.192157, 0.203922, 1, 0.619608 )
-position = Vector2( 376, 320 )
-scale = Vector2( 1.0775, 1.0775 )
+position = Vector2( 285, 241 )
+scale = Vector2( 0.8, 0.8 )
 texture = ExtResource( 4 )
 
 [node name="TOOL" type="Sprite" parent="Interaction/Drager/Points"]
 modulate = Color( 0.192157, 0.203922, 1, 0.619608 )
-position = Vector2( 284, 240 )
-scale = Vector2( 0.869999, 0.869999 )
+position = Vector2( 376, 320 )
 texture = ExtResource( 4 )
 
 [node name="BUILD" type="Sprite" parent="Interaction/Drager/Points"]
@@ -624,11 +616,11 @@ margin_bottom = 224.0
 color = Color( 0, 0, 0, 0.784314 )
 
 [node name="TextureRect" type="TextureRect" parent="Interaction/looter_rec"]
-margin_left = 15.0
-margin_top = 5.0
-margin_right = 42.0
-margin_bottom = 32.0
-texture = ExtResource( 43 )
+margin_left = 8.0
+margin_top = 1.0
+margin_right = 49.0
+margin_bottom = 42.0
+texture = ExtResource( 6 )
 expand = true
 
 [node name="Label" type="Label" parent="Interaction/looter_rec"]
@@ -685,7 +677,7 @@ autowrap = true
 [node name="Food" type="Sprite" parent="Interaction/eat_panel"]
 position = Vector2( 73, -4 )
 scale = Vector2( 0.220339, 0.220339 )
-texture = ExtResource( 10 )
+texture = ExtResource( 53 )
 
 [node name="Label" type="Label" parent="Interaction/eat_panel"]
 anchor_right = 1.0
@@ -760,66 +752,66 @@ theme = ExtResource( 2 )
 
 [node name="food" type="Button" parent="HelpButtons"]
 anchor_right = 1.0
-margin_left = 6.0
-margin_top = 80.0
-margin_right = 11.0
-margin_bottom = 122.0
-rect_scale = Vector2( 0.8, 0.7 )
+margin_left = 16.0
+margin_top = 168.0
+margin_right = 21.0
+margin_bottom = 210.0
+rect_scale = Vector2( 1, 0.7 )
 custom_fonts/font = ExtResource( 31 )
 text = "?"
 flat = true
 
 [node name="materials" type="Button" parent="HelpButtons"]
 anchor_right = 1.0
-margin_left = 393.0
-margin_top = 84.0
-margin_right = 398.0
-margin_bottom = 126.0
-rect_scale = Vector2( 0.8, 0.7 )
+margin_left = 248.0
+margin_top = 56.0
+margin_right = 253.0
+margin_bottom = 98.0
+rect_scale = Vector2( 1, 0.7 )
 custom_fonts/font = ExtResource( 31 )
 text = "?"
 flat = true
 
 [node name="tool" type="Button" parent="HelpButtons"]
 anchor_right = 1.0
-margin_left = 279.0
-margin_top = 265.0
-margin_right = 284.0
-margin_bottom = 307.0
-rect_scale = Vector2( 0.8, 0.7 )
+margin_left = 200.0
+margin_top = 272.0
+margin_right = 205.0
+margin_bottom = 314.0
+rect_scale = Vector2( 1, 0.7 )
 custom_fonts/font = ExtResource( 31 )
 text = "?"
 flat = true
 
 [node name="villager" type="Button" parent="HelpButtons"]
 anchor_right = 1.0
-margin_left = 102.0
-margin_top = 335.0
-margin_right = 107.0
-margin_bottom = 377.0
-rect_scale = Vector2( 0.8, 0.7 )
+margin_left = 288.0
+margin_top = 312.0
+margin_right = 293.0
+margin_bottom = 354.0
+rect_scale = Vector2( 1, 0.7 )
 custom_fonts/font = ExtResource( 31 )
 text = "?"
 flat = true
 
 [node name="build" type="Button" parent="HelpButtons"]
 anchor_right = 1.0
-margin_left = 562.0
-margin_top = 104.0
-margin_right = 567.0
-margin_bottom = 146.0
-rect_scale = Vector2( 0.8, 0.7 )
+margin_left = 568.0
+margin_top = 48.0
+margin_right = 573.0
+margin_bottom = 90.0
+rect_scale = Vector2( 1, 0.7 )
 custom_fonts/font = ExtResource( 31 )
 text = "?"
 flat = true
 
 [node name="looter" type="Button" parent="HelpButtons"]
 anchor_right = 1.0
-margin_left = 699.0
-margin_top = 137.0
-margin_right = 704.0
-margin_bottom = 179.0
-rect_scale = Vector2( 0.8, 0.7 )
+margin_left = 696.0
+margin_top = 136.0
+margin_right = 701.0
+margin_bottom = 178.0
+rect_scale = Vector2( 1, 0.7 )
 custom_fonts/font = ExtResource( 31 )
 text = "?"
 flat = true
@@ -899,7 +891,7 @@ margin_left = 6.0
 margin_right = 36.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 15 )
+texture = ExtResource( 46 )
 expand = true
 stretch_mode = 1
 
@@ -918,7 +910,7 @@ margin_left = 40.0
 margin_right = 70.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 16 )
+texture = ExtResource( 49 )
 expand = true
 stretch_mode = 1
 
@@ -937,7 +929,7 @@ margin_left = 74.0
 margin_right = 104.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 6 )
+texture = ExtResource( 51 )
 expand = true
 stretch_mode = 1
 
@@ -994,7 +986,7 @@ margin_left = 6.0
 margin_right = 36.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 15 )
+texture = ExtResource( 46 )
 expand = true
 stretch_mode = 1
 
@@ -1013,7 +1005,7 @@ margin_left = 40.0
 margin_right = 70.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 16 )
+texture = ExtResource( 49 )
 expand = true
 stretch_mode = 1
 
@@ -1032,7 +1024,7 @@ margin_left = 74.0
 margin_right = 104.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 6 )
+texture = ExtResource( 51 )
 expand = true
 stretch_mode = 1
 
@@ -1082,7 +1074,6 @@ align = 1
 valign = 1
 
 [node name="CivPanel" type="ColorRect" parent="."]
-visible = false
 margin_top = 40.0
 margin_right = 800.0
 margin_bottom = 400.0
@@ -1200,7 +1191,7 @@ margin_top = 3.0
 margin_right = 33.0
 margin_bottom = 33.0
 rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 12 )
+texture = ExtResource( 52 )
 expand = true
 stretch_mode = 1
 
@@ -1238,7 +1229,7 @@ margin_top = 3.0
 margin_right = 33.0
 margin_bottom = 33.0
 rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 6 )
+texture = ExtResource( 51 )
 expand = true
 stretch_mode = 1
 
@@ -1266,7 +1257,7 @@ margin_top = 3.0
 margin_right = 33.0
 margin_bottom = 33.0
 rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 14 )
+texture = ExtResource( 47 )
 expand = true
 stretch_mode = 1
 
@@ -1293,7 +1284,7 @@ margin_top = 3.0
 margin_right = 33.0
 margin_bottom = 33.0
 rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 12 )
+texture = ExtResource( 52 )
 expand = true
 stretch_mode = 1
 
@@ -1332,7 +1323,7 @@ margin_top = 3.0
 margin_right = 33.0
 margin_bottom = 33.0
 rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 12 )
+texture = ExtResource( 52 )
 expand = true
 stretch_mode = 1
 
@@ -1370,7 +1361,7 @@ margin_top = 3.0
 margin_right = 33.0
 margin_bottom = 33.0
 rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 6 )
+texture = ExtResource( 51 )
 expand = true
 stretch_mode = 1
 
@@ -1398,7 +1389,7 @@ margin_top = 3.0
 margin_right = 33.0
 margin_bottom = 33.0
 rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 14 )
+texture = ExtResource( 47 )
 expand = true
 stretch_mode = 1
 
@@ -1425,7 +1416,7 @@ margin_top = 3.0
 margin_right = 33.0
 margin_bottom = 33.0
 rect_min_size = Vector2( 30, 30 )
-texture = ExtResource( 12 )
+texture = ExtResource( 52 )
 expand = true
 stretch_mode = 1
 
@@ -1499,9 +1490,9 @@ align = 1
 valign = 1
 
 [node name="VBox_stock" type="VBoxContainer" parent="CivPanel"]
-margin_left = 741.0
+margin_left = 737.0
 margin_top = 15.0
-margin_right = 776.0
+margin_right = 772.0
 margin_bottom = 167.0
 
 [node name="tool" type="TextureRect" parent="CivPanel/VBox_stock"]
@@ -1509,14 +1500,14 @@ margin_right = 35.0
 margin_bottom = 35.0
 rect_min_size = Vector2( 35, 35 )
 rect_pivot_offset = Vector2( -74, 35 )
-texture = ExtResource( 12 )
+texture = ExtResource( 52 )
 expand = true
 stretch_mode = 1
 
 [node name="r2" type="TextureRect" parent="CivPanel/VBox_stock/tool"]
-margin_left = 16.0
+margin_left = 20.0
 margin_top = 22.0
-margin_right = 43.0
+margin_right = 47.0
 margin_bottom = 39.0
 texture = ExtResource( 26 )
 expand = true
@@ -1527,9 +1518,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -6.5
+margin_left = -2.5
 margin_top = -1.5
-margin_right = 69.5
+margin_right = 73.5
 margin_bottom = 30.5
 rect_scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 2 )
@@ -1548,9 +1539,9 @@ expand = true
 stretch_mode = 1
 
 [node name="r2" type="TextureRect" parent="CivPanel/VBox_stock/villager"]
-margin_left = 16.0
+margin_left = 20.0
 margin_top = 22.0
-margin_right = 43.0
+margin_right = 47.0
 margin_bottom = 39.0
 texture = ExtResource( 26 )
 expand = true
@@ -1561,9 +1552,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -6.5
+margin_left = -2.5
 margin_top = -1.5
-margin_right = 69.5
+margin_right = 73.5
 margin_bottom = 30.5
 rect_scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 2 )
@@ -1582,9 +1573,9 @@ expand = true
 stretch_mode = 1
 
 [node name="r2" type="TextureRect" parent="CivPanel/VBox_stock/build"]
-margin_left = 16.0
+margin_left = 20.0
 margin_top = 22.0
-margin_right = 43.0
+margin_right = 47.0
 margin_bottom = 39.0
 texture = ExtResource( 26 )
 expand = true
@@ -1595,9 +1586,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -6.5
+margin_left = -2.5
 margin_top = -1.5
-margin_right = 69.5
+margin_right = 73.5
 margin_bottom = 30.5
 rect_scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 2 )
@@ -1612,14 +1603,14 @@ margin_right = 35.0
 margin_bottom = 152.0
 rect_min_size = Vector2( 35, 35 )
 rect_pivot_offset = Vector2( -15, -4 )
-texture = ExtResource( 13 )
+texture = ExtResource( 50 )
 expand = true
 stretch_mode = 1
 
 [node name="r2" type="TextureRect" parent="CivPanel/VBox_stock/camp"]
-margin_left = 16.0
+margin_left = 20.0
 margin_top = 22.0
-margin_right = 43.0
+margin_right = 47.0
 margin_bottom = 39.0
 texture = ExtResource( 26 )
 expand = true
@@ -1630,9 +1621,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -6.5
+margin_left = -2.5
 margin_top = -1.5
-margin_right = 69.5
+margin_right = 73.5
 margin_bottom = 30.5
 rect_scale = Vector2( 0.5, 0.5 )
 theme = ExtResource( 2 )

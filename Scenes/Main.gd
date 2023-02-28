@@ -30,8 +30,8 @@ func onClick(btn):
 	if btn=="new":
 		$NewGamePopup.showNewGamePanel()
 	if btn=="new_game":
-		get_tree().change_scene("res://Scenes/CreateGame.tscn")
-		return
+#		get_tree().change_scene("res://Scenes/CreateGame.tscn")
+#		return
 		if !GC.OWN_GAME_ID: get_tree().change_scene("res://Scenes/CreateGame.tscn")
 		else: onSelectGame(FM.DATA.games[GC.OWN_GAME_ID])
 

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/house.png-43b11c6b739619301e8beabf038057ca.stex"
+path="res://.import/looter.png-2dbf0bbf674e25139ddbd88c75b9c496.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Games/StoneAge/assets/new_res/house.png"
-dest_files=[ "res://.import/house.png-43b11c6b739619301e8beabf038057ca.stex" ]
+source_file="res://Games/StoneAge/assets/res/looter.png"
+dest_files=[ "res://.import/looter.png-2dbf0bbf674e25139ddbd88c75b9c496.stex" ]
 
 [params]
 

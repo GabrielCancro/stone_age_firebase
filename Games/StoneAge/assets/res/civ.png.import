@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/food.png-fa4b7accfddaa01e296148de63c9598a.stex"
+path="res://.import/civ.png-6d797f0722cae685aff13003722583e2.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Games/StoneAge/assets/new_res/food.png"
-dest_files=[ "res://.import/food.png-fa4b7accfddaa01e296148de63c9598a.stex" ]
+source_file="res://Games/StoneAge/assets/res/civ.png"
+dest_files=[ "res://.import/civ.png-6d797f0722cae685aff13003722583e2.stex" ]
 
 [params]
 
