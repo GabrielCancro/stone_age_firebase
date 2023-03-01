@@ -1,6 +1,7 @@
 extends Control
 
-func _ready():
+func _ready():	
+	$Tween/ColorRect.visible = true
 	$Background/AnimationPlayer.play("wood")
 	$btn_account.connect("button_down",self,"onClickAccount")
 	$btn_forgot.connect("button_down",self,"onClickForgot")
@@ -14,6 +15,7 @@ func _ready():
 	yield(FM,"complete_pull")
 	checkRemember()
 	checkOldVersion()
+	fadeOutBlackScreen()
 
 
 func onClickAccount():
@@ -69,3 +71,9 @@ func onEnterClick():
 		else:
 #			$LogIn/Label_error.text = "CLAVE INCORRECTA"
 			pass
+
+func fadeOutBlackScreen():
+	$Tween.interpolate_property($Tween/ColorRect,"modulate",Color(1,1,1,1),Color(1,1,1,0),.5,Tween.TRANS_LINEAR,Tween.EASE_IN)
+	$Tween.start()
+	yield($Tween,"tween_all_completed")
+	$Tween/ColorRect.visible = false

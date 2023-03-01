@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/login/login_spear.png" type="Texture" id=1]
 [ext_resource path="res://Games/StoneAge/assets/new_map_bg_blur.jpg" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/login/login_edit1.png" type="Texture" id=9]
 [ext_resource path="res://assets/login/login_edit2.png" type="Texture" id=10]
 [ext_resource path="res://assets/login/hand.png" type="Texture" id=11]
+[ext_resource path="res://Specials/ButtonEffector.tscn" type="PackedScene" id=12]
 
 [sub_resource type="DynamicFont" id=14]
 size = 21
@@ -381,3 +382,14 @@ custom_fonts/font = SubResource( 6 )
 text = "SALIR"
 align = 1
 valign = 1
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Tween"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="ButtonEffector" parent="." instance=ExtResource( 12 )]
+paths = [ "btn_enter", "btn_exit", "btn_account", "btn_forgot", "", "", "" ]
