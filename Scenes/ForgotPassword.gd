@@ -44,8 +44,8 @@ func send_code():
 	if !selectedUser:
 		get_parent().show_float_message("NO SE ENCONTRO EL USUARIO/MAIL\n"+userName)
 		return
-	get_parent().show_float_message(selectedUser+" enviamos un mail a "+FM.DATA.users[selectedUser].mail+" con el CODIGO SECRETO que necesitas")
-	get_node("../MailSender").send(CODE,FM.DATA.users[selectedUser].mail)
+	show_float_message(selectedUser+" enviamos un mail a "+FM.DATA.users[selectedUser].mail+" con el CODIGO SECRETO que necesitas")
+	get_node("MailSender").send(CODE,FM.DATA.users[selectedUser].mail)
 	$ForgotPanel/VBox/btn_send_code.disabled = true
 
 func change_pass():
