@@ -24,8 +24,8 @@ margin_bottom = 40.0
 color = Color( 0, 0, 0, 0.392157 )
 script = ExtResource( 1 )
 
-[node name="NewMap" type="TextureRect" parent="."]
-modulate = Color( 0.588235, 0.658824, 0.909804, 1 )
+[node name="Map" type="TextureRect" parent="."]
+modulate = Color( 0.301961, 0.392157, 0.717647, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 texture = ExtResource( 8 )

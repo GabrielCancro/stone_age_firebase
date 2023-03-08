@@ -61,7 +61,7 @@ func onEnterClick():
 	}
 	FM.login(user_data.name,user_data.pass)
 	var res = yield(FM,"complete_login")
-	print("END LOGIN ",res)
+	print("END LOGIN ",res.success)
 	if !res.success:
 		$Input_pass/LineEdit.text = ""
 		$FloatMessage.msg("ERROR "+res.error.code)
@@ -69,13 +69,13 @@ func onEnterClick():
 		if !res.user.email_verified: 
 			$FloatMessage.msg("Aún no has verificado tu cuenta!")
 		else: 
-			GC.USER = FM.DATA.users[user_data.name]
+			GC.USER = FM.USERS[user_data.name]
 			StoreData.DATA["remember_user"] = $btn_remember/lb_X.visible
 			StoreData.DATA["user_name"] = user_data.name
 			StoreData.DATA["user_pass"] = user_data.pass
 			StoreData.DATA["muted"] = false #$LogIn/Mute.pressed
 			StoreData.save_store_data()
-			print("TE LOGUEASTE COMO >> ",GC.USER)
+			print("ACCESS WHO >> ",GC.USER.name)
 			get_tree().change_scene("res://Scenes/Main.tscn")
 	$btn_enter.visible = true
 

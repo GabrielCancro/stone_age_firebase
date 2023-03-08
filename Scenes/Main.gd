@@ -19,7 +19,8 @@ func _ready():
 	FM.pull_data()
 	yield(FM,"complete_pull")
 	$btn_logout.disabled = false
-	update_winners()
+#	update_winners()
+	update_friend_list()
 	set_game_button()
 	check_own_game()
 
@@ -62,24 +63,39 @@ func _add_break(txt="------"):
 	lbl.text = txt
 	$GameList/Games/VBox.add_child(lbl)
 		
-func update_winners():
+#func update_winners():
+#	if !"friends" in GC.USER: GC.USER["friends"] = []
+#	if !"wins" in GC.USER: GC.USER["wins"] = 0
+#	winners = [ { "name": GC.USER.name, "wins": GC.USER.wins } ]
+#	for fr in GC.USER["friends"]:
+#		if fr in FM.DATA.users.keys():
+#			if !"wins" in FM.DATA.users[fr]: FM.DATA.users[fr]["wins"] = 0
+#			winners.append( { "name": FM.DATA.users[fr].name, "wins": FM.DATA.users[fr].wins } )
+#	winners.sort_custom(self, "customComparison")
+#
+#	for c in n_FriendList.get_children():
+#		c.remove()
+#
+#	for w in winners:
+#		var entry := FriendEntry.instance() as FriendEntry
+#		n_FriendList.add_child(entry)
+#		entry.update_data(w.name, w.wins)
+#		entry.connect("remove_friend", self, "_on_friend_removed")
+
+func update_friend_list():
+	for c in n_FriendList.get_children(): c.remove()
+	
 	if !"friends" in GC.USER: GC.USER["friends"] = []
-	if !"wins" in GC.USER: GC.USER["wins"] = 0
-	winners = [ { "name": GC.USER.name, "wins": GC.USER.wins } ]
+	
+	FM.pull_users()
+	yield(FM,"complete_pull")
+	
 	for fr in GC.USER["friends"]:
-		if fr in FM.DATA.users.keys():
-			if !"wins" in FM.DATA.users[fr]: FM.DATA.users[fr]["wins"] = 0
-			winners.append( { "name": FM.DATA.users[fr].name, "wins": FM.DATA.users[fr].wins } )
-	winners.sort_custom(self, "customComparison")
-	
-	for c in n_FriendList.get_children():
-		c.remove()
-	
-	for w in winners:
-		var entry := FriendEntry.instance() as FriendEntry
-		n_FriendList.add_child(entry)
-		entry.update_data(w.name, w.wins)
-		entry.connect("remove_friend", self, "_on_friend_removed")
+		if fr in FM.USERS.keys():
+			var entry := FriendEntry.instance() as FriendEntry
+			n_FriendList.add_child(entry)
+			entry.update_data(fr, 0)
+			entry.connect("remove_friend", self, "_on_friend_removed")
 
 func _on_friend_removed(_friend_name : String) -> void:
 	if _friend_name == GC.USER.name || !(_friend_name in GC.USER["friends"]):
@@ -89,9 +105,10 @@ func _on_friend_removed(_friend_name : String) -> void:
 	
 	GC.USER["friends"].erase(_friend_name)
 	FM.DATA.users[GC.USER.name] = GC.USER
-	FM.push_data("users/"+GC.USER.name)
+	FM.update_current_user_friends()
 	yield(FM,"complete_push")
-	update_winners()
+#	update_winners()
+	update_friend_list()
 
 func add_friend(_friend_name : String):
 	if _friend_name == GC.USER.name || _friend_name in GC.USER["friends"]:
@@ -102,12 +119,13 @@ func add_friend(_friend_name : String):
 	
 	if !"friends" in GC.USER: GC.USER["friends"] = []
 	GC.USER["friends"].append(_friend_name)
-	FM.DATA.users[GC.USER.name] = GC.USER
-	FM.push_data("users/"+GC.USER.name)
+	FM.USERS[GC.USER.name] = GC.USER
+	FM.update_current_user_friends()
 	yield(FM,"complete_push")
 	
 	$WinsPanel/LineEdit/btn_add.disabled = false
-	update_winners()
+#	update_winners()
+	update_friend_list()
 
 func customComparison(a,b):
 	return a.wins > b.wins

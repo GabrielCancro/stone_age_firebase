@@ -25,7 +25,7 @@ func _ready():
 func reload_data():
 	FM.pull_data()
 	yield(FM,"complete_pull")
-	if USER: USER = FM.DATA.users[USER.name]
+	if USER: USER = FM.USERS[USER.name]
 	if GAME: GAME = FM.DATA.games[GAME.name]
 	if PLAYER: PLAYER = FM.DATA.games[GAME.name].players[USER.name]
 	FINISHED = ( PLAYER.turn >= GAME.max_turns )

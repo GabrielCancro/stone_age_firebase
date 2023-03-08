@@ -25,5 +25,5 @@ func get_time():
 
 func _on_request_completed(result, response_code, headers, body):
 	var json = JSON.parse(body.get_string_from_utf8())
-	print(json.result)
+	print("clock_time ",json.result.unixtime)
 	emit_signal("complete",json.result.unixtime)

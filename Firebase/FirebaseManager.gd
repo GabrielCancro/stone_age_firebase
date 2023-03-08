@@ -68,6 +68,12 @@ func pull_data():
 func get_data():
 	return DATA
 	
+func update_current_user_friends():
+	ref = db.get_reference_lite("users/"+GC.USER.name+"/friends")
+	if "friends" in GC.USER:
+		var result = yield(ref.update(GC.USER.friends), "completed")
+	emit_signal("complete_push")
+
 func push_data(path):
 	ref = db.get_reference_lite("stone_age_fb/"+path)
 	var part_data = DATA
@@ -88,7 +94,7 @@ func delete_path(path):
 #	print("> PUSH VAR: ",path,"  >  ",{k:v})
 
 func check_user_exists(_name : String) -> bool:
-	return _name in FM.DATA.users
+	return _name in FM.USERS
 
 func login(username,password):
 	if !USERS || !username in USERS: 

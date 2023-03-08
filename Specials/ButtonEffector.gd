@@ -9,8 +9,6 @@ func _ready():
 		var node = get_parent().get_node_or_null(path)
 		if node: nodes.append( node )
 	$Timer.connect("timeout",self,"onTime")
-	print(paths)
-	print(nodes)
 
 func onTime():
 	for node in nodes: 
