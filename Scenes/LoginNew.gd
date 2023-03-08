@@ -11,6 +11,9 @@ func _ready():
 
 	CLOCK.init()
 	FM.init()
+	FM.pull_users()
+	yield(FM,"complete_pull")
+#	print("USERS",FM.USERS)
 	FM.pull_data()
 	yield(FM,"complete_pull")
 	checkRemember()
@@ -19,10 +22,12 @@ func _ready():
 
 
 func onClickAccount():
-	get_tree().change_scene("res://Scenes/CreateAccount.tscn")
+	OS.shell_open("https://bearmolegames.web.app")
+#	get_tree().change_scene("res://Scenes/CreateAccount.tscn")
 
 func onClickForgot():
-	get_tree().change_scene("res://Scenes/ForgotPassword.tscn")
+	OS.shell_open("https://bearmolegames.web.app")
+	#get_tree().change_scene("res://Scenes/ForgotPassword.tscn")
 
 func onClickExit():
 	get_tree().quit()
@@ -48,18 +53,22 @@ func checkRemember():
 #		if("muted" in StoreData.DATA): $LogIn/Mute.pressed = StoreData.DATA.muted
 
 func onEnterClick():
+	$btn_enter.visible = false
 	var user_data = { 
 		"name":$Input_name/LineEdit.text.to_upper(),
 		"pass":$Input_pass/LineEdit.text,
 		"mpass":$Input_pass/LineEdit.text.md5_text(),
 	}
-	$Input_pass/LineEdit.text = ""
-	if !"users" in FM.DATA: FM.DATA.users = {}
-	if !user_data.name in FM.DATA.users:
-#		$LogIn/Label_error.text = "USUARIO INEXISTENTE"
-		pass
+	FM.login(user_data.name,user_data.pass)
+	var res = yield(FM,"complete_login")
+	print("END LOGIN ",res)
+	if !res.success:
+		$Input_pass/LineEdit.text = ""
+		$FloatMessage.msg("ERROR "+res.error.code)
 	else:
-		if FM.DATA.users[user_data.name].mpass == user_data.mpass:
+		if !res.user.email_verified: 
+			$FloatMessage.msg("Aún no has verificado tu cuenta!")
+		else: 
 			GC.USER = FM.DATA.users[user_data.name]
 			StoreData.DATA["remember_user"] = $btn_remember/lb_X.visible
 			StoreData.DATA["user_name"] = user_data.name
@@ -68,9 +77,7 @@ func onEnterClick():
 			StoreData.save_store_data()
 			print("TE LOGUEASTE COMO >> ",GC.USER)
 			get_tree().change_scene("res://Scenes/Main.tscn")
-		else:
-#			$LogIn/Label_error.text = "CLAVE INCORRECTA"
-			pass
+	$btn_enter.visible = true
 
 func fadeOutBlackScreen():
 	$Tween.interpolate_property($Tween/ColorRect,"modulate",Color(1,1,1,1),Color(1,1,1,0),.5,Tween.TRANS_LINEAR,Tween.EASE_IN)

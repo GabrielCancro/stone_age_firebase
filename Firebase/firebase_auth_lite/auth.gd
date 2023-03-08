@@ -30,6 +30,7 @@ const ErrorUtil = preload("error_util.gd")
 #TODO: consider expanding these to match the functionality of the error callback in JS (but doubt I will)
 signal on_auth_state_changed(user)  # sign in, sign out (and update_current_user)
 signal on_id_token_changed(user)    # sign in, sign out, id token refresh (and update_current_user)
+signal on_finish_login_task(result)
 # What about User.updateEmail and User.updatePassword?
 # Nothing about this is documented in the User class doc but this other doc says
 # such events will expire the refresh token (and ID token too, I suppose):
@@ -143,9 +144,12 @@ func sign_in_with_email_and_password(email : String, password : String) -> Objec
 		"returnSecureToken" : true,
 	})
 	var result = yield(_auth_request(URI_SIGN_IN_WITH_PASSWORD, HEADERS_JSON, body), "completed")
+	
 	if result is FirebaseError:
+		emit_signal("on_finish_login_task",{"success":false,"error":result})
 		return result
 	else:
+		print("header http auth OK!")
 		current_user = FirebaseUser.new(
 			self,
 			result.localId,
@@ -157,7 +161,9 @@ func sign_in_with_email_and_password(email : String, password : String) -> Objec
 		current_user.display_name = result.displayName
 		# What to do with: result.registered ?  (It is not the same as emailVerified.)
 		# Auto fetch all user data.
-		return yield(_get_account_info_by_id_token(result.idToken, true), "completed")
+		var user =  yield(_get_account_info_by_id_token(result.idToken, true), "completed")
+		emit_signal("on_finish_login_task",{"success":true,"user":user})
+		return user
 
 
 ################################################################################

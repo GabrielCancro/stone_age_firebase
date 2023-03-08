@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Panels/FloatMessage.gd" type="Script" id=2]
+
+[node name="FloatMessage" type="ColorRect"]
+margin_right = 453.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 50, 50 )
+color = Color( 0, 0, 0, 0.862745 )
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 17.0
+margin_right = -13.0
+custom_colors/font_color = Color( 0.968627, 1, 0.392157, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "CLAVE INCORRECTA"
+align = 1
+valign = 1
+autowrap = true
