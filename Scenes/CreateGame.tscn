@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scenes/NumberSelector/NumberSelector.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/themes/minimalUI/MinimalUI.tres" type="Theme" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Games/StoneAge/assets/new_map_bg_blur.jpg" type="Texture" id=4]
 [ext_resource path="res://Scenes/CreateGame.gd" type="Script" id=5]
 [ext_resource path="res://assets/font/font_super_small.tres" type="DynamicFont" id=6]
+[ext_resource path="res://assets/font/font_small.tres" type="DynamicFont" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 extra_spacing_top = -4
@@ -36,6 +37,21 @@ anchor_bottom = 1.0
 margin_left = 12.0
 text = "Crear Nueva Partida"
 valign = 1
+
+[node name="LE_desc" type="LineEdit" parent="Title"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -82.5
+margin_top = -14.5
+margin_right = 82.5
+margin_bottom = 14.5
+focus_mode = 1
+custom_fonts/font = ExtResource( 7 )
+align = 1
+max_length = 15
+placeholder_text = "partida 1142"
 
 [node name="btn_cancel" type="Button" parent="Title"]
 anchor_left = 1.0
@@ -177,7 +193,7 @@ margin_bottom = -8.0
 
 [node name="Grid" type="GridContainer" parent="Panel/Options/Scroll"]
 margin_right = 200.0
-margin_bottom = 240.0
+margin_bottom = 275.0
 custom_constants/vseparation = 5
 custom_constants/hseparation = 13
 
@@ -379,11 +395,39 @@ margin_left = 7.0
 margin_right = -58.0
 custom_constants/line_spacing = 1
 custom_fonts/font = ExtResource( 6 )
-text = "Esperar que todos terminen para finalizar"
+text = "Esperar a todos aunque termine el tiempo"
 valign = 1
 autowrap = true
 
 [node name="CheckBox" type="CheckBox" parent="Panel/Options/Scroll/Grid/wait_all"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -27.0
+margin_top = -13.5
+margin_right = -9.0
+margin_bottom = 13.5
+
+[node name="all_init_turns" type="ColorRect" parent="Panel/Options/Scroll/Grid"]
+margin_top = 245.0
+margin_right = 200.0
+margin_bottom = 275.0
+rect_min_size = Vector2( 200, 30 )
+color = Color( 0.227451, 0.219608, 0.254902, 0.376471 )
+
+[node name="Label" type="Label" parent="Panel/Options/Scroll/Grid/all_init_turns"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 7.0
+margin_right = -58.0
+custom_constants/line_spacing = 1
+custom_fonts/font = ExtResource( 6 )
+text = "Todos los turnos al inicio"
+valign = 1
+autowrap = true
+
+[node name="CheckBox" type="CheckBox" parent="Panel/Options/Scroll/Grid/all_init_turns"]
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/themes/minimalUI/MinimalUI.tres" type="Theme" id=1]
 [ext_resource path="res://Scenes/Main.gd" type="Script" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://assets/main/bg_main_menu_front_bottom.png" type="Texture" id=9]
 [ext_resource path="res://assets/font/Dradab-nR4BJ.otf" type="DynamicFontData" id=10]
 [ext_resource path="res://Specials/ButtonEffector.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Panels/FloatMessage.tscn" type="PackedScene" id=12]
 
 [sub_resource type="DynamicFont" id=3]
 size = 26
@@ -273,5 +274,11 @@ valign = 1
 
 [node name="ButtonEffector" parent="." instance=ExtResource( 11 )]
 paths = [ "btn_new_game", "btn_logout" ]
+
+[node name="FloatMessage" parent="." instance=ExtResource( 12 )]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 469.0
+margin_bottom = 70.0
 
 [connection signal="button_up" from="WinsPanel/LineEdit/btn_add" to="." method="_on_btn_add_button_up"]

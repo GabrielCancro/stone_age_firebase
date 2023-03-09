@@ -15,6 +15,8 @@ func _ready():
 	$Panel/Options/Scroll/Grid/final_await/NumberSelector.connect("change",self,"onChangeConfig")
 	$Panel/Options/Scroll/Grid/early_finish/CheckBox.connect("button_up",self,"onChangeConfig")
 	$Panel/Options/Scroll/Grid/wait_all/CheckBox.connect("button_up",self,"onChangeConfig")
+	$Panel/Options/Scroll/Grid/all_init_turns/CheckBox.connect("button_up",self,"onChangeConfig")
+	$Title/LE_desc.placeholder_text = "partida "+str(FM.DATA.games_id+1)
 	onChangeConfig()
 
 func showFriendList():
@@ -39,7 +41,7 @@ func onCancelClick():
 
 func onCreateClick():
 	$Creating.visible = true
-	FM.DATA.games_id += 1	
+	FM.DATA.games_id += 1
 	FM.push_var("","games_id",FM.DATA.games_id)
 	yield(FM,"complete_push")
 	var game_name = "partida "+str(FM.DATA.games_id)
@@ -48,7 +50,7 @@ func onCreateClick():
 		if(chk.pressed): players_data[chk.text.to_upper()] = GC.get_player_start_config()
 	FM.DATA.games[game_name] = {
 		"name":game_name,
-		"desc":game_name,
+		"desc":$Title/LE_desc.text,
 		"start_time": yield( CLOCK.get_time(),"complete" ),
 		"start_os_date": OS.get_datetime(),
 		"players": players_data,
@@ -71,6 +73,13 @@ func onChangeConfig(id=-1):
 		"wait_all": $Panel/Options/Scroll/Grid/wait_all/CheckBox.pressed,
 		"early_finish": $Panel/Options/Scroll/Grid/early_finish/CheckBox.pressed,
 	}
+	
+	var all_turns_on_start = $Panel/Options/Scroll/Grid/all_init_turns/CheckBox.pressed
+	if(all_turns_on_start): 
+		configValues["init_turns"] = configValues["max_turns"]
+		configValues["turns_phs"] = configValues["max_turns"]
+	$Panel/Options/Scroll/Grid/init_turns.visible = !all_turns_on_start
+	$Panel/Options/Scroll/Grid/turns_phs.visible = !all_turns_on_start
 	
 	var duration = ceil( (configValues.max_turns - configValues.init_turns) / configValues.turns_phs )
 	configValues.duration = duration + configValues.final_await

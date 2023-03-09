@@ -7,11 +7,11 @@ signal on_select(gameData)
 func _ready():
 	$Button.connect("button_down",self,"onClick")
 
-
 func set_game_data(game):
 	gameData = game
 	$Title.text = game.name
-	$Own.text = "Creada por "+game.own
+	$Title/Desc.text = game.desc
+	$Title/Own.text = "by "+game.own
 	if(game.is_open): 
 		$OpenIcon.texture = preload("res://assets/world_icon.png")
 		$OpenIcon.modulate = Color("ced48d")
@@ -20,8 +20,8 @@ func set_game_data(game):
 		$OpenIcon.texture = preload("res://assets/lock_icon.png")
 		$Players.text = str(game.players.size())+"/"+str(game.players.size())
 	$Time/Duration.text = str(game.duration)+"hs"
-	if("finished"in game && game.finished):
-		$Time/ResTime.text = "finalizada"
+	if("finished" in game && game.finished):
+		$Time/ResTime.text = "FINALIZADA"
 	else: 
 		$Time/Duration.text = str(game.duration)+"hs"
 		$Time/ResTime.text = "en juego.."
@@ -34,6 +34,7 @@ func set_game_data(game):
 	
 
 func updateDuration():
+	if("finished" in gameData && gameData.finished): return
 	var rt = floor( (GC.NOW_TIME - gameData.start_time) / (60*60) )
 	rt = max(0,gameData.duration-rt)
 	$Time/ResTime.text = "quedan "+str(rt)+"hs"

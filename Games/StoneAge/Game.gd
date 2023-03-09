@@ -1,6 +1,5 @@
 extends Node2D
 
-
 func _ready():
 	$Header/Label.text = GC.USER.name +" <"+GC.GAME.name+">  :"+str(GC.GAME.max_turns)
 	$Header/btn_quit.connect("button_down",self,"onClick",["quit"])
@@ -9,9 +8,8 @@ func _ready():
 	$Header/btn_civ.connect("button_down",self,"onClick",["civ"])
 	CLOCK.init()
 	set_now_time()
-	GC.TIME_TO_FINISH = 0
 	updateTime()
-	GC.FINISHED = get_finished_game()
+	GC.FINISHED = check_finished_game()
 	if(GC.PLAYER.turn==0 && !GC.FINISHED): $HelpPanel.showHelp("intro")
 	for btn in $HelpButtons.get_children(): btn.connect("button_down",self,"onClickHelp",[btn])
 	if "worker_positions" in GC.PLAYER && !GC.FINISHED: $Interaction/Drager.set_worker_positions(GC.PLAYER["worker_positions"])
@@ -55,12 +53,10 @@ func set_now_time():
 	$Header/end_turn/btn_turn.disabled = false
 
 func updateTime():
-	if GC.FINISHED: return
 	GC.ADVANCED_TIME += 1
 	var time_passed = GC.NOW_TIME + GC.ADVANCED_TIME - float(GC.GAME.start_time)
 	GC.TIME_TO_FINISH = float(GC.GAME.duration)*60*60 - time_passed
 	if GC.TIME_TO_FINISH < 0: GC.TIME_TO_FINISH = 0
-	GC.FINISHED = get_finished_game()
 	check_finished_game()
 	var frm = {
 		"seg": str(int(GC.TIME_TO_FINISH)%60).pad_zeros(2),
@@ -76,27 +72,36 @@ func update_ui():
 func onClickHelp(btn):
 	$HelpPanel.showHelp(btn.name)
 
-func get_finished_game():
-	if("finished" in GC.GAME && GC.GAME.finished): return true
+func check_finished_game():
+	GC.FINISHED = false
+	if("finished" in GC.GAME && GC.GAME.finished): 
+		print("GC.GAME.finished")
+		GC.FINISHED = true
 	var all_players_finished = true
 	for p in GC.GAME.players: 
 		if(GC.GAME.players[p].turn < GC.GAME.max_turns): 
 			all_players_finished = false
 			break
 	if GC.TIME_TO_FINISH <= 0:
-		if !GC.GAME["wait_all"]: return true
-		elif all_players_finished: return true
+		if !GC.GAME["wait_all"]: 
+			print("wait_all")
+			GC.FINISHED = true
+		elif all_players_finished: 
+			print("all_players_finished")
+			GC.FINISHED = true
 	else:
-		if all_players_finished && GC.GAME["early_finish"]: return true
-	return false
-
-func check_finished_game():
+		if all_players_finished && GC.GAME["early_finish"]: 
+			print("early_finish")
+			GC.FINISHED = true
+	
 	if GC.FINISHED:
 		GC.SOUND.play_sfx("win")
 		$EndPanel.show_end_panel()
 		$Interaction/Drager.disabled = true
+		$Header/time_ui/Timer.stop()
 		if(!"finished" in GC.GAME || !GC.GAME.finished):
 			GC.GAME["finished"] = true
 			FM.DATA.games[GC.GAME.name] = GC.GAME
 			FM.push_data("games/"+GC.GAME.name)
 			yield(FM,"complete_push")
+	return GC.FINISHED

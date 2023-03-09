@@ -104,17 +104,25 @@ func _on_friend_removed(_friend_name : String) -> void:
 	if !FM.check_user_exists(_friend_name): return
 	
 	GC.USER["friends"].erase(_friend_name)
-	FM.DATA.users[GC.USER.name] = GC.USER
+	FM.USERS[GC.USER.name] = GC.USER
 	FM.update_current_user_friends()
 	yield(FM,"complete_push")
+	$FloatMessage.msg("Ya no eres amigo de "+_friend_name)
 #	update_winners()
 	update_friend_list()
 
 func add_friend(_friend_name : String):
-	if _friend_name == GC.USER.name || _friend_name in GC.USER["friends"]:
+	if _friend_name == GC.USER.name:
+		$FloatMessage.msg("No puedes ser tu propio amigo.")
+		return
+	if _friend_name in GC.USER["friends"]:
+		$FloatMessage.msg(_friend_name+" ya esta en tu lista de amigos.")
 		return
 	
-	if !FM.check_user_exists(_friend_name): return	
+	if !FM.check_user_exists(_friend_name): 
+		$FloatMessage.msg("No existe nadie llamado "+_friend_name)
+		return
+		
 	$WinsPanel/LineEdit/btn_add.disabled = true
 	
 	if !"friends" in GC.USER: GC.USER["friends"] = []
@@ -122,6 +130,7 @@ func add_friend(_friend_name : String):
 	FM.USERS[GC.USER.name] = GC.USER
 	FM.update_current_user_friends()
 	yield(FM,"complete_push")
+	$FloatMessage.msg("Genial, ahora eres amigo de "+_friend_name)
 	
 	$WinsPanel/LineEdit/btn_add.disabled = false
 #	update_winners()

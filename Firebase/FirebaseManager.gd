@@ -69,9 +69,9 @@ func get_data():
 	return DATA
 	
 func update_current_user_friends():
-	ref = db.get_reference_lite("users/"+GC.USER.name+"/friends")
+	ref = db.get_reference_lite("users/"+GC.USER.name)
 	if "friends" in GC.USER:
-		var result = yield(ref.update(GC.USER.friends), "completed")
+		var result = yield(ref.update({"friends":GC.USER.friends}), "completed")
 	emit_signal("complete_push")
 
 func push_data(path):
