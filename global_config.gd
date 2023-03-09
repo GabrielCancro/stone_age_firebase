@@ -7,6 +7,7 @@ var PLAYER = null
 var LOCAL = null
 var NOW_TIME = 0
 var ADVANCED_TIME = 0
+var TIME_TO_FINISH = 0
 var TOTAL_TURNS = 0
 var WORK_VILLAGERS = 0
 var BUILD_TO_CONSTRUCT = null

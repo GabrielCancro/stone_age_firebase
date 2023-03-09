@@ -9,8 +9,9 @@ func _ready():
 	$Header/btn_civ.connect("button_down",self,"onClick",["civ"])
 	CLOCK.init()
 	set_now_time()
-	GC.FINISHED = false
-	check_finished_game()
+	GC.TIME_TO_FINISH = 0
+	updateTime()
+	GC.FINISHED = get_finished_game()
 	if(GC.PLAYER.turn==0 && !GC.FINISHED): $HelpPanel.showHelp("intro")
 	for btn in $HelpButtons.get_children(): btn.connect("button_down",self,"onClickHelp",[btn])
 	if "worker_positions" in GC.PLAYER && !GC.FINISHED: $Interaction/Drager.set_worker_positions(GC.PLAYER["worker_positions"])
@@ -49,29 +50,22 @@ func set_now_time():
 	CLOCK.get_time()
 	GC.NOW_TIME =  yield( CLOCK,"complete" )
 	GC.ADVANCED_TIME = 0
-	$Header/time_ui/Timer.connect("timeout",self,"updateTimeUi")
+	$Header/time_ui/Timer.connect("timeout",self,"updateTime")
 	update_ui()
 	$Header/end_turn/btn_turn.disabled = false
 
-func updateTimeUi():
+func updateTime():
 	if GC.FINISHED: return
 	GC.ADVANCED_TIME += 1
 	var time_passed = GC.NOW_TIME + GC.ADVANCED_TIME - float(GC.GAME.start_time)
-	var tm = float(GC.GAME.duration)*60*60 - time_passed
-	if tm < 0:
-		tm = 0
-		GC.FINISHED = true
-		for p in GC.GAME.players: if(GC.GAME.players[p].turn < GC.GAME.max_turns): GC.FINISHED = false
-		if !"finished" in GC.GAME && GC.FINISHED:
-			GC.GAME["finished"] = true
-			FM.DATA.games[GC.GAME.name] = GC.GAME
-			FM.push_data("games/"+GC.GAME.name)
-			yield(FM,"complete_push")
+	GC.TIME_TO_FINISH = float(GC.GAME.duration)*60*60 - time_passed
+	if GC.TIME_TO_FINISH < 0: GC.TIME_TO_FINISH = 0
+	GC.FINISHED = get_finished_game()
 	check_finished_game()
 	var frm = {
-		"seg": str(int(tm)%60).pad_zeros(2),
-		"min": str(int(tm/60)%60).pad_zeros(2),
-		"hs": str(int(tm/60/60))
+		"seg": str(int(GC.TIME_TO_FINISH)%60).pad_zeros(2),
+		"min": str(int(GC.TIME_TO_FINISH/60)%60).pad_zeros(2),
+		"hs": str(int(GC.TIME_TO_FINISH/60/60))
 	}
 	$Header/time_ui/Label.text = frm.hs+":"+frm.min+":"+frm.seg
 
@@ -82,9 +76,27 @@ func update_ui():
 func onClickHelp(btn):
 	$HelpPanel.showHelp(btn.name)
 
+func get_finished_game():
+	if("finished" in GC.GAME && GC.GAME.finished): return true
+	var all_players_finished = true
+	for p in GC.GAME.players: 
+		if(GC.GAME.players[p].turn < GC.GAME.max_turns): 
+			all_players_finished = false
+			break
+	if GC.TIME_TO_FINISH <= 0:
+		if !GC.GAME["wait_all"]: return true
+		elif all_players_finished: return true
+	else:
+		if all_players_finished && GC.GAME["early_finish"]: return true
+	return false
+
 func check_finished_game():
-	if("finished" in GC.GAME && GC.GAME.finished): GC.FINISHED = true
 	if GC.FINISHED:
 		GC.SOUND.play_sfx("win")
 		$EndPanel.show_end_panel()
 		$Interaction/Drager.disabled = true
+		if(!"finished" in GC.GAME || !GC.GAME.finished):
+			GC.GAME["finished"] = true
+			FM.DATA.games[GC.GAME.name] = GC.GAME
+			FM.push_data("games/"+GC.GAME.name)
+			yield(FM,"complete_push")
