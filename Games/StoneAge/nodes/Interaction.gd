@@ -183,7 +183,7 @@ func add_resource(name,cnt):
 	update_all_panels()
 	
 func fx_text(txt,icon,pos):
-	$fx/Icon.texture = load("res://Games/StoneAge/assets/res/"+icon.to_lower()+".jpg")
+	$fx/Icon.texture = load("res://Games/StoneAge/assets/res/"+icon.to_lower()+".png")
 	$fx/Label.text = txt
 	$fx.position = pos + Vector2(0,-15)
 	$Tween.interpolate_property($fx,"modulate",Color(1,1,1,1),Color(1,1,1,0),1.0,Tween.TRANS_QUINT,Tween.EASE_IN)

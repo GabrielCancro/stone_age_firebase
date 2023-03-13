@@ -24,6 +24,7 @@ func endTurn():
 	GC.SOUND.play_on_turn()
 	if GC.PLAYER.turn>=GC.get_total_turns(): return
 	$Header/end_turn/btn_turn.disabled = true
+	$Header/end_turn/Lb_ac.modulate.a = .3
 	$Interaction/Drager.disabled = true
 	GC.reload_data()
 	yield(GC,"complete_reload_data")
@@ -39,8 +40,10 @@ func endTurn():
 	
 	GC.SOUND.play_complete_turn()
 	$Header/end_turn/btn_turn.disabled = false
+	$Header/end_turn/Lb_ac.modulate.a = 1
 	$Interaction/Drager.disabled = false
-	$Header/end_turn/Tween.interpolate_property($Header/end_turn/btn_turn,"modulate",Color(3,3,3),Color(1,1,1),1,Tween.TRANS_EXPO,Tween.EASE_OUT)
+	var btnColor = $Header/end_turn/btn_turn.modulate
+	$Header/end_turn/Tween.interpolate_property($Header/end_turn/btn_turn,"modulate",Color(3,3,3),btnColor,1,Tween.TRANS_EXPO,Tween.EASE_OUT)
 	$Header/end_turn/Tween.start()
 
 func set_now_time():
@@ -66,7 +69,9 @@ func updateTime():
 	$Header/time_ui/Label.text = frm.hs+":"+frm.min+":"+frm.seg
 
 func update_ui():
-	$Header/end_turn/btn_turn.text = str(GC.PLAYER.turn)+"/"+str(GC.get_total_turns())
+	$Header/end_turn/Lb_ac.text = str(GC.get_total_turns()-GC.PLAYER.turn)
+	if(GC.PLAYER.turn==GC.get_total_turns()): $Header/end_turn/Lb_ac.text = ""
+	$Header/end_turn/Label.text = (str(GC.PLAYER.turn)+"/"+str(GC.GAME.max_turns))
 	$Header/Recs.text = str(GC.PLAYER)
 
 func onClickHelp(btn):
