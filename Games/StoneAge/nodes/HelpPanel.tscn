@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=1]
 [ext_resource path="res://Games/StoneAge/nodes/HelpPanel.gd" type="Script" id=2]
@@ -16,8 +16,7 @@
 [ext_resource path="res://Games/StoneAge/assets/map/map_stone.png" type="Texture" id=14]
 [ext_resource path="res://Games/StoneAge/assets/score_circle.png" type="Texture" id=15]
 [ext_resource path="res://Games/StoneAge/assets/res/build.png" type="Texture" id=16]
-[ext_resource path="res://Games/StoneAge/assets/build_circle.png" type="Texture" id=17]
-[ext_resource path="res://Games/StoneAge/assets/map/map_civ.png" type="Texture" id=18]
+[ext_resource path="res://Games/StoneAge/assets/res/civ.png" type="Texture" id=17]
 [ext_resource path="res://Games/StoneAge/assets/res/gold.png" type="Texture" id=19]
 [ext_resource path="res://Games/StoneAge/assets/res/stone.png" type="Texture" id=20]
 [ext_resource path="res://Games/StoneAge/assets/res/wood.png" type="Texture" id=21]
@@ -105,14 +104,14 @@ valign = 1
 autowrap = true
 
 [node name="BuildCircle" type="Sprite" parent="Pages/intro"]
-position = Vector2( 702, 71 )
-scale = Vector2( 0.894445, 0.894444 )
-texture = ExtResource( 17 )
+position = Vector2( 673, 52 )
+scale = Vector2( 0.396111, 0.396111 )
+texture = ExtResource( 16 )
 
 [node name="MapCiv" type="Sprite" parent="Pages/intro"]
-position = Vector2( 757, 95 )
-scale = Vector2( 0.894445, 0.894444 )
-texture = ExtResource( 18 )
+position = Vector2( 750, 89 )
+scale = Vector2( 0.747223, 0.747222 )
+texture = ExtResource( 17 )
 
 [node name="Tool" type="Sprite" parent="Pages/intro"]
 position = Vector2( 89, 307 )
@@ -179,14 +178,19 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="V19" type="Sprite" parent="Pages/villager"]
-position = Vector2( 66, 321 )
-scale = Vector2( 0.75, 0.75 )
+[node name="V20" type="Sprite" parent="Pages/villager"]
+position = Vector2( 75, 336 )
+scale = Vector2( 0.911232, 0.911232 )
 texture = ExtResource( 5 )
 
-[node name="V20" type="Sprite" parent="Pages/villager"]
-position = Vector2( 66, 321 )
-scale = Vector2( 0.75, 0.75 )
+[node name="V21" type="Sprite" parent="Pages/villager"]
+position = Vector2( 141, 282 )
+scale = Vector2( 0.911232, 0.911232 )
+texture = ExtResource( 5 )
+
+[node name="V22" type="Sprite" parent="Pages/villager"]
+position = Vector2( 174, 349 )
+scale = Vector2( 0.911232, 0.911232 )
 texture = ExtResource( 5 )
 
 [node name="tool" type="Control" parent="Pages"]
@@ -337,13 +341,8 @@ text = "Aquí podrás edificar, los edificios cuestan materiales, a cambio obten
 valign = 1
 autowrap = true
 
-[node name="MapBuild" type="Sprite" parent="Pages/build"]
-position = Vector2( 110, 107 )
-texture = ExtResource( 17 )
-offset = Vector2( -31, -25 )
-
 [node name="build" type="Sprite" parent="Pages/build"]
-position = Vector2( 40.25, 121.25 )
+position = Vector2( 62, 95 )
 scale = Vector2( 0.598837, 0.598837 )
 texture = ExtResource( 16 )
 
@@ -363,13 +362,13 @@ valign = 1
 autowrap = true
 
 [node name="MapBuild2" type="Sprite" parent="Pages/build"]
-position = Vector2( 774, 257 )
-scale = Vector2( 1.16667, 1.16667 )
-texture = ExtResource( 18 )
+position = Vector2( 784.206, 266.344 )
+scale = Vector2( 1.31042, 1.31042 )
+texture = ExtResource( 17 )
 offset = Vector2( -31, -25 )
 
 [node name="build2" type="Sprite" parent="Pages/build"]
-position = Vector2( 766, 268 )
+position = Vector2( 760, 281 )
 scale = Vector2( 1.26609, 1.26609 )
 texture = ExtResource( 15 )
 
@@ -485,8 +484,8 @@ texture = ExtResource( 25 )
 offset = Vector2( -130.769, -32.0513 )
 
 [node name="Food" type="Sprite" parent="Pages/food/MapWood"]
-position = Vector2( 694.872, -52.5641 )
-scale = Vector2( 0.52173, 0.52173 )
+position = Vector2( 711.539, -57.6923 )
+scale = Vector2( 0.968663, 0.968663 )
 texture = ExtResource( 24 )
 
 [node name="Label5" type="Label" parent="Pages/food"]
@@ -530,13 +529,13 @@ valign = 1
 autowrap = true
 
 [node name="ScoreCircle" type="Sprite" parent="Pages/food/Label8"]
-position = Vector2( 287, 47 )
+position = Vector2( 302, 46 )
 rotation = -0.261799
 scale = Vector2( 1.3, 1.3 )
 texture = ExtResource( 15 )
 
 [node name="ScoreCircle2" type="Sprite" parent="Pages/food/Label8"]
-position = Vector2( 277, 82 )
+position = Vector2( 288, 92 )
 rotation = 0.261799
 scale = Vector2( 1.3, 1.3 )
 texture = ExtResource( 15 )
@@ -555,6 +554,7 @@ valign = 1
 autowrap = true
 
 [node name="looter" type="Control" parent="Pages"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_pivot_offset = Vector2( 273, 400 )
@@ -605,13 +605,13 @@ valign = 1
 autowrap = true
 
 [node name="ScoreCircle" type="Sprite" parent="Pages/looter"]
-position = Vector2( 50.161, 219 )
+position = Vector2( 45.161, 217 )
 rotation = -0.261799
 scale = Vector2( 1.3, 1.3 )
 texture = ExtResource( 15 )
 
 [node name="ScoreCircle2" type="Sprite" parent="Pages/looter"]
-position = Vector2( 91.161, 269 )
+position = Vector2( 77.161, 272 )
 rotation = 0.261799
 scale = Vector2( 1.3, 1.3 )
 texture = ExtResource( 15 )
