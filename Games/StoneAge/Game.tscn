@@ -1,10 +1,10 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://Games/StoneAge/Game.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/themeA.tres" type="Theme" id=2]
 [ext_resource path="res://Games/StoneAge/nodes/Drager.gd" type="Script" id=3]
 [ext_resource path="res://Games/StoneAge/assets/area.png" type="Texture" id=4]
-[ext_resource path="res://Games/StoneAge/assets/map/map_blur.jpg" type="Texture" id=5]
+[ext_resource path="res://Games/StoneAge/assets/new_map_bg_blur.jpg" type="Texture" id=5]
 [ext_resource path="res://Games/StoneAge/assets/res/looter.png" type="Texture" id=6]
 [ext_resource path="res://Games/StoneAge/nodes/Interaction.gd" type="Script" id=7]
 [ext_resource path="res://assets/font/BAARS.TTF" type="DynamicFontData" id=8]
@@ -37,7 +37,7 @@
 [ext_resource path="res://Games/StoneAge/assets/sfx/villager_1.mp3" type="AudioStream" id=40]
 [ext_resource path="res://Games/StoneAge/nodes/Sounds.gd" type="Script" id=41]
 [ext_resource path="res://Games/StoneAge/assets/sfx/ms1.mp3" type="AudioStream" id=42]
-[ext_resource path="res://Games/StoneAge/assets/map/map_looter2.png" type="Texture" id=44]
+[ext_resource path="res://Games/StoneAge/assets/map/map_looter.png" type="Texture" id=44]
 [ext_resource path="res://assets/font/font_super_small.tres" type="DynamicFont" id=45]
 [ext_resource path="res://Games/StoneAge/assets/res/adobe.png" type="Texture" id=46]
 [ext_resource path="res://Games/StoneAge/assets/res/wood.png" type="Texture" id=47]
@@ -55,6 +55,14 @@ bg_color = Color( 0.282353, 0.282353, 0.282353, 1 )
 size = 21
 outline_size = 2
 outline_color = Color( 0.129412, 0.129412, 0.129412, 1 )
+extra_spacing_top = -4
+extra_spacing_bottom = -4
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 17
+outline_size = 2
+outline_color = Color( 0.27451, 0.00392157, 0.00392157, 1 )
 extra_spacing_top = -4
 extra_spacing_bottom = -4
 font_data = ExtResource( 8 )
@@ -252,19 +260,33 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 298.0
-margin_top = 32.5
+margin_top = 31.5
 margin_right = 392.0
-margin_bottom = 121.5
+margin_bottom = 120.5
 color = Color( 0, 0, 0, 0.784314 )
 
 [node name="Tween" type="Tween" parent="Header/end_turn"]
+
+[node name="Label2" type="Label" parent="Header/end_turn"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -93.0
+margin_bottom = -78.0
+rect_pivot_offset = Vector2( 91, 47 )
+custom_colors/font_color = Color( 0.764706, 0.764706, 0.764706, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "ACCIONES"
+align = 1
+valign = 1
+autowrap = true
 
 [node name="btn_turn" type="Button" parent="Header/end_turn"]
 modulate = Color( 0.47451, 0.337255, 0.25098, 1 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 1.0
-margin_bottom = -19.0
+margin_top = 4.0
+margin_bottom = -16.0
 focus_mode = 0
 icon = ExtResource( 10 )
 flat = true
@@ -275,9 +297,9 @@ expand_icon = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 15.0
-margin_top = 7.0
+margin_top = 10.0
 margin_right = -13.0
-margin_bottom = -21.0
+margin_bottom = -18.0
 rect_pivot_offset = Vector2( 91, 47 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 4 )
@@ -422,98 +444,98 @@ texture = ExtResource( 4 )
 [node name="Nodes" type="Node2D" parent="Interaction/Drager"]
 
 [node name="V1" type="Sprite" parent="Interaction/Drager/Nodes"]
-position = Vector2( 270, 310 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 270, 316 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 11 )
 
 [node name="V2" type="Sprite" parent="Interaction/Drager/Nodes"]
-position = Vector2( 270, 310 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 270, 316 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 11 )
 
 [node name="V3" type="Sprite" parent="Interaction/Drager/Nodes"]
-position = Vector2( 270, 310 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 270, 316 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 11 )
 
 [node name="V4" type="Sprite" parent="Interaction/Drager/Nodes"]
-position = Vector2( 270, 310 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 270, 316 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 11 )
 
 [node name="V5" type="Sprite" parent="Interaction/Drager/Nodes"]
-position = Vector2( 270, 310 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 270, 316 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 11 )
 
 [node name="V6" type="Sprite" parent="Interaction/Drager/Nodes"]
-position = Vector2( 270, 310 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 270, 316 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 11 )
 
 [node name="V7" type="Sprite" parent="Interaction/Drager/Nodes"]
-position = Vector2( 270, 310 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 270, 316 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 11 )
 
 [node name="V8" type="Sprite" parent="Interaction/Drager/Nodes"]
-position = Vector2( 270, 310 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 270, 316 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 11 )
 
 [node name="V9" type="Sprite" parent="Interaction/Drager/Nodes"]
-position = Vector2( 270, 310 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 270, 316 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 11 )
 
 [node name="V10" type="Sprite" parent="Interaction/Drager/Nodes"]
-position = Vector2( 270, 310 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 270, 316 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 11 )
 
 [node name="V11" type="Sprite" parent="Interaction/Drager/Nodes"]
-position = Vector2( 270, 310 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 270, 316 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 11 )
 
 [node name="V12" type="Sprite" parent="Interaction/Drager/Nodes"]
-position = Vector2( 270, 310 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 270, 316 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 11 )
 
 [node name="V13" type="Sprite" parent="Interaction/Drager/Nodes"]
-position = Vector2( 270, 310 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 270, 316 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 11 )
 
 [node name="V14" type="Sprite" parent="Interaction/Drager/Nodes"]
-position = Vector2( 270, 310 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 270, 316 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 11 )
 
 [node name="V15" type="Sprite" parent="Interaction/Drager/Nodes"]
-position = Vector2( 270, 310 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 270, 316 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 11 )
 
 [node name="V16" type="Sprite" parent="Interaction/Drager/Nodes"]
-position = Vector2( 270, 310 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 270, 316 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 11 )
 
 [node name="V17" type="Sprite" parent="Interaction/Drager/Nodes"]
-position = Vector2( 270, 310 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 270, 316 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 11 )
 
 [node name="V18" type="Sprite" parent="Interaction/Drager/Nodes"]
-position = Vector2( 270, 310 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 270, 316 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 11 )
 
 [node name="V19" type="Sprite" parent="Interaction/Drager/Nodes"]
-position = Vector2( 270, 310 )
-scale = Vector2( 0.4, 0.4 )
+position = Vector2( 270, 316 )
+scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 11 )
 
 [node name="Tween" type="Tween" parent="Interaction/Drager"]
@@ -852,7 +874,6 @@ text = "?"
 flat = true
 
 [node name="BuildPanel" type="ColorRect" parent="."]
-visible = false
 margin_top = 40.0
 margin_right = 800.0
 margin_bottom = 400.0
@@ -889,9 +910,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -164.0
-margin_top = -99.0
+margin_top = -100.0
 margin_right = -54.0
-margin_bottom = 16.0
+margin_bottom = 15.0
 focus_mode = 0
 enabled_focus_mode = 0
 
@@ -984,9 +1005,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = 45.0
-margin_top = -99.0
+margin_top = -100.0
 margin_right = 155.0
-margin_bottom = 17.0
+margin_bottom = 16.0
 focus_mode = 0
 enabled_focus_mode = 0
 
@@ -1079,9 +1100,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 margin_left = -93.0
-margin_top = -102.0
+margin_top = -101.0
 margin_right = 93.0
-margin_bottom = -37.0
+margin_bottom = -36.0
 theme = ExtResource( 2 )
 text = "CANCELAR"
 
