@@ -88,6 +88,7 @@ _global_script_class_icons={
 
 config/name="Stone Age Firebase"
 run/main_scene="res://Scenes/Intro.tscn"
+boot_splash/image="res://Games/StoneAge/assets/Aldeano.png"
 config/icon="res://icon.png"
 
 [autoload]
